@@ -30,7 +30,7 @@ import LanguageProvider from 'containers/LanguageProvider';
 
 // Import CSS reset and Global Styles
 import 'sanitize.css/sanitize.css';
-import './global-styles';
+import 'styles/global-styles';
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
