@@ -27,7 +27,7 @@ export default class FeaturePage extends React.Component { // eslint-disable-lin
         <Helmet
           title="Feature Page"
           meta={[
-            { name: 'description', content: 'Feature page of React.js Boilerplate application' },
+            { name: 'description', content: 'This is the feature page...TODO' },
           ]}
         />
         <H1>

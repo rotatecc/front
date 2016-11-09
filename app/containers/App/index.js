@@ -26,10 +26,10 @@ function App(props) {
   return (
     <AppWrapper>
       <Helmet
-        titleTemplate="%s - React.js Boilerplate"
-        defaultTitle="React.js Boilerplate"
+        titleTemplate="%s - rotate.cc"
+        defaultTitle="rotate.cc"
         meta={[
-          { name: 'description', content: 'A React.js Boilerplate application' },
+          { name: 'description', content: 'rotate.cc : Rotate Cycle Creative' },
         ]}
       />
       <Header />
