@@ -9,10 +9,9 @@
 import 'babel-polyfill';
 
 /* eslint-disable import/no-unresolved, import/extensions */
-// Load the favicon, the manifest.json file and the .htaccess file
-import 'file?name=[name].[ext]!./favicon.ico';
-import '!file?name=[name].[ext]!./manifest.json';
-import 'file?name=[name].[ext]!./.htaccess';
+// Load the favicon and the manifest.json file
+import 'file?name=[name].[ext]!./static/favicon/favicon.ico';
+import '!file?name=[name].[ext]!./static/favicon/manifest.json';
 /* eslint-enable import/no-unresolved, import/extensions */
 
 // Import all the third party stuff
@@ -32,12 +31,16 @@ import LanguageProvider from 'containers/LanguageProvider';
 import 'sanitize.css/sanitize.css';
 import 'styles/global-styles';
 
-// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
-// the index.html file and this observer)
-const openSansObserver = new FontFaceObserver('Open Sans', {});
+// Observe loading of fonts
+const fontContrailOne = new FontFaceObserver('Contrail One', {});
+const fontSourceSansPro = new FontFaceObserver('Source Sans Pro', {});
+const fontLora = new FontFaceObserver('Lora', {});
 
-// When Open Sans is loaded, add a font-family using Open Sans to the body
-openSansObserver.load().then(() => {
+Promise.all([
+  fontContrailOne.load(),
+  fontSourceSansPro.load(),
+  fontLora.load(),
+]).then(() => {
   document.body.classList.add('fontLoaded');
 }, () => {
   document.body.classList.remove('fontLoaded');

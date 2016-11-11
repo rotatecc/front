@@ -7,9 +7,8 @@
 import 'babel-polyfill';
 
 /* eslint-disable import/no-unresolved, import/extensions */
-// Load the manifest.json file and the .htaccess file
+// Load the manifest.json file
 import '!file?name=[name].[ext]!./manifest.json';
-import 'file?name=[name].[ext]!./.htaccess';
 /* eslint-enable import/no-unresolved, import/extensions */
 
 // Import all the third party stuff

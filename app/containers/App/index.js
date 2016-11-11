@@ -10,32 +10,34 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
+import ThemeProvider from 'components/ThemeProvider';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
 const AppWrapper = styled.div`
-  max-width: calc(768px + 16px * 2);
-  margin: 0 auto;
+  background: ${(props) => props.theme.background};
+  color: ${(props) => props.theme.color};
   display: flex;
   min-height: 100%;
-  padding: 0 16px;
   flex-direction: column;
 `;
 
 function App(props) {
   return (
-    <AppWrapper>
-      <Helmet
-        titleTemplate="%s - rotate.cc"
-        defaultTitle="rotate.cc"
-        meta={[
-          { name: 'description', content: 'rotate.cc : Rotate Cycle Creative' },
-        ]}
-      />
-      <Header />
-      {React.Children.toArray(props.children)}
-      <Footer />
-    </AppWrapper>
+    <ThemeProvider>
+      <AppWrapper>
+        <Helmet
+          titleTemplate="%s - rotate.cc"
+          defaultTitle="rotate.cc"
+          meta={[
+            { name: 'description', content: 'rotate.cc : TODO' },
+          ]}
+        />
+        <Header />
+        {React.Children.toArray(props.children)}
+        <Footer />
+      </AppWrapper>
+    </ThemeProvider>
   );
 }
 
