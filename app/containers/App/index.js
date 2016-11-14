@@ -14,6 +14,7 @@ import ThemeProvider from 'components/ThemeProvider';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 
+
 const AppWrapper = styled.div`
   background: ${(props) => props.theme.background};
   color: ${(props) => props.theme.color};
@@ -21,6 +22,7 @@ const AppWrapper = styled.div`
   min-height: 100%;
   flex-direction: column;
 `;
+
 
 function App(props) {
   return (

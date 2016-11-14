@@ -2,29 +2,10 @@
  * The global state selectors
  */
 
-import { createSelector } from 'reselect';
+// import { createSelector } from 'reselect';
 
-const selectGlobal = () => (state) => state.get('global');
 
-const selectCurrentUser = () => createSelector(
-  selectGlobal(),
-  (globalState) => globalState.get('currentUser')
-);
-
-const selectLoading = () => createSelector(
-  selectGlobal(),
-  (globalState) => globalState.get('loading')
-);
-
-const selectError = () => createSelector(
-  selectGlobal(),
-  (globalState) => globalState.get('error')
-);
-
-const selectRepos = () => createSelector(
-  selectGlobal(),
-  (globalState) => globalState.getIn(['userData', 'repositories'])
-);
+// TODO selectors here using reselect.createSelector (export them below)
 
 const selectLocationState = () => {
   let prevRoutingState;
@@ -43,10 +24,6 @@ const selectLocationState = () => {
 };
 
 export {
-  selectGlobal,
-  selectCurrentUser,
-  selectLoading,
-  selectError,
-  selectRepos,
+  // export them here
   selectLocationState,
 };
