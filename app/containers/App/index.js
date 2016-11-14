@@ -8,6 +8,7 @@
 
 import React from 'react';
 import Helmet from 'react-helmet';
+import { Page } from 'hedron';
 import styled from 'styled-components';
 
 import ThemeProvider from 'components/ThemeProvider';
@@ -35,9 +36,11 @@ function App(props) {
             { name: 'description', content: 'rotate.cc : TODO' },
           ]}
         />
-        <Header />
-        {React.Children.toArray(props.children)}
-        <Footer />
+        <Page fluid>
+          <Header />
+          {React.Children.toArray(props.children)}
+          <Footer />
+        </Page>
       </AppWrapper>
     </ThemeProvider>
   );
