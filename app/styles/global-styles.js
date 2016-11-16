@@ -8,13 +8,22 @@ injectGlobal`
     width: 100%;
   }
 
-  body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 20px;
+  html {
+    font-size: 110%;
   }
 
-  body.fontLoaded {
-    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -moz-font-feature-settings: 'liga' on;
+  }
+
+  p,
+  label {
+    line-height: 1.5em;
   }
 
   h1,
@@ -26,28 +35,59 @@ injectGlobal`
     font-family: sans-serif;
   }
 
-  body.fontLoaded h1 {
-    font-family: 'Contrail One', sans-serif;
-    font-size: 50px;
-    font-weight: 400;
+  h1 {
+    font-size: 3rem;
+    margin: 0;
+    padding: 0;
   }
 
-  body.fontLoaded h2,
-  body.fontLoaded h3,
-  body.fontLoaded h4,
-  body.fontLoaded h5,
-  body.fontLoaded h6 {
-    font-family: 'Lora', sans-serif;
-    font-weight: 400;
+  h2 {
+    font-size: 4rem;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-size: 2rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  h5 {
+    font-size: 1.2rem;
+  }
+
+  h6 {
+    font-size: 1rem;
+  }
+
+  body.fontLoaded {
+    font-family: 'adelle-sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 300;
+
+    b,
+    strong {
+      font-weight: 600;
+    }
+
+    h1,
+    h2 {
+      font-family: 'din-condensed-web', sans-serif;
+      font-weight: 400;
+    }
+
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'clarendon-text-pro', sans-serif;
+      font-weight: 400;
+    }
   }
 
   #app {
     min-height: 100%;
     min-width: 100%;
-  }
-
-  p,
-  label {
-    line-height: 1.5em;
   }
 `;

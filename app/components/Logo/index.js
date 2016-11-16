@@ -7,12 +7,10 @@ import styled from 'styled-components';
 
 
 const LogoWrapper = styled.h1`
-  font-family: 'Megrim', sans-serif;
-  font-size: 40px;
-  font-weight: 400;
   line-height: 1;
   margin: 0;
   padding: 0;
+  text-align: ${(props) => (props.centered ? 'center' : 'left')};
 `;
 
 const LogoLink = styled.a`
@@ -20,12 +18,22 @@ const LogoLink = styled.a`
   text-decoration: none;
 `;
 
-const Logo = () => (
-  <LogoWrapper>
-    <LogoLink href="/">
-      rotate
-    </LogoLink>
-  </LogoWrapper>
-);
+function Logo(props) {
+  return (
+    <LogoWrapper centered={props.centered}>
+      <LogoLink href="/">
+        rotate
+      </LogoLink>
+    </LogoWrapper>
+  );
+}
+
+Logo.propTypes = {
+  centered: React.PropTypes.bool,
+};
+
+Logo.defaultProps = {
+  centered: false,
+};
 
 export default Logo;

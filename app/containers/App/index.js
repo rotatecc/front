@@ -17,8 +17,8 @@ import Footer from 'components/Footer';
 
 
 const AppWrapper = styled.div`
-  background: ${(props) => props.theme.background};
-  color: ${(props) => props.theme.color};
+  background: ${({ theme }) => theme.palette.background};
+  color: ${({ theme }) => theme.palette.text};
   display: flex;
   min-height: 100%;
   flex-direction: column;

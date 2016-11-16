@@ -32,14 +32,14 @@ import 'sanitize.css/sanitize.css';
 import 'styles/global-styles';
 
 // Observe loading of fonts
-const fontContrailOne = new FontFaceObserver('Contrail One', {});
-const fontSourceSansPro = new FontFaceObserver('Source Sans Pro', {});
-const fontLora = new FontFaceObserver('Lora', {});
+const fontAdelleSans = new FontFaceObserver('adelle-sans', {});
+const fontDinCondensedWeb = new FontFaceObserver('din-condensed-web', {});
+const fontClarendonTextPro = new FontFaceObserver('clarendon-text-pro', {});
 
 Promise.all([
-  fontContrailOne.load(),
-  fontSourceSansPro.load(),
-  fontLora.load(),
+  fontAdelleSans.load(),
+  fontDinCondensedWeb.load(),
+  fontClarendonTextPro.load(),
 ]).then(() => {
   document.body.classList.add('fontLoaded');
 }, () => {
