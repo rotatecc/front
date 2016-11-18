@@ -28,6 +28,10 @@ const AppWrapper = styled.div`
   flex-direction: column;
 `;
 
+// Sticky footer
+const AppContent = styled.div`
+  flex: 1;
+`;
 
 class App extends React.PureComponent {
   componentDidMount() {
@@ -57,11 +61,11 @@ class App extends React.PureComponent {
               { name: 'description', content: 'rotate.cc : TODO' },
             ]}
           />
-          <Page fluid>
-            <Header />
+          <Header />
+          <AppContent>
             {React.Children.toArray(this.props.children)}
-            <Footer />
-          </Page>
+          </AppContent>
+          <Footer />
         </AppWrapper>
       </ThemeProvider>
     );

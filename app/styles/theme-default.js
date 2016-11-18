@@ -32,6 +32,7 @@ function makeColorVersions(p) {
 const palette = {
   background: '#f7f7f7',
   gray: '#e3e3e3',
+  grayDark: '#535454',
   text: '#000000',
   primary: '#334ea7',
   success: '#33a754',
