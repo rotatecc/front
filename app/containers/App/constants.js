@@ -9,5 +9,12 @@
  * export const YOUR_ACTION_CONSTANT = 'rccapp/YourContainer/YOUR_ACTION_CONSTANT';
  */
 
-// TODO app constants
+export const WINDOW_RESIZE = 'rccapp/App/WINDOW_RESIZE';
+export const WINDOW_SCROLL = 'rccapp/App/WINDOW_SCROLL';
+export const SHOW_MENU_OVERLAY = 'rccapp/App/SHOW_MENU_OVERLAY';
+export const HIDE_MENU_OVERLAY = 'rccapp/App/HIDE_MENU_OVERLAY';
+export const TOGGLE_MENU_OVERLAY = 'rccapp/App/TOGGLE_MENU_OVERLAY';
+export const SHOW_SEARCH_OVERLAY = 'rccapp/App/SHOW_SEARCH_OVERLAY';
+export const HIDE_SEARCH_OVERLAY = 'rccapp/App/HIDE_SEARCH_OVERLAY';
+export const TOGGLE_SEARCH_OVERLAY = 'rccapp/App/TOGGLE_SEARCH_OVERLAY';
 export const DEFAULT_LOCALE = 'en';

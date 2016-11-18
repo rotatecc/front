@@ -7,47 +7,95 @@
  */
 
 import React from 'react';
+import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import { Page } from 'hedron';
 import styled from 'styled-components';
 
+import Header from 'containers/Header';
+
 import ThemeProvider from 'components/ThemeProvider';
-import Header from 'components/Header';
 import Footer from 'components/Footer';
+
+import { windowResize, windowScroll } from './actions';
 
 
 const AppWrapper = styled.div`
   background: ${({ theme }) => theme.palette.background};
   color: ${({ theme }) => theme.palette.text};
   display: flex;
-  min-height: 100%;
+  min-height: 100vh;
   flex-direction: column;
 `;
 
 
-function App(props) {
-  return (
-    <ThemeProvider>
-      <AppWrapper>
-        <Helmet
-          titleTemplate="%s - rotate.cc"
-          defaultTitle="rotate.cc"
-          meta={[
-            { name: 'description', content: 'rotate.cc : TODO' },
-          ]}
-        />
-        <Page fluid>
-          <Header />
-          {React.Children.toArray(props.children)}
-          <Footer />
-        </Page>
-      </AppWrapper>
-    </ThemeProvider>
-  );
+class App extends React.PureComponent {
+  componentDidMount() {
+    // Trigger window listeners manually on mount
+    this.props.onWindowResize();
+    this.props.onWindowScroll();
+
+    window.addEventListener('resize', this.props.onWindowResize);
+    window.addEventListener('scroll', this.props.onWindowScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.props.onWindowResize);
+    window.removeEventListener('scroll', this.props.onWindowScroll);
+  }
+
+  // Render
+
+  render() {
+    return (
+      <ThemeProvider>
+        <AppWrapper>
+          <Helmet
+            titleTemplate="%s - rotate.cc"
+            defaultTitle="rotate.cc"
+            meta={[
+              { name: 'description', content: 'rotate.cc : TODO' },
+            ]}
+          />
+          <Page fluid>
+            <Header />
+            {React.Children.toArray(this.props.children)}
+            <Footer />
+          </Page>
+        </AppWrapper>
+      </ThemeProvider>
+    );
+  }
 }
 
 App.propTypes = {
-  children: React.PropTypes.node,
+  children: React.PropTypes.node.isRequired,
+  onWindowResize: React.PropTypes.func.isRequired,
+  onWindowScroll: React.PropTypes.func.isRequired,
 };
 
-export default App;
+export function mapDispatchToProps(dispatch) {
+  return {
+    onWindowResize: () => {
+      // get size object from window
+      const size = {
+        width: window.innerWidth,
+        height: window.innerHeight,
+      };
+
+      return dispatch(windowResize(size));
+    },
+    onWindowScroll: () => {
+      // get size object from event target
+      const scroll = {
+        left: window.pageXOffset || document.documentElement.scrollLeft,
+        top: window.pageYOffset || document.documentElement.scrollTop,
+      };
+
+      return dispatch(windowScroll(scroll));
+    },
+  };
+}
+
+// Wrap the component to inject dispatch and state into it
+export default connect(null, mapDispatchToProps)(App);

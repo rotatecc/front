@@ -2,10 +2,35 @@
  * The global state selectors
  */
 
-// import { createSelector } from 'reselect';
+import { createSelector } from 'reselect';
 
 
-// TODO selectors here using reselect.createSelector (export them below)
+const selectGlobal = () => (state) => state.get('global');
+
+const selectWindow = () => createSelector(
+  selectGlobal(),
+  (globalState) => globalState.get('window')
+);
+
+const selectWindowScrollTop = () => createSelector(
+  selectWindow(),
+  (windowState) => windowState.get('top')
+);
+
+const selectWindowWidth = () => createSelector(
+  selectWindow(),
+  (windowState) => windowState.get('width')
+);
+
+const selectMenuOverlay = () => createSelector(
+  selectGlobal(),
+  (globalState) => globalState.get('menuOverlay')
+);
+
+const selectSearchOverlay = () => createSelector(
+  selectGlobal(),
+  (globalState) => globalState.get('searchOverlay')
+);
 
 const selectLocationState = () => {
   let prevRoutingState;
@@ -24,6 +49,11 @@ const selectLocationState = () => {
 };
 
 export {
-  // export them here
+  selectGlobal,
+  selectWindow,
+  selectWindowScrollTop,
+  selectWindowWidth,
+  selectMenuOverlay,
+  selectSearchOverlay,
   selectLocationState,
 };

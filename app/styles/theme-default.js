@@ -30,7 +30,7 @@ function makeColorVersions(p) {
 }
 
 const palette = {
-  background: '#ffffff',
+  background: '#f7f7f7',
   gray: '#e3e3e3',
   text: '#000000',
   primary: '#334ea7',
