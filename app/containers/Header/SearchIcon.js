@@ -11,16 +11,34 @@ const Container = styled.a`
   top: 35px;
 `;
 
+const PrimaryContainer = styled(Container)`
+  font-size: 30px;
+`;
 
-function SearchIcon({ onClick }) {
+const SlimContainer = styled(Container)`
+  color: white;
+  font-size: 20px;
+  right: 60px;
+  top: 2px;
+`;
+
+const versionLookup = {
+  primary: PrimaryContainer,
+  slim: SlimContainer,
+};
+
+function SearchIcon({ version, onClick }) {
+  const VersionedContainer = versionLookup[version];
+
   return (
-    <Container onClick={onClick}>
+    <VersionedContainer onClick={onClick}>
       s
-    </Container>
+    </VersionedContainer>
   );
 }
 
 SearchIcon.propTypes = {
+  version: React.PropTypes.oneOf(Object.keys(versionLookup)).isRequired,
   onClick: React.PropTypes.func.isRequired,
 };
 

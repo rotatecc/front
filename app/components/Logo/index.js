@@ -6,34 +6,49 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-const LogoWrapper = styled.h1`
+const Container = styled.h1`
   line-height: 1;
   margin: 0;
   padding: 0;
-  text-align: ${(props) => (props.centered ? 'center' : 'left')};
 `;
 
-const LogoLink = styled.a`
+const PrimaryContainer = styled(Container)`
+  text-align: center;
+`;
+
+const SlimContainer = styled(Container)`
+  color: white;
+  font-size: 2rem;
+  text-align: left;
+  position: absolute;
+  top: 2px;
+  left: 20px;
+`;
+
+const Link = styled.a`
   color: inherit;
   text-decoration: none;
 `;
 
+const versionLookup = {
+  primary: PrimaryContainer,
+  slim: SlimContainer,
+};
+
 function Logo(props) {
+  const VersionedContainer = versionLookup[props.version];
+
   return (
-    <LogoWrapper centered={props.centered}>
-      <LogoLink href="/">
+    <VersionedContainer>
+      <Link href="/">
         rotate
-      </LogoLink>
-    </LogoWrapper>
+      </Link>
+    </VersionedContainer>
   );
 }
 
 Logo.propTypes = {
-  centered: React.PropTypes.bool,
-};
-
-Logo.defaultProps = {
-  centered: false,
+  version: React.PropTypes.oneOf(Object.keys(versionLookup)).isRequired,
 };
 
 export default Logo;

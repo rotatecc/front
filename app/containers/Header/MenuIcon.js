@@ -16,7 +16,9 @@ const PrimaryContainer = styled(Container)`
 `;
 
 const SlimContainer = styled(Container)`
+  color: white;
   font-size: 20px;
+  top: 3px;
 `;
 
 const versionLookup = {
@@ -35,7 +37,7 @@ function MenuIcon({ version, onClick }) {
 }
 
 MenuIcon.propTypes = {
-  version: React.PropTypes.string,
+  version: React.PropTypes.oneOf(Object.keys(versionLookup)).isRequired,
   onClick: React.PropTypes.func.isRequired,
 };
 

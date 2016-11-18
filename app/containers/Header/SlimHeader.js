@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Logo from 'components/Logo';
+import Navbar from 'containers/Navbar';
+import MenuIcon from './MenuIcon';
+import SearchIcon from './SearchIcon';
+
 
 function shouldShow({ scrollTop, showMenuOverlay, showSearchOverlay }) {
   if (showMenuOverlay || showSearchOverlay) {
@@ -12,21 +17,31 @@ function shouldShow({ scrollTop, showMenuOverlay, showSearchOverlay }) {
 
 
 const Wrapper = styled.div`
-  transition: top 200ms ease;
+  transition: all 200ms ease;
   background: ${({ theme }) => theme.palette.primary};
   color: white;
   position: fixed;
   left: 0;
   top: ${({ show }) => (show ? '0' : '-40px')};
+  opacity: ${({ show }) => (show ? '1' : '0.5')};
   width: 100%;
   height: 40px;
+  overflow: hidden;
 `;
 
+const versionProp = {
+  version: 'slim',
+};
 
 function SlimHeader(props) {
+  const { onMenuIconClick, onSearchIconClick } = props;
+
   return (
     <Wrapper show={shouldShow(props)}>
-      [slim header]
+      <Logo {...versionProp} />
+      <Navbar {...versionProp} />
+      <MenuIcon {...versionProp} onClick={onMenuIconClick} />
+      <SearchIcon {...versionProp} onClick={onSearchIconClick} />
     </Wrapper>
   );
 }
