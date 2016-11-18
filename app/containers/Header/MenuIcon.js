@@ -15,17 +15,12 @@ const PrimaryContainer = styled(Container)`
   font-size: 30px;
 `;
 
-const SecondaryContainer = styled(Container)`
-  font-size: 25px;
-`;
-
 const SlimContainer = styled(Container)`
   font-size: 20px;
 `;
 
 const versionLookup = {
   primary: PrimaryContainer,
-  secondary: SecondaryContainer,
   slim: SlimContainer,
 };
 

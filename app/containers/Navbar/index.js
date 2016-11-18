@@ -14,6 +14,10 @@ const NavbarWrapper = styled.div`
   margin: 15px 0;
   text-align: ${(props) => (props.centered ? 'center' : 'left')};
 
+  @media screen and (max-width: 600px) {
+    display: none;
+  }
+
   ul {
     list-style-type: none;
     margin: 0;

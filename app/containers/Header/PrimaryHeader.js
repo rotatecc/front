@@ -12,6 +12,11 @@ import SearchIcon from './SearchIcon';
 const Wrapper = styled.div`
   height: 150px;
   padding: 25px 0 0;
+
+  @media screen and (max-width: 600px) {
+    height: 80px;
+    padding: 21px 0 0;
+  }
 `;
 
 const CenteredRow = styled.div`

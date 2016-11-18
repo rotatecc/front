@@ -7,8 +7,8 @@ const Container = styled.a`
   cursor: pointer;
   font-size: 30px;
   position: absolute;
-  right: 25px;
-  top: 45px;
+  right: 27px;
+  top: 35px;
 `;
 
 
