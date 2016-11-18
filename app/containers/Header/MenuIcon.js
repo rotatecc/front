@@ -13,6 +13,10 @@ const Container = styled.a`
 
 const PrimaryContainer = styled(Container)`
   font-size: 30px;
+  
+  @media screen and (max-width: 600px) {
+    top: 3px;
+  }
 `;
 
 const SlimContainer = styled(Container)`

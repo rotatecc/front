@@ -10,13 +10,8 @@ import styled from 'styled-components';
 import Item from './Item';
 
 
-const NavbarWrapper = styled.div`
+const Container = styled.div`
   margin: 15px 0;
-  text-align: ${(props) => (props.centered ? 'center' : 'left')};
-
-  @media screen and (max-width: 600px) {
-    display: none;
-  }
 
   ul {
     list-style-type: none;
@@ -66,29 +61,72 @@ const NavbarWrapper = styled.div`
   }
 `;
 
+const PrimaryContainer = styled(Container)`
+  text-align: center;
 
-export class Navbar extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  render() {
-    return (
-      <NavbarWrapper centered={this.props.centered}>
-        <ul>
-          <Item link="#" name="Home" />
-          <Item link="#" name="Build" />
-          <Item link="#" name="Knowledge" />
-          <Item link="#" name="Community" />
-          <Item link="#" name="About" />
-        </ul>
-      </NavbarWrapper>
-    );
+  @media screen and (max-width: 600px) {
+    display: none;
   }
+`;
+
+const SlimContainer = styled(Container)`
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  width: 100%;
+
+  @media screen and (max-width: 760px) {
+    display: none;
+  }
+
+  ul {
+    li {
+      a {
+        color: white;
+        padding: 9px 10px;
+
+        &:after {
+          bottom: 0px;
+        }
+
+        &:hover {
+          color: white;
+
+          &:after {
+            background: white;
+            height: 1px;
+          }
+        }
+      }
+    }
+  }
+`;
+
+const versionLookup = {
+  primary: PrimaryContainer,
+  slim: SlimContainer,
+};
+
+export function Navbar({ version }) {
+  const VersionedContainer = versionLookup[version];
+
+  return (
+    <VersionedContainer>
+      <ul>
+        <Item link="#" name="Home" />
+        <Item link="#" name="Build" />
+        <Item link="#" name="Knowledge" />
+        <Item link="#" name="Community" />
+        <Item link="#" name="About" />
+      </ul>
+    </VersionedContainer>
+  );
 }
 
 Navbar.propTypes = {
-  centered: React.PropTypes.bool,
-};
-
-Navbar.defaultProps = {
-  centered: false,
+  version: React.PropTypes.oneOf(Object.keys(versionLookup)).isRequired,
 };
 
 export default Navbar;
