@@ -7,17 +7,23 @@ import { selectOverlay } from './selectors';
 
 import { closeOverlay } from './actions';
 
-import Button from 'components/Button';
+import {
+  OVERLAYTYPE_MENU,
+  OVERLAYTYPE_SEARCH,
+} from './constants';
 
 
 function shouldShow(overlay) {
-  return overlay.get('type') !== 'none';
+  return [
+    OVERLAYTYPE_MENU,
+    OVERLAYTYPE_SEARCH,
+  ].includes(overlay.get('type'));
 }
 
 
 const Container = styled.div`
   display: ${({ show }) => (show ? 'block' : 'none')};
-  background: #ffffff;
+  background: rgba(0, 0, 0, 0.2);
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -25,15 +31,30 @@ const Container = styled.div`
   z-index: 100;
 `;
 
+function requireAdapter(adapter) {
+  return require(`./adapters/${adapter}`).default;
+}
+
+function adapt(overlay) {
+  switch (overlay.get('type')) {
+    case OVERLAYTYPE_MENU:
+      return requireAdapter('Menu');
+    case OVERLAYTYPE_SEARCH:
+      return requireAdapter('Search');
+    default:
+      return null;
+  }
+}
 
 class Overlay extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
+    const { overlay } = this.props;
+
+    const Adapted = adapt(overlay);
+
     return (
-      <Container show={shouldShow(this.props.overlay)}>
-        This is the overlay.
-        <Button onClick={this.props.closeOverlay}>
-          Close
-        </Button>
+      <Container show={shouldShow(overlay)}>
+        {Adapted && <Adapted {...overlay.props} />}
       </Container>
     );
   }

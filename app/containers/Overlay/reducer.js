@@ -8,6 +8,9 @@ import {
   CLOSE_OVERLAY,
   OPEN_MENU_OVERLAY,
   OPEN_SEARCH_OVERLAY,
+
+  OVERLAYTYPE_MENU,
+  OVERLAYTYPE_SEARCH,
 } from './constants';
 
 
@@ -25,10 +28,10 @@ export default function overlayReducer(state = initialState, action = {}) {
       return initialState;
     }
     case OPEN_MENU_OVERLAY: {
-      return initialState.set('type', 'menu');
+      return initialState.set('type', OVERLAYTYPE_MENU);
     }
     case OPEN_SEARCH_OVERLAY: {
-      return initialState.set('type', 'search');
+      return initialState.set('type', OVERLAYTYPE_SEARCH);
     }
     default:
       return state;
