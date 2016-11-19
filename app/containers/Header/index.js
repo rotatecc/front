@@ -8,17 +8,15 @@ import SlimHeader from './SlimHeader';
 
 import {
   selectWindowScrollTop,
-  selectMenuOverlay,
-  selectSearchOverlay,
 } from 'containers/App/selectors';
 
 import {
-  toggleMenuOverlay,
-  toggleSearchOverlay,
-} from 'containers/App/actions';
+  openMenuOverlay,
+  openSearchOverlay,
+} from 'containers/Overlay/actions';
 
 
-const HeaderWrapper = styled.div`
+const Container = styled.div`
   background: #ffffff;
   position: relative;
 `;
@@ -27,10 +25,10 @@ const HeaderWrapper = styled.div`
 class Header extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <HeaderWrapper>
+      <Container>
         <PrimaryHeader {...this.props} />
         <SlimHeader {...this.props} />
-      </HeaderWrapper>
+      </Container>
     );
   }
 }
@@ -38,8 +36,6 @@ class Header extends React.PureComponent { // eslint-disable-line react/prefer-s
 Header.propTypes = {
   // props
   scrollTop: React.PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
-  menuOverlay: React.PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
-  searchOverlay: React.PropTypes.bool.isRequired, // eslint-disable-line react/no-unused-prop-types
 
   // actions
   onMenuIconClick: React.PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
@@ -49,15 +45,13 @@ Header.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   scrollTop: selectWindowScrollTop(),
-  menuOverlay: selectMenuOverlay(),
-  searchOverlay: selectSearchOverlay(),
 });
 
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
-    onMenuIconClick: () => dispatch(toggleMenuOverlay()),
-    onSearchIconClick: () => dispatch(toggleSearchOverlay()),
+    onMenuIconClick: () => dispatch(openMenuOverlay()),
+    onSearchIconClick: () => dispatch(openSearchOverlay()),
   };
 }
 

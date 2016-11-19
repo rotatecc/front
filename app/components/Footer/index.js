@@ -13,7 +13,7 @@ const Container = styled.div`
 
 const currentYear = (new Date()).getFullYear();
 
-function Footer() {
+export default function Footer() {
   return (
     <Container>
       <Row>
@@ -27,5 +27,3 @@ function Footer() {
     </Container>
   );
 }
-
-export default Footer;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 
 const Container = styled.a`
+  display: block;
   color: black;
   cursor: pointer;
   font-size: 30px;
@@ -13,7 +14,7 @@ const Container = styled.a`
 
 const PrimaryContainer = styled(Container)`
   font-size: 30px;
-  
+
   @media screen and (max-width: 600px) {
     top: 3px;
   }

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 
 const Container = styled.a`
+  display: block;
   color: black;
   cursor: pointer;
   font-size: 30px;

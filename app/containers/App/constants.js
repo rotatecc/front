@@ -1,5 +1,5 @@
 /*
- * AppConstants
+ * App Constants
  * Each action has a corresponding type, which the reducer knows and picks up on.
  * To avoid weird typos between the reducer and the actions, we save them as
  * constants here. We prefix them with 'rccapp/YourComponent' so we avoid
@@ -11,10 +11,5 @@
 
 export const WINDOW_RESIZE = 'rccapp/App/WINDOW_RESIZE';
 export const WINDOW_SCROLL = 'rccapp/App/WINDOW_SCROLL';
-export const SHOW_MENU_OVERLAY = 'rccapp/App/SHOW_MENU_OVERLAY';
-export const HIDE_MENU_OVERLAY = 'rccapp/App/HIDE_MENU_OVERLAY';
-export const TOGGLE_MENU_OVERLAY = 'rccapp/App/TOGGLE_MENU_OVERLAY';
-export const SHOW_SEARCH_OVERLAY = 'rccapp/App/SHOW_SEARCH_OVERLAY';
-export const HIDE_SEARCH_OVERLAY = 'rccapp/App/HIDE_SEARCH_OVERLAY';
-export const TOGGLE_SEARCH_OVERLAY = 'rccapp/App/TOGGLE_SEARCH_OVERLAY';
+
 export const DEFAULT_LOCALE = 'en';

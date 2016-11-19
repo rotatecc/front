@@ -9,9 +9,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
-import { Page } from 'hedron';
 import styled from 'styled-components';
 
+import Overlay from 'containers/Overlay';
 import Header from 'containers/Header';
 
 import ThemeProvider from 'components/ThemeProvider';
@@ -20,7 +20,7 @@ import Footer from 'components/Footer';
 import { windowResize, windowScroll } from './actions';
 
 
-const AppWrapper = styled.div`
+const Container = styled.div`
   background: ${({ theme }) => theme.palette.background};
   color: ${({ theme }) => theme.palette.text};
   display: flex;
@@ -29,7 +29,7 @@ const AppWrapper = styled.div`
 `;
 
 // Sticky footer
-const AppContent = styled.div`
+const Content = styled.div`
   flex: 1;
 `;
 
@@ -53,7 +53,8 @@ class App extends React.PureComponent {
   render() {
     return (
       <ThemeProvider>
-        <AppWrapper>
+        <Container>
+          <Overlay />
           <Helmet
             titleTemplate="%s - rotate.cc"
             defaultTitle="rotate.cc"
@@ -62,11 +63,11 @@ class App extends React.PureComponent {
             ]}
           />
           <Header />
-          <AppContent>
+          <Content>
             {React.Children.toArray(this.props.children)}
-          </AppContent>
+          </Content>
           <Footer />
-        </AppWrapper>
+        </Container>
       </ThemeProvider>
     );
   }

@@ -22,16 +22,6 @@ const selectWindowWidth = () => createSelector(
   (windowState) => windowState.get('width')
 );
 
-const selectMenuOverlay = () => createSelector(
-  selectGlobal(),
-  (globalState) => globalState.get('menuOverlay')
-);
-
-const selectSearchOverlay = () => createSelector(
-  selectGlobal(),
-  (globalState) => globalState.get('searchOverlay')
-);
-
 const selectLocationState = () => {
   let prevRoutingState;
   let prevRoutingStateJS;
@@ -53,7 +43,5 @@ export {
   selectWindow,
   selectWindowScrollTop,
   selectWindowWidth,
-  selectMenuOverlay,
-  selectSearchOverlay,
   selectLocationState,
 };
