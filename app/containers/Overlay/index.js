@@ -65,6 +65,16 @@ class Overlay extends React.PureComponent { // eslint-disable-line react/prefer-
     changeOverflowOnBody(false);
   }
 
+  // Actions
+
+  onContainerClick = (e) => {
+    e.persist();
+
+    if (e.target.className.includes('should-close-overlay')) {
+      this.props.closeOverlay();
+    }
+  }
+
   // Render
 
   render() {
@@ -73,7 +83,11 @@ class Overlay extends React.PureComponent { // eslint-disable-line react/prefer-
     const Adapted = adapt(overlay);
 
     return (
-      <Container show={shouldShow(overlay)}>
+      <Container
+        className="should-close-overlay"
+        onClick={this.onContainerClick}
+        show={shouldShow(overlay)}
+      >
         {Adapted && (
           <Adapted
             close={this.props.closeOverlay}

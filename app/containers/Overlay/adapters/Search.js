@@ -32,7 +32,7 @@ const Bar = styled.input`
 
 function Search({ close }) {
   return (
-    <Container>
+    <Container className="should-close-overlay">
       <Close onClick={close} />
       <BarWrapper>
         <Bar placeholder="Search" />
