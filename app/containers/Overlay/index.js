@@ -46,7 +46,25 @@ function adapt(overlay) {
   }
 }
 
+function changeOverflowOnBody(hidden = true) {
+  document.body.style.overflow = hidden ? 'hidden' : 'visible';
+}
+
 class Overlay extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  // sync body { overflow: hidden } with overlay being shown
+
+  componentDidMount() {
+    changeOverflowOnBody(shouldShow(this.props.overlay));
+  }
+
+  componentDidUpdate() {
+    changeOverflowOnBody(shouldShow(this.props.overlay));
+  }
+
+  componentWillUnmount() {
+    changeOverflowOnBody(false);
+  }
+
   render() {
     const { overlay } = this.props;
 

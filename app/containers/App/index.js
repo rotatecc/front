@@ -39,11 +39,13 @@ class App extends React.PureComponent {
     this.props.onWindowResize();
     this.props.onWindowScroll();
 
+    // Attach window listeners
     window.addEventListener('resize', this.props.onWindowResize);
     window.addEventListener('scroll', this.props.onWindowScroll);
   }
 
   componentWillUnmount() {
+    // Remove window listeners
     window.removeEventListener('resize', this.props.onWindowResize);
     window.removeEventListener('scroll', this.props.onWindowScroll);
   }
