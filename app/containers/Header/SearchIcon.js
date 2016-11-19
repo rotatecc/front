@@ -9,7 +9,11 @@ const Container = styled.a`
   font-size: 30px;
   position: absolute;
   right: 27px;
-  top: 35px;
+  top: 54px;
+
+  overflow: hidden;
+  line-height: 9px;
+  height: 18px;
 `;
 
 const PrimaryContainer = styled(Container)`
