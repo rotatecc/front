@@ -10,20 +10,76 @@ import Logo from 'components/Logo';
 const Container = styled.div`
   background: rgba(255, 255, 255, 0.95);
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
+  overflow-y: scroll;
 `;
 
 const LogoWrapper = styled.div`
   padding: 25px 0 5px;
 `;
 
-const TestBlock = styled.div`
-  background: cyan;
-  height: 50px;
-  width: 100%;
-  margin-bottom: 20px;
+function ListItem({ title }) {
+  return (
+    <li>
+      <a href="">{title}</a>
+    </li>
+  );
+}
+
+ListItem.propTypes = {
+  title: React.PropTypes.string.isRequired,
+  // TODO
+};
+
+const ListSectionContainer = styled.div`
+  margin-bottom: 3rem;
+
+  h6 {
+    margin: 0 0 .8rem;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: block;
+      margin-bottom: 1px;
+
+      a {
+        display: block;
+        padding: 2px 0;
+        color: ${({ theme }) => (theme.palette.primary)};
+        text-decoration: none;
+        font-size: .8rem;
+        transition: all 400ms ease;
+
+        &:hover {
+          color: ${({ theme }) => (theme.palette.primaryDark)};
+          transform: translate(5px, 0);
+        }
+      }
+    }
+  }
 `;
+
+function ListSection({ title, items }) {
+  return (
+    <ListSectionContainer>
+      <h6>{title}</h6>
+      <ul>
+        {items.map((item, i) => <ListItem key={i} {...item} />)}
+      </ul>
+    </ListSectionContainer>
+  );
+}
+
+ListSection.propTypes = {
+  title: React.PropTypes.string.isRequired,
+  items: React.PropTypes.array.isRequired,
+};
 
 function Menu({ close }) {
   return (
@@ -33,16 +89,49 @@ function Menu({ close }) {
         <Logo version={'primary'} />
       </LogoWrapper>
       <Row>
-        <Column md={10} mdShift={1} lg={8} lgShift={2}>
+        <Column lg={8} lgShift={2}>
           <Row>
-            <Column md={4}>
-              <TestBlock />
+            <Column sm={6} md={3}>
+              <ListSection
+                title="Build"
+                items={[
+                  { title: 'One' },
+                  { title: 'Two' },
+                  { title: 'Three' },
+                  { title: 'Four' },
+                  { title: 'Five' },
+                ]}
+              />
             </Column>
-            <Column md={4}>
-              <TestBlock />
+            <Column sm={6} md={3}>
+              <ListSection
+                title="Knowledge"
+                items={[
+                  { title: 'One' },
+                  { title: 'Two' },
+                  { title: 'Three' },
+                  { title: 'Four' },
+                  { title: 'Five' },
+                ]}
+              />
             </Column>
-            <Column md={4}>
-              <TestBlock />
+            <Column sm={6} md={3}>
+              <ListSection
+                title="Community"
+                items={[
+                  { title: 'One' },
+                  { title: 'Two' },
+                ]}
+              />
+            </Column>
+            <Column sm={6} md={3}>
+              <ListSection
+                title="About"
+                items={[
+                  { title: 'About' },
+                  { title: 'Contact' },
+                ]}
+              />
             </Column>
           </Row>
         </Column>
