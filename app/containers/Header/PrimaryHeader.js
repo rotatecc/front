@@ -45,7 +45,7 @@ function PrimaryHeader({ onMenuIconClick, onSearchIconClick }) {
 
 PrimaryHeader.propTypes = {
   // props
-  scrollTop: React.PropTypes.number.isRequired,
+  // scrollTop: React.PropTypes.number.isRequired,
 
   // actions
   onMenuIconClick: React.PropTypes.func.isRequired,

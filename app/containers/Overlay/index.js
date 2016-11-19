@@ -51,7 +51,7 @@ function changeOverflowOnBody(hidden = true) {
 }
 
 class Overlay extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  // sync body { overflow: hidden } with overlay being shown
+  // Sync body { overflow: hidden } with overlay being shown
 
   componentDidMount() {
     changeOverflowOnBody(shouldShow(this.props.overlay));
@@ -65,6 +65,8 @@ class Overlay extends React.PureComponent { // eslint-disable-line react/prefer-
     changeOverflowOnBody(false);
   }
 
+  // Render
+
   render() {
     const { overlay } = this.props;
 
@@ -72,7 +74,12 @@ class Overlay extends React.PureComponent { // eslint-disable-line react/prefer-
 
     return (
       <Container show={shouldShow(overlay)}>
-        {Adapted && <Adapted {...overlay.props} />}
+        {Adapted && (
+          <Adapted
+            close={this.props.closeOverlay}
+            {...overlay.props}
+          />
+        )}
       </Container>
     );
   }
