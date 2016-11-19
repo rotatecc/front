@@ -84,7 +84,7 @@ ListSection.propTypes = {
 function Menu({ close }) {
   return (
     <Container>
-      <Close onClick={close} />
+      <Close color="black" onClick={close} />
       <LogoWrapper>
         <Logo version={'primary'} />
       </LogoWrapper>

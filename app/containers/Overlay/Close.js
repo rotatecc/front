@@ -9,16 +9,22 @@ const Container = styled.a`
   font-family: sans-serif;
   font-size: 40px;
   z-index: 105;
+  color: ${({ color }) => color};
 `;
 
-function Close({ onClick }) {
+function Close({ color, onClick }) {
   return (
-    <Container onClick={onClick}>&times;</Container>
+    <Container color={color} onClick={onClick}>&times;</Container>
   );
 }
 
 Close.propTypes = {
+  color: React.PropTypes.string.isRequired,
   onClick: React.PropTypes.func.isRequired,
+};
+
+Close.defaultProps = {
+  color: 'white',
 };
 
 export default Close;
