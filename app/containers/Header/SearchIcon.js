@@ -10,14 +10,13 @@ const Container = styled.a`
   position: absolute;
   right: 27px;
   top: 54px;
-
-  overflow: hidden;
-  line-height: 9px;
-  height: 18px;
 `;
 
 const PrimaryContainer = styled(Container)`
   font-size: 30px;
+  overflow: hidden;
+  line-height: 9px;
+  height: 18px;
 
   @media screen and (max-width: 600px) {
     top: 28px;
