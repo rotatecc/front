@@ -1,6 +1,6 @@
 module.exports = {
   "env": {
-    "browser": true
+    "browser": true,
   },
   "extends": "airbnb",
   "parser": "babel-eslint",
@@ -14,13 +14,14 @@ module.exports = {
     "import/prefer-default-export": 0,
     "jsx-a11y/no-static-element-interactions": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/no-unused-prop-types": 0
+    "react/no-unused-prop-types": 0,
+    "react/forbid-prop-types": 0,
   },
   "settings": {
     "import/resolver": {
       "webpack": {
-        "config": "./webpack/webpack.config.dev.js"
-      }
-    }
-  }
+        "config": "./webpack/webpack.config.dev.js",
+      },
+    },
+  },
 }

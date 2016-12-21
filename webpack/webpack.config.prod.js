@@ -33,6 +33,14 @@ module.exports = {
         use: 'babel-loader',
       },
       {
+        test: /\.json$/,
+        include: [
+          resolve(__dirname, '../src'),
+          resolve(__dirname, '../node_modules'),
+        ],
+        use: 'json-loader',
+      },
+      {
         // Do not transform vendor's CSS with CSS-modules
         // The point is that they remain in global scope.
         // Since we require these CSS files in our JS or CSS files,
