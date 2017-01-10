@@ -12,7 +12,7 @@ module.exports = {
       'react-redux',
       'react-router',
       'redux',
-      'redux-thunk',
+      'redux-saga',
       'styled-components',
     ],
   },
@@ -64,7 +64,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       filename: '../index.html',
-      title: 'redux-react-starter',
+      title: 'rotate.cc',
       template: 'webpack/template.html',
     }),
   ],

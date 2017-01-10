@@ -36,12 +36,14 @@ renderField.propTypes = {
 
 // The form
 
-const LoginForm = ({ handleSubmit, submitting }) =>
+const LoginForm = ({ handleSubmit, submitting, error }) =>
   <form onSubmit={handleSubmit}>
     <Field name="email" label="Email" component={renderField} type="text" />
     <Field name="password" label="Password" component={renderField} type="password" />
     <div>
       <Button type="submit" disabled={submitting}>Log in</Button>
+      {submitting ? 'submitting' : 'not submitting'}
+      {error}
     </div>
   </form>
 
@@ -49,6 +51,7 @@ LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   pristine: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
+  error: PropTypes.string,
 }
 
 

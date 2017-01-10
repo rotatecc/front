@@ -58,7 +58,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new HtmlWebpackPlugin({
-      title: 'redux-react-starter',
+      title: 'rotate.cc',
       template: '../webpack/template.html',
     }),
   ],

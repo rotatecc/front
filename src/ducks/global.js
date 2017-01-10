@@ -6,7 +6,6 @@ import { createReducer } from 'redux-act'
 
 // TODO
 
-
 // Reducer
 
 const initialState = Im.fromJS({
@@ -20,4 +19,4 @@ export default createReducer({
 
 // Selectors
 
-// TODO
+export const selectGlobal = (state) => state.global

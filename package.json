@@ -58,8 +58,9 @@
     "redux": "^3.5.2",
     "redux-act": "^1.1.0",
     "redux-form": "^6.3.2",
-    "redux-thunk": "^2.1.0",
+    "redux-saga": "^0.14.0",
     "reselect": "^2.5.4",
+    "shortid": "^2.2.6",
     "style-loader": "^0.13.1",
     "styled-components": "^1.1.3"
   }
