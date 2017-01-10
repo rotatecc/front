@@ -6,6 +6,7 @@ const reducerNames = [
   'window',
   'overlay',
   'progress',
+  'auth',
 ]
 
 const reducers = reducerNames.reduce((accum, name) =>

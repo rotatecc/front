@@ -18,6 +18,9 @@ export { default as formSaga } from './formSaga'
 // Access Token / Login management
 
 export function saveAccessToken(token) {
+  // HACK TODO
+  // not secure, cookie should be set by server
+  // and sent automatically with requests
   Cookies.set('jwt', token)
 }
 
