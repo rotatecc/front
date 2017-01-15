@@ -15,7 +15,7 @@ function Home({ isLoading, login, me }) {
       <Column md={6}>
         <h2>Home</h2>
         <p>{isLoading ? 'loading' : 'stagnant'}</p>
-        <p>{me ? `logged in as ${me.get('display')}` : 'not logged in'}</p>
+        <p>{me ? `logged in as ${me.get('email')}` : 'not logged in'}</p>
       </Column>
       <Column md={6}>
         <LoginForm

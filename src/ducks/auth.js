@@ -10,6 +10,8 @@ import { request, saveAccessToken, formSaga } from '@/utils'
 
 export const receiveMe = createAction('Receive Me', (user) => user)
 
+export const initialSyncMe = createAction('Initial Sync Me')
+
 export const login = createAction('Login', (email, password) => ({ email, password }))
 export const submitLoginForm = createAction('Submit Login Form', (fields) => fields)
 
@@ -49,15 +51,45 @@ export function* meSaga() {
 
 
 /**
+ * Get logged-in user details, then put it into our store
+ * @return {Generator}
+ */
+export function* syncMeSaga() {
+  const user = yield call(meSaga)
+  yield put(receiveMe(user))
+}
+
+
+/**
+ * Get logged-in user details, then put it into our store
+ * Called only once at beginning lifecycle
+ * Silences unauthorized error
+ * @return {Generator}
+ */
+export function* initialSyncMeSaga() {
+  try {
+    yield call(syncMeSaga)
+  } catch (err) {
+    // Do nothing
+  }
+}
+
+
+/**
  * Log in (action with email/password -> save token -> request user -> store user)
  * @return {Generator}
  */
 export function* loginSaga({ payload: { email, password } }) {
   try {
-    const token = yield call(request, { endpoint: '/auth/login', method: 'post', data: { email, password } })
+    const token = yield call(request, {
+      endpoint: '/auth/login',
+      method: 'post',
+      data: { email, password },
+    })
+
     saveAccessToken(token)
-    const user = yield call(meSaga)
-    yield put(receiveMe(user))
+
+    yield call(syncMeSaga)
   } catch (err) {
     // TODO distinguish between user error and other errors
     throw err
@@ -81,5 +113,6 @@ export function* watcherSaga() {
   yield [
     takeLatest(login.getType(), loginSaga),
     takeLatest(submitLoginForm.getType(), submitLoginFormSaga),
+    takeLatest(initialSyncMe.getType(), initialSyncMeSaga),
   ]
 }

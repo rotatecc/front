@@ -11,6 +11,8 @@ import Header from '@/containers/Header'
 import ThemeProvider from '@/components/ThemeProvider'
 import Footer from '@/components/Footer'
 
+import * as authDuck from '@/ducks/auth'
+
 
 const Container = styled.div`
   background: ${({ theme }) => theme.palette.background};
@@ -26,31 +28,52 @@ const Content = styled.div`
 `
 
 
-const App = ({ children }) => (
-  <div>
-    <WindowWatcher />
-    <ThemeProvider>
-      <Container>
-        <Overlay />
-        <Helmet
-          titleTemplate="%s - rotate.cc"
-          defaultTitle="rotate.cc"
-          meta={[
-            { name: 'description', content: 'rotate.cc : TODO' },
-          ]}
-        />
-        <Header />
-        <Content>
-          {React.Children.toArray(children)}
-        </Content>
-        <Footer />
-      </Container>
-    </ThemeProvider>
-  </div>
-)
+class App extends React.PureComponent {
+  componentWillMount() {
+    const { initialSyncMe } = this.props
+    initialSyncMe()
+  }
+
+  render() {
+    const { children } = this.props
+
+    return (
+      <div>
+        <WindowWatcher />
+        <ThemeProvider>
+          <Container>
+            <Overlay />
+            <Helmet
+              titleTemplate="%s - rotate.cc"
+              defaultTitle="rotate.cc"
+              meta={[
+                { name: 'description', content: 'rotate.cc : TODO' },
+              ]}
+            />
+            <Header />
+            <Content>
+              {React.Children.toArray(children)}
+            </Content>
+            <Footer />
+          </Container>
+        </ThemeProvider>
+      </div>
+    )
+  }
+}
+
 
 App.propTypes = {
   children: PropTypes.node.isRequired,
+  initialSyncMe: PropTypes.func.isRequired,
 }
 
-export default connect()(App)
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    initialSyncMe: () => dispatch(authDuck.initialSyncMe()),
+  }
+}
+
+
+export default connect(null, mapDispatchToProps)(App)

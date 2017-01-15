@@ -48,9 +48,7 @@ export default function* request({ url, endpoint, method, params, data }) {
 
     // If this IS from one of our api endpoints, then
     // re-reject with the response error if it exists
-    const message = error.response
-      ? error.response.data.error.message
-      : 'Unknown Error'
+    const message = (error.response && error.response.data.error.message) || 'Unknown Error'
 
     // TODO
     // 'Unknown error' should be disambiguated
