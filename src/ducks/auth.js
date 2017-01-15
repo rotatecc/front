@@ -3,7 +3,7 @@ import { createAction, createReducer } from 'redux-act'
 import { put, call, takeLatest } from 'redux-saga/effects'
 import { createSelector } from 'reselect'
 
-import { request, saveAccessToken, formSaga } from '@/utils'
+import { request, saveAccessToken, removeAccessToken, formSaga } from '@/utils'
 
 
 // Actions
@@ -14,6 +14,8 @@ export const initialSyncMe = createAction('Initial Sync Me')
 
 export const login = createAction('Login', (email, password) => ({ email, password }))
 export const submitLoginForm = createAction('Submit Login Form', (fields) => fields)
+
+export const logout = createAction('Logout')
 
 
 // Reducer
@@ -35,6 +37,21 @@ export const selectAuth = (state) => state.auth
 export const selectMe = createSelector(
   selectAuth,
   (auth) => auth.get('me'),
+)
+
+export const selectIsLoggedIn = createSelector(
+  selectMe,
+  (me) => !(me === null),
+)
+
+export const selectRole = createSelector(
+  selectMe,
+  (me) => me ? me.get('role') : null,
+)
+
+export const selectRoleSlug = createSelector(
+  selectRole,
+  (role) => role ? role.get('slug') : null,
 )
 
 
@@ -107,6 +124,16 @@ export function* submitLoginFormSaga({ payload: { email, password } }) {
 
 
 /**
+ * Logout (remove token, remove user from store)
+ * @return {Generator}
+ */
+export function* logoutSaga() {
+  removeAccessToken()
+  yield put(receiveMe(null))
+}
+
+
+/**
  * Watch for actions
  */
 export function* watcherSaga() {
@@ -114,5 +141,6 @@ export function* watcherSaga() {
     takeLatest(login.getType(), loginSaga),
     takeLatest(submitLoginForm.getType(), submitLoginFormSaga),
     takeLatest(initialSyncMe.getType(), initialSyncMeSaga),
+    takeLatest(logout.getType(), logoutSaga),
   ]
 }
