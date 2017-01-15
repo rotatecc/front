@@ -5,6 +5,8 @@ import { createStructuredSelector } from 'reselect'
 
 import * as overlayDuck from '@/ducks/overlay'
 
+import * as adapters from './adapters'
+
 
 const Container = styled.div`
   display: ${({ show }) => (show ? 'block' : 'none')};
@@ -12,23 +14,12 @@ const Container = styled.div`
   position: fixed;
   width: 100vw;
   height: 100vh;
-  overflow: scroll;
+  overflow: auto;
   z-index: 100;
 `
 
-function requireAdapter(adapter) {
-  return require(`./adapters/${adapter}`).default // eslint-disable-line global-require, import/no-dynamic-require
-}
-
-function adapt(overlay) {
-  switch (overlay.get('type')) {
-    case 'menu':
-      return requireAdapter('Menu')
-    case 'search':
-      return requireAdapter('Search')
-    default:
-      return null
-  }
+function getMatchingAdapterMaybe(overlay) {
+  return adapters[overlay.get('type')] || null
 }
 
 function changeOverflowOnBody(hidden = true) {
@@ -73,7 +64,7 @@ class Overlay extends React.PureComponent {
       >
         {(() => {
           if (show) {
-            const Adapted = adapt(overlay)
+            const Adapted = getMatchingAdapterMaybe(overlay)
 
             if (Adapted) {
               return (
