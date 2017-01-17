@@ -15,6 +15,7 @@ import App from '@/containers/App'
 
 // Page components (containers)
 import Home from '@/pages/Home'
+import About from '@/pages/About'
 import NotFound from '@/pages/NotFound'
 
 
@@ -43,6 +44,7 @@ export const Root = () => (
     <BrowserRouter>
       <App>
         <Match exactly pattern="/" component={Home} />
+        <Match exactly pattern="/about" component={About} />
         <Miss component={NotFound} />
       </App>
     </BrowserRouter>

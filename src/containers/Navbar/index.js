@@ -115,11 +115,11 @@ function Navbar({ version }) {
   return (
     <VersionedContainer>
       <ul>
-        <Item link="#" name="Home" />
-        <Item link="#" name="Build" />
-        <Item link="#" name="Knowledge" />
-        <Item link="#" name="Community" />
-        <Item link="#" name="About" />
+        <Item to="/" name="Home" />
+        <Item to="#" name="Build" />
+        <Item to="#" name="Knowledge" />
+        <Item to="#" name="Community" />
+        <Item to="/about" name="About" />
       </ul>
     </VersionedContainer>
   )

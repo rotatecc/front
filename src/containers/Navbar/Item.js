@@ -1,18 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router'
 
 
-function Item({ link, name }) {
+function Item({ to, name }) {
   return (
     <li>
-      <a href={link} title={name}>
+      <Link to={to} title={name} activeClassName={'active'}>
         {name}
-      </a>
+      </Link>
     </li>
   )
 }
 
 Item.propTypes = {
-  link: React.PropTypes.string,
+  to: React.PropTypes.string,
   name: React.PropTypes.string,
 }
 
