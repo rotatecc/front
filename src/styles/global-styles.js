@@ -43,7 +43,6 @@ injectGlobal`
 
   h2 {
     font-size: 4rem;
-    text-transform: uppercase;
   }
 
   h3 {
@@ -73,16 +72,17 @@ injectGlobal`
 
     h1,
     h2 {
-      font-family: 'din-condensed-web', sans-serif;
-      font-weight: 400;
+      font-family: 'cronos-pro-display', sans-serif;
+      font-weight: 300;
     }
 
     h3,
     h4,
     h5,
     h6 {
-      font-family: 'clarendon-text-pro', sans-serif;
-      font-weight: 400;
+      ${''/* font-family: 'clarendon-text-pro', sans-serif;*/}
+      font-family: 'cronos-pro-display', sans-serif;
+      font-weight: 300;
     }
   }
 

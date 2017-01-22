@@ -7,8 +7,8 @@ const Container = styled.div`
   height: 100px;
   width: 100%;
   margin-top: 35px;
-  background: ${({ theme }) => theme.palette.grayDark};
-  color: white;
+  background: ${({ theme }) => theme.palette.darkMeaning};
+  color: ${({ theme }) => theme.palette.whiteAtNight};
 `
 
 const currentYear = (new Date()).getFullYear()

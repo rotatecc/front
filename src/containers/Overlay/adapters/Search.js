@@ -23,11 +23,12 @@ const BarWrapper = styled.div`
 
 const Bar = styled.input`
   border: 0;
-  border-bottom: 2px solid black;
+  ${''/* border-bottom: 2px solid black;*/}
   outline: 0;
   height: 100px;
   width: 90%;
   font-size: 4rem;
+  font-family: 'adelle-sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 `
 
 function Search({ close }) {

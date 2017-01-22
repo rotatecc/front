@@ -30,15 +30,18 @@ function makeColorVersions(p) {
 }
 
 const palette = {
-  background: '#f7f7f7',
+  background: '#F6F6F3',
   gray: '#e3e3e3',
   grayDark: '#535454',
-  text: '#000000',
-  primary: '#334ea7',
-  success: '#33a754',
-  info: '#49b4f5',
-  warning: '#ffc300',
-  danger: '#bc2929',
+  text: '#232C33',
+  primary: '#7EB0D3',
+  success: '#00A676',
+  info: '#AFA2FF',
+  warning: '#DB9D47',
+  danger: '#A24936',
+  darkMeaning: '#585563',
+  whiteAtNight: '#ffffff',
+  altDark: '#2B4141',
 }
 
 
