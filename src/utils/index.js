@@ -46,3 +46,13 @@ export function getAccessTokenMixin() {
 export function generateUniqueId() {
   return shortid.generate()
 }
+
+/**
+ * Conditionally require a React PropType based on a condition
+ */
+export function requiredIf(type, condition) {
+  return function pred(props) {
+    const test = condition(props) ? type.isRequired : type
+    return test.apply(this, arguments) // eslint-disable-line prefer-rest-params
+  }
+}

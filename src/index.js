@@ -26,7 +26,7 @@ import '@/styles/global-styles'
 // Observe loading of fonts
 const fontNames = [
   'adelle-sans',
-  'cronos-pro-display',
+  'mrs-eaves-roman-lining',
 ]
 Promise.all(fontNames.map((fontName) => new FontFaceObserver(fontName, {}).load()))
 .then(() => {

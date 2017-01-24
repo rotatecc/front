@@ -4,30 +4,40 @@
 
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router'
 
 
-const Container = styled.h1`
-  line-height: 1;
+const BaseContainer = styled.h1`
+  display: block;
   margin: 0;
   padding: 0;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  line-height: 1;
 `
 
-const PrimaryContainer = styled(Container)`
-  text-align: center;
+const PrimaryContainer = styled(BaseContainer)`
+  padding-bottom: 4px;
+
+  color: black;
+  font-size: 2.5rem;
 `
 
-const SlimContainer = styled(Container)`
+const SlimContainer = styled(BaseContainer)`
+  padding-bottom: 4px;
+
   color: white;
   font-size: 2rem;
-  text-align: left;
-  position: absolute;
-  top: 2px;
-  left: 20px;
 `
 
-const Link = styled.a`
+const StyledLink = styled(Link)`
   color: inherit;
   text-decoration: none;
+
+  &:hover {
+    color: inherit;
+  }
 `
 
 const versionLookup = {
@@ -40,9 +50,9 @@ function Logo(props) {
 
   return (
     <VersionedContainer>
-      <Link href="/">
+      <StyledLink to="/" title="rotate.cc">
         rotate
-      </Link>
+      </StyledLink>
     </VersionedContainer>
   )
 }

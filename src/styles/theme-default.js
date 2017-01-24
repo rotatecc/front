@@ -14,7 +14,7 @@ function standardLighten(colorString) {
 
 
 function standardDarken(colorString) {
-  return color(colorString).darken(0.25).hsl().string()
+  return color(colorString).darken(0.35).hsl().string()
 }
 
 function makeColorVersions(p) {

@@ -1,28 +1,20 @@
 import React from 'react'
-import styled from 'styled-components'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
 import * as windowDuck from '@/ducks/window'
 import * as overlayDuck from '@/ducks/overlay'
 
-import PrimaryHeader from './PrimaryHeader'
-import SlimHeader from './SlimHeader'
-
-
-const Container = styled.div`
-  background: #ffffff;
-  position: relative;
-`
+import InnerHeader from './InnerHeader'
 
 
 class Header extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <Container>
-        <PrimaryHeader {...this.props} />
-        <SlimHeader {...this.props} />
-      </Container>
+      <div>
+        <InnerHeader {...this.props} version="primary" />
+        <InnerHeader {...this.props} version="slim" />
+      </div>
     )
   }
 }
@@ -34,6 +26,8 @@ Header.propTypes = {
   // actions
   onMenuIconClick: React.PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
   onSearchIconClick: React.PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
+  onClickLogin: React.PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
+  onClickRegister: React.PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
 }
 
 
@@ -46,6 +40,8 @@ export function mapDispatchToProps(dispatch) {
   return {
     onMenuIconClick: () => dispatch(overlayDuck.openMenu()),
     onSearchIconClick: () => dispatch(overlayDuck.openSearch()),
+    onClickLogin: () => null, // TODO
+    onClickRegister: () => null, // TODO
   }
 }
 

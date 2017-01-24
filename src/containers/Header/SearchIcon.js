@@ -3,31 +3,37 @@ import styled from 'styled-components'
 
 
 const Container = styled.a`
-  display: block;
+  display: flex;
+  align-items: center;
   color: black;
   cursor: pointer;
-  font-size: 30px;
-  position: absolute;
-  right: 27px;
-  top: 54px;
+
+  &:hover {
+    color: black;
+  }
 `
 
 const PrimaryContainer = styled(Container)`
-  font-size: 30px;
-  overflow: hidden;
-  line-height: 9px;
-  height: 18px;
+  font-size: 24px;
+  padding: 1px 30px 0 18px;
 
   @media screen and (max-width: 600px) {
-    top: 28px;
+    /*top: 3px;*/
   }
 `
 
 const SlimContainer = styled(Container)`
   color: white;
   font-size: 20px;
-  right: 60px;
-  top: 2px;
+  padding: 0 30px 2px 18px;
+
+  &:hover {
+    color: white;
+  }
+`
+
+const Rotate45 = styled.div`
+  transform: rotate(45deg);
 `
 
 const versionLookup = {
@@ -35,19 +41,21 @@ const versionLookup = {
   slim: SlimContainer,
 }
 
-function SearchIcon({ version, onClick }) {
+function MenuIcon({ version, onClick }) {
   const VersionedContainer = versionLookup[version]
 
   return (
     <VersionedContainer onClick={onClick}>
-      s
+      <Rotate45>
+        &#9906;
+      </Rotate45>
     </VersionedContainer>
   )
 }
 
-SearchIcon.propTypes = {
+MenuIcon.propTypes = {
   version: React.PropTypes.oneOf(Object.keys(versionLookup)).isRequired,
   onClick: React.PropTypes.func.isRequired,
 }
 
-export default SearchIcon
+export default MenuIcon

@@ -5,10 +5,11 @@
 import styled from 'styled-components'
 
 const A = styled.a`
-  color: #41addd;
+  cursor: pointer;
+  color: ${({ theme }) => theme.palette.primary};
 
   &:hover {
-    color: #6cc0e5;
+    color: ${({ theme }) => theme.palette.primaryDark};
   }
 `
 

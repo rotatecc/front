@@ -1,5 +1,6 @@
 import { injectGlobal } from 'styled-components'
 
+
 /* eslint no-unused-expressions: 0 */
 injectGlobal`
   html,
@@ -72,8 +73,8 @@ injectGlobal`
 
     h1,
     h2 {
-      font-family: 'cronos-pro-display', sans-serif;
-      font-weight: 300;
+      font-family: 'mrs-eaves-roman-lining', sans-serif;
+      font-weight: 400;
     }
 
     h3,
@@ -81,8 +82,8 @@ injectGlobal`
     h5,
     h6 {
       ${''/* font-family: 'clarendon-text-pro', sans-serif;*/}
-      font-family: 'cronos-pro-display', sans-serif;
-      font-weight: 300;
+      font-family: 'mrs-eaves-roman-lining', sans-serif;
+      font-weight: 400;
     }
   }
 

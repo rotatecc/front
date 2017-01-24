@@ -3,30 +3,33 @@ import styled from 'styled-components'
 
 
 const Container = styled.a`
-  display: block;
+  display: flex;
+  align-items: center;
   color: black;
   cursor: pointer;
-  font-size: 30px;
-  position: absolute;
-  right: 20px;
-  top: 26px;
+
+  &:hover {
+    color: black;
+  }
 `
 
 const PrimaryContainer = styled(Container)`
-  font-size: 30px;
-  overflow: hidden;
-  height: 21px;
-  line-height: 16px;
+  font-size: 24px;
+  padding: 0 18px 0 30px;
 
   @media screen and (max-width: 600px) {
-    top: 3px;
+    /*top: 3px;*/
   }
 `
 
 const SlimContainer = styled(Container)`
   color: white;
   font-size: 20px;
-  top: 3px;
+  padding: 0 18px 2px 30px;
+
+  &:hover {
+    color: white;
+  }
 `
 
 const versionLookup = {
