@@ -40,8 +40,8 @@ export function mapDispatchToProps(dispatch) {
   return {
     onMenuIconClick: () => dispatch(overlayDuck.openMenu()),
     onSearchIconClick: () => dispatch(overlayDuck.openSearch()),
-    onClickLogin: () => null, // TODO
-    onClickRegister: () => null, // TODO
+    onClickLogin: () => dispatch(overlayDuck.openLogin()),
+    onClickRegister: () => dispatch(overlayDuck.openRegister()),
   }
 }
 

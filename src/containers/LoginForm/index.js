@@ -42,7 +42,6 @@ const LoginForm = ({ handleSubmit, submitting, error }) =>
     <Field name="password" label="Password" component={renderField} type="password" />
     <div>
       <Button type="submit" disabled={submitting}>Log in</Button>
-      {submitting ? 'submitting' : 'not submitting'}
       {error}
     </div>
   </form>

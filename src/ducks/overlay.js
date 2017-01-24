@@ -8,6 +8,8 @@ import { createSelector } from 'reselect'
 export const close = createAction('Close')
 export const openMenu = createAction('Open Menu')
 export const openSearch = createAction('Open Search')
+export const openLogin = createAction('Open Login')
+export const openRegister = createAction('Open Register')
 
 
 // Reducer
@@ -24,6 +26,10 @@ export default createReducer({
     initialState.set('type', 'menu'),
   [openSearch]: () =>
     initialState.set('type', 'search'),
+  [openLogin]: () =>
+    initialState.set('type', 'login'),
+  [openRegister]: () =>
+    initialState.set('type', 'register'),
 }, initialState)
 
 
