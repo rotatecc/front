@@ -10,7 +10,7 @@ injectGlobal`
   }
 
   html {
-    font-size: 110%;
+    font-size: 120%;
   }
 
   body {
@@ -63,27 +63,26 @@ injectGlobal`
   }
 
   body.fontLoaded {
-    font-family: 'adelle-sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 300;
 
     b,
     strong {
-      font-weight: 600;
+      font-weight: 700;
     }
 
     h1,
     h2 {
-      font-family: 'mrs-eaves-roman-lining', sans-serif;
-      font-weight: 400;
+      font-family: 'proxima-nova', sans-serif;
+      font-weight: 800;
     }
 
     h3,
     h4,
     h5,
     h6 {
-      ${''/* font-family: 'clarendon-text-pro', sans-serif;*/}
-      font-family: 'mrs-eaves-roman-lining', sans-serif;
-      font-weight: 400;
+      font-family: 'proxima-nova', sans-serif;
+      font-weight: 700;
     }
   }
 

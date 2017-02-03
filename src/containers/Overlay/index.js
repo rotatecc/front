@@ -10,7 +10,7 @@ import * as adapters from './adapters'
 
 const Container = styled.div`
   display: ${({ show }) => (show ? 'block' : 'none')};
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.8);
   position: fixed;
   width: 100vw;
   height: 100vh;

@@ -28,7 +28,7 @@ const Bar = styled.input`
   height: 100px;
   width: 90%;
   font-size: 4rem;
-  font-family: 'adelle-sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 `
 
 function Search({ close }) {

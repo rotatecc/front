@@ -15,7 +15,7 @@ const Container = styled.a`
 
 const PrimaryContainer = styled(Container)`
   font-size: 24px;
-  padding: 1px 30px 0 18px;
+  padding: 4px 30px 0 18px;
 
   @media screen and (max-width: 600px) {
     /*top: 3px;*/
@@ -25,7 +25,7 @@ const PrimaryContainer = styled(Container)`
 const SlimContainer = styled(Container)`
   color: white;
   font-size: 20px;
-  padding: 0 30px 2px 18px;
+  padding: 2px 30px 0 18px;
 
   &:hover {
     color: white;
