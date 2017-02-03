@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { requiredIf } from '@/utils'
+import { propRequiredIf } from '@/utils'
 
 import Item from './Item'
 
@@ -136,8 +136,8 @@ function Navbar({ version, menu, onClickLogin, onClickRegister }) {
 Navbar.propTypes = {
   version: React.PropTypes.oneOf(Object.keys(versionLookup)).isRequired,
   menu: React.PropTypes.oneOf(Object.keys(menuLookup)).isRequired,
-  onClickLogin: requiredIf(React.PropTypes.func, ({ menu }) => menu === 'right'),
-  onClickRegister: requiredIf(React.PropTypes.func, ({ menu }) => menu === 'right'),
+  onClickLogin: propRequiredIf(React.PropTypes.func, ({ menu }) => menu === 'right'),
+  onClickRegister: propRequiredIf(React.PropTypes.func, ({ menu }) => menu === 'right'),
 }
 
 export default Navbar

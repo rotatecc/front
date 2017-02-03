@@ -1,4 +1,8 @@
-**Rotate Standard UI Components**
+# Rotate Standard UI Components
+
+## Components
+
+##### Static
 
 * Button
 * Link
@@ -15,16 +19,18 @@
 * Pill
 * Glyph
 
+###### Interactive
+
 * Tooltip
 * Dropdown menu
 
-**Base**
+## Base
 
 * Reset
 * Global styles (Font, body styles, etc)
 * Animation
 
-**Mixins**
+## Mixins
 
 * Transitions
 * Animations
@@ -37,7 +43,7 @@
 * Text color
 * Margin / padding
 
-**Variables (Theming)**
+## Variables (Theming)
 
 * Colors
 * Base font
