@@ -3,8 +3,6 @@ import styled from 'styled-components'
 
 import { requiredIf } from '@/utils'
 
-import A from '@/components/A'
-
 import Item from './Item'
 
 
@@ -99,8 +97,8 @@ function MainMenu() {
 function RightMenu({ onClickLogin, onClickRegister }) {
   return (
     <ul>
-      <li><A onClick={onClickLogin}>Log in</A></li>
-      <li><A onClick={onClickRegister}>Register</A></li>
+      <li><a onClick={onClickLogin}>Log in</a></li>
+      <li><a onClick={onClickRegister}>Register</a></li>
     </ul>
   )
 }

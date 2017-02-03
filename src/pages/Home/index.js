@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Row, Column } from 'hedron'
 import { createStructuredSelector } from 'reselect'
+
+import { Row, Column } from '@/bearings'
 
 import * as progressDuck from '@/ducks/progress'
 import * as authDuck from '@/ducks/auth'

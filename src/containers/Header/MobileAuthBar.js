@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import A from '@/components/A'
-
 
 const Container = styled.div`
   display: none;
@@ -33,8 +31,8 @@ const Container = styled.div`
 function MobileAuthBar({ onClickLogin, onClickRegister }) {
   return (
     <Container>
-      <A onClick={onClickLogin}>Log in</A>
-      <A onClick={onClickRegister}>Register</A>
+      <a onClick={onClickLogin}>Log in</a>
+      <a onClick={onClickRegister}>Register</a>
     </Container>
   )
 }

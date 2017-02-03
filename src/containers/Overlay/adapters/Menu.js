@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Row, Column } from 'hedron'
 
+import { Row, Column } from '@/bearings'
 import Logo from '@/components/Logo'
 
 import Close from '../Close'

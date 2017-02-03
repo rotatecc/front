@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-import Button from '@/components/Button'
-
 import validate from './validate'
 
 
@@ -41,7 +39,7 @@ const LoginForm = ({ handleSubmit, submitting, error }) =>
     <Field name="email" label="Email" component={renderField} type="text" />
     <Field name="password" label="Password" component={renderField} type="password" />
     <div>
-      <Button type="submit" disabled={submitting}>Log in</Button>
+      <button type="submit" disabled={submitting}>Log in</button>
       {error}
     </div>
   </form>

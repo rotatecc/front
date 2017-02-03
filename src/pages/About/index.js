@@ -1,9 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Row, Column } from 'hedron'
 import { createStructuredSelector } from 'reselect'
 
-import Hero from '@/components/Hero'
+import { Hero, Row, Column } from '@/bearings'
 
 
 function About() {

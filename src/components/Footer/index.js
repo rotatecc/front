@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Row, Column } from 'hedron'
+
+import { Row, Column } from '@/bearings'
 
 
 const Container = styled.div`
