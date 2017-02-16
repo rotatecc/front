@@ -37,9 +37,3 @@ export function makeColorVersions(p) {
 
   return nu
 }
-
-export default {
-  lighten,
-  darken,
-  makeColorVersions,
-}

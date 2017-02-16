@@ -29,6 +29,32 @@ const palette = makeColorVersions({
 })
 
 
+// Spacing
+
+const spacing = {
+  xs: '2px',
+  sm: '5px',
+  md: '15px',
+  lg: '15px',
+  xl: '30px',
+}
+
+
+// Fonts
+
+const fonts = {
+  base: {
+    family: '\'Helvetica Neue\', Helvetica, Arial, sans-serif',
+    size: '16px',
+  },
+  heading: {
+    family: '\'Helvetica Neue\', Helvetica, Arial, sans-serif',
+  },
+}
+
+
 export default {
   palette,
+  spacing,
+  fonts,
 }

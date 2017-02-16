@@ -37,8 +37,9 @@
 * Border
 * Border radius
 * Clearfix
-* Size fn
+* Size
 * Display
+* Position
 * Font
 * Text color
 * Margin / padding
