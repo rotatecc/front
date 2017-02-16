@@ -44,12 +44,18 @@ export { default as reset } from './base/reset'
 //
 
 // TODO
-// export { default as mixins } from './mixins'
+export { default as mixins } from './mixins'
 
 
 //
 // Theme (Variables)
 //
 
-// TODO
-// export { default as theme } from './theme'
+export { default as theme } from './theme'
+
+
+//
+// Utils
+//
+
+export { default as utils } from './utils'
