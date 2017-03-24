@@ -174,16 +174,34 @@ export function displayInlineBlock() {
 }
 
 
+// Psuedo
+
+
+export function psuedoTemplate(psuedoType, cssBlockString) {
+  return `
+    &::${psuedoType} {
+      ${cssBlockString}
+    }
+  `
+}
+
+export function psuedoBefore(cssBlockString) {
+  return psuedoTemplate('before', cssBlockString)
+}
+
+export function psuedoAfter(cssBlockString) {
+  return psuedoTemplate('after', cssBlockString)
+}
+
+
 // Clearfix
 
 
-export function clearfixPsuedo() {
-  return `
-    &::after {
-      ${displayBlock()}
-      content: '';
-      clear: both;
-    }
+export function clearfix() {
+  return psuedoAfter`
+    ${displayBlock()}
+    content: '';
+    clear: both;
   `
 }
 
@@ -219,9 +237,15 @@ export function borderRadius(...args) {
 
 
 // TODO
+// Probably make the @keyframes definitions elsewhere,
+// then just have these mixins refer to them
+// Borrow definitions from the Animate.css project?
+// https://daneden.github.io/animate.css/
 
 
 // Transitions
 
 
 // TODO
+// Borrow definitions from the Hover.css project?
+// http://ianlunn.github.io/Hover/
