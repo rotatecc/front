@@ -5,30 +5,59 @@
 import theme from '../theme'
 
 
-// Basic
+// CSS Attribute Values
+// Convert values or attribute maps to CSS attribute value strings
 
 
-export function pixel(x) {
+export function integerValue(x) {
+  return `${x}`
+}
+
+export function pixelValue(x) {
   return `${x}px`
 }
 
 
-export function em(x) {
+export function emValue(x) {
   return `${x}em`
 }
 
 
-export function rem(x) {
+export function remValue(x) {
   return `${x}rem`
 }
 
+export function millisecondsValue(x) {
+  return `${x}ms`
+}
 
-export function borderValue({ width, style, color } = { width: pixel(1), style: 'solid', color: '#000' }) {
+export function secondsValue(x) {
+  return `${x}s`
+}
+
+export function rgbValue(r, g, b) {
+  return `rgb(${r}, ${g}, ${b})`
+}
+
+export function rgbaValue(r, g, b, a) {
+  return `rgba(${r}, ${g}, ${b}, ${a})`
+}
+
+export function borderValue({ width, style, color } = { width: pixelValue(1), style: 'solid', color: rgbValue(0, 0, 0) }) {
   return `${width} ${style} ${color}`
+}
+
+export function animationValue({ name, duration, timingFunction, delay, iterationCount, direction, fillMode, playState } = { name: 'none', duration: secondsValue(0), timingFunction: 'ease', delay: secondsValue(0), iterationCount: integerValue(1), direction: 'normal', fillMode: 'none', playState: 'running' }) {
+  return `${name} ${duration} ${timingFunction} ${delay} ${iterationCount} ${direction} ${fillMode} ${playState}`
+}
+
+export function transitionValue({ delay, duration, property, timingFunction } = { delay: secondsValue(0), duration: secondsValue(0), property: 'all', timingFunction: 'ease' }) {
+  return `${delay} ${duration} ${property} ${timingFunction}`
 }
 
 
 // Size
+
 
 export function height(x) {
   return `
@@ -68,14 +97,14 @@ export function standardSquare(size = 'md') {
 
 export function standardColor(color = 'text') {
   return `
-    color: ${theme.palette[color] || '#000'};
+    color: ${theme.palette[color] || rgbValue(0, 0, 0)};
   `
 }
 
 
 export function standardBackgroundColor(color = 'background') {
   return `
-    background-color: ${theme.palette[color] || '#fff'};
+    background-color: ${theme.palette[color] || rgbValue(255, 255, 255)};
   `
 }
 
@@ -188,9 +217,11 @@ export function borderRadius(...args) {
 
 // Animations
 
+
 // TODO
 
 
 // Transitions
+
 
 // TODO
