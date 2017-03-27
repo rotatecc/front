@@ -1,8 +1,14 @@
-import styled from 'styled-components'
+import { StyleSheet } from 'aphrodite'
 
-const H1 = styled.h1`
-  font-size: 2em;
-  margin-bottom: 0.25em;
-`
+import { createComponentWithAphrodite } from '../../utils'
 
-export default H1
+
+const styles = StyleSheet.create({
+  h1: {
+    fontSize: '2em',
+    marginBottom: '0.25em',
+  },
+})
+
+
+export default createComponentWithAphrodite('h1', styles.h1)

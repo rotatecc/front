@@ -2,7 +2,29 @@
  * bearings utils
  */
 
+import React from 'react'
+import { css } from 'aphrodite'
 import color from 'color'
+
+
+export function createElementWithAphrodite(el, styles, props = null, children = null) {
+  return React.createElement(
+    el,
+    {
+      ...(props || {}),
+      className: css(styles),
+    },
+    children,
+  )
+}
+
+
+export function createComponentWithAphrodite(el, styles) {
+  const className = css(styles)
+
+  return (props) =>
+    React.createElement(el, { ...props, className })
+}
 
 
 /**
