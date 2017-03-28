@@ -1,9 +1,13 @@
-import React from 'react'
+import { StyleSheet } from 'aphrodite'
 
-function H3(props) {
-  return (
-    <h3 {...props} />
-  )
-}
+import { createComponentWithAphrodite } from '../../utils'
 
-export default H3
+
+const styles = StyleSheet.create({
+  h3: {
+    fontSize: '1.5em',
+  },
+})
+
+
+export default createComponentWithAphrodite('h3', styles.h3)

@@ -2,15 +2,23 @@
  * A link to a certain page, an anchor tag
  */
 
-import styled from 'styled-components'
+import { StyleSheet } from 'aphrodite'
 
-const A = styled.a`
-  cursor: pointer;
-  color: ${({ theme }) => theme.palette.primary};
+import { createComponentWithAphrodite } from '../../utils'
 
-  &:hover {
-    color: ${({ theme }) => theme.palette.primaryDark};
-  }
-`
+import theme from '../../theme'
 
-export default A
+
+const styles = StyleSheet.create({
+  a: {
+    cursor: 'pointer',
+    color: theme.palette.primary,
+
+    ':hover': {
+      color: theme.palette.primaryDark,
+    },
+  },
+})
+
+
+export default createComponentWithAphrodite('a', styles.a)

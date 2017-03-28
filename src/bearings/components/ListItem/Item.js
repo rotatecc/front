@@ -1,11 +1,16 @@
-import styled from 'styled-components'
+import { StyleSheet } from 'aphrodite'
 
-const Item = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-`
+import { createComponentWithAphrodite } from '../../utils'
 
-export default Item
+
+const styles = StyleSheet.create({
+  item: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    width: '100%',
+    height: '100%',
+    alignItems: 'center',
+  },
+})
+
+export default createComponentWithAphrodite('div', styles.item)

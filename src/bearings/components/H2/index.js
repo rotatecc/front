@@ -1,7 +1,13 @@
-import styled from 'styled-components'
+import { StyleSheet } from 'aphrodite'
 
-const H2 = styled.h2`
-  font-size: 1.5em;
-`
+import { createComponentWithAphrodite } from '../../utils'
 
-export default H2
+
+const styles = StyleSheet.create({
+  h2: {
+    fontSize: '1.5em',
+  },
+})
+
+
+export default createComponentWithAphrodite('h2', styles.h2)

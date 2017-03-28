@@ -1,16 +1,21 @@
-import styled from 'styled-components'
+import { StyleSheet } from 'aphrodite'
 
-const Wrapper = styled.li`
-  width: 100%;
-  height: 3em;
-  display: flex;
-  align-items: center;
-  position: relative;
-  border-top: 1px solid #eee;
+import { createComponentWithAphrodite } from '../../utils'
 
-  &:first-child {
-    border-top: none;
-  }
-`
 
-export default Wrapper
+const styles = StyleSheet.create({
+  wrapper: {
+    display: 'flex',
+    width: '100%',
+    height: '3em',
+    alignItems: 'center',
+    position: 'relative',
+    borderTop: '1px solid #eee',
+
+    ':first-child': {
+      borderTop: 'none',
+    },
+  },
+})
+
+export default createComponentWithAphrodite('li', styles.wrapper)
