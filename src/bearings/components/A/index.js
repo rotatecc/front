@@ -2,23 +2,16 @@
  * A link to a certain page, an anchor tag
  */
 
-import { StyleSheet } from 'aphrodite'
+import { styled } from 'styletron-react'
 
-import { createComponentWithAphrodite } from '../../utils'
-
-import theme from '../../theme'
+import { expandStyles } from '../../utils'
 
 
-const styles = StyleSheet.create({
-  a: {
-    cursor: 'pointer',
-    color: theme.palette.primary,
+export default styled('a', {
+  ...expandStyles('c/p~primary'),
+  cursor: 'pointer',
 
-    ':hover': {
-      color: theme.palette.primaryDark,
-    },
+  ':hover': {
+    ...expandStyles('c/p~primaryDark'),
   },
 })
-
-
-export default createComponentWithAphrodite('a', styles.a)

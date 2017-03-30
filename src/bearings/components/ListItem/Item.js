@@ -1,16 +1,14 @@
-import { StyleSheet } from 'aphrodite'
+import { styled } from 'styletron-react'
 
-import { createComponentWithAphrodite } from '../../utils'
+// import theme from '../../theme'
+
+// import { expandStyles } from '../../utils'
 
 
-const styles = StyleSheet.create({
-  item: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-  },
+export default styled('div', {
+  display: 'flex',
+  justifyContent: 'space-between',
+  width: '100%',
+  height: '100%',
+  alignItems: 'center',
 })
-
-export default createComponentWithAphrodite('div', styles.item)

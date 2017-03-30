@@ -1,21 +1,19 @@
-import { StyleSheet } from 'aphrodite'
+import { styled } from 'styletron-react'
 
-import { createComponentWithAphrodite } from '../../utils'
+// import theme from '../../theme'
+
+// import { expandStyles } from '../../utils'
 
 
-const styles = StyleSheet.create({
-  wrapper: {
-    display: 'flex',
-    width: '100%',
-    height: '3em',
-    alignItems: 'center',
-    position: 'relative',
-    borderTop: '1px solid #eee',
+export default styled('li', {
+  display: 'flex',
+  width: '100%',
+  height: '3em',
+  alignItems: 'center',
+  position: 'relative',
+  borderTop: '1px solid #eee',
 
-    ':first-child': {
-      borderTop: 'none',
-    },
+  ':first-child': {
+    borderTop: 'none',
   },
 })
-
-export default createComponentWithAphrodite('li', styles.wrapper)

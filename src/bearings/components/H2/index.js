@@ -1,13 +1,10 @@
-import { StyleSheet } from 'aphrodite'
+import { styled } from 'styletron-react'
 
-import { createComponentWithAphrodite } from '../../utils'
+// import theme from '../../theme'
+
+import { expandStyles } from '../../utils'
 
 
-const styles = StyleSheet.create({
-  h2: {
-    fontSize: '1.5em',
-  },
+export default styled('h2', {
+  ...expandStyles('fs/1.5em'),
 })
-
-
-export default createComponentWithAphrodite('h2', styles.h2)

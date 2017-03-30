@@ -7,6 +7,9 @@ import { BrowserRouter, Match, Miss } from 'react-router'
 
 import FontFaceObserver from 'fontfaceobserver'
 
+import Styletron from 'styletron-client'
+import { StyletronProvider } from 'styletron-react'
+
 // Global store
 import { store } from '@/store'
 
@@ -36,15 +39,21 @@ Promise.all(fontNames.map((fontName) => new FontFaceObserver(fontName, {}).load(
 })
 
 
+// Styletron
+const styletron = new Styletron()
+
+
 // Root component
 export const Root = () => (
   <Provider store={store}>
     <BrowserRouter>
-      <App>
-        <Match exactly pattern="/" component={Home} />
-        <Match exactly pattern="/about" component={About} />
-        <Miss component={NotFound} />
-      </App>
+      <StyletronProvider styletron={styletron}>
+        <App>
+          <Match exactly pattern="/" component={Home} />
+          <Match exactly pattern="/about" component={About} />
+          <Miss component={NotFound} />
+        </App>
+      </StyletronProvider>
     </BrowserRouter>
   </Provider>
 )

@@ -4,6 +4,8 @@
 
 import theme from '../theme'
 
+import { capitalize } from '../utils'
+
 
 // CSS Attribute Values
 // Convert values or attribute maps to CSS attribute value strings
@@ -15,6 +17,11 @@ export function integerValue(x) {
 
 export function pixelValue(x) {
   return `${x}px`
+}
+
+
+export function percentValue(x) {
+  return `${x}%`
 }
 
 
@@ -60,30 +67,21 @@ export function transitionValue({ delay, duration, property, timingFunction } = 
 
 
 export function height(x) {
-  return `
-    height: ${x};
-  `
+  return { height: x }
 }
 
 
 export function width(x) {
-  return `
-    width: ${x};
-  `
+  return { width: x }
 }
 
 export function size(x, y) {
-  return `
-    ${width(x)}
-    ${height(y)}
-  `
+  return { ...height(x), ...width(y) }
 }
 
 
 export function square(x) {
-  return `
-    ${size(x, x)}
-  `
+  return size(x, x)
 }
 
 
@@ -96,16 +94,12 @@ export function standardSquare(size = 'md') {
 
 
 export function standardColor(color = 'text') {
-  return `
-    color: ${theme.palette[color] || rgbValue(0, 0, 0)};
-  `
+  return { color: theme.palette[color] || rgbValue(0, 0, 0) }
 }
 
 
 export function standardBackgroundColor(color = 'background') {
-  return `
-    background-color: ${theme.palette[color] || rgbValue(255, 255, 255)};
-  `
+  return { backgroundColor: theme.palette[color] || rgbValue(255, 255, 255) }
 }
 
 
@@ -113,9 +107,7 @@ export function standardBackgroundColor(color = 'background') {
 
 
 export function position(position = 'static') {
-  return `
-    position: ${position};
-  `
+  return { position }
 }
 
 
@@ -139,13 +131,71 @@ export function positionFixed() {
 }
 
 
+// Margin, padding, position*ing
+
+
+export function margin(...args) {
+  return { margin: args.join(' ') }
+}
+
+export function marginTop(x) {
+  return { marginTop: x }
+}
+
+export function marginRight(x) {
+  return { marginRight: x }
+}
+
+export function marginBottom(x) {
+  return { marginBottom: x }
+}
+
+export function marginLeft(x) {
+  return { marginLeft: x }
+}
+
+export function padding(...args) {
+  return { padding: args.join(' ') }
+}
+
+export function paddingTop(x) {
+  return { paddingTop: x }
+}
+
+export function paddingRight(x) {
+  return { paddingRight: x }
+}
+
+export function paddingBottom(x) {
+  return { paddingBottom: x }
+}
+
+export function paddingLeft(x) {
+  return { paddingLeft: x }
+}
+
+export function top(x) {
+  return { top: x }
+}
+
+export function right(x) {
+  return { right: x }
+}
+
+export function bottom(x) {
+  return { bottom: x }
+}
+
+export function left(x) {
+  return { left: x }
+}
+
+
 // Display
 
 
 export function display(display = 'block') {
-  return `
-    display: ${display};
-  `
+  return { display }
 }
 
 
@@ -177,20 +227,24 @@ export function displayInlineBlock() {
 // Psuedo
 
 
-export function psuedoTemplate(psuedoType, cssBlockString) {
-  return `
-    &::${psuedoType} {
-      ${cssBlockString}
-    }
-  `
+export function psuedoBlock(psuedoType, styles) {
+  return { [`:${psuedoType}`]: styles }
 }
 
-export function psuedoBefore(cssBlockString) {
-  return psuedoTemplate('before', cssBlockString)
+export function psuedoBefore(styles) {
+  return psuedoBlock('before', styles)
 }
 
-export function psuedoAfter(cssBlockString) {
-  return psuedoTemplate('after', cssBlockString)
+export function psuedoAfter(styles) {
+  return psuedoBlock('after', styles)
+}
+
+export function psuedoHover(styles) {
+  return psuedoBlock('hover', styles)
+}
+
+export function psuedoVisited(styles) {
+  return psuedoBlock('visited', styles)
 }
 
 
@@ -198,11 +252,11 @@ export function psuedoAfter(cssBlockString) {
 
 
 export function clearfix() {
-  return psuedoAfter`
-    ${displayBlock()}
-    content: '';
-    clear: both;
-  `
+  return psuedoAfter({
+    ...displayBlock(),
+    content: '',
+    clear: 'both',
+  })
 }
 
 
@@ -210,16 +264,12 @@ export function clearfix() {
 
 
 export function border(attrs) {
-  return `
-    border: ${borderValue(attrs)};
-  `
+  return { border: borderValue(attrs) }
 }
 
 
 export function borderSide(position = 'left', attrs) {
-  return `
-    border-${position}: ${borderValue(attrs)};
-  `
+  return { [`border${capitalize(position)}`]: borderValue(attrs) }
 }
 
 
@@ -227,9 +277,7 @@ export function borderSide(position = 'left', attrs) {
 
 
 export function borderRadius(...args) {
-  return `
-    border-radius: ${args.join(' ')};
-  `
+  return { borderRadius: args.join(' ') }
 }
 
 
