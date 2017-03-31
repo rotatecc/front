@@ -3,42 +3,51 @@
  */
 
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styletron-react'
 import { Link } from 'react-router'
 
+import { expandStyles } from '@/bearings'
 
-const BaseContainer = styled.h1`
-  display: block;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 0);
-  line-height: 1;
-`
 
-const PrimaryContainer = styled(BaseContainer)`
-  padding-bottom: 4px;
+const BaseContainer = styled('h1', {
+  ...expandStyles(
+    'absoluteVerticalCenter',
+    'd/block',
+    'm/0',
+    'p/0',
+  ),
 
-  color: black;
-  font-size: 2.5rem;
-`
+  lineHeight: 1,
+})
 
-const SlimContainer = styled(BaseContainer)`
-  padding-bottom: 4px;
+const PrimaryContainer = styled(BaseContainer, {
+  ...expandStyles(
+    'pBottom/4px',
+    'c/p~black',
+    'fs/2.5rem',
+  ),
+})
 
-  color: white;
-  font-size: 2rem;
-`
+const SlimContainer = styled(BaseContainer, {
+  ...expandStyles(
+    'pBottom/4px',
+    'c/p~white',
+    'fs/2rem',
+  ),
+})
 
-const StyledLink = styled(Link)`
-  color: inherit;
-  text-decoration: none;
+const StyledLink = styled(Link, {
+  ...expandStyles(
+    'pBottom/4px',
+    'c/inherit',
+    'fs/2.5rem',
+  ),
 
-  &:hover {
-    color: inherit;
-  }
-`
+  textDecoration: 'none',
+
+  ':hover': expandStyles('c/inherit'),
+})
+
 
 const versionLookup = {
   primary: PrimaryContainer,

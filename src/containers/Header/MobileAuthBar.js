@@ -1,38 +1,38 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styletron-react'
+
+import { expandStyles } from '@/bearings'
 
 
-const Container = styled.div`
-  display: none;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 100%;
-  ${''/* right: 0;*/}
-  width: 100%;
-  height: 30px;
-  font-size: .9rem;
-  letter-spacing: 1px;
+const Container = styled('div', {
+  ...expandStyles(
+    'd/none',
+    'absolute',
+    't/100%',
+    'fullWidth',
+    'h/30px',
+    'fs/0.9rem',
+  ),
 
-  @media screen and (max-width: 1200px) {
-    display: flex;
-  }
+  alignItems: 'center',
+  justifyContent: 'center',
+  letterSpacing: '1px',
 
-  a {
-    display: block;
-    margin-right: 18px;
+  '@media screen and (max-width: 1200px)': expandStyles('d/flex'),
+})
 
-    &:last-of-type {
-      margin-right: 0;
-    }
-  }
-`
+
+const Link = styled('a', {
+  ...expandStyles('d/block', 'mRight/18px'),
+  ':last-of-type': expandStyles('mRight/0'),
+})
+
 
 function MobileAuthBar({ onClickLogin, onClickRegister }) {
   return (
     <Container>
-      <a onClick={onClickLogin}>Log in</a>
-      <a onClick={onClickRegister}>Register</a>
+      <Link onClick={onClickLogin}>Log in</Link>
+      <Link onClick={onClickRegister}>Register</Link>
     </Container>
   )
 }

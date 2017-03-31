@@ -26,10 +26,7 @@ export function compose(...fns) {
 
 const themeValueExpansions = {
   // palette
-  p: (value) => {
-    const { palette } = theme
-    return palette[value] || null
-  },
+  p: (value) => (theme.palette[value] || null),
   // TODO spacing (s)
   // TODO fonts (f)
 }
@@ -66,13 +63,14 @@ export function expandThemeValue(s) {
 /**
  * Shorthand properties (static)
  *
- * NOTE See below object literal definition for more
+ * NOTE See below expandStyles definition for more
  * properties set with dependencies on the others
  */
 export const shorthandPropertiesStatic = {
   absolute: mixins.positionAbsolute(),
   relative: mixins.positionRelative(),
   static: mixins.positionStatic(),
+  fixed: mixins.positionFixed(),
 
   atTop: mixins.top(0),
   atLeft: mixins.left(0),
@@ -83,18 +81,15 @@ export const shorthandPropertiesStatic = {
   fullWidth: mixins.width(mixins.percentValue(100)),
 }
 
-shorthandPropertiesStatic.atTopLeft = expandStyles('atTop', 'atLeft') // eslint-disable-line no-use-before-define
-
-shorthandPropertiesStatic.absoluteCover = expandStyles('absolute', 'fullHeight', 'fullWidth', 'atTopLeft') // eslint-disable-line no-use-before-define
-
-
 export const shorthandPropertiesValued = {
   w: 'width',
   h: 'height',
   size: mixins.size,
   square: mixins.square,
-  mh: mixins.maxHeight,
-  mw: mixins.maxWidth,
+  hMax: mixins.maxHeight,
+  wMax: mixins.maxWidth,
+  hMin: mixins.minHeight,
+  wMin: mixins.minWidth,
 
   fs: 'fontSize',
 
@@ -103,8 +98,23 @@ export const shorthandPropertiesValued = {
 
   d: 'display',
 
+  t: mixins.top,
+  r: mixins.right,
+  b: mixins.bottom,
+  l: mixins.left,
+
   m: mixins.margin,
+  mTop: mixins.marginTop,
+  mRight: mixins.marginRight,
+  mBottom: mixins.marginBottom,
+  mLeft: mixins.marginLeft,
   p: mixins.padding,
+  pTop: mixins.paddingTop,
+  pRight: mixins.paddingRight,
+  pBottom: mixins.paddingBottom,
+  pLeft: mixins.paddingLeft,
+
+  o: mixins.opacity,
 }
 
 /**
@@ -113,6 +123,10 @@ export const shorthandPropertiesValued = {
  */
 export function expandStyles(...args) {
   const styleMaps = args.map((arg) => {
+    if (!arg) {
+      return {}
+    }
+
     if (typeof arg !== 'string') {
       console.warn('shorthand attribute must be string') // eslint-disable-line no-console
       return {}
@@ -145,6 +159,18 @@ export function expandStyles(...args) {
   }, {})
 
   return Object.assign({}, ...styleMaps)
+}
+
+
+// Further shorthandPropertiesStatic (with dependencies)
+
+shorthandPropertiesStatic.atTopLeft = expandStyles('atTop', 'atLeft')
+
+shorthandPropertiesStatic.absoluteCover = expandStyles('absolute', 'fullHeight', 'fullWidth', 'atTopLeft')
+
+shorthandPropertiesStatic.absoluteVerticalCenter = {
+  ...expandStyles('absolute', 'l/50%'),
+  transform: mixins.translateXValue(mixins.percentValue(-50)),
 }
 
 

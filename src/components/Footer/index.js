@@ -1,16 +1,18 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styletron-react'
 
-import { Row, Column } from '@/bearings'
+import { Row, Column, expandStyles } from '@/bearings'
 
 
-const Container = styled.div`
-  height: 100px;
-  width: 100%;
-  margin-top: 35px;
-  background: ${({ theme }) => theme.palette.darkMeaning};
-  color: ${({ theme }) => theme.palette.whiteAtNight};
-`
+const Container = styled('div', {
+  ...expandStyles(
+    'fullWidth',
+    'h/100px',
+    'mTop/35px',
+    'bgc/p~moody',
+    'c/p~white',
+  ),
+})
 
 const currentYear = (new Date()).getFullYear()
 

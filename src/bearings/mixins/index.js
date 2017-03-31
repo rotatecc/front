@@ -56,6 +56,21 @@ export function rgbaValue(r, g, b, a) {
 }
 
 
+export function translateValue(x, y) {
+  return `translate(${x}, ${y})`
+}
+
+
+export function translateXValue(x) {
+  return `translateX(${x})`
+}
+
+
+export function translateYValue(x) {
+  return `translateY(${x})`
+}
+
+
 export function borderValue({ width, style, color } = { width: pixelValue(1), style: 'solid', color: rgbValue(0, 0, 0) }) {
   return `${width} ${style} ${color}`
 }
@@ -91,6 +106,16 @@ export function maxHeight(x) {
 
 export function maxWidth(x) {
   return { maxWidth: x }
+}
+
+
+export function minHeight(x) {
+  return { minHeight: x }
+}
+
+
+export function minWidth(x) {
+  return { minWidth: x }
 }
 
 
@@ -344,6 +369,14 @@ export function borderSide(position = 'left', attrs) {
 
 export function borderRadius(...args) {
   return { borderRadius: args.join(' ') }
+}
+
+
+// Opacity
+
+
+export function opacity(x) {
+  return { opacity: x }
 }
 
 

@@ -1,5 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styletron-react'
+
+import { expandStyles } from '@/bearings'
 
 import Logo from '@/components/Logo'
 import Navbar from '@/components/Navbar'
@@ -9,42 +11,51 @@ import SearchIcon from './SearchIcon'
 import MobileAuthBar from './MobileAuthBar'
 
 
-const PrimaryWrapper = styled.div`
-  background: white;
-  color: black;
-  position: relative;
-  width: 100%;
-  height: 60px;
+const PrimaryWrapper = styled('div', {
+  ...expandStyles(
+    'd/flex',
+    'relative',
+    'bgc/p~white',
+    'c/p~black',
+    'fullWidth',
+    'h/60px',
+  ),
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justifyContent: 'space-between',
+  alignItems: 'center',
 
-  @media screen and (max-width: 1200px) {
-    margin-bottom: 50px;
-  }
-`
+  '@media screen and (max-width: 1200px)': {
+    ...expandStyles('mBottom/50px'),
+  },
+})
 
-const SlimWrapper = styled.div`
-  transition: all 200ms ease;
-  background: ${({ theme }) => theme.palette.primary};
-  color: white;
-  position: fixed;
-  width: 100%;
-  height: 40px;
-  left: 0;
-  top: ${({ show }) => (show ? '0' : '-40px')};
-  opacity: ${({ show }) => (show ? '1' : '0.5')};
 
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`
+const SlimWrapper = styled('div', ({ show }) => ({
+  ...expandStyles(
+    'fixed',
+    'd/flex',
+    'fullWidth',
+    'h/40px',
+    'atLeft',
+    'bgc/p~primary',
+    'c/p~white',
+    `t/${show ? '0' : '-40px'}`,
+    `o/${show ? '1' : '0.5'}`,
+  ),
 
-const Side = styled.div`
-  display: flex;
-  align-items: stretch;
-`
+  transition: 'all 200ms ease',
+
+  justifyContent: 'space-between',
+  alignItems: 'center',
+}))
+
+
+const Side = styled('div', {
+  ...expandStyles('d/flex'),
+
+  alignItems: 'stretch',
+})
+
 
 function shouldShowSlimHeader({ scrollTop, showMenuOverlay, showSearchOverlay }) {
   if (showMenuOverlay || showSearchOverlay) {

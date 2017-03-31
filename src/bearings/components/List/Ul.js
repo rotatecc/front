@@ -8,7 +8,7 @@ const Ul = styled('div', {
     'fullWidth',
     'm/0',
     'p/0/1em',
-    'mh/30em',
+    'hMax/30em',
   ),
 
   listStyle: 'none',

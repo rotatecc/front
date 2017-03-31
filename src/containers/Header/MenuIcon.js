@@ -1,36 +1,37 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styletron-react'
+
+import { expandStyles } from '@/bearings'
 
 
-const Container = styled.a`
-  display: flex;
-  align-items: center;
-  color: black;
-  cursor: pointer;
+const Container = styled('a', {
+  ...expandStyles(
+    'd/flex',
+    'c/p~black',
+  ),
 
-  &:hover {
-    color: black;
-  }
-`
+  alignItems: 'center',
+  cursor: 'pointer',
 
-const PrimaryContainer = styled(Container)`
-  font-size: 24px;
-  padding: 4px 18px 0 30px;
+  ':hover': expandStyles('c/p~black'),
+})
 
-  @media screen and (max-width: 600px) {
-    /*top: 3px;*/
-  }
-`
+const PrimaryContainer = styled(Container, {
+  ...expandStyles(
+    'fs/24px',
+    'p/4px/18px/0/30px',
+  ),
+})
 
-const SlimContainer = styled(Container)`
-  color: white;
-  font-size: 20px;
-  padding: 2px 18px 0 30px;
+const SlimContainer = styled(Container, {
+  ...expandStyles(
+    'c/p~white',
+    'fs/20px',
+    'p/2px/18px/0/30px',
+  ),
 
-  &:hover {
-    color: white;
-  }
-`
+  ':hover': expandStyles('c/p~white'),
+})
 
 const versionLookup = {
   primary: PrimaryContainer,
