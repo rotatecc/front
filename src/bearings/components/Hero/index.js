@@ -1,32 +1,40 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styletron-react'
+
+import { expandStyles } from '../../utils'
+
+import { mediaWidthRange } from '../../mixins'
 
 
-const Wrapper = styled.div`
-  width: 100%;
-  height: 350px;
+const Wrapper = styled('div', {
+  ...expandStyles(
+    'fullWidth',
+    'h/350px',
+    'bgc/p~black',
+    'c/p~white',
+  ),
+})
 
-  background: black;
-  color: white;
-`
+const PageWidth = styled('div', {
+  ...expandStyles(
+    'd/flex',
+    'w/1250px',
+    'm/0/auto',
+  ),
 
-const PageWidth = styled.div`
-  width: 1250px;
-  margin: 0 auto;
-  display: flex;
+  ...mediaWidthRange(null, '1300px', {
+    ...expandStyles('w/95%'),
+  }),
 
-  @media screen and (max-width: 1300px) {
-    width: 95%;
-  }
+  ...mediaWidthRange(null, '768px', {
+    ...expandStyles('w/100%'),
+  }),
+})
 
-  @media screen and (max-width: 768px) {
-    width: 100%;
-  }
-`
+const Inner = styled('div', {
+  alignSelf: 'center',
+})
 
-const Inner = styled.div`
-  align-self: center;
-`
 
 function Hero() {
   return (

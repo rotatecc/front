@@ -6,15 +6,16 @@
  * probably be hot-swappable
  */
 
-import { makeColorVersions } from '../utils'
+import { makeColorVersions } from '../utils/color'
 
 
 // Color palette
 
 const palette = makeColorVersions({
   // Standard colors
-  gray: '#e3e3e3',
+  black: '#000000',
   white: '#ffffff',
+  gray: '#e3e3e3',
 
   // Theme colors
   background: '#F6F6F3',

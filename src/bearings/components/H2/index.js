@@ -1,7 +1,5 @@
 import { styled } from 'styletron-react'
 
-// import theme from '../../theme'
-
 import { expandStyles } from '../../utils'
 
 

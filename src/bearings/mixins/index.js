@@ -15,6 +15,7 @@ export function integerValue(x) {
   return `${x}`
 }
 
+
 export function pixelValue(x) {
   return `${x}px`
 }
@@ -34,29 +35,36 @@ export function remValue(x) {
   return `${x}rem`
 }
 
+
 export function millisecondsValue(x) {
   return `${x}ms`
 }
+
 
 export function secondsValue(x) {
   return `${x}s`
 }
 
+
 export function rgbValue(r, g, b) {
   return `rgb(${r}, ${g}, ${b})`
 }
+
 
 export function rgbaValue(r, g, b, a) {
   return `rgba(${r}, ${g}, ${b}, ${a})`
 }
 
+
 export function borderValue({ width, style, color } = { width: pixelValue(1), style: 'solid', color: rgbValue(0, 0, 0) }) {
   return `${width} ${style} ${color}`
 }
 
+
 export function animationValue({ name, duration, timingFunction, delay, iterationCount, direction, fillMode, playState } = { name: 'none', duration: secondsValue(0), timingFunction: 'ease', delay: secondsValue(0), iterationCount: integerValue(1), direction: 'normal', fillMode: 'none', playState: 'running' }) {
   return `${name} ${duration} ${timingFunction} ${delay} ${iterationCount} ${direction} ${fillMode} ${playState}`
 }
+
 
 export function transitionValue({ delay, duration, property, timingFunction } = { delay: secondsValue(0), duration: secondsValue(0), property: 'all', timingFunction: 'ease' }) {
   return `${delay} ${duration} ${property} ${timingFunction}`
@@ -75,8 +83,19 @@ export function width(x) {
   return { width: x }
 }
 
+
+export function maxHeight(x) {
+  return { maxHeight: x }
+}
+
+
+export function maxWidth(x) {
+  return { maxWidth: x }
+}
+
+
 export function size(x, y) {
-  return { ...height(x), ...width(y) }
+  return { ...width(x), ...height(y) }
 }
 
 
@@ -93,6 +112,11 @@ export function standardSquare(size = 'md') {
 // Color
 
 
+export function color(x) {
+  return { color: x }
+}
+
+
 export function standardColor(color = 'text') {
   return { color: theme.palette[color] || rgbValue(0, 0, 0) }
 }
@@ -100,6 +124,14 @@ export function standardColor(color = 'text') {
 
 export function standardBackgroundColor(color = 'background') {
   return { backgroundColor: theme.palette[color] || rgbValue(255, 255, 255) }
+}
+
+
+// Background
+
+
+export function backgroundColor(x) {
+  return { backgroundColor: x }
 }
 
 
@@ -138,53 +170,66 @@ export function margin(...args) {
   return { margin: args.join(' ') }
 }
 
+
 export function marginTop(x) {
   return { marginTop: x }
 }
+
 
 export function marginRight(x) {
   return { marginRight: x }
 }
 
+
 export function marginBottom(x) {
   return { marginBottom: x }
 }
+
 
 export function marginLeft(x) {
   return { marginLeft: x }
 }
 
+
 export function padding(...args) {
   return { padding: args.join(' ') }
 }
+
 
 export function paddingTop(x) {
   return { paddingTop: x }
 }
 
+
 export function paddingRight(x) {
   return { paddingRight: x }
 }
+
 
 export function paddingBottom(x) {
   return { paddingBottom: x }
 }
 
+
 export function paddingLeft(x) {
   return { paddingLeft: x }
 }
+
 
 export function top(x) {
   return { top: x }
 }
 
+
 export function right(x) {
   return { right: x }
 }
 
+
 export function bottom(x) {
   return { bottom: x }
 }
+
 
 export function left(x) {
   return { left: x }
@@ -231,20 +276,41 @@ export function psuedoBlock(psuedoType, styles) {
   return { [`:${psuedoType}`]: styles }
 }
 
+
 export function psuedoBefore(styles) {
   return psuedoBlock('before', styles)
 }
+
 
 export function psuedoAfter(styles) {
   return psuedoBlock('after', styles)
 }
 
+
 export function psuedoHover(styles) {
   return psuedoBlock('hover', styles)
 }
 
+
 export function psuedoVisited(styles) {
   return psuedoBlock('visited', styles)
+}
+
+
+// Media queries
+
+
+export function media(query, styles) {
+  return { [`@media ${query}`]: styles }
+}
+
+
+export function mediaWidthRange(from, to, styles) {
+  const partMin = from ? ` and (min-width: ${from})` : ''
+  const partMax = to ? ` and (max-width: ${to})` : ''
+  const query = `screen${partMin}${partMax}`
+
+  return media(query, styles)
 }
 
 

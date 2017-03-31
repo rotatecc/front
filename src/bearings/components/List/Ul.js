@@ -1,12 +1,19 @@
-import styled from 'styled-components'
+import { styled } from 'styletron-react'
 
-const Ul = styled.ul`
-  list-style: none;
-  margin: 0;
-  width: 100%;
-  max-height: 30em;
-  overflow-y: auto;
-  padding: 0 1em;
-`
+import { expandStyles } from '../../utils'
+
+
+const Ul = styled('div', {
+  ...expandStyles(
+    'fullWidth',
+    'm/0',
+    'p/0/1em',
+    'mh/30em',
+  ),
+
+  listStyle: 'none',
+  overflowY: 'auto',
+})
+
 
 export default Ul
