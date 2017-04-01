@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
+import { styled } from 'styletron-react'
+
+import { expandStyles } from '@/bearings'
 
 import * as authDuck from '@/ducks/auth'
 
@@ -9,25 +11,31 @@ import LoginForm from '@/containers/LoginForm'
 import Close from '../Close'
 
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-`
+const Container = styled('div', {
+  ...expandStyles(
+    'd/flex',
+    'h/100vh',
+    'fullWidth',
+  ),
 
-const Box = styled.div`
-  max-height: 90vh;
-  width: 400px;
-  background: rgba(255, 255, 255, 0.95);
-  text-align: center;
-  overflow: auto;
+  justifyContent: 'center',
+  alignItems: 'center',
+})
 
-  @media screen and (max-width: 450px) {
-    width: 95%;
-  }
-`
+
+const Box = styled('div', {
+  ...expandStyles(
+    'hMax/90vh',
+    'w/400px',
+    'bgc/rgba(255, 255, 255, 0.95)',
+  ),
+
+  textAlign: 'center',
+  overflow: 'auto',
+
+  '@media screen and (max-width: 450px)': expandStyles('w/95%'),
+})
+
 
 function Login({ close, login }) {
   return (

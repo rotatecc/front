@@ -372,7 +372,12 @@ export function borderRadius(...args) {
 }
 
 
-// Opacity
+// Visibility, opacity
+
+
+export function zIndex(x) {
+  return { zIndex: x }
+}
 
 
 export function opacity(x) {

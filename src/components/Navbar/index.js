@@ -1,118 +1,61 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styletron-react'
+
+import { expandStyles } from '@/bearings'
 
 import { propRequiredIf } from '@/utils'
 
 import Item from './Item'
 
 
-const Container = styled.div`
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-
-    li {
-      display: inline-block;
-
-      a {
-        cursor: pointer;
-        display: block;
-        height: 60px;
-        padding: 19px 12px;
-        font-size: .9rem;
-        letter-spacing: 1px;
-        text-decoration: none;
-        transition: all 200ms cubic-bezier(.25,.1,.25,1);
-        color: ${({ theme }) => theme.palette.primary};
-
-        &:hover {
-          color: ${({ theme }) => theme.palette.primaryDark};
-        }
-      }
-    }
-  }
-`
-
-const PrimaryContainer = styled(Container)`
-  @media screen and (max-width: 1200px) {
-    display: none;
-  }
-
-  @media screen and (max-width: 1400px) {
-    ul {
-      li {
-        a {
-          padding: 19px 8px;
-        }
-      }
-    }
-  }
-`
-
-const SlimContainer = styled(Container)`
-  ul {
-    li {
-      a {
-        height: 40px;
-        padding: 8px 12px;
-        color: white;
-
-        &:hover {
-          color: white;
-          background: ${({ theme }) => theme.palette.primaryDark};
-        }
-      }
-    }
-  }
-
-  @media screen and (max-width: 1200px) {
-    display: none;
-  }
-
-  @media screen and (max-width: 1400px) {
-    ul {
-      li {
-        a {
-          padding: 8px 6px;
-        }
-      }
-    }
-  }
-`
+const Container = styled('div', {
+  '@media screen and (max-width: 1200px)': expandStyles('d/none'),
+})
 
 
-function MainMenu() {
+const StyledUl = styled('ul', {
+  ...expandStyles('m/0', 'p/0'),
+  listStyleType: 'none',
+})
+
+
+function MainMenu({ version }) {
+  const items = [
+    ['/', 'Home'],
+    ['/build', 'Build'],
+    ['/knowledge', 'Knowledge'],
+    ['/community', 'Community'],
+    ['/about', 'About'],
+  ]
+
   return (
-    <ul>
-      <Item to="/" name="Home" />
-      <Item to="/build" name="Build" />
-      <Item to="/knowledge" name="Knowledge" />
-      <Item to="/community" name="Community" />
-      <Item to="/about" name="About" />
-    </ul>
+    <StyledUl>
+      {items.map(([to, name]) =>
+        <Item key={to} version={version} to={to} name={name} />)}
+    </StyledUl>
   )
 }
 
-function RightMenu({ onClickLogin, onClickRegister }) {
+MainMenu.propTypes = {
+  version: React.PropTypes.oneOf(['primary', 'slim']).isRequired,
+}
+
+
+function RightMenu({ onClickLogin, onClickRegister, version }) {
   return (
-    <ul>
-      <li><a onClick={onClickLogin}>Log in</a></li>
-      <li><a onClick={onClickRegister}>Register</a></li>
-    </ul>
+    <StyledUl>
+      <Item version={version} onClick={onClickLogin} name={'Log in'} />
+      <Item version={version} onClick={onClickRegister} name={'Register'} />
+    </StyledUl>
   )
 }
 
 RightMenu.propTypes = {
   onClickLogin: React.PropTypes.func.isRequired,
   onClickRegister: React.PropTypes.func.isRequired,
+  version: React.PropTypes.oneOf(['primary', 'slim']).isRequired,
 }
 
-
-const versionLookup = {
-  primary: PrimaryContainer,
-  slim: SlimContainer,
-}
 
 const menuLookup = {
   main: MainMenu,
@@ -121,20 +64,22 @@ const menuLookup = {
 
 
 function Navbar({ version, menu, onClickLogin, onClickRegister }) {
-  const VersionedContainer = versionLookup[version]
   const Menu = menuLookup[menu]
 
-  const menuProps = menu === 'right' ? { onClickLogin, onClickRegister } : {}
+  const menuProps = {
+    version,
+    ...(menu === 'right' ? { onClickLogin, onClickRegister } : {}),
+  }
 
   return (
-    <VersionedContainer>
+    <Container>
       <Menu {...menuProps} />
-    </VersionedContainer>
+    </Container>
   )
 }
 
 Navbar.propTypes = {
-  version: React.PropTypes.oneOf(Object.keys(versionLookup)).isRequired,
+  version: React.PropTypes.oneOf(['primary', 'slim']).isRequired,
   menu: React.PropTypes.oneOf(Object.keys(menuLookup)).isRequired,
   onClickLogin: propRequiredIf(React.PropTypes.func, ({ menu }) => menu === 'right'),
   onClickRegister: propRequiredIf(React.PropTypes.func, ({ menu }) => menu === 'right'),

@@ -1,16 +1,23 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styletron-react'
 
-const Container = styled.a`
-  position: fixed;
-  top: 1px;
-  right: 20px;
-  cursor: pointer;
-  font-family: sans-serif;
-  font-size: 40px;
-  z-index: 105;
-  color: ${({ color }) => color};
-`
+import { expandStyles } from '@/bearings'
+
+
+const Container = styled('a', ({ color }) => ({
+  ...expandStyles(
+    'fixed',
+    't/1px',
+    'r/20px',
+    'fs/40px',
+    'z/105',
+    `c/${color}`,
+  ),
+
+  cursor: 'pointer',
+  fontFamily: 'sans-serif',
+}))
+
 
 function Close({ color, onClick }) {
   return (

@@ -1,29 +1,48 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styletron-react'
 
-import { Row, Column } from '@/bearings'
+import { Row, Column, expandStyles } from '@/bearings'
 import Logo from '@/components/Logo'
 
 import Close from '../Close'
 
 
-const Container = styled.div`
-  background: rgba(255, 255, 255, 0.95);
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  overflow-y: auto;
-`
+const Container = styled('div', {
+  ...expandStyles(
+    'relative',
+    'h/100vh',
+    'fullWidth',
+    'bgc/rgba(255, 255, 255, 0.95)',
+  ),
 
-const LogoWrapper = styled.div`
-  padding: 25px 0 5px;
-`
+  overflowY: 'auto',
+})
+
+
+const LogoWrapper = styled('div', {
+  ...expandStyles('p/25px/0/5px'),
+})
+
+
+const ListItemLi = styled('li', expandStyles('d/block', 'mBottom/1px'))
+
+const ListItemA = styled('a', {
+  ...expandStyles('d/block', 'p/2px/0', 'c/p~primary', 'fs/0.8rem'),
+
+  textDecoration: 'none',
+  transition: 'all 400ms ease',
+
+  ':hover': {
+    ...expandStyles('c/p~primaryDark'),
+    transform: 'translateX(5px)',
+  },
+})
 
 function ListItem({ title }) {
   return (
-    <li>
-      <a href="">{title}</a>
-    </li>
+    <ListItemLi>
+      <ListItemA href="">{title}</ListItemA>
+    </ListItemLi>
   )
 }
 
@@ -32,46 +51,22 @@ ListItem.propTypes = {
   // TODO
 }
 
-const ListSectionContainer = styled.div`
-  margin-bottom: 3rem;
+const ListSectionContainer = styled('div', expandStyles('mBottom/3rem'))
 
-  h6 {
-    margin: 0 0 .8rem;
-  }
+const ListSectionH6 = styled('h6', expandStyles('m/0/0/0.8rem'))
 
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-
-    li {
-      display: block;
-      margin-bottom: 1px;
-
-      a {
-        display: block;
-        padding: 2px 0;
-        color: ${({ theme }) => (theme.palette.primary)};
-        text-decoration: none;
-        font-size: .8rem;
-        transition: all 400ms ease;
-
-        &:hover {
-          color: ${({ theme }) => (theme.palette.primaryDark)};
-          transform: translate(5px, 0);
-        }
-      }
-    }
-  }
-`
+const ListSectionUl = styled('ul', {
+  ...expandStyles('m/0', 'p/0'),
+  listStyleType: 'none',
+})
 
 function ListSection({ title, items }) {
   return (
     <ListSectionContainer>
-      <h6>{title}</h6>
-      <ul>
+      <ListSectionH6>{title}</ListSectionH6>
+      <ListSectionUl>
         {items.map((item, i) => <ListItem key={i} {...item} />)}
-      </ul>
+      </ListSectionUl>
     </ListSectionContainer>
   )
 }

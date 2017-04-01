@@ -1,35 +1,41 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styletron-react'
+
+import { expandStyles } from '@/bearings'
 
 import Close from '../Close'
 
 
-const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-`
+const Container = styled('div', {
+  ...expandStyles('d/flex', 'h/100vh', 'fullWidth'),
 
-const BarWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.95);
-  height: 150px;
-  width: 80%;
-`
+  justifyContent: 'center',
+  alignItems: 'center',
+})
 
-const Bar = styled.input`
-  border: 0;
-  ${''/* border-bottom: 2px solid black;*/}
-  outline: 0;
-  height: 100px;
-  width: 90%;
-  font-size: 4rem;
-  font-family: 'proxima-nova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-`
+const BarWrapper = styled('div', {
+  ...expandStyles(
+    'd/flex',
+    'h/150px',
+    'w/80%',
+    'bgc/rgba(255, 255, 255, 0.95)',
+  ),
+
+  justifyContent: 'center',
+  alignItems: 'center',
+})
+
+const Bar = styled('input', {
+  ...expandStyles(
+    'b/0',
+    'h/100px',
+    'w/90%',
+    'fs/4rem',
+  ),
+
+  fontFamily: '\'proxima-nova\', \'Helvetica Neue\', Helvetica, Arial, sans-serif',
+  outline: 0,
+})
 
 function Search({ close }) {
   return (

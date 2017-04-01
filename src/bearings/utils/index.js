@@ -115,6 +115,10 @@ export const shorthandPropertiesValued = {
   pLeft: mixins.paddingLeft,
 
   o: mixins.opacity,
+
+  z: mixins.zIndex,
+
+  b: mixins.border,
 }
 
 /**

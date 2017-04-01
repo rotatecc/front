@@ -1,22 +1,27 @@
 import React from 'react'
-import styled from 'styled-components'
+import { styled } from 'styletron-react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
+
+import { expandStyles } from '@/bearings'
 
 import * as overlayDuck from '@/ducks/overlay'
 
 import * as adapters from './adapters'
 
 
-const Container = styled.div`
-  display: ${({ show }) => (show ? 'block' : 'none')};
-  background: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  overflow: auto;
-  z-index: 100;
-`
+const Container = styled('div', ({ show }) => ({
+  ...expandStyles(
+    `d/${show ? 'block' : 'none'}`,
+    'bgc/rgba(0, 0, 0, 0.8)',
+    'fixed',
+    'w/100vw',
+    'h/100vh',
+    'z/100',
+  ),
+
+  overflow: 'auto',
+}))
 
 function getMatchingAdapterMaybe(overlay) {
   return adapters[overlay.get('type')] || null

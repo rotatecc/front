@@ -7,7 +7,7 @@ import { BrowserRouter, Match, Miss } from 'react-router'
 
 import FontFaceObserver from 'fontfaceobserver'
 
-import Styletron from 'styletron-client'
+import Styletron from 'styletron'
 import { StyletronProvider } from 'styletron-react'
 
 // Global store
