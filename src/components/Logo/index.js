@@ -6,10 +6,10 @@ import React from 'react'
 import { styled } from 'styletron-react'
 import { Link } from 'react-router'
 
-import { expandStyles } from '@/bearings'
+import { H1, expandStyles } from '@/bearings'
 
 
-const BaseContainer = styled('h1', {
+const BaseContainer = styled(H1, {
   ...expandStyles(
     'absoluteVerticalCenter',
     'd/block',

@@ -8,7 +8,6 @@ import WindowWatcher from '@/containers/WindowWatcher'
 import Overlay from '@/containers/Overlay'
 import Header from '@/containers/Header'
 
-import ThemeProvider from '@/components/ThemeProvider'
 import Footer from '@/components/Footer'
 
 import * as authDuck from '@/ducks/auth'
@@ -43,23 +42,21 @@ class App extends React.PureComponent {
     return (
       <div>
         <WindowWatcher />
-        <ThemeProvider>
-          <Container>
-            <Overlay />
-            <Helmet
-              titleTemplate="%s - rotate.cc"
-              defaultTitle="rotate.cc"
-              meta={[
-                { name: 'description', content: 'rotate.cc : TODO' },
-              ]}
-            />
-            <Header />
-            <Content>
-              {React.Children.toArray(children)}
-            </Content>
-            <Footer />
-          </Container>
-        </ThemeProvider>
+        <Container>
+          <Overlay />
+          <Helmet
+            titleTemplate="%s - rotate.cc"
+            defaultTitle="rotate.cc"
+            meta={[
+              { name: 'description', content: 'rotate.cc : TODO' },
+            ]}
+          />
+          <Header />
+          <Content>
+            {React.Children.toArray(children)}
+          </Content>
+          <Footer />
+        </Container>
       </div>
     )
   }

@@ -5,6 +5,8 @@ import { expandStyles } from '../../utils'
 
 import { mediaWidthRange } from '../../mixins'
 
+import H2 from '../H2'
+
 
 const Wrapper = styled('div', {
   ...expandStyles(
@@ -41,7 +43,7 @@ function Hero() {
     <Wrapper>
       <PageWidth>
         <Inner>
-          <h2>About</h2>
+          <H2>About</H2>
         </Inner>
       </PageWidth>
     </Wrapper>

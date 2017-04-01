@@ -1,16 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { Row, Column } from '@/bearings'
+import { Row, Column, H2 } from '@/bearings'
 
 
 function NotFound() {
   return (
     <Row>
       <Column md={12}>
-        <h1>
+        <H2>
           404 Not Found
-        </h1>
+        </H2>
       </Column>
     </Row>
   )

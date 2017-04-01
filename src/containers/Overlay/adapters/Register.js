@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from 'styletron-react'
 
-import { expandStyles } from '@/bearings'
+import { expandStyles, H3 } from '@/bearings'
 
 import Close from '../Close'
 
@@ -30,7 +30,7 @@ function Register({ close }) {
     <Container className="should-close-overlay">
       <Close onClick={close} />
       <BarWrapper>
-        <h3>Register</h3>
+        <H3>Register</H3>
       </BarWrapper>
     </Container>
   )

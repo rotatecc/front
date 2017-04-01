@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { styled } from 'styletron-react'
 
-import { expandStyles } from '@/bearings'
+import { expandStyles, H3 } from '@/bearings'
 
 import * as authDuck from '@/ducks/auth'
 
@@ -42,7 +42,7 @@ function Login({ close, login }) {
     <Container className="should-close-overlay">
       <Close onClick={close} />
       <Box>
-        <h3>Log in</h3>
+        <H3>Log in</H3>
         <LoginForm onSubmit={login} />
       </Box>
     </Container>

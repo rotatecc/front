@@ -22,10 +22,6 @@ import About from '@/pages/About'
 import NotFound from '@/pages/NotFound'
 
 
-// Import Global Styles
-import '@/styles/global-styles'
-
-
 // Observe loading of fonts
 const fontNames = [
   'proxima-nova',

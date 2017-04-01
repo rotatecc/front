@@ -13,7 +13,6 @@ module.exports = {
       'react-router',
       'redux',
       'redux-saga',
-      'styled-components',
     ],
   },
   output: {

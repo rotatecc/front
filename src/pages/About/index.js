@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import { Hero, Row, Column } from '@/bearings'
+import { Hero, Row, Column, H2 } from '@/bearings'
 
 
 function About() {
@@ -11,7 +11,7 @@ function About() {
       <Hero />
       <Row>
         <Column md={6}>
-          <h2>About</h2>
+          <H2>About</H2>
         </Column>
         <Column md={6}>
           ok

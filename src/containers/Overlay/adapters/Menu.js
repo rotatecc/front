@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from 'styletron-react'
 
-import { Row, Column, expandStyles } from '@/bearings'
+import { Row, Column, H6, expandStyles } from '@/bearings'
 import Logo from '@/components/Logo'
 
 import Close from '../Close'
@@ -53,7 +53,7 @@ ListItem.propTypes = {
 
 const ListSectionContainer = styled('div', expandStyles('mBottom/3rem'))
 
-const ListSectionH6 = styled('h6', expandStyles('m/0/0/0.8rem'))
+const ListSectionH6 = styled(H6, expandStyles('m/0/0/0.8rem'))
 
 const ListSectionUl = styled('ul', {
   ...expandStyles('m/0', 'p/0'),
