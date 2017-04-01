@@ -6,14 +6,13 @@ import { expandStyles, mediaWidthRange } from '@/bearings'
 
 const Container = styled('div', {
   ...expandStyles(
+    'flexCenter',
     'd/none',
     'absolute',
     't/100%',
     'fullWidth',
     'h/30px',
     'fs/0.9rem',
-    'fJustify/center',
-    'fAlign/center',
     'ls/1px',
   ),
 

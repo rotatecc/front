@@ -208,6 +208,8 @@ shorthandPropertiesStatic.absoluteVerticalCenter = {
   transform: mixins.translateXValue(mixins.percentValue(-50)),
 }
 
+shorthandPropertiesStatic.flexCenter = expandStyles('fJustify/center', 'fAlign/center')
+
 
 /**
  * Capitalize first letter of string

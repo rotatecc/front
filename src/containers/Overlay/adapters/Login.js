@@ -13,11 +13,10 @@ import Close from '../Close'
 
 const Container = styled('div', {
   ...expandStyles(
+    'flexCenter',
     'd/flex',
     'h/100vh',
     'fullWidth',
-    'fJustify/center',
-    'fAlign/center',
   ),
 })
 

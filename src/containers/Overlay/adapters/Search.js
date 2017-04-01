@@ -8,19 +8,17 @@ import Close from '../Close'
 
 const Container = styled('div', {
   ...expandStyles(
+    'flexCenter',
     'd/flex',
     'h/100vh',
     'fullWidth',
-    'fJustify/center',
-    'fAlign/center',
   ),
 })
 
 const BarWrapper = styled('div', {
   ...expandStyles(
+    'flexCenter',
     'd/flex',
-    'fJustify/center',
-    'fAlign/center',
     'h/150px',
     'w/80%',
     'bgc/rgba(255, 255, 255, 0.95)',
