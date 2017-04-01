@@ -13,9 +13,8 @@ const Container = styled('div', {
     'h/100vh',
     'fullWidth',
     'bgc/rgba(255, 255, 255, 0.95)',
+    'overY/auto',
   ),
-
-  overflowY: 'auto',
 })
 
 
@@ -27,9 +26,8 @@ const LogoWrapper = styled('div', {
 const ListItemLi = styled('li', expandStyles('d/block', 'mBottom/1px'))
 
 const ListItemA = styled('a', {
-  ...expandStyles('d/block', 'p/2px/0', 'c/p~primary', 'fs/0.8rem'),
+  ...expandStyles('d/block', 'p/2px/0', 'c/p~primary', 'fs/0.8rem', 'decor/none'),
 
-  textDecoration: 'none',
   transition: 'all 400ms ease',
 
   ':hover': {
@@ -55,10 +53,7 @@ const ListSectionContainer = styled('div', expandStyles('mBottom/3rem'))
 
 const ListSectionH6 = styled(H6, expandStyles('m/0/0/0.8rem'))
 
-const ListSectionUl = styled('ul', {
-  ...expandStyles('m/0', 'p/0'),
-  listStyleType: 'none',
-})
+const ListSectionUl = styled('ul', expandStyles('m/0', 'p/0', 'noListStyle'))
 
 function ListSection({ title, items }) {
   return (

@@ -8,10 +8,9 @@ const Container = styled('a', {
   ...expandStyles(
     'd/flex',
     'c/p~black',
+    'pointer',
+    'fAlign/center',
   ),
-
-  alignItems: 'center',
-  cursor: 'pointer',
 
   ':hover': expandStyles('c/p~black'),
 })

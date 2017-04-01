@@ -79,9 +79,14 @@ export const shorthandPropertiesStatic = {
 
   fullHeight: mixins.height(mixins.percentValue(100)),
   fullWidth: mixins.width(mixins.percentValue(100)),
+
+  pointer: mixins.cursor('pointer'),
+
+  noListStyle: { listStyleType: 'none' },
 }
 
 export const shorthandPropertiesValued = {
+  // sizing
   w: 'width',
   h: 'height',
   size: mixins.size,
@@ -91,18 +96,24 @@ export const shorthandPropertiesValued = {
   hMin: mixins.minHeight,
   wMin: mixins.minWidth,
 
-  fs: 'fontSize',
+  // font
+  fs: mixins.fontSize,
+  fw: mixins.fontWeight,
 
+  // coloring
   bgc: compose(expandThemeValue, mixins.backgroundColor),
   c: compose(expandThemeValue, mixins.color),
 
+  // display
   d: 'display',
 
+  // relative position
   t: mixins.top,
   r: mixins.right,
   b: mixins.bottom,
   l: mixins.left,
 
+  // margin, padding
   m: mixins.margin,
   mTop: mixins.marginTop,
   mRight: mixins.marginRight,
@@ -114,11 +125,31 @@ export const shorthandPropertiesValued = {
   pBottom: mixins.paddingBottom,
   pLeft: mixins.paddingLeft,
 
+  // visibility
   o: mixins.opacity,
-
   z: mixins.zIndex,
 
-  b: mixins.border,
+  // border
+  bord: mixins.border,
+
+  // flex
+  fJustify: mixins.justifyContent,
+  fAlign: mixins.alignItems,
+  fDirection: mixins.flexDirection,
+  fGrow: mixins.flexGrow,
+
+  // overflow
+  over: mixins.overflow,
+  overX: mixins.overflowX,
+  overY: mixins.overflowY,
+
+  // text (non-font)
+  decor: mixins.textDecoration,
+  align: mixins.textAlign,
+  ls: mixins.letterSpacing,
+
+  // misc
+  cursor: mixins.cursor,
 }
 
 /**

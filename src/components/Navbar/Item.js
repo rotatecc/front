@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { styled } from 'styletron-react'
 
-import { expandStyles } from '@/bearings'
+import { expandStyles, mediaWidthRange } from '@/bearings'
 
 
 const StyledLi = styled('li', expandStyles('d/inline-block'))
@@ -15,11 +15,11 @@ const linkStyles = {
     'p/19px/12px',
     'fs/0.9rem',
     'c/p~primary',
+    'pointer',
+    'decor/none',
+    'ls/1px',
   ),
 
-  cursor: 'pointer',
-  letterSpacing: '1px',
-  textDecoration: 'none',
   transition: 'all 200ms cubic-bezier(.25,.1,.25,1)',
 
   ':hover': expandStyles('c/p~primaryDark'),
@@ -27,7 +27,7 @@ const linkStyles = {
 
 
 const primaryLinkStyles = {
-  '@media screen and (max-width: 1400px)': expandStyles('p/19px/8px'),
+  ...mediaWidthRange(null, '1400px', expandStyles('p/19px/8px')),
 }
 
 
@@ -36,7 +36,7 @@ const slimLinkStyles = {
 
   ':hover': expandStyles('c/p~white', 'bgc/p~primaryDark'),
 
-  '@media screen and (max-width: 1400px)': expandStyles('p/8px/6px'),
+  ...mediaWidthRange(null, '1400px', expandStyles('p/8px/6px')),
 }
 
 

@@ -21,13 +21,12 @@ const Container = styled('div', {
     'bgc/p~background',
     'c/p~text',
     'hMin/100vh',
+    'fDirection/column',
   ),
-
-  flexDirection: 'column',
 })
 
 // Sticky footer
-const Content = styled('div', { flex: 1 })
+const Content = styled('div', expandStyles('fGrow/1'))
 
 
 class App extends React.PureComponent {

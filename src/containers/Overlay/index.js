@@ -18,9 +18,8 @@ const Container = styled('div', ({ show }) => ({
     'w/100vw',
     'h/100vh',
     'z/100',
+    'overY/auto',
   ),
-
-  overflow: 'auto',
 }))
 
 function getMatchingAdapterMaybe(overlay) {

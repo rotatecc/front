@@ -8,8 +8,7 @@ export default styled('div', {
     'd/flex',
     'fullWidth',
     'fullHeight',
+    'fJustify/space-between',
+    'fAlign/center',
   ),
-
-  justifyContent: 'space-between',
-  alignItems: 'center',
 })

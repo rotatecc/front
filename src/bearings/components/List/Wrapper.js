@@ -9,10 +9,8 @@ const Wrapper = styled('div', {
     'm/0',
     'p/0',
     'bgc/p~white',
+    'bord/1px/solid/#cccccc',
   ),
-
-  overflow: 'hidden',
-  border: '1px solid #ccc',
 })
 
 

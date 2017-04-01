@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from 'styletron-react'
 
-import { expandStyles } from '@/bearings'
+import { expandStyles, mediaWidthRange } from '@/bearings'
 
 import Logo from '@/components/Logo'
 import Navbar from '@/components/Navbar'
@@ -19,14 +19,11 @@ const PrimaryWrapper = styled('div', {
     'c/p~black',
     'fullWidth',
     'h/60px',
+    'fJustify/space-between',
+    'fAlign/center',
   ),
 
-  justifyContent: 'space-between',
-  alignItems: 'center',
-
-  '@media screen and (max-width: 1200px)': {
-    ...expandStyles('mBottom/50px'),
-  },
+  ...mediaWidthRange(null, '1200px', expandStyles('mBottom/50px')),
 })
 
 
@@ -41,19 +38,16 @@ const SlimWrapper = styled('div', ({ show }) => ({
     'c/p~white',
     `t/${show ? '0' : '-40px'}`,
     `o/${show ? '1' : '0.5'}`,
+    'fJustify/space-between',
+    'fAlign/center',
   ),
 
   transition: 'all 200ms ease',
-
-  justifyContent: 'space-between',
-  alignItems: 'center',
 }))
 
 
 const Side = styled('div', {
-  ...expandStyles('d/flex'),
-
-  alignItems: 'stretch',
+  ...expandStyles('d/flex', 'fAlign/stretch'),
 })
 
 

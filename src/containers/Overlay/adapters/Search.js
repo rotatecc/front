@@ -7,27 +7,29 @@ import Close from '../Close'
 
 
 const Container = styled('div', {
-  ...expandStyles('d/flex', 'h/100vh', 'fullWidth'),
-
-  justifyContent: 'center',
-  alignItems: 'center',
+  ...expandStyles(
+    'd/flex',
+    'h/100vh',
+    'fullWidth',
+    'fJustify/center',
+    'fAlign/center',
+  ),
 })
 
 const BarWrapper = styled('div', {
   ...expandStyles(
     'd/flex',
+    'fJustify/center',
+    'fAlign/center',
     'h/150px',
     'w/80%',
     'bgc/rgba(255, 255, 255, 0.95)',
   ),
-
-  justifyContent: 'center',
-  alignItems: 'center',
 })
 
 const Bar = styled('input', {
   ...expandStyles(
-    'b/0',
+    'bord/0',
     'h/100px',
     'w/90%',
     'fs/4rem',

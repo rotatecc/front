@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from 'styletron-react'
 
-import { expandStyles } from '@/bearings'
+import { expandStyles, mediaWidthRange } from '@/bearings'
 
 
 const Container = styled('div', {
@@ -12,13 +12,12 @@ const Container = styled('div', {
     'fullWidth',
     'h/30px',
     'fs/0.9rem',
+    'fJustify/center',
+    'fAlign/center',
+    'ls/1px',
   ),
 
-  alignItems: 'center',
-  justifyContent: 'center',
-  letterSpacing: '1px',
-
-  '@media screen and (max-width: 1200px)': expandStyles('d/flex'),
+  ...mediaWidthRange(null, '1200px', expandStyles('d/flex')),
 })
 
 

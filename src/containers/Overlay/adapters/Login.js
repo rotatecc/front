@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { styled } from 'styletron-react'
 
-import { expandStyles, H3 } from '@/bearings'
+import { expandStyles, mediaWidthRange, H3 } from '@/bearings'
 
 import * as authDuck from '@/ducks/auth'
 
@@ -16,10 +16,9 @@ const Container = styled('div', {
     'd/flex',
     'h/100vh',
     'fullWidth',
+    'fJustify/center',
+    'fAlign/center',
   ),
-
-  justifyContent: 'center',
-  alignItems: 'center',
 })
 
 
@@ -28,12 +27,11 @@ const Box = styled('div', {
     'hMax/90vh',
     'w/400px',
     'bgc/rgba(255, 255, 255, 0.95)',
+    'align/center',
+    'overY/auto',
   ),
 
-  textAlign: 'center',
-  overflow: 'auto',
-
-  '@media screen and (max-width: 450px)': expandStyles('w/95%'),
+  ...mediaWidthRange(null, '450px', expandStyles('w/95%')),
 })
 
 

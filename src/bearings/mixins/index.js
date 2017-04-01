@@ -294,31 +294,31 @@ export function displayInlineBlock() {
 }
 
 
-// Psuedo
+// pseudo
 
 
-export function psuedoBlock(psuedoType, styles) {
-  return { [`:${psuedoType}`]: styles }
+export function pseudoBlock(pseudoType, styles) {
+  return { [`:${pseudoType}`]: styles }
 }
 
 
-export function psuedoBefore(styles) {
-  return psuedoBlock('before', styles)
+export function pseudoBefore(styles) {
+  return pseudoBlock('before', styles)
 }
 
 
-export function psuedoAfter(styles) {
-  return psuedoBlock('after', styles)
+export function pseudoAfter(styles) {
+  return pseudoBlock('after', styles)
 }
 
 
-export function psuedoHover(styles) {
-  return psuedoBlock('hover', styles)
+export function pseudoHover(styles) {
+  return pseudoBlock('hover', styles)
 }
 
 
-export function psuedoVisited(styles) {
-  return psuedoBlock('visited', styles)
+export function pseudoVisited(styles) {
+  return pseudoBlock('visited', styles)
 }
 
 
@@ -343,7 +343,7 @@ export function mediaWidthRange(from, to, styles) {
 
 
 export function clearfix() {
-  return psuedoAfter({
+  return pseudoAfter({
     ...displayBlock(),
     content: '',
     clear: 'both',
@@ -382,6 +382,86 @@ export function zIndex(x) {
 
 export function opacity(x) {
   return { opacity: x }
+}
+
+
+// Flex
+
+
+export function justifyContent(x) {
+  return { justifyContent: x }
+}
+
+
+export function alignItems(x) {
+  return { alignItems: x }
+}
+
+
+export function flexDirection(x) {
+  return { flexDirection: x }
+}
+
+
+export function flexGrow(x) {
+  return { flexGrow: x }
+}
+
+
+// Overflow
+
+
+export function overflow(x) {
+  return { overflow: x }
+}
+
+
+export function overflowX(x) {
+  return { overflowX: x }
+}
+
+
+export function overflowY(x) {
+  return { overflowY: x }
+}
+
+
+// Font
+
+
+export function fontSize(x) {
+  return { fontSize: x }
+}
+
+
+export function fontWeight(x) {
+  return { fontWeight: x }
+}
+
+
+// Text (non-font)
+
+
+export function textDecoration(x) {
+  return { textDecoration: x }
+}
+
+
+export function textAlign(x) {
+  return { textAlign: x }
+}
+
+
+export function letterSpacing(x) {
+  return { letterSpacing: x }
+}
+
+
+// Misc
+
+
+export function cursor(x) {
+  return { cursor: x }
 }
 
 

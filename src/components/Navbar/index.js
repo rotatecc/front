@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from 'styletron-react'
 
-import { expandStyles } from '@/bearings'
+import { expandStyles, mediaWidthRange } from '@/bearings'
 
 import { propRequiredIf } from '@/utils'
 
@@ -9,13 +9,12 @@ import Item from './Item'
 
 
 const Container = styled('div', {
-  '@media screen and (max-width: 1200px)': expandStyles('d/none'),
+  ...mediaWidthRange(null, '1200px', expandStyles('d/none')),
 })
 
 
 const StyledUl = styled('ul', {
-  ...expandStyles('m/0', 'p/0'),
-  listStyleType: 'none',
+  ...expandStyles('m/0', 'p/0', 'noListStyle'),
 })
 
 

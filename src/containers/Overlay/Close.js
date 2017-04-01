@@ -12,9 +12,9 @@ const Container = styled('a', ({ color }) => ({
     'fs/40px',
     'z/105',
     `c/${color}`,
+    'pointer',
   ),
 
-  cursor: 'pointer',
   fontFamily: 'sans-serif',
 }))
 

@@ -8,10 +8,7 @@ import { expandStyles } from '../../utils'
 
 
 export default styled('a', {
-  ...expandStyles('c/p~primary'),
-  cursor: 'pointer',
+  ...expandStyles('c/p~primary', 'pointer'),
 
-  ':hover': {
-    ...expandStyles('c/p~primaryDark'),
-  },
+  ':hover': expandStyles('c/p~primaryDark'),
 })

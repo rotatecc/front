@@ -46,8 +46,8 @@ export { default as reset } from './base/reset'
 // Mixins
 //
 
-// TODO
 export { default as mixins } from './mixins'
+export { mediaWidthRange } from './mixins'
 
 
 //

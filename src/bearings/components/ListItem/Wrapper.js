@@ -9,9 +9,8 @@ export default styled('li', {
     'd/flex',
     'fullWidth',
     'h/3em',
+    'fAlign/center',
   ),
-
-  alignItems: 'center',
   borderTop: '1px solid #eee',
 
   ':first-child': {
