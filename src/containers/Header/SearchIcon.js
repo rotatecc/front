@@ -15,12 +15,10 @@ const Container = styled('a', {
   ':hover': expandStyles('c/p~black'),
 })
 
-const PrimaryContainer = styled(Container, {
-  ...expandStyles(
-    'fs/24px',
-    'p/4px/30px/0/18px',
-  ),
-})
+const PrimaryContainer = styled(Container, expandStyles(
+  'fs/24px',
+  'p/4px/30px/0/18px',
+))
 
 const SlimContainer = styled(Container, {
   ...expandStyles(

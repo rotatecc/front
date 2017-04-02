@@ -11,14 +11,12 @@ import LoginForm from '@/containers/LoginForm'
 import Close from '../Close'
 
 
-const Container = styled('div', {
-  ...expandStyles(
-    'flexCenter',
-    'd/flex',
-    'h/100vh',
-    'fullWidth',
-  ),
-})
+const Container = styled('div', expandStyles(
+  'flexCenter',
+  'd/flex',
+  'h/100vh',
+  'fullWidth',
+))
 
 
 const Box = styled('div', {

@@ -11,9 +11,10 @@ export default styled('li', {
     'h/3em',
     'fAlign/center',
   ),
+
   borderTop: '1px solid #eee',
 
   ':first-child': {
-    borderTop: 'none',
+    borderTop: '0',
   },
 })

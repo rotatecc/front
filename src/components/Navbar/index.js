@@ -13,9 +13,7 @@ const Container = styled('div', {
 })
 
 
-const StyledUl = styled('ul', {
-  ...expandStyles('m/0', 'p/0', 'noListStyle'),
-})
+const StyledUl = styled('ul', expandStyles('m/0', 'p/0', 'noListStyle'))
 
 
 function MainMenu({ version }) {

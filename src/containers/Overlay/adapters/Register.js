@@ -6,24 +6,20 @@ import { expandStyles, H3 } from '@/bearings'
 import Close from '../Close'
 
 
-const Container = styled('div', {
-  ...expandStyles(
-    'flexCenter',
-    'd/flex',
-    'h/100vh',
-    'fullWidth',
-  ),
-})
+const Container = styled('div', expandStyles(
+  'flexCenter',
+  'd/flex',
+  'h/100vh',
+  'fullWidth',
+))
 
-const BarWrapper = styled('div', {
-  ...expandStyles(
-    'flexCenter',
-    'd/flex',
-    'h/150px',
-    'w/80%',
-    'bgc/rgba(255, 255, 255, 0.95)',
-  ),
-})
+const BarWrapper = styled('div', expandStyles(
+  'flexCenter',
+  'd/flex',
+  'h/150px',
+  'w/80%',
+  'bgc/rgba(255, 255, 255, 0.95)',
+))
 
 function Register({ close }) {
   return (

@@ -10,17 +10,15 @@ import * as overlayDuck from '@/ducks/overlay'
 import * as adapters from './adapters'
 
 
-const Container = styled('div', ({ show }) => ({
-  ...expandStyles(
-    `d/${show ? 'block' : 'none'}`,
-    'bgc/rgba(0, 0, 0, 0.8)',
-    'fixed',
-    'w/100vw',
-    'h/100vh',
-    'z/100',
-    'overY/auto',
-  ),
-}))
+const Container = styled('div', ({ show }) => expandStyles(
+  `d/${show ? 'block' : 'none'}`,
+  'bgc/rgba(0, 0, 0, 0.8)',
+  'fixed',
+  'w/100vw',
+  'h/100vh',
+  'z/100',
+  'overY/auto',
+))
 
 function getMatchingAdapterMaybe(overlay) {
   return adapters[overlay.get('type')] || null

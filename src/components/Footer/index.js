@@ -4,15 +4,13 @@ import { styled } from 'styletron-react'
 import { Row, Column, expandStyles } from '@/bearings'
 
 
-const Container = styled('div', {
-  ...expandStyles(
-    'fullWidth',
-    'h/100px',
-    'mTop/35px',
-    'bgc/p~moody',
-    'c/p~white',
-  ),
-})
+const Container = styled('div', expandStyles(
+  'fullWidth',
+  'h/100px',
+  'mTop/35px',
+  'bgc/p~moody',
+  'c/p~white',
+))
 
 const currentYear = (new Date()).getFullYear()
 

@@ -152,6 +152,8 @@ export const shorthandPropertiesValued = {
   cursor: mixins.cursor,
 }
 
+const shorthandPropertiesValuedCached = {}
+
 /**
  * Expand shorthand styles
  * @return {obj}
@@ -168,6 +170,12 @@ export function expandStyles(...args) {
     }
 
     if (arg.includes('/')) {
+      // look up cached value
+      const cached = shorthandPropertiesValuedCached[arg]
+      if (cached) {
+        return cached
+      }
+
       const [shortAttr, ...attrArgs] = arg.split('/')
       const lookup = shorthandPropertiesValued[shortAttr]
 
@@ -180,7 +188,12 @@ export function expandStyles(...args) {
         ? (x) => ({ [lookup]: x })
         : lookup
 
-      return propFn(...attrArgs)
+      const result = propFn(...attrArgs)
+
+      // cache it
+      shorthandPropertiesValuedCached[arg] = result
+
+      return result
     }
 
     const prop = shorthandPropertiesStatic[arg]

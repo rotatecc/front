@@ -7,23 +7,20 @@ import Logo from '@/components/Logo'
 import Close from '../Close'
 
 
-const Container = styled('div', {
-  ...expandStyles(
-    'relative',
-    'h/100vh',
-    'fullWidth',
-    'bgc/rgba(255, 255, 255, 0.95)',
-    'overY/auto',
-  ),
-})
+const Container = styled('div', expandStyles(
+  'relative',
+  'h/100vh',
+  'fullWidth',
+  'bgc/rgba(255, 255, 255, 0.95)',
+  'overY/auto',
+))
 
 
-const LogoWrapper = styled('div', {
-  ...expandStyles('p/25px/0/5px'),
-})
+const LogoWrapper = styled('div', expandStyles('p/25px/0/5px'))
 
 
 const ListItemLi = styled('li', expandStyles('d/block', 'mBottom/1px'))
+
 
 const ListItemA = styled('a', {
   ...expandStyles('d/block', 'p/2px/0', 'c/p~primary', 'fs/0.8rem', 'decor/none'),
@@ -35,6 +32,7 @@ const ListItemA = styled('a', {
     transform: 'translateX(5px)',
   },
 })
+
 
 function ListItem({ title }) {
   return (

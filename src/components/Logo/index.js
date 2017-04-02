@@ -20,21 +20,17 @@ const BaseContainer = styled(H1, {
   lineHeight: 1,
 })
 
-const PrimaryContainer = styled(BaseContainer, {
-  ...expandStyles(
-    'pBottom/4px',
-    'c/p~black',
-    'fs/2.5rem',
-  ),
-})
+const PrimaryContainer = styled(BaseContainer, expandStyles(
+  'pBottom/4px',
+  'c/p~black',
+  'fs/2.5rem',
+))
 
-const SlimContainer = styled(BaseContainer, {
-  ...expandStyles(
-    'pBottom/4px',
-    'c/p~white',
-    'fs/2rem',
-  ),
-})
+const SlimContainer = styled(BaseContainer, expandStyles(
+  'pBottom/4px',
+  'c/p~white',
+  'fs/2rem',
+))
 
 const StyledLink = styled(Link, {
   ...expandStyles(

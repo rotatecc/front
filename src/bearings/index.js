@@ -35,8 +35,6 @@ export { default as Row } from './components/Row'
 //
 
 export { default as animation } from './base/animation'
-export { default as global } from './base/global'
-export { default as reset } from './base/reset'
 
 // TODO
 // export { default as base } from './base'

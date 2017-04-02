@@ -15,15 +15,13 @@ import * as authDuck from '@/ducks/auth'
 import { expandStyles } from '@/bearings'
 
 
-const Container = styled('div', {
-  ...expandStyles(
-    'd/flex',
-    'bgc/p~background',
-    'c/p~text',
-    'hMin/100vh',
-    'fDirection/column',
-  ),
-})
+const Container = styled('div', expandStyles(
+  'd/flex',
+  'bgc/p~background',
+  'c/p~text',
+  'hMin/100vh',
+  'fDirection/column',
+))
 
 // Sticky footer
 const Content = styled('div', expandStyles('fGrow/1'))
