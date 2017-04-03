@@ -1,3 +1,8 @@
+/**
+ * Hero
+ */
+
+
 import React from 'react'
 import { styled } from 'styletron-react'
 
@@ -8,9 +13,12 @@ import { mediaWidthRange } from '../../mixins'
 import H2 from '../H2'
 
 
+const height = '350px'
+
+
 const Wrapper = styled('div', expandStyles(
   'fullWidth',
-  'h/350px',
+  `h/${height}`,
   'bgc/p~black',
   'c/p~white',
 ))
@@ -19,6 +27,7 @@ const PageWidth = styled('div', {
   ...expandStyles(
     'd/flex',
     'w/1250px',
+    `h/${height}`,
     'm/0/auto',
     'fAlign/center',
   ),
@@ -30,13 +39,15 @@ const PageWidth = styled('div', {
 
 const Inner = styled('div', {})
 
+const Title = styled(H2, expandStyles('fs/3.5rem'))
 
-function Hero() {
+
+function Hero({ title }) {
   return (
     <Wrapper>
       <PageWidth>
         <Inner>
-          <H2>About</H2>
+          <Title>{title}</Title>
         </Inner>
       </PageWidth>
     </Wrapper>
@@ -44,6 +55,7 @@ function Hero() {
 }
 
 Hero.propTypes = {
+  title: React.PropTypes.string,
 }
 
 export default Hero
