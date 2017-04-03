@@ -26,9 +26,10 @@ export function compose(...fns) {
 
 const themeValueExpansions = {
   // palette
-  p: (value) => (theme.palette[value] || null),
+  p: (color) => (theme.palette[color] || null),
+  // font
+  f: (type, attr = 'family') => (theme.fonts[type][attr]),
   // TODO spacing (s)
-  // TODO fonts (f)
 }
 
 
@@ -41,7 +42,7 @@ export function expandThemeValue(s) {
     return s
   }
 
-  const [type, value] = s.split('~')
+  const [type, ...args] = s.split('~')
 
   const expansion = themeValueExpansions[type]
 
@@ -49,7 +50,7 @@ export function expandThemeValue(s) {
     return s
   }
 
-  const expanded = expansion(value)
+  const expanded = expansion(...args)
 
   if (!expanded) {
     console.warn(`shorthand theme value '${s}' was not expanded`) // eslint-disable-line no-console
@@ -99,7 +100,8 @@ export const shorthandPropertiesValued = {
   wMin: mixins.minWidth,
 
   // font
-  fs: mixins.fontSize,
+  ff: compose(expandThemeValue, mixins.fontFamily),
+  fs: compose(expandThemeValue, mixins.fontSize),
   fw: mixins.fontWeight,
 
   // coloring

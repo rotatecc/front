@@ -444,6 +444,11 @@ export function overflowY(x) {
 // Font
 
 
+export function fontFamily(x) {
+  return { fontFamily: x }
+}
+
+
 export function fontSize(x) {
   return { fontSize: x }
 }

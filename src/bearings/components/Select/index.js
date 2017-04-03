@@ -9,5 +9,6 @@ export default styled('select', {
     'bordS/solid',
     'bordW/1px',
     'bordC/p~gray',
+    'ff/f~textField~family',
   ),
 })

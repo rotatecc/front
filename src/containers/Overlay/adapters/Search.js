@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from 'styletron-react'
 
-import { expandStyles } from '@/bearings'
+import { Input, expandStyles } from '@/bearings'
 
 import Close from '../Close'
 
@@ -21,17 +21,12 @@ const BarWrapper = styled('div', expandStyles(
   'bgc/rgba(255, 255, 255, 0.95)',
 ))
 
-const Bar = styled('input', {
-  ...expandStyles(
-    'bordW/0',
-    'h/100px',
-    'w/90%',
-    'fs/4rem',
-    'noOutline',
-  ),
-
-  fontFamily: '\'proxima-nova\', \'Helvetica Neue\', Helvetica, Arial, sans-serif',
-})
+const Bar = styled(Input, expandStyles(
+  'bordW/0',
+  'h/100px',
+  'w/90%',
+  'fs/4rem',
+))
 
 function Search({ close }) {
   return (

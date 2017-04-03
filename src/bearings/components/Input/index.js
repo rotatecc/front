@@ -9,6 +9,7 @@ export default styled('input', {
     'bordS/solid',
     'bordW/1px',
     'bordC/p~gray',
+    'ff/f~textField~family',
   ),
 
   ':hover': expandStyles(),

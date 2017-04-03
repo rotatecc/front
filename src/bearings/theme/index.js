@@ -43,13 +43,18 @@ const spacing = {
 
 // Fonts
 
+const fontFamilyProximaNova = '\'proxima-nova\', \'Helvetica Neue\', Helvetica, Arial, sans-serif'
+
 const fonts = {
   base: {
-    family: '\'Helvetica Neue\', Helvetica, Arial, sans-serif',
+    family: fontFamilyProximaNova,
     size: '16px',
   },
   heading: {
-    family: '\'Helvetica Neue\', Helvetica, Arial, sans-serif',
+    family: fontFamilyProximaNova,
+  },
+  textField: {
+    family: fontFamilyProximaNova,
   },
 }
 
