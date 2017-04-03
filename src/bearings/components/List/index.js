@@ -1,34 +1,21 @@
 import React from 'react'
 
+import Li from './Li'
 import Ul from './Ul'
-import Wrapper from './Wrapper'
+import Ol from './Ol'
 
 
-function List(props) {
-  const ComponentToRender = props.component
-  let content = (<div />)
+function List({ ordered, items }) {
+  const component = ordered ? Ol : Ul
 
-  // If we have items, render them
-  if (props.items) {
-    content = props.items.map((item, index) => (
-      <ComponentToRender key={`item-${index}`} item={item} />
-    ))
-  } else {
-    // Otherwise render a single component
-    content = (<ComponentToRender />)
-  }
+  const children = items.map((item, i) =>
+    <Li key={i}>{item}</Li>)
 
-  return (
-    <Wrapper>
-      <Ul>
-        {content}
-      </Ul>
-    </Wrapper>
-  )
+  return React.createElement(component, null, children)
 }
 
 List.propTypes = {
-  component: React.PropTypes.func.isRequired,
+  ordered: React.PropTypes.bool,
   items: React.PropTypes.array,
 }
 

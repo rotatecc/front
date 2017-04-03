@@ -3,10 +3,10 @@ import { styled } from 'styletron-react'
 import { expandStyles } from '../../utils'
 
 
-const Ul = styled('ul', expandStyles(
+const Li = styled('li', expandStyles(
   'm/0',
-  'pLeft/1.5rem',
+  'p/0',
 ))
 
 
-export default Ul
+export default Li
