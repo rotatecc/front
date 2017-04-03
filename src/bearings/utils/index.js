@@ -130,7 +130,9 @@ export const shorthandPropertiesValued = {
   z: mixins.zIndex,
 
   // border
-  bord: mixins.border,
+  bordS: compose(expandThemeValue, mixins.borderStyle),
+  bordW: compose(expandThemeValue, mixins.borderWidth),
+  bordC: compose(expandThemeValue, mixins.borderColor),
 
   // flex
   fJustify: mixins.justifyContent,

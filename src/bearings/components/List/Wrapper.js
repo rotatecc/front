@@ -8,7 +8,9 @@ const Wrapper = styled('div', expandStyles(
   'm/0',
   'p/0',
   'bgc/p~white',
-  'bord/1px/solid/#cccccc',
+  'bordS/solid',
+  'bordW/1px',
+  'bordC/p~gray',
 ))
 
 

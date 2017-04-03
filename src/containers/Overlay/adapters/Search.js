@@ -23,7 +23,7 @@ const BarWrapper = styled('div', expandStyles(
 
 const Bar = styled('input', {
   ...expandStyles(
-    'bord/0',
+    'bordW/0',
     'h/100px',
     'w/90%',
     'fs/4rem',

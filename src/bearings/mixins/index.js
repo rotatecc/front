@@ -359,6 +359,21 @@ export function border(attrs) {
 }
 
 
+export function borderStyle(x) {
+  return { borderStyle: x }
+}
+
+
+export function borderWidth(x) {
+  return { borderWidth: x }
+}
+
+
+export function borderColor(x) {
+  return { borderColor: x }
+}
+
+
 export function borderSide(position = 'left', attrs) {
   return { [`border${capitalize(position)}`]: borderValue(attrs) }
 }

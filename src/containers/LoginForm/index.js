@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react'
 import { Field, reduxForm } from 'redux-form'
 
+import { Input } from '@/bearings'
+
 import validate from './validate'
 
 
@@ -17,7 +19,7 @@ const renderField = ({ input, label, type, meta }) => {
     <div>
       <label htmlFor={id}>{label}</label>
       <div className={asyncValidating ? 'async-validating' : ''}>
-        <input {...input} id={id} type={type} />
+        <Input {...input} id={id} type={type} />
         {touched && error && <span>{error}</span>}
       </div>
     </div>
