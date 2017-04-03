@@ -83,6 +83,8 @@ export const shorthandPropertiesStatic = {
   pointer: mixins.cursor('pointer'),
 
   noListStyle: { listStyleType: 'none' },
+
+  noOutline: { outline: 0 },
 }
 
 export const shorthandPropertiesValued = {

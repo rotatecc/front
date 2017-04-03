@@ -27,10 +27,10 @@ const Bar = styled('input', {
     'h/100px',
     'w/90%',
     'fs/4rem',
+    'noOutline',
   ),
 
   fontFamily: '\'proxima-nova\', \'Helvetica Neue\', Helvetica, Arial, sans-serif',
-  outline: 0,
 })
 
 function Search({ close }) {

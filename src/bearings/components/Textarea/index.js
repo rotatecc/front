@@ -3,13 +3,11 @@ import { styled } from 'styletron-react'
 import { expandStyles } from '../../utils'
 
 
-export default styled('input', {
+export default styled('textarea', {
   ...expandStyles(
     'noOutline',
     'bordS/solid',
     'bordW/1px',
     'bordC/p~gray',
   ),
-
-  ':hover': expandStyles(),
 })

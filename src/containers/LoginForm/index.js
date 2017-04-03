@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-import { Input } from '@/bearings'
+import { Button, Label, Input } from '@/bearings'
 
 import validate from './validate'
 
@@ -17,7 +17,7 @@ const renderField = ({ input, label, type, meta }) => {
 
   return (
     <div>
-      <label htmlFor={id}>{label}</label>
+      <Label htmlFor={id}>{label}</Label>
       <div className={asyncValidating ? 'async-validating' : ''}>
         <Input {...input} id={id} type={type} />
         {touched && error && <span>{error}</span>}
@@ -41,7 +41,7 @@ const LoginForm = ({ handleSubmit, submitting, error }) =>
     <Field name="email" label="Email" component={renderField} type="text" />
     <Field name="password" label="Password" component={renderField} type="password" />
     <div>
-      <button type="submit" disabled={submitting}>Log in</button>
+      <Button type="submit" disabled={submitting}>Log in</Button>
       {error}
     </div>
   </form>

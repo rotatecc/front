@@ -13,6 +13,7 @@
 
 // Static
 export { default as A } from './components/A'
+export { default as Button } from './components/Button'
 export { default as Column } from './components/Column'
 export { default as H1 } from './components/H1'
 export { default as H2 } from './components/H2'
@@ -23,9 +24,12 @@ export { default as H6 } from './components/H6'
 export { default as Hero } from './components/Hero'
 export { default as Img } from './components/Img'
 export { default as Input } from './components/Input'
+export { default as Label } from './components/Label'
 export { default as List } from './components/List'
 export { default as ListItem } from './components/ListItem'
 export { default as Row } from './components/Row'
+export { default as Select } from './components/Select'
+export { default as Textarea } from './components/Textarea'
 
 // Interative
 // TODO
