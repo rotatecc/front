@@ -3,6 +3,8 @@
  */
 
 
+import React from 'react'
+
 import * as mixins from '../mixins'
 
 import theme from '../theme'
@@ -13,36 +15,37 @@ export * from './color'
 
 
 /**
- * Generic compose fns
+ * React PropType for valid theme palette color
+ * (no isRequired)
  */
-export function compose(...fns) {
-  return (input) =>
-    fns.reduce(
-      (acc, fn) =>
-        fn(acc),
-      input)
-}
+export const propIsPaletteColor = React.PropTypes.oneOf(Object.keys(theme.palette))
 
 
 const themeValueExpansions = {
   // palette
-  p: (color) => (theme.palette[color] || null),
+  p: mixins.themePaletteValue,
   // font
-  f: (type, attr = 'family') => (theme.fonts[type][attr]),
-  // TODO spacing (s)
+  f: mixins.themeFontValue,
+  // distance
+  d: mixins.themeDistanceValue,
 }
 
 
 /**
  * Expand a (possibly) shorthand theme value
  */
-export function expandThemeValue(s) {
+export function expandThemeValue(s, enforceType = null) {
   // s = p~primary (palette)
   if (typeof s !== 'string' || !s.includes('~')) {
     return s
   }
 
   const [type, ...args] = s.split('~')
+
+  if (enforceType && enforceType !== type) {
+    console.warn(`Theme value '${s}' does not match enforced type '${enforceType}'. Was not expanded.`) // eslint-disable-line no-console
+    return s
+  }
 
   const expansion = themeValueExpansions[type]
 
@@ -58,6 +61,11 @@ export function expandThemeValue(s) {
   }
 
   return expanded
+}
+
+
+export function wrapMixinWithThemeValues(mixin, enforceType = null) {
+  return (...args) => mixin(...args.map((arg) => expandThemeValue(arg, enforceType)))
 }
 
 
@@ -86,12 +94,14 @@ export const shorthandPropertiesStatic = {
   noListStyle: { listStyleType: 'none' },
 
   noOutline: { outline: 0 },
+
+  nowrap: { whiteSpace: 'nowrap' },
 }
 
 export const shorthandPropertiesValued = {
   // sizing
-  w: 'width',
-  h: 'height',
+  w: mixins.width,
+  h: mixins.height,
   size: mixins.size,
   square: mixins.square,
   hMax: mixins.maxHeight,
@@ -100,16 +110,16 @@ export const shorthandPropertiesValued = {
   wMin: mixins.minWidth,
 
   // font
-  ff: compose(expandThemeValue, mixins.fontFamily),
-  fs: compose(expandThemeValue, mixins.fontSize),
+  ff: wrapMixinWithThemeValues(mixins.fontFamily),
+  fs: wrapMixinWithThemeValues(mixins.fontSize),
   fw: mixins.fontWeight,
 
   // coloring
-  bgc: compose(expandThemeValue, mixins.backgroundColor),
-  c: compose(expandThemeValue, mixins.color),
+  bgc: wrapMixinWithThemeValues(mixins.backgroundColor, 'p'),
+  c: wrapMixinWithThemeValues(mixins.color, 'p'),
 
   // display
-  d: 'display',
+  d: mixins.display,
 
   // relative position
   t: mixins.top,
@@ -118,25 +128,28 @@ export const shorthandPropertiesValued = {
   l: mixins.left,
 
   // margin, padding
-  m: mixins.margin,
-  mTop: mixins.marginTop,
-  mRight: mixins.marginRight,
-  mBottom: mixins.marginBottom,
-  mLeft: mixins.marginLeft,
-  p: mixins.padding,
-  pTop: mixins.paddingTop,
-  pRight: mixins.paddingRight,
-  pBottom: mixins.paddingBottom,
-  pLeft: mixins.paddingLeft,
+  m: wrapMixinWithThemeValues(mixins.margin, 'd'),
+  mTop: wrapMixinWithThemeValues(mixins.marginTop, 'd'),
+  mRight: wrapMixinWithThemeValues(mixins.marginRight, 'd'),
+  mBottom: wrapMixinWithThemeValues(mixins.marginBottom, 'd'),
+  mLeft: wrapMixinWithThemeValues(mixins.marginLeft, 'd'),
+  p: wrapMixinWithThemeValues(mixins.padding, 'd'),
+  pTop: wrapMixinWithThemeValues(mixins.paddingTop, 'd'),
+  pRight: wrapMixinWithThemeValues(mixins.paddingRight, 'd'),
+  pBottom: wrapMixinWithThemeValues(mixins.paddingBottom, 'd'),
+  pLeft: wrapMixinWithThemeValues(mixins.paddingLeft, 'd'),
 
   // visibility
   o: mixins.opacity,
   z: mixins.zIndex,
 
   // border
-  bordS: compose(expandThemeValue, mixins.borderStyle),
-  bordW: compose(expandThemeValue, mixins.borderWidth),
-  bordC: compose(expandThemeValue, mixins.borderColor),
+  bordS: mixins.borderStyle,
+  bordW: mixins.borderWidth,
+  bordC: wrapMixinWithThemeValues(mixins.borderColor, 'p'),
+
+  // border-radius
+  radius: wrapMixinWithThemeValues(mixins.borderRadius, 'd'),
 
   // flex
   fJustify: mixins.justifyContent,
@@ -153,9 +166,11 @@ export const shorthandPropertiesValued = {
   decor: mixins.textDecoration,
   align: mixins.textAlign,
   ls: mixins.letterSpacing,
+  lh: mixins.lineHeight,
 
   // misc
   cursor: mixins.cursor,
+  vAlign: mixins.verticalAlign,
 }
 
 const shorthandPropertiesValuedCached = {}
@@ -183,16 +198,12 @@ export function expandStyles(...args) {
       }
 
       const [shortAttr, ...attrArgs] = arg.split('/')
-      const lookup = shorthandPropertiesValued[shortAttr]
+      const propFn = shorthandPropertiesValued[shortAttr]
 
-      if (!lookup) {
+      if (!propFn) {
         console.warn(`[valued] shorthand attribute '${shortAttr}' does not exist (was not applied)`) // eslint-disable-line no-console
         return {}
       }
-
-      const propFn = (typeof lookup === 'string')
-        ? (x) => ({ [lookup]: x })
-        : lookup
 
       const result = propFn(...attrArgs)
 
@@ -235,4 +246,14 @@ shorthandPropertiesStatic.flexCenter = expandStyles('fJustify/center', 'fAlign/c
  */
 export function capitalize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
+
+/**
+ * Spread-able conditional obj
+ * @example { a: 1, ...condSpread(true, { b: 1 }) } === { a: 1, b: 2 }
+ * @example { a: 1, ...condSpread(false, { b: 1 }) } === { a: 1 }
+ */
+export function condSpread(pred, obj) {
+  return pred ? obj : {}
 }

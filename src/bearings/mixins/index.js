@@ -11,6 +11,24 @@ import { capitalize } from '../utils'
 // Convert values or attribute maps to CSS attribute value strings
 
 
+// Theme-value: palette
+export function themePaletteValue(color) {
+  return theme.palette[color]
+}
+
+
+// Theme-value: font (defaults to base type, with specified attr)
+export function themeFontValue(type, attr = 'family') {
+  return theme.font[type][attr] || theme.font.base[attr]
+}
+
+
+// Theme-value: distance
+export function themeDistanceValue(distance) {
+  return theme.distance[distance]
+}
+
+
 export function integerValue(x) {
   return `${x}`
 }
@@ -126,11 +144,6 @@ export function size(x, y) {
 
 export function square(x) {
   return size(x, x)
-}
-
-
-export function standardSquare(size = 'md') {
-  return square(theme.spacing[size] || 0)
 }
 
 
@@ -477,11 +490,21 @@ export function letterSpacing(x) {
 }
 
 
+export function lineHeight(x) {
+  return { lineHeight: x }
+}
+
+
 // Misc
 
 
 export function cursor(x) {
   return { cursor: x }
+}
+
+
+export function verticalAlign(x) {
+  return { verticalAlign: x }
 }
 
 

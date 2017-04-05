@@ -1,9 +1,5 @@
 /**
  * Theme
- *
- * NOTE
- * In the future, the theme should
- * probably be hot-swappable
  */
 
 import { makeColorVersions } from '../utils/color'
@@ -29,26 +25,41 @@ const palette = makeColorVersions({
   dark: '#2B4141',
 })
 
+// Component colors
+Object.assign(palette, {
+  badge: palette.white,
+})
 
-// Spacing
 
-const spacing = {
-  xs: '2px',
-  sm: '5px',
-  md: '15px',
-  lg: '15px',
-  xl: '30px',
+// Distance
+
+const distance = {
+  // Border radius
+  borderRadius: '0.25rem',
+  borderRadiusLg: '0.3rem',
+  borderRadiusSm: '0.15rem',
+
+  // Component: Badge
+  badgePaddingX: '0.4em',
+  badgePaddingY: '0.25em',
+  // ensure completely rounded edges regardless of font-size
+  badgePilledBorderRadius: '10rem',
+  badgePilledPaddingX: '0.6em',
 }
 
 
-// Fonts
+// Font
 
 const fontFamilyProximaNova = '\'proxima-nova\', \'Helvetica Neue\', Helvetica, Arial, sans-serif'
 
-const fonts = {
+const fontWeightNormal = 300
+const fontWeightBold = 700
+
+const font = {
   base: {
     family: fontFamilyProximaNova,
     size: '16px',
+    weight: fontWeightNormal,
   },
   heading: {
     family: fontFamilyProximaNova,
@@ -56,11 +67,15 @@ const fonts = {
   textField: {
     family: fontFamilyProximaNova,
   },
+  badge: {
+    size: '75%',
+    weight: fontWeightBold,
+  },
 }
 
 
 export default {
   palette,
-  spacing,
-  fonts,
+  distance,
+  font,
 }

@@ -13,6 +13,7 @@
 
 // Static
 export { default as A } from './components/A'
+export { default as Badge } from './components/Badge'
 export { default as Button } from './components/Button'
 export { default as Column } from './components/Column'
 export { default as H1 } from './components/H1'
@@ -65,4 +66,4 @@ export { default as theme } from './theme'
 //
 
 export { default as utils } from './utils'
-export { expandStyles } from './utils'
+export { expandStyles, propIsPaletteColor, condSpread } from './utils'
