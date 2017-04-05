@@ -145,7 +145,7 @@ export const shorthandPropertiesValued = {
 
   // border
   bordS: mixins.borderStyle,
-  bordW: mixins.borderWidth,
+  bordW: wrapMixinWithThemeValues(mixins.borderWidth, 'd'),
   bordC: wrapMixinWithThemeValues(mixins.borderColor, 'p'),
 
   // border-radius

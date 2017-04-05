@@ -34,18 +34,32 @@ Object.assign(palette, {
 // Distance
 
 const distance = {
+  // Border width
+  borderWidth: '1px',
+
   // Border radius
   borderRadius: '0.25rem',
   borderRadiusLg: '0.3rem',
   borderRadiusSm: '0.15rem',
+}
 
+// Component distances
+Object.assign(distance, {
   // Component: Badge
   badgePaddingX: '0.4em',
   badgePaddingY: '0.25em',
+  badgeBorderRadius: distance.borderRadiusSm,
   // ensure completely rounded edges regardless of font-size
   badgePilledBorderRadius: '10rem',
   badgePilledPaddingX: '0.6em',
-}
+
+  // Component: Alert
+  alertBorderWidth: distance.borderWidth,
+  alertBorderRadius: distance.borderRadius,
+  alertPaddingX: '1.25rem',
+  alertPaddingY: '0.75rem',
+  alertMarginBottom: '1rem',
+})
 
 
 // Font

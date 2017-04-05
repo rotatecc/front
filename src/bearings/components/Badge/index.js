@@ -16,7 +16,7 @@ const makeBaseStyles = ({ pilled, color }) => ({
     'p/d~badgePaddingY/d~badgePaddingX',
     'fs/f~badge~size',
     'fw/f~badge~weight',
-    'radius/d~borderRadiusSm', // non-pilled (actually just a subtle pilling)
+    'radius/d~badgeBorderRadius', // non-pilled (actually just a subtle pilling)
   ),
 
   // hide empty badges
