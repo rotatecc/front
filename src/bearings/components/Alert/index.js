@@ -13,6 +13,7 @@ const makeBaseStyles = ({ color }) => ({
     'bordS/solid',
     'bordW/d~alertBorderWidth',
     'radius/d~alertBorderRadius',
+    `c/p~${color}`,
   ),
 })
 

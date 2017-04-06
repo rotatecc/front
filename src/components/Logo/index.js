@@ -9,16 +9,13 @@ import { Link } from 'react-router'
 import { H1, expandStyles } from '@/bearings'
 
 
-const BaseContainer = styled(H1, {
-  ...expandStyles(
-    'absoluteVerticalCenter',
-    'd/block',
-    'm/0',
-    'p/0',
-  ),
-
-  lineHeight: 1,
-})
+const BaseContainer = styled(H1, expandStyles(
+  'absoluteVerticalCenter',
+  'd/block',
+  'm/0',
+  'p/0',
+  'lh/1',
+))
 
 const PrimaryContainer = styled(BaseContainer, expandStyles(
   'pBottom/4px',
