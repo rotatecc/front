@@ -7,22 +7,41 @@ import React from 'react'
 
 import * as mixins from '../mixins'
 
+import { darken } from './color'
+
 
 // Re-export color utils
 export * from './color'
 
 
-export const paletteColors = [
-  'black',
-  // TODO
-]
+export const validBrands = ['primary', 'success', 'info', 'warning', 'danger']
+
+
+export const validStates = ['success', 'info', 'warning', 'danger']
 
 
 /**
- * React PropType for valid theme palette color
+ * React PropType for valid brand (color)
  * (no isRequired)
  */
-export const propIsPaletteColor = React.PropTypes.oneOf(paletteColors)
+export const propIsBrand = React.PropTypes.oneOf(validBrands)
+
+
+/**
+ * React PropType for valid state (context/color)
+ * (no isRequired)
+ */
+export const propIsState = React.PropTypes.oneOf(validStates)
+
+
+export const themeValueModifiers = {
+  // Color
+  dark: (color) => darken(color, 15),
+  dark5: (color) => darken(color, 5),
+  dark15: (color) => darken(color, 15),
+  dark20: (color) => darken(color, 20),
+  dark25: (color) => darken(color, 25),
+}
 
 
 /**
@@ -34,21 +53,41 @@ export function expandThemeValue(s) {
     return s
   }
 
-  const valueArgs = s.slice(1).split('~')
+  const [shortValue, ...modifiers] = s.slice(1).split('~')
 
-  const expanded = mixins.themeValue(...valueArgs)
+  const expanded = mixins.themeValue(shortValue)
 
-  if (!expanded) {
+  if (expanded === null || expanded === undefined) {
     console.warn(`shorthand theme value '${s}' was not expanded`) // eslint-disable-line no-console
     return s
   }
 
-  return expanded
+  const modified = modifiers.reduce(
+    (acc, modifierId) => {
+      const modifier = themeValueModifiers[modifierId]
+      if (!modifier) {
+        console.warn(`shorthand theme value modifier '${modifierId}' (on '${s}') does not exist, was not applied'`) // eslint-disable-line no-console
+        return acc
+      }
+
+      const result = modifier(acc)
+
+      if (result === null || result === undefined) {
+        console.warn(`shorthand theme value modifier '${modifierId} could not be applied to '${s}'`) // eslint-disable-line no-console
+        return acc
+      }
+
+      return result
+    },
+    expanded,
+  )
+
+  return modified
 }
 
 
-export function wrapMixinWithThemeValues(mixin, enforceType = null) {
-  return (...args) => mixin(...args.map((arg) => expandThemeValue(arg, enforceType)))
+export function wrapMixinWithThemeValues(mixin) {
+  return (...args) => mixin(...args.map(expandThemeValue))
 }
 
 

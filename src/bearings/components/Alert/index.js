@@ -1,17 +1,17 @@
 import React from 'react'
 import { styled } from 'styletron-react'
 
-import { expandStyles, propIsPaletteColor } from '../../utils'
+import { expandStyles, propIsState } from '../../utils'
+import { stateValue } from '../../mixins'
 
 
-const makeBaseStyles = ({ color }) => ({
+const makeBaseStyles = ({ state }) => ({
   ...expandStyles(
     'p/~alertPaddingY/~alertPaddingX',
     'mBottom/~alertMarginBottom',
-    // TODO
-    // `c/~${color}`,
-    // `bgc/~${color}Light`,
-    // `bordC/~${color}Dark`,
+    `c/${stateValue(state, 'text')}`,
+    `bgc/${stateValue(state, 'bg')}`,
+    `bordC/${stateValue(state, 'border')}`,
     'bordS/solid',
     'bordW/~alertBorderWidth',
     'radius/~alertBorderRadius',
@@ -20,15 +20,15 @@ const makeBaseStyles = ({ color }) => ({
 
 const baseDiv = styled('div', makeBaseStyles)
 
-export default function Alert({ c: color, children }) {
-  return React.createElement(baseDiv, { color }, children)
+export default function Alert({ state, children }) {
+  return React.createElement(baseDiv, { state }, children)
 }
 
 Alert.propTypes = {
-  c: propIsPaletteColor,
+  state: propIsState,
   children: React.PropTypes.node.isRequired,
 }
 
 Alert.defaultProps = {
-  color: 'primary',
+  state: 'success',
 }

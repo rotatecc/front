@@ -10,5 +10,5 @@ import { expandStyles } from '../../utils'
 export default styled('a', {
   ...expandStyles('c/~brandPrimary', 'pointer'),
 
-  ':hover': expandStyles('c/~brandPrimaryDark'),
+  ':hover': expandStyles('c/~brandPrimary~dark'),
 })

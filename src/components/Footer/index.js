@@ -8,7 +8,7 @@ const Container = styled('div', expandStyles(
   'fullWidth',
   'h/100px',
   'mTop/35px',
-  'bgc/~brandMoody',
+  'bgc/~colorMoody',
   'c/~white',
 ))
 

@@ -28,7 +28,7 @@ const ListItemA = styled('a', {
   transition: 'all 400ms ease',
 
   ':hover': {
-    ...expandStyles('c/~brandPrimaryDark'),
+    ...expandStyles('c/~brandPrimary~dark'),
     transform: 'translateX(5px)',
   },
 })

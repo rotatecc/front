@@ -22,7 +22,7 @@ const linkStyles = {
 
   transition: 'all 200ms cubic-bezier(.25,.1,.25,1)',
 
-  ':hover': expandStyles('c/~brandPrimaryDark'),
+  ':hover': expandStyles('c/~brandPrimary~dark'),
 }
 
 
@@ -34,7 +34,7 @@ const primaryLinkStyles = {
 const slimLinkStyles = {
   ...expandStyles('h/40px', 'p/8px/12px', 'c/~white'),
 
-  ':hover': expandStyles('c/~white', 'bgc/~brandPrimaryDark'),
+  ':hover': expandStyles('c/~white', 'bgc/~brandPrimary~dark'),
 
   ...mediaWidthRange(null, '1400px', expandStyles('p/8px/6px')),
 }

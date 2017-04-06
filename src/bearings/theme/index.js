@@ -2,7 +2,7 @@
  * Theme
  */
 
-import { makeColorVersions } from '../utils/color'
+import { darken } from '../utils/color'
 
 
 const theme = {}
@@ -10,31 +10,41 @@ const theme = {}
 
 // Color palette
 
-const palette = makeColorVersions({
-  // Standard colors
-  black: '#000000',
-  white: '#ffffff',
-  gray: '#e3e3e3',
+const palette = {}
 
-  // Theme colors
-  backgroundColor: '#F6F6F3',
-  textColor: '#232C33',
+palette.black = '#000000'
+palette.white = '#ffffff'
+palette.gray = '#e3e3e3'
 
-  brandPrimary: '#7EB0D3',
-  brandSuccess: '#00A676',
-  brandInfo: '#AFA2FF',
-  brandWarning: '#DB9D47',
-  brandDanger: '#A24936',
-  brandMoody: '#585563',
-  brandDark: '#2B4141',
-})
+palette.colorMoody = '#585563'
+palette.colorDark = '#2B4141'
+
+palette.backgroundColor = '#F6F6F3'
+palette.textColor = '#232C33'
+
+palette.brandPrimary = '#7EB0D3'
+palette.brandSuccess = '#00A676'
+palette.brandInfo = '#AFA2FF'
+palette.brandWarning = '#DB9D47'
+palette.brandDanger = '#A24936'
+
+palette.stateSuccessText = '#3C763D'
+palette.stateSuccessBg = '#DFF0D8'
+palette.stateSuccessBorder = darken(palette.stateSuccessBg, 5)
+
+palette.stateInfoText = '#31708f'
+palette.stateInfoBg = '#d9edf7'
+palette.stateInfoBorder = darken(palette.stateInfoBg, 7)
+
+palette.stateWarningText = '#8a6d3b'
+palette.stateWarningBg = '#fcf8e3'
+palette.stateWarningBorder = darken(palette.stateWarningBg, 5)
+
+palette.stateDangerText = '#a94442'
+palette.stateDangerBg = '#f2dede'
+palette.stateDangerBorder = darken(palette.stateDangerBg, 5)
 
 Object.assign(theme, palette)
-
-// Component colors
-Object.assign(theme, {
-  badgeColor: palette.white,
-})
 
 
 // Distance
@@ -51,9 +61,9 @@ const distance = {
 
 Object.assign(theme, distance)
 
-// Component distances
 Object.assign(theme, {
   // Component: Badge
+  badgeColor: palette.white,
   badgePaddingX: '0.4em',
   badgePaddingY: '0.25em',
   badgeBorderRadius: distance.borderRadiusSm,

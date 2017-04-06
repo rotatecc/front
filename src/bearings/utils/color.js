@@ -19,21 +19,3 @@ export function lighten(colorString, amount = 15) {
 export function darken(colorString, amount = 20) {
   return color(colorString).darken(amount / 100).hsl().string()
 }
-
-
-/**
- * Given a color map, make xDark and xLight versions
- * using standard amounts (35 and 25 respectively)
- * (returns new object; does not mutate)
- */
-export function makeColorVersions(p) {
-  const nu = {}
-
-  Object.keys(p).forEach((k) => {
-    nu[k] = p[k]
-    nu[`${k}Light`] = lighten(p[k])
-    nu[`${k}Dark`] = darken(p[k])
-  })
-
-  return nu
-}

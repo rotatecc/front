@@ -1,10 +1,11 @@
 import React from 'react'
 import { styled } from 'styletron-react'
 
-import { expandStyles, propIsPaletteColor, condSpread } from '../../utils'
+import { expandStyles, condSpread, propIsBrand } from '../../utils'
+import { brandValue } from '../../mixins'
 
 
-const makeBaseStyles = ({ pilled, color }) => ({
+const makeBaseStyles = ({ pilled, brand }) => ({
   ...expandStyles(
     'd/inline-block',
     'lh/1',
@@ -12,8 +13,7 @@ const makeBaseStyles = ({ pilled, color }) => ({
     'nowrap',
     'vAlign/baseline',
     'c/~badgeColor',
-    // TODO
-    // `bgc/~${color}`,
+    `bgc/${brandValue(brand)}`,
     'p/~badgePaddingY/~badgePaddingX',
     'ff/~badgeFontFamily',
     'fs/~badgeFontSize',
@@ -33,17 +33,17 @@ const makeBaseStyles = ({ pilled, color }) => ({
 
 const baseSpan = styled('span', makeBaseStyles)
 
-export default function Badge({ pilled, c: color, children }) {
-  return React.createElement(baseSpan, { pilled, color }, children)
+export default function Badge({ pilled, brand, children }) {
+  return React.createElement(baseSpan, { pilled, brand }, children)
 }
 
 Badge.propTypes = {
   pilled: React.PropTypes.bool,
-  c: propIsPaletteColor,
+  brand: propIsBrand,
   children: React.PropTypes.node.isRequired,
 }
 
 Badge.defaultProps = {
   pilled: false,
-  color: 'primary',
+  brand: 'primary',
 }

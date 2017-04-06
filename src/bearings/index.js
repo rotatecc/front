@@ -67,4 +67,4 @@ export { default as theme } from './theme'
 //
 
 export { default as utils } from './utils'
-export { expandStyles, propIsPaletteColor, condSpread } from './utils'
+export { expandStyles, propIsBrand, propIsState, condSpread } from './utils'

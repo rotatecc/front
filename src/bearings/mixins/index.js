@@ -11,9 +11,18 @@ import { capitalize } from '../utils'
 // Convert values or attribute maps to CSS attribute value strings
 
 
-// Theme value
 export function themeValue(id) {
   return theme[id]
+}
+
+
+export function brandValue(brand) {
+  return themeValue(`brand${capitalize(brand)}`)
+}
+
+
+export function stateValue(state, type) {
+  return themeValue(`state${capitalize(state)}${capitalize(type)}`)
 }
 
 
