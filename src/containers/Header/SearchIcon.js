@@ -7,12 +7,12 @@ import { expandStyles } from '@/bearings'
 const Container = styled('a', {
   ...expandStyles(
     'd/flex',
-    'c/p~black',
+    'c/~black',
     'pointer',
     'fAlign/center',
   ),
 
-  ':hover': expandStyles('c/p~black'),
+  ':hover': expandStyles('c/~black'),
 })
 
 const PrimaryContainer = styled(Container, expandStyles(
@@ -22,12 +22,12 @@ const PrimaryContainer = styled(Container, expandStyles(
 
 const SlimContainer = styled(Container, {
   ...expandStyles(
-    'c/p~white',
+    'c/~white',
     'fs/20px',
     'p/2px/30px/0/18px',
   ),
 
-  ':hover': expandStyles('c/p~white'),
+  ':hover': expandStyles('c/~white'),
 })
 
 const Rotate45 = styled('div', {

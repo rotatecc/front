@@ -8,8 +8,8 @@ const Container = styled('div', expandStyles(
   'fullWidth',
   'h/100px',
   'mTop/35px',
-  'bgc/p~moody',
-  'c/p~white',
+  'bgc/~brandMoody',
+  'c/~white',
 ))
 
 const currentYear = (new Date()).getFullYear()

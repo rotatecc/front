@@ -17,8 +17,8 @@ import { expandStyles } from '@/bearings'
 
 const Container = styled('div', expandStyles(
   'd/flex',
-  'bgc/p~background',
-  'c/p~text',
+  'bgc/~backgroundColor',
+  'c/~textColor',
   'hMin/100vh',
   'fDirection/column',
 ))

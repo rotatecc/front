@@ -19,13 +19,13 @@ const BaseContainer = styled(H1, expandStyles(
 
 const PrimaryContainer = styled(BaseContainer, expandStyles(
   'pBottom/4px',
-  'c/p~black',
+  'c/~black',
   'fs/2.5rem',
 ))
 
 const SlimContainer = styled(BaseContainer, expandStyles(
   'pBottom/4px',
-  'c/p~white',
+  'c/~white',
   'fs/2rem',
 ))
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import { Row, Column, H2, Alert } from '@/bearings'
+import { Row, Column, H2 } from '@/bearings'
 
 import * as progressDuck from '@/ducks/progress'
 import * as authDuck from '@/ducks/auth'
@@ -14,7 +14,6 @@ function Home({ isLoading, isLoggedIn, login, logout, me, roleSlug }) {
   return (
     <Row>
       <Column md={6}>
-        <Alert c="info">this is an alert</Alert>
         <H2>Hello</H2>
         <p>{isLoading ? 'loading' : 'stagnant'}</p>
         <p>{isLoggedIn ? `logged in as ${me.get('email')}` : 'not logged in'}</p>

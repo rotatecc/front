@@ -5,6 +5,9 @@
 import { makeColorVersions } from '../utils/color'
 
 
+const theme = {}
+
+
 // Color palette
 
 const palette = makeColorVersions({
@@ -14,20 +17,23 @@ const palette = makeColorVersions({
   gray: '#e3e3e3',
 
   // Theme colors
-  background: '#F6F6F3',
-  text: '#232C33',
-  primary: '#7EB0D3',
-  success: '#00A676',
-  info: '#AFA2FF',
-  warning: '#DB9D47',
-  danger: '#A24936',
-  moody: '#585563',
-  dark: '#2B4141',
+  backgroundColor: '#F6F6F3',
+  textColor: '#232C33',
+
+  brandPrimary: '#7EB0D3',
+  brandSuccess: '#00A676',
+  brandInfo: '#AFA2FF',
+  brandWarning: '#DB9D47',
+  brandDanger: '#A24936',
+  brandMoody: '#585563',
+  brandDark: '#2B4141',
 })
 
+Object.assign(theme, palette)
+
 // Component colors
-Object.assign(palette, {
-  badge: palette.white,
+Object.assign(theme, {
+  badgeColor: palette.white,
 })
 
 
@@ -43,8 +49,10 @@ const distance = {
   borderRadiusSm: '0.15rem',
 }
 
+Object.assign(theme, distance)
+
 // Component distances
-Object.assign(distance, {
+Object.assign(theme, {
   // Component: Badge
   badgePaddingX: '0.4em',
   badgePaddingY: '0.25em',
@@ -70,26 +78,19 @@ const fontWeightNormal = 300
 const fontWeightBold = 700
 
 const font = {
-  base: {
-    family: fontFamilyProximaNova,
-    size: '16px',
-    weight: fontWeightNormal,
-  },
-  heading: {
-    family: fontFamilyProximaNova,
-  },
-  textField: {
-    family: fontFamilyProximaNova,
-  },
-  badge: {
-    size: '75%',
-    weight: fontWeightBold,
-  },
+  baseFontFamily: fontFamilyProximaNova,
+  baseFontSize: '16px',
+  baseFontWeight: fontWeightNormal,
+
+  headingFontFamily: fontFamilyProximaNova,
+  textFieldFontFamily: fontFamilyProximaNova,
+
+  badgeFontFamily: fontFamilyProximaNova,
+  badgeFontWeight: fontWeightBold,
+  badgeFontSize: '75%',
 }
 
+Object.assign(theme, font)
 
-export default {
-  palette,
-  distance,
-  font,
-}
+
+export default theme

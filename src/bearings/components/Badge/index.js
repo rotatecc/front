@@ -11,12 +11,14 @@ const makeBaseStyles = ({ pilled, color }) => ({
     'align/center',
     'nowrap',
     'vAlign/baseline',
-    `bgc/p~${color}`,
-    'c/p~badge',
-    'p/d~badgePaddingY/d~badgePaddingX',
-    'fs/f~badge~size',
-    'fw/f~badge~weight',
-    'radius/d~badgeBorderRadius', // non-pilled (actually just a subtle pilling)
+    'c/~badgeColor',
+    // TODO
+    // `bgc/~${color}`,
+    'p/~badgePaddingY/~badgePaddingX',
+    'ff/~badgeFontFamily',
+    'fs/~badgeFontSize',
+    'fw/~badgeFontWeight',
+    'radius/~badgeBorderRadius', // non-pilled (actually just a subtle pilling)
   ),
 
   // hide empty badges
@@ -24,8 +26,8 @@ const makeBaseStyles = ({ pilled, color }) => ({
 
   // if pilled, use a greater border radius and paddingX
   ...condSpread(pilled, expandStyles(
-    'radius/d~badgePilledBorderRadius',
-    'p/d~badgePaddingY/d~badgePilledPaddingX',
+    'radius/~badgePilledBorderRadius',
+    'p/~badgePaddingY/~badgePilledPaddingX',
   )),
 })
 

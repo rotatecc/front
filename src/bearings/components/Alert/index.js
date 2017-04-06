@@ -6,14 +6,15 @@ import { expandStyles, propIsPaletteColor } from '../../utils'
 
 const makeBaseStyles = ({ color }) => ({
   ...expandStyles(
-    'p/d~alertPaddingY/d~alertPaddingX',
-    'mBottom/d~alertMarginBottom',
-    `bgc/p~${color}Light`,
-    `bordC/p~${color}Dark`,
+    'p/~alertPaddingY/~alertPaddingX',
+    'mBottom/~alertMarginBottom',
+    // TODO
+    // `c/~${color}`,
+    // `bgc/~${color}Light`,
+    // `bordC/~${color}Dark`,
     'bordS/solid',
-    'bordW/d~alertBorderWidth',
-    'radius/d~alertBorderRadius',
-    `c/p~${color}`,
+    'bordW/~alertBorderWidth',
+    'radius/~alertBorderRadius',
   ),
 })
 

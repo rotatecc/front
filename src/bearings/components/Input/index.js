@@ -7,6 +7,6 @@ export default styled('input', expandStyles(
   'noOutline',
   'bordS/solid',
   'bordW/1px',
-  'bordC/p~gray',
-  'ff/f~textField~family',
+  'bordC/~gray',
+  'ff/~textFieldFontFamily',
 ))

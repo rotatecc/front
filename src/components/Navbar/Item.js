@@ -14,7 +14,7 @@ const linkStyles = {
     'h/60px',
     'p/19px/12px',
     'fs/0.9rem',
-    'c/p~primary',
+    'c/~brandPrimary',
     'pointer',
     'decor/none',
     'ls/1px',
@@ -22,7 +22,7 @@ const linkStyles = {
 
   transition: 'all 200ms cubic-bezier(.25,.1,.25,1)',
 
-  ':hover': expandStyles('c/p~primaryDark'),
+  ':hover': expandStyles('c/~brandPrimaryDark'),
 }
 
 
@@ -32,9 +32,9 @@ const primaryLinkStyles = {
 
 
 const slimLinkStyles = {
-  ...expandStyles('h/40px', 'p/8px/12px', 'c/p~white'),
+  ...expandStyles('h/40px', 'p/8px/12px', 'c/~white'),
 
-  ':hover': expandStyles('c/p~white', 'bgc/p~primaryDark'),
+  ':hover': expandStyles('c/~white', 'bgc/~brandPrimaryDark'),
 
   ...mediaWidthRange(null, '1400px', expandStyles('p/8px/6px')),
 }

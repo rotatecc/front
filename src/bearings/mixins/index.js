@@ -11,21 +11,9 @@ import { capitalize } from '../utils'
 // Convert values or attribute maps to CSS attribute value strings
 
 
-// Theme-value: palette
-export function themePaletteValue(color) {
-  return theme.palette[color]
-}
-
-
-// Theme-value: font (defaults to base type, with specified attr)
-export function themeFontValue(type, attr = 'family') {
-  return theme.font[type][attr] || theme.font.base[attr]
-}
-
-
-// Theme-value: distance
-export function themeDistanceValue(distance) {
-  return theme.distance[distance]
+// Theme value
+export function themeValue(id) {
+  return theme[id]
 }
 
 

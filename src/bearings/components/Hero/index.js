@@ -19,8 +19,8 @@ const height = '350px'
 const Wrapper = styled('div', expandStyles(
   'fullWidth',
   `h/${height}`,
-  'bgc/p~black',
-  'c/p~white',
+  'bgc/~black',
+  'c/~white',
 ))
 
 const PageWidth = styled('div', {
