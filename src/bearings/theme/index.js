@@ -10,74 +10,37 @@ const theme = {}
 
 // Color palette
 
-const palette = {}
+theme.black = '#000000'
+theme.white = '#ffffff'
+theme.gray = '#e3e3e3'
 
-palette.black = '#000000'
-palette.white = '#ffffff'
-palette.gray = '#e3e3e3'
+theme.colorMoody = '#585563'
+theme.colorDark = '#2B4141'
 
-palette.colorMoody = '#585563'
-palette.colorDark = '#2B4141'
+theme.backgroundColor = '#F6F6F3'
+theme.textColor = '#232C33'
 
-palette.backgroundColor = '#F6F6F3'
-palette.textColor = '#232C33'
+theme.brandPrimary = '#7EB0D3'
+theme.brandSuccess = '#00A676'
+theme.brandInfo = '#AFA2FF'
+theme.brandWarning = '#DB9D47'
+theme.brandDanger = '#A24936'
 
-palette.brandPrimary = '#7EB0D3'
-palette.brandSuccess = '#00A676'
-palette.brandInfo = '#AFA2FF'
-palette.brandWarning = '#DB9D47'
-palette.brandDanger = '#A24936'
+theme.stateSuccessText = '#3C763D'
+theme.stateSuccessBg = '#DFF0D8'
+theme.stateSuccessBorder = darken(theme.stateSuccessBg, 5)
 
-palette.stateSuccessText = '#3C763D'
-palette.stateSuccessBg = '#DFF0D8'
-palette.stateSuccessBorder = darken(palette.stateSuccessBg, 5)
+theme.stateInfoText = '#31708f'
+theme.stateInfoBg = '#d9edf7'
+theme.stateInfoBorder = darken(theme.stateInfoBg, 7)
 
-palette.stateInfoText = '#31708f'
-palette.stateInfoBg = '#d9edf7'
-palette.stateInfoBorder = darken(palette.stateInfoBg, 7)
+theme.stateWarningText = '#8a6d3b'
+theme.stateWarningBg = '#fcf8e3'
+theme.stateWarningBorder = darken(theme.stateWarningBg, 5)
 
-palette.stateWarningText = '#8a6d3b'
-palette.stateWarningBg = '#fcf8e3'
-palette.stateWarningBorder = darken(palette.stateWarningBg, 5)
-
-palette.stateDangerText = '#a94442'
-palette.stateDangerBg = '#f2dede'
-palette.stateDangerBorder = darken(palette.stateDangerBg, 5)
-
-Object.assign(theme, palette)
-
-
-// Distance
-
-const distance = {
-  // Border width
-  borderWidth: '1px',
-
-  // Border radius
-  borderRadius: '0.25rem',
-  borderRadiusLg: '0.3rem',
-  borderRadiusSm: '0.15rem',
-}
-
-Object.assign(theme, distance)
-
-Object.assign(theme, {
-  // Component: Badge
-  badgeColor: palette.white,
-  badgePaddingX: '0.4em',
-  badgePaddingY: '0.25em',
-  badgeBorderRadius: distance.borderRadiusSm,
-  // ensure completely rounded edges regardless of font-size
-  badgePilledBorderRadius: '10rem',
-  badgePilledPaddingX: '0.6em',
-
-  // Component: Alert
-  alertBorderWidth: distance.borderWidth,
-  alertBorderRadius: distance.borderRadius,
-  alertPaddingX: '1.25rem',
-  alertPaddingY: '0.75rem',
-  alertMarginBottom: '1rem',
-})
+theme.stateDangerText = '#a94442'
+theme.stateDangerBg = '#f2dede'
+theme.stateDangerBorder = darken(theme.stateDangerBg, 5)
 
 
 // Font
@@ -87,20 +50,45 @@ const fontFamilyProximaNova = '\'proxima-nova\', \'Helvetica Neue\', Helvetica, 
 const fontWeightNormal = 300
 const fontWeightBold = 700
 
-const font = {
-  baseFontFamily: fontFamilyProximaNova,
-  baseFontSize: '16px',
-  baseFontWeight: fontWeightNormal,
+theme.baseFontFamily = fontFamilyProximaNova
+theme.baseFontSize = '16px'
+theme.baseFontWeight = fontWeightNormal
 
-  headingFontFamily: fontFamilyProximaNova,
-  textFieldFontFamily: fontFamilyProximaNova,
+theme.headingFontFamily = fontFamilyProximaNova
+theme.textFieldFontFamily = fontFamilyProximaNova
 
-  badgeFontFamily: fontFamilyProximaNova,
-  badgeFontWeight: fontWeightBold,
-  badgeFontSize: '75%',
-}
+theme.badgeFontFamily = fontFamilyProximaNova
+theme.badgeFontWeight = fontWeightBold
+theme.badgeFontSize = '75%'
 
-Object.assign(theme, font)
+
+// Border
+
+theme.borderWidth = '1px'
+
+theme.borderRadius = '0.25rem'
+theme.borderRadiusLg = '0.3rem'
+theme.borderRadiusSm = '0.15rem'
+
+
+// Component: Badge
+
+theme.badgeColor = theme.white
+theme.badgePaddingX = '0.4em'
+theme.badgePaddingY = '0.25em'
+theme.badgeBorderRadius = theme.borderRadiusSm
+// ensure completely rounded edges regardless of font-size
+theme.badgePilledBorderRadius = '10rem'
+theme.badgePilledPaddingX = '0.6em'
+
+
+// Component: Alert
+
+theme.alertBorderWidth = theme.borderWidth
+theme.alertBorderRadius = theme.borderRadius
+theme.alertPaddingX = '1.25rem'
+theme.alertPaddingY = '0.75rem'
+theme.alertMarginBottom = '1rem'
 
 
 export default theme

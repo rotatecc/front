@@ -7,7 +7,7 @@ import React from 'react'
 
 import * as mixins from '../mixins'
 
-import { darken } from './color'
+import { darken, lighten } from './color'
 
 
 // Re-export color utils
@@ -41,6 +41,11 @@ export const themeValueModifiers = {
   dark15: (color) => darken(color, 15),
   dark20: (color) => darken(color, 20),
   dark25: (color) => darken(color, 25),
+  light: (color) => lighten(color, 15),
+  light5: (color) => lighten(color, 5),
+  light15: (color) => lighten(color, 15),
+  light20: (color) => lighten(color, 20),
+  light25: (color) => lighten(color, 25),
 }
 
 
