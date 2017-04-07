@@ -17,21 +17,21 @@ export * from './color'
 export const validBrands = ['primary', 'success', 'info', 'warning', 'danger']
 
 
-export const validStates = ['success', 'info', 'warning', 'danger']
+export const validFeedbacks = ['success', 'info', 'warning', 'danger']
 
 
 /**
- * React PropType for valid brand (color)
+ * React PropType for valid brand
  * (no isRequired)
  */
 export const propIsBrand = React.PropTypes.oneOf(validBrands)
 
 
 /**
- * React PropType for valid state (context/color)
+ * React PropType for valid feedback
  * (no isRequired)
  */
-export const propIsState = React.PropTypes.oneOf(validStates)
+export const propIsFeedback = React.PropTypes.oneOf(validFeedbacks)
 
 
 export const themeValueModifiers = {

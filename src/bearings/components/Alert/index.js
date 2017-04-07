@@ -1,17 +1,17 @@
 import React from 'react'
 import { styled } from 'styletron-react'
 
-import { expandStyles, propIsState } from '../../utils'
-import { stateValue } from '../../mixins'
+import { expandStyles, propIsFeedback } from '../../utils'
+import { feedbackValue } from '../../mixins'
 
 
-const makeBaseStyles = ({ state }) => ({
+const makeBaseStyles = ({ feedback }) => ({
   ...expandStyles(
     'p/~alertPaddingY/~alertPaddingX',
     'mBottom/~alertMarginBottom',
-    `c/${stateValue(state, 'text')}`,
-    `bgc/${stateValue(state, 'bg')}`,
-    `bordC/${stateValue(state, 'border')}`,
+    `c/${feedbackValue(feedback, 'text')}`,
+    `bgc/${feedbackValue(feedback, 'bg')}`,
+    `bordC/${feedbackValue(feedback, 'border')}`,
     'bordS/solid',
     'bordW/~alertBorderWidth',
     'radius/~alertBorderRadius',
@@ -20,15 +20,15 @@ const makeBaseStyles = ({ state }) => ({
 
 const baseDiv = styled('div', makeBaseStyles)
 
-export default function Alert({ state, children }) {
-  return React.createElement(baseDiv, { state }, children)
+export default function Alert({ feedback, children }) {
+  return React.createElement(baseDiv, { feedback }, children)
 }
 
 Alert.propTypes = {
-  state: propIsState,
+  feedback: propIsFeedback,
   children: React.PropTypes.node.isRequired,
 }
 
 Alert.defaultProps = {
-  state: 'success',
+  brand: 'success',
 }

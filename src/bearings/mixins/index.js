@@ -21,8 +21,8 @@ export function brandValue(brand) {
 }
 
 
-export function stateValue(state, type) {
-  return themeValue(`state${capitalize(state)}${capitalize(type)}`)
+export function feedbackValue(feedback, type) {
+  return themeValue(`feedback${capitalize(feedback)}${capitalize(type)}`)
 }
 
 

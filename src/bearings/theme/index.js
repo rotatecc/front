@@ -26,21 +26,21 @@ theme.brandInfo = '#AFA2FF'
 theme.brandWarning = '#DB9D47'
 theme.brandDanger = '#A24936'
 
-theme.stateSuccessText = '#3C763D'
-theme.stateSuccessBg = '#DFF0D8'
-theme.stateSuccessBorder = darken(theme.stateSuccessBg, 5)
+theme.feedbackSuccessText = '#3C763D'
+theme.feedbackSuccessBg = '#DFF0D8'
+theme.feedbackSuccessBorder = darken(theme.feedbackSuccessBg, 5)
 
-theme.stateInfoText = '#31708f'
-theme.stateInfoBg = '#d9edf7'
-theme.stateInfoBorder = darken(theme.stateInfoBg, 7)
+theme.feedbackInfoText = '#31708f'
+theme.feedbackInfoBg = '#d9edf7'
+theme.feedbackInfoBorder = darken(theme.feedbackInfoBg, 7)
 
-theme.stateWarningText = '#8a6d3b'
-theme.stateWarningBg = '#fcf8e3'
-theme.stateWarningBorder = darken(theme.stateWarningBg, 5)
+theme.feedbackWarningText = '#8a6d3b'
+theme.feedbackWarningBg = '#fcf8e3'
+theme.feedbackWarningBorder = darken(theme.feedbackWarningBg, 5)
 
-theme.stateDangerText = '#a94442'
-theme.stateDangerBg = '#f2dede'
-theme.stateDangerBorder = darken(theme.stateDangerBg, 5)
+theme.feedbackDangerText = '#a94442'
+theme.feedbackDangerBg = '#f2dede'
+theme.feedbackDangerBorder = darken(theme.feedbackDangerBg, 5)
 
 
 // Font
