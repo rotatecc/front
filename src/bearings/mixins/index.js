@@ -482,6 +482,11 @@ export function textAlign(x) {
 }
 
 
+export function textShadow(x) {
+  return { textShadow: x }
+}
+
+
 export function letterSpacing(x) {
   return { letterSpacing: x }
 }
@@ -493,6 +498,11 @@ export function lineHeight(x) {
 
 
 // Misc
+
+
+export function float(x) {
+  return { float: x }
+}
 
 
 export function cursor(x) {

@@ -45,21 +45,16 @@ theme.feedbackDangerBorder = darken(theme.feedbackDangerBg, 5)
 
 // Font
 
-const fontFamilyProximaNova = '\'proxima-nova\', \'Helvetica Neue\', Helvetica, Arial, sans-serif'
+theme.fontWeightNormal = 300
+theme.fontWeightBold = 700
 
-const fontWeightNormal = 300
-const fontWeightBold = 700
+theme.baseFontFamily = '\'proxima-nova\', \'Helvetica Neue\', Helvetica, Arial, sans-serif'
+theme.baseFontSize = '18px'
+theme.baseFontWeight = theme.fontWeightNormal
+theme.baseLineHeight = 1.5
 
-theme.baseFontFamily = fontFamilyProximaNova
-theme.baseFontSize = '16px'
-theme.baseFontWeight = fontWeightNormal
-
-theme.headingFontFamily = fontFamilyProximaNova
-theme.textFieldFontFamily = fontFamilyProximaNova
-
-theme.badgeFontFamily = fontFamilyProximaNova
-theme.badgeFontWeight = fontWeightBold
-theme.badgeFontSize = '75%'
+theme.headingFontFamily = theme.baseFontFamily
+theme.textFieldFontFamily = theme.baseFontFamily
 
 
 // Border
@@ -71,6 +66,15 @@ theme.borderRadiusLg = '0.3rem'
 theme.borderRadiusSm = '0.15rem'
 
 
+// Component: Close
+
+
+theme.closeColor = theme.black
+theme.closeFontSize = '1.5rem'
+theme.closeFontWeight = theme.fontWeightBold
+theme.closeTextShadow = `0 1px 0 ${theme.white}`
+
+
 // Component: Badge
 
 theme.badgeColor = theme.white
@@ -80,6 +84,9 @@ theme.badgeBorderRadius = theme.borderRadiusSm
 // ensure completely rounded edges regardless of font-size
 theme.badgePilledBorderRadius = '10rem'
 theme.badgePilledPaddingX = '0.6em'
+theme.badgeFontFamily = theme.baseFontFamily
+theme.badgeFontWeight = theme.fontWeightBold
+theme.badgeFontSize = '75%'
 
 
 // Component: Alert
@@ -89,6 +96,7 @@ theme.alertBorderRadius = theme.borderRadius
 theme.alertPaddingX = '1.25rem'
 theme.alertPaddingY = '0.75rem'
 theme.alertMarginBottom = '1rem'
+theme.alertLineHeight = theme.baseLineHeight
 
 
 export default theme

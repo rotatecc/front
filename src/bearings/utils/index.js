@@ -46,6 +46,9 @@ export const themeValueModifiers = {
   light15: (color) => lighten(color, 15),
   light20: (color) => lighten(color, 20),
   light25: (color) => lighten(color, 25),
+
+  // Length
+  negate: (value) => `-${value}`,
 }
 
 
@@ -139,7 +142,7 @@ export const shorthandPropertiesValued = {
   // font
   ff: wrapMixinWithThemeValues(mixins.fontFamily),
   fs: wrapMixinWithThemeValues(mixins.fontSize),
-  fw: mixins.fontWeight,
+  fw: wrapMixinWithThemeValues(mixins.fontWeight),
 
   // coloring
   bgc: wrapMixinWithThemeValues(mixins.backgroundColor),
@@ -149,10 +152,10 @@ export const shorthandPropertiesValued = {
   d: mixins.display,
 
   // relative position
-  t: mixins.top,
-  r: mixins.right,
-  b: mixins.bottom,
-  l: mixins.left,
+  t: wrapMixinWithThemeValues(mixins.top),
+  r: wrapMixinWithThemeValues(mixins.right),
+  b: wrapMixinWithThemeValues(mixins.bottom),
+  l: wrapMixinWithThemeValues(mixins.left),
 
   // margin, padding
   m: wrapMixinWithThemeValues(mixins.margin),
@@ -192,10 +195,12 @@ export const shorthandPropertiesValued = {
   // text (non-font)
   decor: mixins.textDecoration,
   align: mixins.textAlign,
+  tShadow: wrapMixinWithThemeValues(mixins.textShadow),
   ls: mixins.letterSpacing,
-  lh: mixins.lineHeight,
+  lh: wrapMixinWithThemeValues(mixins.lineHeight),
 
   // misc
+  float: mixins.float,
   cursor: mixins.cursor,
   vAlign: mixins.verticalAlign,
 }
