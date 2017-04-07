@@ -94,11 +94,6 @@ export function expandThemeValue(s) {
 }
 
 
-export function wrapMixinWithThemeValues(mixin) {
-  return (...args) => mixin(...args.map(expandThemeValue))
-}
-
-
 /**
  * Shorthand properties (static)
  *
@@ -140,34 +135,34 @@ export const shorthandPropertiesValued = {
   wMin: mixins.minWidth,
 
   // font
-  ff: wrapMixinWithThemeValues(mixins.fontFamily),
-  fs: wrapMixinWithThemeValues(mixins.fontSize),
-  fw: wrapMixinWithThemeValues(mixins.fontWeight),
+  ff: mixins.fontFamily,
+  fs: mixins.fontSize,
+  fw: mixins.fontWeight,
 
   // coloring
-  bgc: wrapMixinWithThemeValues(mixins.backgroundColor),
-  c: wrapMixinWithThemeValues(mixins.color),
+  bgc: mixins.backgroundColor,
+  c: mixins.color,
 
   // display
   d: mixins.display,
 
   // relative position
-  t: wrapMixinWithThemeValues(mixins.top),
-  r: wrapMixinWithThemeValues(mixins.right),
-  b: wrapMixinWithThemeValues(mixins.bottom),
-  l: wrapMixinWithThemeValues(mixins.left),
+  t: mixins.top,
+  r: mixins.right,
+  b: mixins.bottom,
+  l: mixins.left,
 
   // margin, padding
-  m: wrapMixinWithThemeValues(mixins.margin),
-  mTop: wrapMixinWithThemeValues(mixins.marginTop),
-  mRight: wrapMixinWithThemeValues(mixins.marginRight),
-  mBottom: wrapMixinWithThemeValues(mixins.marginBottom),
-  mLeft: wrapMixinWithThemeValues(mixins.marginLeft),
-  p: wrapMixinWithThemeValues(mixins.padding),
-  pTop: wrapMixinWithThemeValues(mixins.paddingTop),
-  pRight: wrapMixinWithThemeValues(mixins.paddingRight),
-  pBottom: wrapMixinWithThemeValues(mixins.paddingBottom),
-  pLeft: wrapMixinWithThemeValues(mixins.paddingLeft),
+  m: mixins.margin,
+  mTop: mixins.marginTop,
+  mRight: mixins.marginRight,
+  mBottom: mixins.marginBottom,
+  mLeft: mixins.marginLeft,
+  p: mixins.padding,
+  pTop: mixins.paddingTop,
+  pRight: mixins.paddingRight,
+  pBottom: mixins.paddingBottom,
+  pLeft: mixins.paddingLeft,
 
   // visibility
   o: mixins.opacity,
@@ -175,11 +170,11 @@ export const shorthandPropertiesValued = {
 
   // border
   bordS: mixins.borderStyle,
-  bordW: wrapMixinWithThemeValues(mixins.borderWidth),
-  bordC: wrapMixinWithThemeValues(mixins.borderColor),
+  bordW: mixins.borderWidth,
+  bordC: mixins.borderColor,
 
   // border-radius
-  radius: wrapMixinWithThemeValues(mixins.borderRadius),
+  radius: mixins.borderRadius,
 
   // flex
   fJustify: mixins.justifyContent,
@@ -195,9 +190,9 @@ export const shorthandPropertiesValued = {
   // text (non-font)
   decor: mixins.textDecoration,
   align: mixins.textAlign,
-  tShadow: wrapMixinWithThemeValues(mixins.textShadow),
+  tShadow: mixins.textShadow,
   ls: mixins.letterSpacing,
-  lh: wrapMixinWithThemeValues(mixins.lineHeight),
+  lh: mixins.lineHeight,
 
   // misc
   float: mixins.float,
@@ -237,7 +232,9 @@ export function expandStyles(...args) {
         return {}
       }
 
-      const result = propFn(...attrArgs)
+      // Expand args containing theme values,
+      // then spread into prop fn
+      const result = propFn(...attrArgs.map(expandThemeValue))
 
       // cache it
       shorthandPropertiesValuedCached[arg] = result
