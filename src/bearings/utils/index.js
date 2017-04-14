@@ -20,6 +20,9 @@ export const validSizes = ['normal', 'small', 'large']
 export const validBrands = ['primary', 'success', 'info', 'warning', 'danger']
 
 
+export const validButtonBrands = ['link', 'secondary', ...validBrands]
+
+
 export const validFeedbacks = ['success', 'info', 'warning', 'danger']
 
 
@@ -35,6 +38,13 @@ export const propIsSize = React.PropTypes.oneOf(validSizes)
  * (no isRequired)
  */
 export const propIsBrand = React.PropTypes.oneOf(validBrands)
+
+
+/**
+ * React PropType for valid button brand
+ * (no isRequired)
+ */
+export const propIsButtonBrand = React.PropTypes.oneOf(validButtonBrands)
 
 
 /**

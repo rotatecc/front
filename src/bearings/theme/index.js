@@ -10,9 +10,16 @@ const theme = {}
 
 // Color palette
 
+// Basic
 theme.black = '#000000'
 theme.white = '#ffffff'
-theme.gray = '#e3e3e3'
+
+// Grayscale
+theme.grayDark = '#292b2c'
+theme.gray = '#464a4c'
+theme.grayLight = '#636c72'
+theme.grayLighter = '#eceeef'
+theme.grayLightest = '#f7f7f9'
 
 theme.colorMoody = '#585563'
 theme.colorDark = '#2B4141'
@@ -20,6 +27,7 @@ theme.colorDark = '#2B4141'
 theme.backgroundColor = '#F6F6F3'
 theme.textColor = '#232C33'
 
+// Brand
 theme.brandPrimary = '#7EB0D3'
 theme.brandSuccess = '#00A676'
 theme.brandInfo = '#AFA2FF'
@@ -105,18 +113,15 @@ theme.buttonInputPaddingXLg = '1rem'
 theme.buttonInputPaddingYLg = '0.5rem'
 theme.buttonInputLineHeightLg = '1.5'
 
+theme.buttonSecondaryColor = theme.grayDark
+theme.buttonSecondaryBg = theme.white
+theme.buttonSecondaryBorder = theme.grayLighter
+theme.buttonSecondaryFocusBoxShadow = `0 0 0 2px ${fade(theme.buttonSecondaryBorder, 50)}`
+
 theme.buttonPrimaryColor = theme.white
 theme.buttonPrimaryBg = theme.brandPrimary
 theme.buttonPrimaryBorder = theme.buttonPrimaryBg
 theme.buttonPrimaryFocusBoxShadow = `0 0 0 2px ${fade(theme.buttonPrimaryBorder, 50)}`
-
-// TODO Secondary
-// theme.buttonPrimaryColor = theme.white
-// theme.buttonPrimaryBg = theme.brandPrimary
-// theme.buttonPrimaryBorder = theme.buttonPrimaryBg
-  // $btn-secondary-color:            $gray-dark !default;
-  // $btn-secondary-bg:               $white !default;
-  // $btn-secondary-border:           #ccc !default;
 
 theme.buttonInfoColor = theme.white
 theme.buttonInfoBg = theme.brandInfo

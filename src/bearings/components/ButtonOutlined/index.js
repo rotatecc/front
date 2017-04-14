@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from '../Button'
 
-import { propIsSize, propIsBrand } from '../../utils'
+import { propIsSize, propIsButtonBrand } from '../../utils'
 
 
 function ButtonOutlined(props) {
@@ -11,7 +11,7 @@ function ButtonOutlined(props) {
 
 Button.propTypes = {
   size: propIsSize,
-  brand: propIsBrand,
+  brand: propIsButtonBrand,
   focus: React.PropTypes.bool,
   active: React.PropTypes.bool,
   disabled: React.PropTypes.bool,

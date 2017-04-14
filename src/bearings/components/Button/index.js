@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from 'styletron-react'
 
-import { expandStyles, propIsSize, propIsBrand, capitalize } from '../../utils'
+import { expandStyles, propIsSize, propIsButtonBrand, capitalize } from '../../utils'
 
 
 function buttonSizeWithThemeValues(paddingY, paddingX, fontSize, lineHeight, borderRadius) {
@@ -156,7 +156,7 @@ const Button = styled('button', ({ size, brand, outline, focus, active, disabled
 
 Button.propTypes = {
   size: propIsSize,
-  brand: propIsBrand,
+  brand: propIsButtonBrand,
   outline: React.PropTypes.bool,
   focus: React.PropTypes.bool,
   active: React.PropTypes.bool,
