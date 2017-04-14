@@ -131,35 +131,6 @@ function buttonBrandOutlined(brand, { focus, active, disabled }) {
   }
 }
 
-//   border-color: transparent;
-//   background-color: transparent;
-//   @include box-shadow(none);
-
-// active
-//   border-color: transparent;
-//   background-color: transparent;
-//   @include box-shadow(none);
-
-// focus
-//   border-color: transparent;
-//   background-color: transparent;
-//   color: $link-hover-color;
-//   text-decoration: $link-hover-decoration;
-// outline: 0;
-// box-shadow: $btn-focus-box-shadow;
-
-// hover
-//   border-color: transparent;
-//   background-color: transparent;
-//   color: $link-hover-color;
-//   text-decoration: $link-hover-decoration;
-
-// disabled
-// opacity: .65;
-// @include box-shadow(none);
-// color: $btn-link-disabled-color;
-// text-decoration: none
-
 
 function makeButtonLinkStyles({ focus, active, disabled }) {
   const borderAndBg = expandStyles(
