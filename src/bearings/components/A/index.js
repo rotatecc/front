@@ -7,8 +7,8 @@ import { styled } from 'styletron-react'
 import { expandStyles } from '../../utils'
 
 
-export default styled('a', {
-  ...expandStyles('c/~brandPrimary', 'pointer'),
-
-  ':hover': expandStyles('c/~brandPrimary~dark'),
-})
+export default styled('a', expandStyles(
+  'c/~brandPrimary',
+  'pointer',
+  { ':hover': expandStyles('c/~brandPrimary~dark') },
+))

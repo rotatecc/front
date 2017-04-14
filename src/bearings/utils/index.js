@@ -4,6 +4,7 @@
 
 
 import React from 'react'
+import isPlainObject from 'lodash.isplainobject'
 
 import * as mixins from '../mixins'
 
@@ -234,6 +235,11 @@ export function expandStyles(...args) {
   const styleMaps = args.map((arg) => {
     if (!arg) {
       return {}
+    }
+
+    // If arg is a plain object, just merge it as-is
+    if (isPlainObject(arg)) {
+      return arg
     }
 
     if (typeof arg !== 'string') {
