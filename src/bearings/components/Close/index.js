@@ -6,7 +6,7 @@ import { expandStyles } from '../../utils'
 
 const activeStyles = expandStyles(
   'c/~closeColor',
-  'decor/none',
+  'tDecor/none',
   'o/0.75',
 )
 

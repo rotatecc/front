@@ -24,7 +24,7 @@ const Box = styled('div', {
     'hMax/90vh',
     'w/400px',
     'bgc/rgba(255, 255, 255, 0.95)',
-    'align/center',
+    'tAlign/center',
     'overY/auto',
   ),
 

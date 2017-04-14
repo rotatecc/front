@@ -14,10 +14,20 @@ import { darken, lighten } from './color'
 export * from './color'
 
 
+export const validSizes = ['normal', 'small', 'large']
+
+
 export const validBrands = ['primary', 'success', 'info', 'warning', 'danger']
 
 
 export const validFeedbacks = ['success', 'info', 'warning', 'danger']
+
+
+/**
+ * React PropType for valid size
+ * (no isRequired)
+ */
+export const propIsSize = React.PropTypes.oneOf(validSizes)
 
 
 /**
@@ -38,6 +48,8 @@ export const themeValueModifiers = {
   // Color
   dark: (color) => darken(color, 15),
   dark5: (color) => darken(color, 5),
+  dark10: (color) => darken(color, 10),
+  dark12: (color) => darken(color, 12),
   dark15: (color) => darken(color, 15),
   dark20: (color) => darken(color, 20),
   dark25: (color) => darken(color, 25),
@@ -188,8 +200,8 @@ export const shorthandPropertiesValued = {
   overY: mixins.overflowY,
 
   // text (non-font)
-  decor: mixins.textDecoration,
-  align: mixins.textAlign,
+  tDecor: mixins.textDecoration,
+  tAlign: mixins.textAlign,
   tShadow: mixins.textShadow,
   ls: mixins.letterSpacing,
   lh: mixins.lineHeight,
@@ -198,6 +210,8 @@ export const shorthandPropertiesValued = {
   float: mixins.float,
   cursor: mixins.cursor,
   vAlign: mixins.verticalAlign,
+  bShadow: mixins.boxShadow,
+  trans: mixins.transition,
 }
 
 const shorthandPropertiesValuedCached = {}

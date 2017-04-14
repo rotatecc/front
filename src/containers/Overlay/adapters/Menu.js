@@ -23,7 +23,7 @@ const ListItemLi = styled('li', expandStyles('d/block', 'mBottom/1px'))
 
 
 const ListItemA = styled('a', {
-  ...expandStyles('d/block', 'p/2px/0', 'c/~brandPrimary', 'fs/0.8rem', 'decor/none'),
+  ...expandStyles('d/block', 'p/2px/0', 'c/~brandPrimary', 'fs/0.8rem', 'tDecor/none'),
 
   transition: 'all 400ms ease',
 

@@ -34,7 +34,7 @@ const StyledLink = styled(Link, {
     'pBottom/4px',
     'c/inherit',
     'fs/2.5rem',
-    'decor/none',
+    'tDecor/none',
   ),
 
   ':hover': expandStyles('c/inherit'),

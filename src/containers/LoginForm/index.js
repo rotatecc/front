@@ -41,7 +41,7 @@ const LoginForm = ({ handleSubmit, submitting, error }) =>
     <Field name="email" label="Email" component={renderField} type="text" />
     <Field name="password" label="Password" component={renderField} type="password" />
     <div>
-      <Button type="submit" disabled={submitting}>Log in</Button>
+      <Button type="submit" brand="primary" size="normal" disabled={submitting}>Log in</Button>
       {error}
     </div>
   </form>

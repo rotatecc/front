@@ -16,7 +16,7 @@ const linkStyles = {
     'fs/0.9rem',
     'c/~brandPrimary',
     'pointer',
-    'decor/none',
+    'tDecor/none',
     'ls/1px',
   ),
 

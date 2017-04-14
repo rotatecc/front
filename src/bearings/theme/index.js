@@ -2,7 +2,7 @@
  * Theme
  */
 
-import { darken } from '../utils/color'
+import { darken, fade } from '../utils/color'
 
 
 const theme = {}
@@ -49,9 +49,13 @@ theme.fontWeightNormal = 300
 theme.fontWeightBold = 700
 
 theme.baseFontFamily = '\'proxima-nova\', \'Helvetica Neue\', Helvetica, Arial, sans-serif'
-theme.baseFontSize = '18px'
+theme.baseFontSize = '16px'
 theme.baseFontWeight = theme.fontWeightNormal
 theme.baseLineHeight = 1.5
+
+theme.fontSizeLg = '1.25rem'
+theme.fontSizeSm = '0.875rem'
+theme.fontSizeXs = '0.75rem'
 
 theme.headingFontFamily = theme.baseFontFamily
 theme.textFieldFontFamily = theme.baseFontFamily
@@ -64,6 +68,75 @@ theme.borderWidth = '1px'
 theme.borderRadius = '0.25rem'
 theme.borderRadiusLg = '0.3rem'
 theme.borderRadiusSm = '0.15rem'
+
+
+// Cursor
+
+
+theme.cursorDisabled = 'not-allowed'
+
+
+// Component: Button
+
+
+theme.buttonFontWeight = theme.fontWeightNormal
+theme.buttonBoxShadow = 'inset 0 1px 0 rgba(255,255,255,0.15), 0 1px 1px rgba(0,0,0,.075)'
+theme.buttonFocusBoxShadow = `0 0 0 2px ${fade(theme.brandPrimary, 25)}`
+theme.buttonActiveBoxShadow = 'inset 0 3px 5px rgba(0,0,0,0.125)'
+theme.buttonTransition = 'all .2s ease-in-out'
+
+theme.buttonInputBorderWidth = theme.borderWidth
+
+theme.buttonBorderRadius = theme.borderRadius
+theme.buttonFontSize = theme.baseFontSize
+theme.buttonInputPaddingX = '1rem'
+theme.buttonInputPaddingY = '0.5rem'
+theme.buttonInputLineHeight = '1.25'
+
+theme.buttonBorderRadiusSm = theme.borderRadiusSm
+theme.buttonFontSizeSm = theme.fontSizeSm
+theme.buttonInputPaddingXSm = '0.5rem'
+theme.buttonInputPaddingYSm = '0.25rem'
+theme.buttonInputLineHeightSm = '1.5'
+
+theme.buttonBorderRadiusLg = theme.borderRadiusLg
+theme.buttonFontSizeLg = theme.fontSizeLg
+theme.buttonInputPaddingXLg = '1rem'
+theme.buttonInputPaddingYLg = '0.5rem'
+theme.buttonInputLineHeightLg = '1.5'
+
+theme.buttonPrimaryColor = theme.white
+theme.buttonPrimaryBg = theme.brandPrimary
+theme.buttonPrimaryBorder = theme.buttonPrimaryBg
+theme.buttonPrimaryFocusBoxShadow = `0 0 0 2px ${fade(theme.buttonPrimaryBorder, 50)}`
+
+// TODO Secondary
+// theme.buttonPrimaryColor = theme.white
+// theme.buttonPrimaryBg = theme.brandPrimary
+// theme.buttonPrimaryBorder = theme.buttonPrimaryBg
+  // $btn-secondary-color:            $gray-dark !default;
+  // $btn-secondary-bg:               $white !default;
+  // $btn-secondary-border:           #ccc !default;
+
+theme.buttonInfoColor = theme.white
+theme.buttonInfoBg = theme.brandInfo
+theme.buttonInfoBorder = theme.buttonInfoBg
+theme.buttonInfoFocusBoxShadow = `0 0 0 2px ${fade(theme.buttonInfoBorder, 50)}`
+
+theme.buttonSuccessColor = theme.white
+theme.buttonSuccessBg = theme.brandSuccess
+theme.buttonSuccessBorder = theme.buttonSuccessBg
+theme.buttonSuccessFocusBoxShadow = `0 0 0 2px ${fade(theme.buttonSuccessBorder, 50)}`
+
+theme.buttonWarningColor = theme.white
+theme.buttonWarningBg = theme.brandWarning
+theme.buttonWarningBorder = theme.buttonWarningBg
+theme.buttonWarningFocusBoxShadow = `0 0 0 2px ${fade(theme.buttonWarningBorder, 50)}`
+
+theme.buttonDangerColor = theme.white
+theme.buttonDangerBg = theme.brandDanger
+theme.buttonDangerBorder = theme.buttonDangerBg
+theme.buttonDangerFocusBoxShadow = `0 0 0 2px ${fade(theme.buttonDangerBorder, 50)}`
 
 
 // Component: Close

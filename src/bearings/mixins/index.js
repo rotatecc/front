@@ -515,6 +515,11 @@ export function verticalAlign(x) {
 }
 
 
+export function boxShadow(x) {
+  return { boxShadow: x }
+}
+
+
 // Animations
 
 
@@ -527,6 +532,10 @@ export function verticalAlign(x) {
 
 // Transitions
 
+
+export function transition(x) {
+  return { transition: x }
+}
 
 // TODO
 // Borrow definitions from the Hover.css project?

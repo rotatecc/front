@@ -9,7 +9,7 @@ const makeBaseStyles = ({ pilled, brand }) => ({
   ...expandStyles(
     'd/inline-block',
     'lh/1',
-    'align/center',
+    'tAlign/center',
     'nowrap',
     'vAlign/baseline',
     'c/~badgeColor',
