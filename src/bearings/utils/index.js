@@ -20,7 +20,7 @@ export const validSizes = ['normal', 'small', 'large']
 export const validBrands = ['primary', 'success', 'info', 'warning', 'danger']
 
 
-export const validButtonBrands = ['link', 'secondary', ...validBrands]
+export const validButtonBrands = ['secondary', ...validBrands]
 
 
 export const validFeedbacks = ['success', 'info', 'warning', 'danger']

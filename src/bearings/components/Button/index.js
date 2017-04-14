@@ -131,32 +131,140 @@ function buttonBrandOutlined(brand, { focus, active, disabled }) {
   }
 }
 
+//   border-color: transparent;
+//   background-color: transparent;
+//   @include box-shadow(none);
 
-const Button = styled('button', ({ size, brand, outline, focus, active, disabled }) => ({
-  ...expandStyles(
-    'pointer',
-    'd/inline-block',
-    'fw/~buttonFontWeight',
-    'tAlign/center',
-    'nowrap',
-    'vAlign/middle',
-    'bordW/~buttonInputBorderWidth',
-    'bordS/solid',
+// active
+//   border-color: transparent;
+//   background-color: transparent;
+//   @include box-shadow(none);
+
+// focus
+//   border-color: transparent;
+//   background-color: transparent;
+//   color: $link-hover-color;
+//   text-decoration: $link-hover-decoration;
+// outline: 0;
+// box-shadow: $btn-focus-box-shadow;
+
+// hover
+//   border-color: transparent;
+//   background-color: transparent;
+//   color: $link-hover-color;
+//   text-decoration: $link-hover-decoration;
+
+// disabled
+// opacity: .65;
+// @include box-shadow(none);
+// color: $btn-link-disabled-color;
+// text-decoration: none
+
+
+function makeButtonLinkStyles({ focus, active, disabled }) {
+  const borderAndBg = expandStyles(
     'bordC/transparent',
-    'trans/~buttonTransition',
-  ),
+    'bgc/transparent',
+  )
 
-  ...sizes[size],
+  const baseStyles = {
+    ...borderAndBg,
+    ...expandStyles(
+      'c/~linkColor',
+      'tDecor/~linkDecoration',
+      'bShadow/none',
+    ),
+  }
 
-  ...(outline ? buttonBrandOutlined : buttonBrand)(brand, { focus, active, disabled }),
+  const activeStyles = {
+    ...borderAndBg,
+    ...expandStyles(
+      'bShadow/none',
+    ),
+  }
 
-  userSelect: 'none',
-}))
+  const focusStyles = {
+    ...borderAndBg,
+    ...expandStyles(
+      'noOutline',
+      'c/~linkHoverColor',
+      'tDecor/~linkHoverDecoration',
+      'bShadow/~buttonFocusBoxShadow',
+    ),
+  }
+
+  const hoverStyles = {
+    ...borderAndBg,
+    ...expandStyles(
+      'c/~linkHoverColor',
+      'tDecor/~linkHoverDecoration',
+    ),
+  }
+
+  const disabledStyles = {
+    ...expandStyles(
+      'cursor/~cursorDisabled',
+      'tDecor/~linkDecoration',
+      'o/0.65',
+      'bShadow/none',
+      'c/~buttonLinkDisabledColor',
+    ),
+
+    // TODO FIXME currently these can't be combined
+    // (they are merged into normal :hover and :focus)
+    // ':hover': expandStyles(
+    //   'tDecor/~linkDecoration',
+    //   'c/~buttonLinkDisabledColor',
+    // ),
+    // ':focus': expandStyles(
+    //   'noOutline',
+    //   'tDecor/~linkDecoration',
+    //   'c/~buttonLinkDisabledColor',
+    //   'bShadow/none',
+    // ),
+  }
+
+  return {
+    ...baseStyles,
+    ':hover': hoverStyles,
+    ...(focus ? focusStyles : { ':focus': focusStyles }),
+    ...(active ? activeStyles : { ':active': activeStyles }),
+    ...(disabled ? disabledStyles : { ':disabled': disabledStyles }),
+  }
+}
+
+const Button = styled('button', ({ size, brand, link, outline, focus, active, disabled }) => {
+  const branding = link
+    ? makeButtonLinkStyles({ focus, active, disabled })
+    : (outline ? buttonBrandOutlined : buttonBrand)(brand, { focus, active, disabled })
+
+  return {
+    ...expandStyles(
+      'pointer',
+      'd/inline-block',
+      'fw/~buttonFontWeight',
+      'tAlign/center',
+      'nowrap',
+      'vAlign/middle',
+      'bordW/~buttonInputBorderWidth',
+      'bordS/solid',
+      'bordC/transparent',
+      'trans/~buttonTransition',
+    ),
+
+    ...sizes[size],
+
+    ...branding,
+
+    userSelect: 'none',
+  }
+})
 
 
 Button.propTypes = {
   size: propIsSize,
   brand: propIsButtonBrand,
+  link: React.PropTypes.bool,
   outline: React.PropTypes.bool,
   focus: React.PropTypes.bool,
   active: React.PropTypes.bool,
@@ -167,6 +275,7 @@ Button.propTypes = {
 Button.defaultProps = {
   size: 'normal',
   brand: 'primary',
+  link: false,
   outline: false,
   focus: false,
   active: false,

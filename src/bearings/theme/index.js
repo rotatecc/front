@@ -24,9 +24,6 @@ theme.grayLightest = '#f7f7f9'
 theme.colorMoody = '#585563'
 theme.colorDark = '#2B4141'
 
-theme.backgroundColor = '#F6F6F3'
-theme.textColor = '#232C33'
-
 // Brand
 theme.brandPrimary = '#7EB0D3'
 theme.brandSuccess = '#00A676'
@@ -49,6 +46,10 @@ theme.feedbackWarningBorder = darken(theme.feedbackWarningBg, 5)
 theme.feedbackDangerText = '#a94442'
 theme.feedbackDangerBg = '#f2dede'
 theme.feedbackDangerBorder = darken(theme.feedbackDangerBg, 5)
+
+
+theme.backgroundColor = '#F6F6F3'
+theme.textColor = '#232C33'
 
 
 // Font
@@ -84,6 +85,15 @@ theme.borderRadiusSm = '0.15rem'
 theme.cursorDisabled = 'not-allowed'
 
 
+// Link
+
+
+theme.linkColor = theme.brandPrimary
+theme.linkDecoration = 'none'
+theme.linkHoverColor = darken(theme.brandPrimary, 15)
+theme.linkHoverDecoration = 'underline'
+
+
 // Component: Button
 
 
@@ -94,6 +104,8 @@ theme.buttonActiveBoxShadow = 'inset 0 3px 5px rgba(0,0,0,0.125)'
 theme.buttonTransition = 'all .2s ease-in-out'
 
 theme.buttonInputBorderWidth = theme.borderWidth
+
+theme.buttonLinkDisabledColor = theme.grayLight
 
 theme.buttonBorderRadius = theme.borderRadius
 theme.buttonFontSize = theme.baseFontSize
