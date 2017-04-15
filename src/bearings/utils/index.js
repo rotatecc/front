@@ -198,6 +198,7 @@ export const shorthandPropertiesValued = {
 
   // border-radius
   radius: mixins.borderRadius,
+  '!radius': mixins.borderRadiusIfEnabled,
 
   // flex
   fJustify: mixins.justifyContent,
@@ -214,6 +215,7 @@ export const shorthandPropertiesValued = {
   tDecor: mixins.textDecoration,
   tAlign: mixins.textAlign,
   tShadow: mixins.textShadow,
+  '!tShadow': mixins.textShadowIfEnabled,
   ls: mixins.letterSpacing,
   lh: mixins.lineHeight,
 
@@ -222,6 +224,7 @@ export const shorthandPropertiesValued = {
   cursor: mixins.cursor,
   vAlign: mixins.verticalAlign,
   bShadow: mixins.boxShadow,
+  '!bShadow': mixins.boxShadowIfEnabled,
   trans: mixins.transition,
 }
 

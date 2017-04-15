@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-import { Button, Label, Input } from '@/bearings'
+import { Button, Label, TextField } from '@/bearings'
 
 import validate from './validate'
 
@@ -9,9 +9,7 @@ import validate from './validate'
 const formName = 'login'
 
 
-// Field renderer
-
-const renderField = ({ input, label, type, meta }) => {
+const LoginFormField = ({ input, label, type, meta }) => {
   const { asyncValidating, touched, error } = meta
   const id = `redux-form-${formName}-${input.name}`
 
@@ -19,14 +17,14 @@ const renderField = ({ input, label, type, meta }) => {
     <div>
       <Label htmlFor={id}>{label}</Label>
       <div className={asyncValidating ? 'async-validating' : ''}>
-        <Input {...input} id={id} type={type} />
+        <TextField {...input} id={id} type={type} />
         {touched && error && <span>{error}</span>}
       </div>
     </div>
   )
 }
 
-renderField.propTypes = {
+LoginFormField.propTypes = {
   input: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
@@ -38,8 +36,8 @@ renderField.propTypes = {
 
 const LoginForm = ({ handleSubmit, submitting, error }) =>
   <form onSubmit={handleSubmit}>
-    <Field name="email" label="Email" component={renderField} type="text" />
-    <Field name="password" label="Password" component={renderField} type="password" />
+    <Field name="email" label="Email" component={LoginFormField} type="text" />
+    <Field name="password" label="Password" component={LoginFormField} type="password" />
     <div>
       <Button type="submit" brand="primary" size="normal" disabled={submitting}>Log in</Button>
       {error}

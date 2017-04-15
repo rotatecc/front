@@ -18,7 +18,7 @@ const makeBaseStyles = ({ pilled, brand }) => ({
     'ff/~badgeFontFamily',
     'fs/~badgeFontSize',
     'fw/~badgeFontWeight',
-    'radius/~badgeBorderRadius', // non-pilled (actually just a subtle pilling)
+    '!radius/~badgeBorderRadius', // non-pilled (actually just a subtle pilling)
   ),
 
   // hide empty badges
@@ -26,7 +26,7 @@ const makeBaseStyles = ({ pilled, brand }) => ({
 
   // if pilled, use a greater border radius and paddingX
   ...condSpread(pilled, expandStyles(
-    'radius/~badgePilledBorderRadius',
+    '!radius/~badgePilledBorderRadius',
     'p/~badgePaddingY/~badgePilledPaddingX',
   )),
 })

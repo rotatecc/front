@@ -1,9 +1,6 @@
 /**
  * bearings
  * The internal UI library for rotate
- *
- * NOTE
- * Will be ported out in the future
  */
 
 
@@ -28,13 +25,13 @@ export { default as H5 } from './components/H5'
 export { default as H6 } from './components/H6'
 export { default as Hero } from './components/Hero'
 export { default as Image } from './components/Image'
-export { default as Input } from './components/Input'
 export { default as Label } from './components/Label'
 export { default as List } from './components/List'
 export { default as ListItem } from './components/ListItem'
 export { default as Row } from './components/Row'
 export { default as Select } from './components/Select'
 export { default as Textarea } from './components/Textarea'
+export { default as TextField } from './components/TextField'
 
 // Interative
 // TODO

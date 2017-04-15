@@ -2,10 +2,18 @@
  * Theme
  */
 
-import { darken, fade } from '../utils/color'
+import { lighten, darken, fade } from '../utils/color'
 
 
 const theme = {}
+
+
+// Enablers
+
+
+theme.enableRounded = true
+theme.enableShadows = false
+// TODO more (gradients, transitions, etc)
 
 
 // Color palette
@@ -94,36 +102,58 @@ theme.linkHoverColor = darken(theme.brandPrimary, 15)
 theme.linkHoverDecoration = 'underline'
 
 
+// Base form field styles
+
+
+// Padding and line height
+theme.inputPaddingX = '1rem'
+theme.inputPaddingY = '0.5rem'
+theme.inputLineHeight = '1.25'
+theme.inputSmPaddingX = '0.5rem'
+theme.inputSmPaddingY = '0.25rem'
+theme.inputSmLineHeight = '1.5'
+theme.inputLgPaddingX = '1rem'
+theme.inputLgPaddingY = '0.5rem'
+theme.inputLgLineHeight = '1.5'
+
+theme.inputBgc = theme.white
+theme.inputBgcFocus = theme.inputBgc
+theme.inputBgcDisabled = theme.grayLighter
+
+theme.inputColor = theme.gray
+theme.inputColorFocus = theme.inputColor
+
+theme.inputBorderWidth = theme.borderWidth
+theme.inputBorderColor = fade(theme.black, 85)
+theme.inputBorderColorFocus = lighten(theme.brandPrimary, 25)
+
+theme.inputBorderRadius = theme.borderRadius
+theme.inputSmBorderRadius = theme.borderRadiusSm
+theme.inputLgBorderRadius = theme.borderRadiusLg
+
+theme.inputBoxShadow = `inset 0 1px 1px ${fade(theme.black, 92.5)}`
+theme.inputBoxShadowFocus = `inset 0 1px 1px ${fade(theme.inputBorderColorFocus, 40)}`
+
+
 // Component: Button
 
 
 theme.buttonFontWeight = theme.fontWeightNormal
 theme.buttonBoxShadow = 'inset 0 1px 0 rgba(255,255,255,0.15), 0 1px 1px rgba(0,0,0,.075)'
-theme.buttonFocusBoxShadow = `0 0 0 2px ${fade(theme.brandPrimary, 25)}`
+theme.buttonFocusBoxShadow = `0 0 0 2px ${fade(theme.brandPrimary, 75)}`
 theme.buttonActiveBoxShadow = 'inset 0 3px 5px rgba(0,0,0,0.125)'
 theme.buttonTransition = 'all .2s ease-in-out'
-
-theme.buttonInputBorderWidth = theme.borderWidth
 
 theme.buttonLinkDisabledColor = theme.grayLight
 
 theme.buttonBorderRadius = theme.borderRadius
 theme.buttonFontSize = theme.baseFontSize
-theme.buttonInputPaddingX = '1rem'
-theme.buttonInputPaddingY = '0.5rem'
-theme.buttonInputLineHeight = '1.25'
 
 theme.buttonBorderRadiusSm = theme.borderRadiusSm
 theme.buttonFontSizeSm = theme.fontSizeSm
-theme.buttonInputPaddingXSm = '0.5rem'
-theme.buttonInputPaddingYSm = '0.25rem'
-theme.buttonInputLineHeightSm = '1.5'
 
 theme.buttonBorderRadiusLg = theme.borderRadiusLg
 theme.buttonFontSizeLg = theme.fontSizeLg
-theme.buttonInputPaddingXLg = '1rem'
-theme.buttonInputPaddingYLg = '0.5rem'
-theme.buttonInputLineHeightLg = '1.5'
 
 theme.buttonSecondaryColor = theme.grayDark
 theme.buttonSecondaryBg = theme.white

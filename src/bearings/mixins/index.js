@@ -7,6 +7,31 @@ import theme from '../theme'
 import { capitalize } from '../utils'
 
 
+// Mini-utils
+
+
+/**
+ * Create a new empty object
+ * @return {obj} a new empty object ({})
+ */
+function createEmptyObject() {
+  return {}
+}
+
+
+/**
+ * Wrap a mixin/property-map function with a predicate,
+ * usually a theme enabler (ex. theme.enableShadows)
+ * to return an empty object when called if pred===false
+ * @param  {bool} pred
+ * @param  {func} propFn
+ * @return {func}
+ */
+function wrapEnabler(pred, propFn) {
+  return pred ? propFn : createEmptyObject
+}
+
+
 // CSS Attribute Values
 // Convert values or attribute maps to CSS attribute value strings
 
@@ -397,6 +422,9 @@ export function borderRadius(...args) {
 }
 
 
+export const borderRadiusIfEnabled = wrapEnabler(theme.enableRounded, borderRadius)
+
+
 // Visibility, opacity
 
 
@@ -487,6 +515,9 @@ export function textShadow(x) {
 }
 
 
+export const textShadowIfEnabled = wrapEnabler(theme.enableShadows, textShadow)
+
+
 export function letterSpacing(x) {
   return { letterSpacing: x }
 }
@@ -518,6 +549,9 @@ export function verticalAlign(x) {
 export function boxShadow(x) {
   return { boxShadow: x }
 }
+
+
+export const boxShadowIfEnabled = wrapEnabler(theme.enableShadows, boxShadow)
 
 
 // Animations

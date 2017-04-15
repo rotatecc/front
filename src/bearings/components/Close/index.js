@@ -20,7 +20,7 @@ const styledButton = styled('button', expandStyles(
   'fs/~closeFontSize',
   'fw/~closeFontWeight',
   'c/~closeColor',
-  'tShadow/~closeTextShadow',
+  '!tShadow/~closeTextShadow',
   'lh/1',
   'o/0.5',
 

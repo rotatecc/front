@@ -24,7 +24,7 @@ const BaseDiv = styled('div', ({ feedback }) => expandStyles(
   `bordC/${feedbackValue(feedback, 'border')}`,
   'bordS/solid',
   'bordW/~alertBorderWidth',
-  'radius/~alertBorderRadius',
+  '!radius/~alertBorderRadius',
   'lh/~alertLineHeight',
 ))
 

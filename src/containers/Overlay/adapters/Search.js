@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from 'styletron-react'
 
-import { Input, expandStyles } from '@/bearings'
+import { TextField, expandStyles } from '@/bearings'
 
 import Close from '../Close'
 
@@ -21,7 +21,7 @@ const BarWrapper = styled('div', expandStyles(
   'bgc/rgba(255, 255, 255, 0.95)',
 ))
 
-const Bar = styled(Input, expandStyles(
+const Bar = styled(TextField, expandStyles(
   'bordW/0',
   'h/100px',
   'w/90%',

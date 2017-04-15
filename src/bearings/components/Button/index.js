@@ -9,31 +9,31 @@ function buttonSizeWithThemeValues(paddingY, paddingX, fontSize, lineHeight, bor
     `p/~${paddingY}/~${paddingX}`,
     `fs/~${fontSize}`,
     `lh/~${lineHeight}`,
-    `radius/~${borderRadius}`,
+    `!radius/~${borderRadius}`,
   )
 }
 
 
 const sizes = {
   normal: buttonSizeWithThemeValues(
-    'buttonInputPaddingY',
-    'buttonInputPaddingX',
+    'inputPaddingY',
+    'inputPaddingX',
     'buttonFontSize',
-    'buttonInputLineHeight',
+    'inputLineHeight',
     'buttonBorderRadius',
   ),
   small: buttonSizeWithThemeValues(
-    'buttonInputPaddingYSm',
-    'buttonInputPaddingXSm',
+    'inputSmPaddingY',
+    'inputSmPaddingX',
     'buttonFontSizeSm',
-    'buttonInputLineHeightSm',
+    'inputSmLineHeight',
     'buttonBorderRadiusSm',
   ),
   large: buttonSizeWithThemeValues(
-    'buttonInputPaddingYLg',
-    'buttonInputPaddingXLg',
+    'inputLgPaddingY',
+    'inputLgPaddingX',
     'buttonFontSizeLg',
-    'buttonInputLineHeightLg',
+    'inputLgLineHeight',
     'buttonBorderRadiusLg',
   ),
 }
@@ -51,20 +51,20 @@ function buttonBrand(brand, { focus, active, disabled }) {
   const focusStyles = expandStyles(
     'noOutline', // custom outline (below)
     'tDecor/none',
-    `bShadow/~button${brandCapitalized}FocusBoxShadow`,
+    `!bShadow/~button${brandCapitalized}FocusBoxShadow`,
   )
 
   const activeStyles = expandStyles(
     'noOutline', // custom outline (below)
     `bgc/~button${brandCapitalized}Bg~dark10`,
     `bordC/~button${brandCapitalized}Border~dark12`,
-    'bShadow/~buttonActiveBoxShadow',
+    '!bShadow/~buttonActiveBoxShadow',
   )
 
   const disabledStyles = expandStyles(
     'cursor/~cursorDisabled',
     'o/0.65',
-    'bShadow/none',
+    '!bShadow/none',
     `c/~button${brandCapitalized}Color`,
     `bgc/~button${brandCapitalized}Bg`,
   )
@@ -98,7 +98,7 @@ function buttonBrandOutlined(brand, { focus, active, disabled }) {
   const focusStyles = expandStyles(
     'noOutline', // custom outline (below)
     'tDecor/none',
-    `bShadow/~button${brandCapitalized}FocusBoxShadow`,
+    `!bShadow/~button${brandCapitalized}FocusBoxShadow`,
   )
 
   const activeStyles = expandStyles(
@@ -111,7 +111,7 @@ function buttonBrandOutlined(brand, { focus, active, disabled }) {
   const disabledStyles = expandStyles(
     'cursor/~cursorDisabled',
     'o/0.65',
-    'bShadow/none',
+    '!bShadow/none',
     'bgc/transparent',
     `c/~button${brandCapitalized}Bg`,
   )
@@ -143,14 +143,14 @@ function makeButtonLinkStyles({ focus, active, disabled }) {
     ...expandStyles(
       'c/~linkColor',
       'tDecor/~linkDecoration',
-      'bShadow/none',
+      '!bShadow/none',
     ),
   }
 
   const activeStyles = {
     ...borderAndBg,
     ...expandStyles(
-      'bShadow/none',
+      '!bShadow/none',
     ),
   }
 
@@ -160,7 +160,7 @@ function makeButtonLinkStyles({ focus, active, disabled }) {
       'noOutline',
       'c/~linkHoverColor',
       'tDecor/~linkHoverDecoration',
-      'bShadow/~buttonFocusBoxShadow',
+      '!bShadow/~buttonFocusBoxShadow',
     ),
   }
 
@@ -177,7 +177,7 @@ function makeButtonLinkStyles({ focus, active, disabled }) {
       'cursor/~cursorDisabled',
       'tDecor/~linkDecoration',
       'o/0.65',
-      'bShadow/none',
+      '!bShadow/none',
       'c/~buttonLinkDisabledColor',
     ),
 
@@ -191,7 +191,7 @@ function makeButtonLinkStyles({ focus, active, disabled }) {
     //   'noOutline',
     //   'tDecor/~linkDecoration',
     //   'c/~buttonLinkDisabledColor',
-    //   'bShadow/none',
+    //   '!bShadow/none',
     // ),
   }
 
@@ -217,7 +217,7 @@ const Button = styled('button', ({ size, brand, link, outline, focus, active, di
       'tAlign/center',
       'nowrap',
       'vAlign/middle',
-      'bordW/~buttonInputBorderWidth',
+      'bordW/~inputBorderWidth',
       'bordS/solid',
       'bordC/transparent',
       'trans/~buttonTransition',
