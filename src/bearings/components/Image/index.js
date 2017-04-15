@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 
 export default function Image({ source, title, ...restProps }) {
@@ -7,6 +8,6 @@ export default function Image({ source, title, ...restProps }) {
 
 
 Image.propTypes = {
-  source: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 }

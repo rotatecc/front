@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
 import { Row, Column, H6, expandStyles } from '@/bearings'
@@ -43,7 +44,7 @@ function ListItem({ title }) {
 }
 
 ListItem.propTypes = {
-  title: React.PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
   // TODO
 }
 
@@ -65,8 +66,8 @@ function ListSection({ title, items }) {
 }
 
 ListSection.propTypes = {
-  title: React.PropTypes.string.isRequired,
-  items: React.PropTypes.array.isRequired,
+  title: PropTypes.string.isRequired,
+  items: PropTypes.array.isRequired,
 }
 
 function Menu({ close }) {
@@ -129,7 +130,7 @@ function Menu({ close }) {
 }
 
 Menu.propTypes = {
-  close: React.PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired,
 }
 
 export default Menu

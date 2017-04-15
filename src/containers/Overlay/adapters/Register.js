@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
 import { expandStyles, H3 } from '@/bearings'
@@ -33,7 +34,7 @@ function Register({ close }) {
 }
 
 Register.propTypes = {
-  close: React.PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired,
 }
 
 export default Register

@@ -1,10 +1,11 @@
-import { PropTypes, Component } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import * as windowDuck from '@/ducks/window'
 
 
-class WindowWatcher extends Component {
+class WindowWatcher extends React.Component {
   componentWillMount() {
     // Trigger window listeners manually before mount
     this.props.onWindowResize()

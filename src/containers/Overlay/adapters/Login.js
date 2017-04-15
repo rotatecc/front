@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { styled } from 'styletron-react'
 
@@ -46,8 +47,8 @@ function Login({ close, login }) {
 
 Login.propTypes = {
   // Actions
-  close: React.PropTypes.func.isRequired,
-  login: React.PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
 }
 
 

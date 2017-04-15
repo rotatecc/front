@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
@@ -21,13 +22,13 @@ class Header extends React.PureComponent { // eslint-disable-line react/prefer-s
 
 Header.propTypes = {
   // props
-  scrollTop: React.PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
+  scrollTop: PropTypes.number.isRequired, // eslint-disable-line react/no-unused-prop-types
 
   // actions
-  onMenuIconClick: React.PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
-  onSearchIconClick: React.PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
-  onClickLogin: React.PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
-  onClickRegister: React.PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
+  onMenuIconClick: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
+  onSearchIconClick: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
+  onClickLogin: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
+  onClickRegister: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
 }
 
 

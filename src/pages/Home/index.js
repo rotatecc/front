@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
@@ -34,12 +35,12 @@ function Home({ isLoading, isLoggedIn, login, logout, me, roleSlug }) {
 }
 
 Home.propTypes = {
-  isLoading: React.PropTypes.bool.isRequired,
-  login: React.PropTypes.func.isRequired,
-  logout: React.PropTypes.func.isRequired,
-  isLoggedIn: React.PropTypes.bool.isRequired,
-  me: React.PropTypes.any,
-  roleSlug: React.PropTypes.any,
+  isLoading: PropTypes.bool.isRequired,
+  login: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired,
+  me: PropTypes.any,
+  roleSlug: PropTypes.any,
 }
 
 const mapStateToProps = createStructuredSelector({

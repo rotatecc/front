@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
 import { TextField, expandStyles } from '@/bearings'
@@ -40,7 +41,7 @@ function Search({ close }) {
 }
 
 Search.propTypes = {
-  close: React.PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired,
 }
 
 export default Search

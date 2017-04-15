@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import Li from './Li'
 import Ul from './Ul'
@@ -15,8 +16,8 @@ function List({ ordered, items }) {
 }
 
 List.propTypes = {
-  ordered: React.PropTypes.bool,
-  items: React.PropTypes.array,
+  ordered: PropTypes.bool,
+  items: PropTypes.array,
 }
 
 export default List

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
 import Close from '../Close'
@@ -40,8 +41,8 @@ export default function Alert({ feedback, onClose, children }) {
 
 Alert.propTypes = {
   feedback: propIsFeedback,
-  onClose: React.PropTypes.func,
-  children: React.PropTypes.node.isRequired,
+  onClose: PropTypes.func,
+  children: PropTypes.node.isRequired,
 }
 
 Alert.defaultProps = {

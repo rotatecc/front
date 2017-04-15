@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
 import { expandStyles, condSpread, propIsBrand } from '../../utils'
@@ -38,9 +39,9 @@ export default function Badge({ pilled, brand, children }) {
 }
 
 Badge.propTypes = {
-  pilled: React.PropTypes.bool,
+  pilled: PropTypes.bool,
   brand: propIsBrand,
-  children: React.PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 Badge.defaultProps = {

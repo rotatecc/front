@@ -3,7 +3,7 @@
  */
 
 
-import React from 'react'
+import PropTypes from 'prop-types'
 import isPlainObject from 'lodash.isplainobject'
 
 import * as mixins from '../mixins'
@@ -31,28 +31,28 @@ export const validFeedbacks = ['success', 'info', 'warning', 'danger']
  * React PropType for valid size
  * (no isRequired)
  */
-export const propIsSize = React.PropTypes.oneOf(validSizes)
+export const propIsSize = PropTypes.oneOf(validSizes)
 
 
 /**
  * React PropType for valid brand
  * (no isRequired)
  */
-export const propIsBrand = React.PropTypes.oneOf(validBrands)
+export const propIsBrand = PropTypes.oneOf(validBrands)
 
 
 /**
  * React PropType for valid button brand
  * (no isRequired)
  */
-export const propIsButtonBrand = React.PropTypes.oneOf(validButtonBrands)
+export const propIsButtonBrand = PropTypes.oneOf(validButtonBrands)
 
 
 /**
  * React PropType for valid feedback
  * (no isRequired)
  */
-export const propIsFeedback = React.PropTypes.oneOf(validFeedbacks)
+export const propIsFeedback = PropTypes.oneOf(validFeedbacks)
 
 
 export const themeValueModifiers = {

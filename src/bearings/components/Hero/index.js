@@ -4,6 +4,7 @@
 
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
 import { expandStyles } from '../../utils'
@@ -55,7 +56,7 @@ function Hero({ title }) {
 }
 
 Hero.propTypes = {
-  title: React.PropTypes.string,
+  title: PropTypes.string,
 }
 
 export default Hero

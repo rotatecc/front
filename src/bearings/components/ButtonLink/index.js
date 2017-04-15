@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Button from '../Button'
 
 import { propIsSize } from '../../utils'
@@ -11,9 +12,9 @@ function ButtonLink(props) {
 
 Button.propTypes = {
   size: propIsSize,
-  focus: React.PropTypes.bool,
-  active: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
+  focus: PropTypes.bool,
+  active: PropTypes.bool,
+  disabled: PropTypes.bool,
 }
 
 

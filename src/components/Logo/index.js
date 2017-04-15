@@ -3,6 +3,7 @@
  */
 
 import React from 'react'
+import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 import { Link } from 'react-router'
 
@@ -59,7 +60,7 @@ function Logo(props) {
 }
 
 Logo.propTypes = {
-  version: React.PropTypes.oneOf(Object.keys(versionLookup)).isRequired,
+  version: PropTypes.oneOf(Object.keys(versionLookup)).isRequired,
 }
 
 export default Logo

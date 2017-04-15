@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
 import { expandStyles } from '@/bearings'
@@ -26,8 +27,8 @@ function Close({ color, onClick }) {
 }
 
 Close.propTypes = {
-  color: React.PropTypes.string.isRequired,
-  onClick: React.PropTypes.func.isRequired,
+  color: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 }
 
 Close.defaultProps = {

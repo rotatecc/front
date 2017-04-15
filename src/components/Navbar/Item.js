@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import { styled } from 'styletron-react'
 
@@ -73,10 +74,10 @@ function Item({ onClick, to, name, version }) {
 }
 
 Item.propTypes = {
-  version: React.PropTypes.oneOf(['primary', 'slim']).isRequired,
-  onClick: React.PropTypes.func,
-  to: React.PropTypes.string,
-  name: React.PropTypes.string,
+  version: PropTypes.oneOf(['primary', 'slim']).isRequired,
+  onClick: PropTypes.func,
+  to: PropTypes.string,
+  name: PropTypes.string,
 }
 
 export default Item

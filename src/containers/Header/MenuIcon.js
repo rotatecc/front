@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
 import { expandStyles } from '@/bearings'
@@ -46,8 +47,8 @@ function MenuIcon({ version, onClick }) {
 }
 
 MenuIcon.propTypes = {
-  version: React.PropTypes.oneOf(Object.keys(versionLookup)).isRequired,
-  onClick: React.PropTypes.func.isRequired,
+  version: PropTypes.oneOf(Object.keys(versionLookup)).isRequired,
+  onClick: PropTypes.func.isRequired,
 }
 
 export default MenuIcon

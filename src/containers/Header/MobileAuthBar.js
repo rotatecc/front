@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
 import { expandStyles, mediaWidthRange } from '@/bearings'
@@ -36,8 +37,8 @@ function MobileAuthBar({ onClickLogin, onClickRegister }) {
 }
 
 MobileAuthBar.propTypes = {
-  onClickLogin: React.PropTypes.func.isRequired,
-  onClickRegister: React.PropTypes.func.isRequired,
+  onClickLogin: PropTypes.func.isRequired,
+  onClickRegister: PropTypes.func.isRequired,
 }
 
 export default MobileAuthBar

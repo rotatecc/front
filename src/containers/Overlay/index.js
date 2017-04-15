@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
@@ -87,11 +88,11 @@ class Overlay extends React.PureComponent {
 
 Overlay.propTypes = {
   // props
-  show: React.PropTypes.bool.isRequired,
-  overlay: React.PropTypes.object.isRequired, // eslint-disable-line react/no-unused-prop-types
+  show: PropTypes.bool.isRequired,
+  overlay: PropTypes.object.isRequired, // eslint-disable-line react/no-unused-prop-types
 
   // actions
-  closeOverlay: React.PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
+  closeOverlay: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types
 }
 
 

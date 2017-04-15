@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
 import { expandStyles, mediaWidthRange } from '@/bearings'
@@ -34,7 +35,7 @@ function MainMenu({ version }) {
 }
 
 MainMenu.propTypes = {
-  version: React.PropTypes.oneOf(['primary', 'slim']).isRequired,
+  version: PropTypes.oneOf(['primary', 'slim']).isRequired,
 }
 
 
@@ -48,9 +49,9 @@ function RightMenu({ onClickLogin, onClickRegister, version }) {
 }
 
 RightMenu.propTypes = {
-  onClickLogin: React.PropTypes.func.isRequired,
-  onClickRegister: React.PropTypes.func.isRequired,
-  version: React.PropTypes.oneOf(['primary', 'slim']).isRequired,
+  onClickLogin: PropTypes.func.isRequired,
+  onClickRegister: PropTypes.func.isRequired,
+  version: PropTypes.oneOf(['primary', 'slim']).isRequired,
 }
 
 
@@ -76,10 +77,10 @@ function Navbar({ version, menu, onClickLogin, onClickRegister }) {
 }
 
 Navbar.propTypes = {
-  version: React.PropTypes.oneOf(['primary', 'slim']).isRequired,
-  menu: React.PropTypes.oneOf(Object.keys(menuLookup)).isRequired,
-  onClickLogin: propRequiredIf(React.PropTypes.func, ({ menu }) => menu === 'right'),
-  onClickRegister: propRequiredIf(React.PropTypes.func, ({ menu }) => menu === 'right'),
+  version: PropTypes.oneOf(['primary', 'slim']).isRequired,
+  menu: PropTypes.oneOf(Object.keys(menuLookup)).isRequired,
+  onClickLogin: propRequiredIf(PropTypes.func, ({ menu }) => menu === 'right'),
+  onClickRegister: propRequiredIf(PropTypes.func, ({ menu }) => menu === 'right'),
 }
 
 export default Navbar

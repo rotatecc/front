@@ -1,4 +1,4 @@
-import React from 'react'
+import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
 import { expandStyles, propIsSize, propIsButtonBrand, capitalize } from '../../utils'
@@ -235,11 +235,11 @@ const Button = styled('button', ({ size, brand, link, outline, focus, active, di
 Button.propTypes = {
   size: propIsSize,
   brand: propIsButtonBrand,
-  link: React.PropTypes.bool,
-  outline: React.PropTypes.bool,
-  focus: React.PropTypes.bool,
-  active: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
+  link: PropTypes.bool,
+  outline: PropTypes.bool,
+  focus: PropTypes.bool,
+  active: PropTypes.bool,
+  disabled: PropTypes.bool,
 }
 
 

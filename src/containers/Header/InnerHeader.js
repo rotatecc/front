@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
 import { expandStyles, mediaWidthRange } from '@/bearings'
@@ -93,14 +94,14 @@ function InnerHeader(props) {
 
 InnerHeader.propTypes = {
   // props
-  version: React.PropTypes.oneOf(['primary', 'slim']).isRequired,
-  scrollTop: React.PropTypes.number.isRequired,
+  version: PropTypes.oneOf(['primary', 'slim']).isRequired,
+  scrollTop: PropTypes.number.isRequired,
 
   // actions
-  onMenuIconClick: React.PropTypes.func.isRequired,
-  onSearchIconClick: React.PropTypes.func.isRequired,
-  onClickLogin: React.PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
-  onClickRegister: React.PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
+  onMenuIconClick: PropTypes.func.isRequired,
+  onSearchIconClick: PropTypes.func.isRequired,
+  onClickLogin: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
+  onClickRegister: PropTypes.func.isRequired, // eslint-disable-line react/no-unused-prop-types, max-len
 }
 
 export default InnerHeader
