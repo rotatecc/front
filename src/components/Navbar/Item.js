@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router'
+import { NavLink } from 'react-router-dom'
 import { styled } from 'styletron-react'
 
 import { expandStyles, mediaWidthRange } from '@/bearings'
@@ -41,7 +41,7 @@ const slimLinkStyles = {
 }
 
 
-const StyledRouterLink = styled(Link, linkStyles)
+const StyledRouterLink = styled(NavLink, linkStyles)
 
 const StyledPlainLink = styled('a', linkStyles)
 

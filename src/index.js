@@ -3,7 +3,11 @@ import 'babel-polyfill'
 import React from 'react'
 import { Provider } from 'react-redux'
 import { render } from 'react-dom'
-import { BrowserRouter, Match, Miss } from 'react-router'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom'
 
 import FontFaceObserver from 'fontfaceobserver'
 
@@ -43,15 +47,17 @@ const styletron = new Styletron()
 // Root component
 export const Root = () => (
   <Provider store={store}>
-    <BrowserRouter>
-      <StyletronProvider styletron={styletron}>
+    <StyletronProvider styletron={styletron}>
+      <Router>
         <App>
-          <Match exactly pattern="/" component={Home} />
-          <Match exactly pattern="/about" component={About} />
-          <Miss component={NotFound} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/about" component={About} />
+            <Route component={NotFound} />
+          </Switch>
         </App>
-      </StyletronProvider>
-    </BrowserRouter>
+      </Router>
+    </StyletronProvider>
   </Provider>
 )
 

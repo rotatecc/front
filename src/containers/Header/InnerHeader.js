@@ -47,9 +47,7 @@ const SlimWrapper = styled('div', ({ show }) => ({
 }))
 
 
-const Side = styled('div', {
-  ...expandStyles('d/flex', 'fAlign/stretch'),
-})
+const Side = styled('div', expandStyles('d/flex', 'fAlign/stretch'))
 
 
 function shouldShowSlimHeader({ scrollTop, showMenuOverlay, showSearchOverlay }) {

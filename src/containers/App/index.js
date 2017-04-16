@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { styled } from 'styletron-react'
 import Helmet from 'react-helmet'
@@ -16,16 +17,16 @@ import * as authDuck from '@/ducks/auth'
 import { expandStyles } from '@/bearings'
 
 
-const Container = styled('div', expandStyles(
+const Container = withRouter(styled('div', expandStyles(
   'd/flex',
   'bgc/~backgroundColor',
   'c/~textColor',
   'hMin/100vh',
   'fDirection/column',
-))
+)))
 
 // Sticky footer
-const Content = styled('div', expandStyles('fGrow/1'))
+const Content = withRouter(styled('div', expandStyles('fGrow/1')))
 
 
 class App extends React.PureComponent {
@@ -51,7 +52,7 @@ class App extends React.PureComponent {
           />
           <Header />
           <Content>
-            {React.Children.toArray(children)}
+            {children}
           </Content>
           <Footer />
         </Container>
@@ -74,4 +75,4 @@ export function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(null, mapDispatchToProps)(App)
+export default withRouter(connect(null, mapDispatchToProps)(App))

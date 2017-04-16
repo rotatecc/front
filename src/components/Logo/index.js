@@ -5,7 +5,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 
 import { H1, expandStyles } from '@/bearings'
 
