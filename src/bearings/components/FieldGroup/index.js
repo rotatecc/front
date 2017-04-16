@@ -1,3 +1,20 @@
+/**
+ * FieldGroup
+ *
+ * The idea of FieldGroup is grouping field units
+ *      ex. Label + Textfield + hint
+ * and
+ * 1. applying a bit of margin on the bottom
+ * 2. making its children aware that they are in a group, via:
+ * 3. passing down a common unique group id that can be
+ *    used to link a Label to a field and thus focus on the field
+ *    when the user clicks on a Label (via default browser functionality)
+ *
+ * The ./makeFieldGroupable util can be used to make a component
+ * intercept this groupId and turn it into an id/htmlFor
+ * to link them into the group
+ */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'

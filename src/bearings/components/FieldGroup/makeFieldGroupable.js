@@ -9,6 +9,7 @@ import PropTypes from 'prop-types'
  * by the FieldGroup via groupId.
  * @param  {React.node} component
  * @param  {String} [keyAttr='id'] The prop name the component will be given with the groupId
+ *                                 ex. for 'label', use 'htmlFor'
  * @return {React.node}
  */
 export default function makeFieldGroupable(component, keyAttr = 'id') {
