@@ -143,6 +143,12 @@ theme.inputBoxShadowFocus = `inset 0 1px 1px ${fade(theme.inputBorderColorFocus,
 theme.inputTransition = 'border-color ease-in-out 150ms, box-shadow ease-in-out 150ms'
 
 
+// Label
+
+
+theme.labelMarginBottom = '0.5rem'
+
+
 // Select
 
 

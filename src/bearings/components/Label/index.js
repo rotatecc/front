@@ -6,7 +6,8 @@ import { expandStyles } from '../../utils'
 
 
 const StyledBaseLabel = styled('label', expandStyles(
-  // TODO
+  'd/inline-block',
+  'mBottom/~labelMarginBottom',
 ))
 
 
