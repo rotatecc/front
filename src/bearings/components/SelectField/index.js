@@ -1,10 +1,15 @@
 import { styled } from 'styletron-react'
 
+import makeFieldGroupable from '../FieldGroup/makeFieldGroupable'
+
 import { expandStyles } from '../../utils'
 import { field } from '../../mixins'
 
 
-export default styled('select', expandStyles(
+const StyledBaseSelect = styled('select', expandStyles(
   field(),
   'h/~selectHeight',
 ))
+
+
+export default makeFieldGroupable(StyledBaseSelect, 'id')

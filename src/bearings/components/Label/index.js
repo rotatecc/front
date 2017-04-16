@@ -1,27 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
+
+import makeFieldGroupable from '../FieldGroup/makeFieldGroupable'
 
 import { expandStyles } from '../../utils'
 
 
-const StyledBaseLabel = styled('label', expandStyles())
+const StyledBaseLabel = styled('label', expandStyles(
+  // TODO
+))
 
 
-export default function Label({ isGrouped, groupId, ...restProps }) {
-  const groupProps = isGrouped ? { htmlFor: groupId } : {}
-
-  return <StyledBaseLabel {...groupProps} {...restProps} />
-}
-
-
-Label.propTypes = {
-  isGrouped: PropTypes.bool,
-  groupId: PropTypes.string,
-  // ...restProps
-}
-
-Label.defaultProps = {
-  isGrouped: false,
-  groupId: '',
-}
+export default makeFieldGroupable(StyledBaseLabel, 'htmlFor')
