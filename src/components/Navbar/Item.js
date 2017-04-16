@@ -19,9 +19,8 @@ const linkStyles = {
     'pointer',
     'tDecor/none',
     'ls/1px',
+    'trans/all 200ms cubic-bezier(.25,.1,.25,1)',
   ),
-
-  transition: 'all 200ms cubic-bezier(.25,.1,.25,1)',
 
   ':hover': expandStyles('c/~brandPrimary~dark'),
 }

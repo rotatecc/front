@@ -23,16 +23,16 @@ const LogoWrapper = styled('div', expandStyles('p/25px/0/5px'))
 const ListItemLi = styled('li', expandStyles('d/block', 'mBottom/1px'))
 
 
-const ListItemA = styled('a', {
-  ...expandStyles('d/block', 'p/2px/0', 'c/~brandPrimary', 'fs/0.8rem', 'tDecor/none'),
+const ListItemA = styled('a', expandStyles(
+  'd/block',
+  'p/2px/0',
+  'c/~brandPrimary',
+  'fs/0.8rem',
+  'tDecor/none',
+  'trans/all 400ms ease',
 
-  transition: 'all 400ms ease',
-
-  ':hover': {
-    ...expandStyles('c/~brandPrimary~dark'),
-    transform: 'translateX(5px)',
-  },
-})
+  { ':hover': expandStyles('c/~brandPrimary~dark', 'transform/translateX(5px)') },
+))
 
 
 function ListItem({ title }) {

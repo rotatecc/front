@@ -21,7 +21,7 @@ export default styled('input', expandStyles(
   'bordC/~inputBorderColor',
   '!radius/~inputBorderRadius',
 
-  // TODO transition
+  '!trans/~inputTransition',
 
   '!bShadow/~inputBoxShadow',
 

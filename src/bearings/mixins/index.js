@@ -554,6 +554,11 @@ export function boxShadow(x) {
 export const boxShadowIfEnabled = wrapEnabler(theme.enableShadows, boxShadow)
 
 
+export function transform(x) {
+  return { transform: x }
+}
+
+
 // Animations
 
 
@@ -570,6 +575,10 @@ export const boxShadowIfEnabled = wrapEnabler(theme.enableShadows, boxShadow)
 export function transition(x) {
   return { transition: x }
 }
+
+
+export const transitionIfEnabled = wrapEnabler(theme.enableTransitions, transition)
+
 
 // TODO
 // Borrow definitions from the Hover.css project?

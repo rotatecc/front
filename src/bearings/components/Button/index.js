@@ -220,7 +220,7 @@ const Button = styled('button', ({ size, brand, link, outline, focus, active, di
       'bordW/~inputBorderWidth',
       'bordS/solid',
       'bordC/transparent',
-      'trans/~buttonTransition',
+      '!trans/~buttonTransition',
     ),
 
     ...sizes[size],

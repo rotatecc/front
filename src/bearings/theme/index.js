@@ -13,7 +13,8 @@ const theme = {}
 
 theme.enableRounded = true
 theme.enableShadows = false
-// TODO more (gradients, transitions, etc)
+theme.enableTransitions = true
+// TODO more (gradients, etc)
 
 
 // Color palette
@@ -105,7 +106,6 @@ theme.linkHoverDecoration = 'underline'
 // Base form field styles
 
 
-// Padding and line height
 theme.inputPaddingX = '1rem'
 theme.inputPaddingY = '0.5rem'
 theme.inputLineHeight = '1.25'
@@ -133,6 +133,8 @@ theme.inputLgBorderRadius = theme.borderRadiusLg
 
 theme.inputBoxShadow = `inset 0 1px 1px ${fade(theme.black, 92.5)}`
 theme.inputBoxShadowFocus = `inset 0 1px 1px ${fade(theme.inputBorderColorFocus, 40)}`
+
+theme.inputTransition = 'border-color ease-in-out 150ms, box-shadow ease-in-out 150ms'
 
 
 // Component: Button

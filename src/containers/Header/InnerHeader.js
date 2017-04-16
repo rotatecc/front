@@ -28,23 +28,20 @@ const PrimaryWrapper = styled('div', {
 })
 
 
-const SlimWrapper = styled('div', ({ show }) => ({
-  ...expandStyles(
-    'fixed',
-    'd/flex',
-    'fullWidth',
-    'h/40px',
-    'atLeft',
-    'bgc/~brandPrimary',
-    'c/~white',
-    `t/${show ? '0' : '-40px'}`,
-    `o/${show ? '1' : '0.5'}`,
-    'fJustify/space-between',
-    'fAlign/center',
-  ),
-
-  transition: 'all 200ms ease',
-}))
+const SlimWrapper = styled('div', ({ show }) => expandStyles(
+  'fixed',
+  'd/flex',
+  'fullWidth',
+  'h/40px',
+  'atLeft',
+  'bgc/~brandPrimary',
+  'c/~white',
+  `t/${show ? '0' : '-40px'}`,
+  `o/${show ? '1' : '0.5'}`,
+  'fJustify/space-between',
+  'fAlign/center',
+  'trans/all 200ms ease',
+))
 
 
 const Side = styled('div', expandStyles('d/flex', 'fAlign/stretch'))

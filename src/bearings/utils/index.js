@@ -226,6 +226,8 @@ export const shorthandPropertiesValued = {
   bShadow: mixins.boxShadow,
   '!bShadow': mixins.boxShadowIfEnabled,
   trans: mixins.transition,
+  '!trans': mixins.transitionIfEnabled,
+  transform: mixins.transform,
 }
 
 const shorthandPropertiesValuedCached = {}
