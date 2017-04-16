@@ -71,6 +71,7 @@ theme.baseFontSize = '16px'
 theme.baseFontWeight = theme.fontWeightNormal
 theme.baseLineHeight = 1.5
 
+theme.fontSize = '1rem'
 theme.fontSizeLg = '1.25rem'
 theme.fontSizeSm = '0.875rem'
 theme.fontSizeXs = '0.75rem'
@@ -105,16 +106,21 @@ theme.linkHoverDecoration = 'underline'
 
 // Base form field styles
 
-
 theme.inputPaddingX = '1rem'
 theme.inputPaddingY = '0.5rem'
-theme.inputLineHeight = '1.25'
+theme.inputLineHeight = 1.25
 theme.inputSmPaddingX = '0.5rem'
 theme.inputSmPaddingY = '0.25rem'
-theme.inputSmLineHeight = '1.5'
+theme.inputSmLineHeight = 1.5
 theme.inputLgPaddingX = '1rem'
 theme.inputLgPaddingY = '0.5rem'
-theme.inputLgLineHeight = '1.5'
+theme.inputLgLineHeight = 1.5
+
+// NOTE heights are only used for SelectField currently?
+// fontSize * lineHeight + inputPaddingY * 2
+theme.inputHeight = `${(1 * theme.inputLineHeight) + (0.5 * 2)}rem`
+theme.inputSmHeight = `${(0.875 * theme.inputSmLineHeight) + (0.25 * 2)}rem`
+theme.inputLgHeight = `${(1.25 * theme.inputLgLineHeight) + (0.5 * 2)}rem`
 
 theme.inputBgc = theme.white
 theme.inputBgcFocus = theme.inputBgc
@@ -135,6 +141,12 @@ theme.inputBoxShadow = `inset 0 1px 1px ${fade(theme.black, 92.5)}`
 theme.inputBoxShadowFocus = `inset 0 1px 1px ${fade(theme.inputBorderColorFocus, 40)}`
 
 theme.inputTransition = 'border-color ease-in-out 150ms, box-shadow ease-in-out 150ms'
+
+
+// Select
+
+
+theme.selectHeight = `calc(${theme.inputHeight} + ${theme.inputBorderWidth})`
 
 
 // Component: Button

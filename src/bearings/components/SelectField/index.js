@@ -1,12 +1,11 @@
 import { styled } from 'styletron-react'
 
 import { expandStyles } from '../../utils'
+import { field } from '../../mixins'
 
 
 export default styled('select', expandStyles(
-  'noOutline',
-  'bordS/solid',
-  'bordW/1px',
-  'bordC/~gray',
-  'ff/~textFieldFontFamily',
+  field(),
+  'h/~selectHeight',
+  'bordW/~selectBorderWidth',
 ))

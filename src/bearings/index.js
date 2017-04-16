@@ -29,7 +29,7 @@ export { default as Label } from './components/Label'
 export { default as List } from './components/List'
 export { default as ListItem } from './components/ListItem'
 export { default as Row } from './components/Row'
-export { default as Select } from './components/Select'
+export { default as SelectField } from './components/SelectField'
 export { default as Textarea } from './components/Textarea'
 export { default as TextField } from './components/TextField'
 
