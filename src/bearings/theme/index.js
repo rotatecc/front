@@ -149,6 +149,12 @@ theme.inputTransition = 'border-color ease-in-out 150ms, box-shadow ease-in-out 
 theme.selectHeight = `calc(${theme.inputHeight} + ${theme.inputBorderWidth})`
 
 
+// Component: FieldGroup
+
+
+theme.fieldGroupMarginBottom = '1rem'
+
+
 // Component: Button
 
 

@@ -7,5 +7,4 @@ import { field } from '../../mixins'
 export default styled('select', expandStyles(
   field(),
   'h/~selectHeight',
-  'bordW/~selectBorderWidth',
 ))

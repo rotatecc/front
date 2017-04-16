@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
 
-import { Button, Label, TextField } from '@/bearings'
+import { Button, Label, FieldGroup, TextField } from '@/bearings'
 
 import validate from './validate'
 
@@ -11,17 +11,14 @@ const formName = 'login'
 
 
 const LoginFormField = ({ input, label, type, meta }) => {
-  const { asyncValidating, touched, error } = meta
-  const id = `redux-form-${formName}-${input.name}`
+  const { touched, error } = meta
 
   return (
-    <div>
-      <Label htmlFor={id}>{label}</Label>
-      <div className={asyncValidating ? 'async-validating' : ''}>
-        <TextField {...input} id={id} type={type} />
-        {touched && error && <span>{error}</span>}
-      </div>
-    </div>
+    <FieldGroup>
+      <Label>{label}</Label>
+      <TextField {...input} type={type} />
+      {touched && error && <span>{error}</span>}
+    </FieldGroup>
   )
 }
 
