@@ -1,3 +1,4 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
@@ -204,7 +205,7 @@ function makeButtonLinkStyles({ focus, active, disabled }) {
   }
 }
 
-const Button = styled('button', ({ size, brand, link, outline, focus, active, disabled }) => {
+const StyledButton = styled('button', ({ size, brand, link, outline, focus, active, disabled }) => {
   const branding = link
     ? makeButtonLinkStyles({ focus, active, disabled })
     : (outline ? buttonBrandOutlined : buttonBrand)(brand, { focus, active, disabled })
@@ -232,6 +233,11 @@ const Button = styled('button', ({ size, brand, link, outline, focus, active, di
 })
 
 
+function Button(props, { isInButtonGroup }) {
+  if (isInButtonGroup) console.log('button is in group') // eslint-disable-line no-console
+  return React.createElement(StyledButton, props)
+}
+
 Button.propTypes = {
   size: propIsSize,
   brand: propIsButtonBrand,
@@ -251,6 +257,11 @@ Button.defaultProps = {
   focus: false,
   active: false,
   disabled: false,
+}
+
+
+Button.contextTypes = {
+  isInButtonGroup: PropTypes.bool,
 }
 
 

@@ -5,7 +5,7 @@
  *      ex. Label + Textfield + hint
  * and
  * 1. applying a bit of margin on the bottom (unless noMargin=true)
- * 2. making its children aware that they are in a group, via:
+ * 2. making its descendents aware that they are in a group, via:
  * 3. passing down a common unique group id ('fieldGroupId') via context
  *    that can be used to link a Label to a field and thus focus on the field
  *    when the user clicks on a Label (via default browser functionality)
