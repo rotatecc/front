@@ -22,6 +22,13 @@ import { styled } from 'styletron-react'
 import { expandStyles } from '../../utils'
 
 
+/**
+ * We want a unique id for each FieldGroup instance.
+ * Let's keep it here as a mutable variable. Each time a
+ * FieldGroup is instantiated, it will be stored then
+ * incremented for the next instance.
+ * @type {Number}
+ */
 let nextFieldGroupIdNumber = 0
 
 
