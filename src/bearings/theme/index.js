@@ -181,6 +181,8 @@ theme.buttonTransition = 'all .2s ease-in-out'
 
 theme.buttonLinkDisabledColor = theme.grayLight
 
+theme.buttonBorderWidth = theme.inputBorderWidth
+
 theme.buttonBorderRadius = theme.borderRadius
 theme.buttonFontSize = theme.baseFontSize
 

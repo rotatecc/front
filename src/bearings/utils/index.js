@@ -239,6 +239,8 @@ export const shorthandPropertiesValued = {
   fAlign: mixins.alignItems,
   fDirection: mixins.flexDirection,
   fGrow: mixins.flexGrow,
+  fShrink: mixins.flexShrink,
+  fBasis: mixins.flexBasis,
 
   // overflow
   over: mixins.overflow,

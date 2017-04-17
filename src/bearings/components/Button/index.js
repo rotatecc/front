@@ -2,7 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
-import { expandStyles, propIsSize, propIsButtonBrand, capitalize } from '../../utils'
+import {
+  expandStyles,
+  propIsSize,
+  propIsButtonBrand,
+  capitalize,
+} from '../../utils'
 
 
 function buttonSizeWithThemeValues(paddingY, paddingX, fontSize, lineHeight, borderRadius) {
@@ -218,7 +223,7 @@ const StyledButton = styled('button', ({ size, brand, link, outline, focus, acti
       'tAlign/center',
       'nowrap',
       'vAlign/middle',
-      'bordW/~inputBorderWidth',
+      'bordW/~buttonBorderWidth',
       'bordS/solid',
       'bordC/transparent',
       '!trans/~buttonTransition',
@@ -233,9 +238,27 @@ const StyledButton = styled('button', ({ size, brand, link, outline, focus, acti
 })
 
 
-function Button(props) {
-  if (props.isInButtonGroup) console.log('button is in group') // eslint-disable-line no-console
-  return React.createElement(StyledButton, props)
+const ButtonInGroup = styled(StyledButton, ({ isFirstInGroup, isLastInGroup }) =>
+  expandStyles(
+    'relative',
+
+    'fGrow/0',
+    'fShrink/1',
+    'fBasis/auto',
+
+    'mBottom/0',
+
+    // Prevent double borders and radius when buttons are next to each other
+    (!isFirstInGroup) ? expandStyles('mLeft/~buttonBorderWidth~negate') : null,
+    (!isFirstInGroup && !isLastInGroup) ? 'radius/0' : null,
+    (isFirstInGroup) ? { borderTopRightRadius: 0, borderBottomRightRadius: 0 } : null,
+    (isLastInGroup) ? { borderTopLeftRadius: 0, borderBottomLeftRadius: 0 } : null,
+  ))
+
+
+function Button({ isInButtonGroup, ...restProps }) {
+  const component = isInButtonGroup ? ButtonInGroup : StyledButton
+  return React.createElement(component, restProps)
 }
 
 Button.propTypes = {

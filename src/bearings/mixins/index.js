@@ -467,6 +467,16 @@ export function flexGrow(x) {
 }
 
 
+export function flexShrink(x) {
+  return { flexShrink: x }
+}
+
+
+export function flexBasis(x) {
+  return { flexBasis: x }
+}
+
+
 // Overflow
 
 
