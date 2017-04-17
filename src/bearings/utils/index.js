@@ -27,6 +27,23 @@ export const validButtonBrands = ['secondary', ...validBrands]
 export const validFeedbacks = ['success', 'info', 'warning', 'danger']
 
 
+export const validInputFieldTypes = [
+  'text',
+  'password',
+  'datetime-local',
+  'date',
+  'month',
+  'time',
+  'week',
+  'number',
+  'email',
+  'url',
+  'search',
+  'tel',
+  'color',
+]
+
+
 /**
  * React PropType for valid size
  * (no isRequired)
@@ -53,6 +70,13 @@ export const propIsButtonBrand = PropTypes.oneOf(validButtonBrands)
  * (no isRequired)
  */
 export const propIsFeedback = PropTypes.oneOf(validFeedbacks)
+
+
+/**
+ * React PropType for valid InputField type
+ * (no isRequired)
+ */
+export const propIsInputFieldType = PropTypes.oneOf(validInputFieldTypes)
 
 
 export const themeValueModifiers = {

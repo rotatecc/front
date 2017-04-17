@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
 
-import { Button, Label, FieldGroup, TextField } from '@/bearings'
+import { propIsInputFieldType, Button, Label, FieldGroup, TextField } from '@/bearings'
 
 import validate from './validate'
 
@@ -26,7 +26,7 @@ LoginFormField.propTypes = {
   input: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  type: propIsInputFieldType.isRequired,
 }
 
 
