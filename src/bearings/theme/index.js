@@ -14,7 +14,6 @@ const theme = {}
 theme.enableRounded = true
 theme.enableShadows = false
 theme.enableTransitions = true
-// TODO more (gradients, etc)
 
 
 // Color palette

@@ -45,7 +45,6 @@ function ListItem({ title }) {
 
 ListItem.propTypes = {
   title: PropTypes.string.isRequired,
-  // TODO
 }
 
 const ListSectionContainer = styled('div', expandStyles('mBottom/3rem'))

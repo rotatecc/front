@@ -17,15 +17,12 @@ function NotFound() {
 }
 
 NotFound.propTypes = {
-  // TODO
 }
 
 const mapStateToProps = (/* state */) => ({
-  // TODO
 })
 
 const mapDispatchToProps = (/* dispatch */) => ({
-  // TODO
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NotFound)

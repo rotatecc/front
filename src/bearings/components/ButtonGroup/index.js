@@ -54,6 +54,7 @@ export default function ButtonGroup({ children, size, outline, link, disabled, .
 
 ButtonGroup.propTypes = {
   children: PropTypes.node.isRequired,
+
   size: propIsSize,
   link: PropTypes.bool,
   outline: PropTypes.bool,

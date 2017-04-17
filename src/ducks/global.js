@@ -4,16 +4,16 @@ import { createReducer } from 'redux-act'
 
 // Actions
 
-// TODO
+// none
 
 // Reducer
 
 const initialState = Im.fromJS({
-  // TODO
+  // none
 })
 
 export default createReducer({
-  // TODO
+  // none
 }, initialState)
 
 

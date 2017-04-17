@@ -47,19 +47,6 @@ export { default as TelField } from './components/TelField'
 export { default as TextareaField } from './components/TextareaField'
 export { default as TextField } from './components/TextField'
 
-// Interative
-// TODO
-
-
-//
-// Base
-//
-
-export { default as animation } from './base/animation'
-
-// TODO
-// export { default as base } from './base'
-
 
 //
 // Mixins
