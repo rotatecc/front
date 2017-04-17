@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import { Row, Column, H2, CheckableSet, Label, FieldGroup } from '@/bearings'
+import { Row, Column, H2, RadioSet, Label, FieldGroup } from '@/bearings'
 
 import * as progressDuck from '@/ducks/progress'
 import * as authDuck from '@/ducks/auth'
@@ -21,8 +21,7 @@ function Home({ isLoading, isLoggedIn, login, logout, me, roleSlug }) {
         <p>{roleSlug}</p>
         <FieldGroup>
           <Label>Which one?</Label>
-          <CheckableSet
-            type="checkbox"
+          <RadioSet
             items={[
               { label: 'Which one?', value: 'ok' },
               { label: 'Which one?', value: 'k' },
