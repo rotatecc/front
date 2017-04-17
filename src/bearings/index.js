@@ -34,7 +34,7 @@ export { default as ListItem } from './components/ListItem'
 export { default as Radio } from './components/Radio'
 export { default as Row } from './components/Row'
 export { default as SelectField } from './components/SelectField'
-export { default as Textarea } from './components/Textarea'
+export { default as TextareaField } from './components/TextareaField'
 export { default as TextField } from './components/TextField'
 
 // Interative
