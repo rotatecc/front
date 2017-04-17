@@ -143,6 +143,15 @@ theme.inputBoxShadowFocus = `inset 0 1px 1px ${fade(theme.inputBorderColorFocus,
 theme.inputTransition = 'border-color ease-in-out 150ms, box-shadow ease-in-out 150ms'
 
 
+// Checkable (Checkbox / Radio)
+
+
+theme.checkableMarginBottom = '0.5rem'
+theme.checkableInputGutter = '1.25rem'
+theme.checkableInputMarginY = '0.25rem'
+theme.checkableInputMarginX = '0.25rem'
+
+
 // Label
 
 
