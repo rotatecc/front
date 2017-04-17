@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
-import { TextField, expandStyles } from '@/bearings'
+import { InputField, expandStyles } from '@/bearings'
 
 import Close from '../Close'
 
@@ -22,7 +22,7 @@ const BarWrapper = styled('div', expandStyles(
   'bgc/rgba(255, 255, 255, 0.95)',
 ))
 
-const Bar = styled(TextField, expandStyles(
+const Bar = styled(InputField, expandStyles(
   'bordW/0',
   'h/100px',
   'w/90%',
@@ -34,7 +34,7 @@ function Search({ close }) {
     <Container className="should-close-overlay">
       <Close onClick={close} />
       <BarWrapper>
-        <Bar placeholder="Search" />
+        <Bar type="search" placeholder="Search" />
       </BarWrapper>
     </Container>
   )

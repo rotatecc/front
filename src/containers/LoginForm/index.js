@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Field, reduxForm } from 'redux-form'
 
-import { propIsInputFieldType, Button, Label, FieldGroup, TextField } from '@/bearings'
+import { propIsInputFieldType, Button, Label, FieldGroup, InputField } from '@/bearings'
 
 import validate from './validate'
 
@@ -16,7 +16,7 @@ const LoginFormField = ({ input, label, type, meta }) => {
   return (
     <FieldGroup>
       <Label>{label}</Label>
-      <TextField {...input} type={type} />
+      <InputField {...input} type={type} />
       {touched && error && <span>{error}</span>}
     </FieldGroup>
   )
