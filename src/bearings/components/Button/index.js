@@ -233,8 +233,8 @@ const StyledButton = styled('button', ({ size, brand, link, outline, focus, acti
 })
 
 
-function Button(props, { isInButtonGroup }) {
-  if (isInButtonGroup) console.log('button is in group') // eslint-disable-line no-console
+function Button(props) {
+  if (props.isInButtonGroup) console.log('button is in group') // eslint-disable-line no-console
   return React.createElement(StyledButton, props)
 }
 
@@ -243,9 +243,14 @@ Button.propTypes = {
   brand: propIsButtonBrand,
   link: PropTypes.bool,
   outline: PropTypes.bool,
+
   focus: PropTypes.bool,
   active: PropTypes.bool,
   disabled: PropTypes.bool,
+
+  isInButtonGroup: PropTypes.bool,
+  isFirstInGroup: PropTypes.bool,
+  isLastInGroup: PropTypes.bool,
 }
 
 
@@ -254,14 +259,14 @@ Button.defaultProps = {
   brand: 'primary',
   link: false,
   outline: false,
+
   focus: false,
   active: false,
   disabled: false,
-}
 
-
-Button.contextTypes = {
-  isInButtonGroup: PropTypes.bool,
+  isInButtonGroup: false,
+  isFirstInGroup: false,
+  isLastInGroup: false,
 }
 
 

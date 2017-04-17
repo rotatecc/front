@@ -20,7 +20,9 @@ function Home({ isLoading, isLoggedIn, login, logout, me, roleSlug }) {
         <p>{isLoggedIn ? `logged in as ${me.get('email')}` : 'not logged in'}</p>
         <p>{roleSlug}</p>
         <ButtonGroup>
-          <Button>test</Button>
+          <Button>test 1</Button>
+          <Button>test 2</Button>
+          <Button>test 3</Button>
         </ButtonGroup>
         {isLoggedIn && <button onClick={logout}>Log out</button>}
         <br />

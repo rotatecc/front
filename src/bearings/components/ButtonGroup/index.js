@@ -1,8 +1,12 @@
 /**
  * ButtonGroup
  *
- * The idea of ButtonGroup is grouping Buttons by making its children aware
- * that they are in a group, via passing down a flag via context.
+ * The idea of ButtonGroup is grouping Buttons by making its direct children aware
+ * that they are in a group, via passing down a flag (isInButtonGroup) via props.
+ * The first child will be given isFirstInGroup
+ * The last child will be given isLastInGroup
+ *
+ * NOTE Button elements should be direct descendents!
  */
 
 import React from 'react'
@@ -13,27 +17,25 @@ import { expandStyles } from '../../utils'
 
 
 const StyledWrapper = styled('div', expandStyles(
+  'relative',
   'd/inline-flex',
-  // TODO
+  'vAlign/middle',
 ))
 
 
-export default class ButtonGroup extends React.PureComponent {
-  getChildContext() {
-    return {
-      isInButtonGroup: true,
-    }
-  }
+export default function ButtonGroup({ children, ...restProps }) {
+  const lastChildIndex = React.Children.count(children) - 1
 
-  render() {
-    return React.createElement(StyledWrapper, this.props)
-  }
+  const groupedChildren = React.Children.map(children, (child, i) =>
+    React.cloneElement(child, {
+      isInButtonGroup: true,
+      isFirstInGroup: i === 0,
+      isLastInGroup: i === lastChildIndex,
+    }))
+
+  return React.createElement(StyledWrapper, restProps, groupedChildren)
 }
 
 ButtonGroup.propTypes = {
   children: PropTypes.node.isRequired,
-}
-
-ButtonGroup.childContextTypes = {
-  isInButtonGroup: PropTypes.bool,
 }
