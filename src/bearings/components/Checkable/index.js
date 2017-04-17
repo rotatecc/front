@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
-import { expandStyles } from '../../utils'
+import { expandStyles, propIsCheckableType } from '../../utils'
 
 
 const StyledCheckGroup = styled('div', expandStyles(
@@ -36,6 +36,6 @@ export default function Checkable({ type, label }) {
 }
 
 Checkable.propTypes = {
-  type: PropTypes.oneOf(['checkbox', 'radio']).isRequired,
+  type: propIsCheckableType.isRequired,
   label: PropTypes.string.isRequired,
 }

@@ -44,6 +44,9 @@ export const validInputFieldTypes = [
 ]
 
 
+export const validCheckableTypes = ['checkbox', 'radio']
+
+
 /**
  * React PropType for valid size
  * (no isRequired)
@@ -77,6 +80,13 @@ export const propIsFeedback = PropTypes.oneOf(validFeedbacks)
  * (no isRequired)
  */
 export const propIsInputFieldType = PropTypes.oneOf(validInputFieldTypes)
+
+
+/**
+ * React PropType for valid Checkable type (checkbox/radio)
+ * (no isRequired)
+ */
+export const propIsCheckableType = PropTypes.oneOf(validCheckableTypes)
 
 
 export const themeValueModifiers = {
