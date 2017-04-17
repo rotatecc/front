@@ -11,9 +11,12 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
+import invariant from 'invariant'
 import { styled } from 'styletron-react'
 
 import { expandStyles, propIsSize } from '../../utils'
+
+import Button from '../Button'
 
 
 const StyledWrapper = styled('div', expandStyles(
@@ -26,16 +29,25 @@ const StyledWrapper = styled('div', expandStyles(
 export default function ButtonGroup({ children, size, outline, link, disabled, ...restProps }) {
   const lastChildIndex = React.Children.count(children) - 1
 
-  const groupedChildren = React.Children.map(children, (child, i) =>
-    React.cloneElement(child, {
+  const groupedChildren = React.Children.map(children, (child, i) => {
+    invariant(
+      child.type === Button,
+      'All direct children of ButtonGroup must be a Button',
+    )
+
+    return React.cloneElement(child, {
+      // Bulk-apply these four props
       size,
       outline,
       link,
       disabled,
+
+      // Group-specific props
       isInButtonGroup: true,
       isFirstInGroup: i === 0,
       isLastInGroup: i === lastChildIndex,
-    }))
+    })
+  })
 
   return React.createElement(StyledWrapper, restProps, groupedChildren)
 }
