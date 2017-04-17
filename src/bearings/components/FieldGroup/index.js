@@ -4,10 +4,10 @@
  * The idea of FieldGroup is grouping field units
  *      ex. Label + Textfield + hint
  * and
- * 1. applying a bit of margin on the bottom
+ * 1. applying a bit of margin on the bottom (unless noMargin=true)
  * 2. making its children aware that they are in a group, via:
- * 3. passing down a common unique group id that can be
- *    used to link a Label to a field and thus focus on the field
+ * 3. passing down a common unique group id ('fieldGroupId') via context
+ *    that can be used to link a Label to a field and thus focus on the field
  *    when the user clicks on a Label (via default browser functionality)
  *
  * The ./makeFieldGroupable util can be used to make a component
@@ -36,31 +36,34 @@ export default class FieldGroup extends React.PureComponent {
 
     this.fieldGroupIdNumber = nextFieldGroupIdNumber
 
-    // NOTE Increment !!!
+    // NOTE Mutation !!!
     nextFieldGroupIdNumber += 1
   }
 
+  getChildContext() {
+    return {
+      fieldGroupId: `fieldGroup${this.fieldGroupIdNumber}`,
+    }
+  }
+
   render() {
-    const { children, ...restProps } = this.props
+    const { noMargin, ...restProps } = this.props
 
-    // pass isGrouped=true and a unique id prop to all non-string-type (ex. not 'div') children
-    const groupAwareChildren = React.Children.map(children, (child) => {
-      if (!child || typeof child !== 'object' || typeof child.type === 'string') {
-        return child
-      }
+    const component = noMargin ? 'div' : DivWithMargin
 
-      const childProps = {
-        isGrouped: true,
-        groupId: `fieldGroup${this.fieldGroupIdNumber}`,
-      }
-
-      return React.cloneElement(child, childProps)
-    })
-
-    return React.createElement(DivWithMargin, restProps, groupAwareChildren)
+    return React.createElement(component, restProps)
   }
 }
 
 FieldGroup.propTypes = {
+  noMargin: PropTypes.bool,
   children: PropTypes.node.isRequired,
+}
+
+FieldGroup.defaultProps = {
+  noMargin: false,
+}
+
+FieldGroup.childContextTypes = {
+  fieldGroupId: PropTypes.string,
 }
