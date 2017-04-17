@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 /**
  * Make a field component groupable, that is...
  * When it is a descendent of a FieldGroup, it will have a
- * keyAttr (usually 'id', or optionally 'htmlFor') prop set to the
+ * keyAttr (usually 'id', or 'htmlFor' (Label), or 'name' (checkable)) prop set to the
  * fieldGroupId context that was passed down
  * @param  {React.node} component
  * @param  {String} [keyAttr='id'] The prop name the component will be given
