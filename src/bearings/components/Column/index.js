@@ -1,4 +1,11 @@
-import { Column } from 'hedron'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 
-export default Column
+export default function Column({ children }) {
+  return <div>{children}</div>
+}
+
+Column.propTypes = {
+  children: PropTypes.node,
+}

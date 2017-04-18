@@ -1,4 +1,11 @@
-import { Row } from 'hedron'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 
-export default Row
+export default function Row({ children }) {
+  return <div>{children}</div>
+}
+
+Row.propTypes = {
+  children: PropTypes.node,
+}
