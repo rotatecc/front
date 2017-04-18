@@ -15,6 +15,9 @@ import { darken, lighten } from './color'
 export * from './color'
 
 
+export const validBreakpoints = ['tiny', 'mobile', 'tablet', 'desktop', 'widescreen']
+
+
 export const validSizes = ['normal', 'small', 'large']
 
 
@@ -45,6 +48,13 @@ export const validInputFieldTypes = [
 
 
 export const validCheckableTypes = ['checkbox', 'radio']
+
+
+/**
+ * React PropType for valid breakpoint/device
+ * (no isRequired)
+ */
+export const propIsBreakpoint = PropTypes.oneOf(validBreakpoints)
 
 
 /**
@@ -106,6 +116,7 @@ export const themeValueModifiers = {
 
   // Length
   negate: (value) => `-${value}`,
+  halvePixels: (value) => `${parseFloat(value) / 2}px`,
 }
 
 
@@ -123,7 +134,7 @@ export function expandThemeValue(s) {
   const expanded = mixins.themeValue(shortValue)
 
   if (expanded === null || expanded === undefined) {
-    console.warn(`theme value '${s}' does not exist`) // eslint-disable-line no-console
+    console.warn(`theme value '${shortValue}' (in '${s}') does not exist`) // eslint-disable-line no-console
     return s
   }
 
@@ -131,14 +142,14 @@ export function expandThemeValue(s) {
     (acc, modifierId) => {
       const modifier = themeValueModifiers[modifierId]
       if (!modifier) {
-        console.warn(`shorthand theme value modifier '${modifierId}' (on '${s}') does not exist, was not applied'`) // eslint-disable-line no-console
+        console.warn(`shorthand theme value modifier '${modifierId}' (in '${s}') does not exist, was not applied'`) // eslint-disable-line no-console
         return acc
       }
 
       const result = modifier(acc)
 
       if (result === null || result === undefined) {
-        console.warn(`shorthand theme value modifier '${modifierId} could not be applied to '${s}'`) // eslint-disable-line no-console
+        console.warn(`shorthand theme value modifier '${modifierId} (in '${s}') could not be applied`) // eslint-disable-line no-console
         return acc
       }
 

@@ -26,11 +26,11 @@ theme.gridBaseGutterWidth = '30px'
 
 
 theme.gridGutters = {
-  tiny: theme.baseGutterWidth,
-  mobile: theme.baseGutterWidth,
-  tablet: theme.baseGutterWidth,
-  desktop: theme.baseGutterWidth,
-  widescreen: theme.baseGutterWidth,
+  tiny: theme.gridBaseGutterWidth,
+  mobile: theme.gridBaseGutterWidth,
+  tablet: theme.gridBaseGutterWidth,
+  desktop: theme.gridBaseGutterWidth,
+  widescreen: theme.gridBaseGutterWidth,
 }
 
 
