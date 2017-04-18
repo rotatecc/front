@@ -368,3 +368,15 @@ export function capitalize(string) {
 export function condSpread(pred, obj) {
   return pred ? obj : {}
 }
+
+
+/**
+ * Map fn to breakpoint names, then merge results
+ * @param  {Function} fn
+ * @param  {Boolean}  [exceptSmallest=false]
+ * @return {obj}
+ */
+export function mapAndMergeBreakpointFn(fn, exceptSmallest = false) {
+  const bkpts = exceptSmallest ? validBreakpoints.slice(1) : validBreakpoints
+  return Object.assign({}, ...bkpts.map(fn))
+}

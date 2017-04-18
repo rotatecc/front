@@ -1,33 +1,62 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import invariant from 'invariant'
 
 import { styled } from 'styletron-react'
 
-import { expandStyles } from '../../utils'
+import { expandStyles, mapAndMergeBreakpointFn } from '../../utils'
+
+import { breakpointOnly } from '../../mixins'
+
+import Column from '../Column'
 
 
-const StyledDiv = styled('div', expandStyles(
+const makeGutterStylesForBreakpoint = (breakpoint) =>
+  breakpointOnly(breakpoint, expandStyles(
+    `mLeft/~gridGutters.${breakpoint}~halvePixels~negate`,
+    `mRight/~gridGutters.${breakpoint}~halvePixels~negate`,
+  ))
+
+
+const StyledDivGapless = styled('div', expandStyles(
   'd/flex',
-  'mLeft/-0.75rem',
-  'mRight/-0.75rem',
-  'mTop/-0.75rem',
+  'mLeft/0',
+  'mRight/0',
 ))
 
 
-export default class Row extends React.PureComponent {
-  getChildContext() {
-    return {}
-  }
+const StyledDivGaps = styled(StyledDivGapless, expandStyles(
+  mapAndMergeBreakpointFn(makeGutterStylesForBreakpoint),
+))
 
-  render() {
-    const { children, ...restProps } = this.props
-    return React.createElement(StyledDiv, restProps, children)
-  }
+
+export default function Row({ gapless, children, ...restProps }) {
+  const component = gapless ? StyledDivGapless : StyledDivGaps
+
+  // If gapless, apply gapless=true to all children (Column)
+  const moddedChildren = !gapless
+    ? children
+    : React.Children.map(
+      children,
+      (child) => {
+        // child must be a Column
+        invariant(
+          child.type === Column,
+          'All direct children of Row must be a Column',
+        )
+
+        return React.cloneElement(child, { gapless: true })
+      },
+    )
+
+  return React.createElement(component, restProps, moddedChildren)
 }
 
 Row.propTypes = {
+  gapless: PropTypes.bool,
   children: PropTypes.node,
 }
 
-Row.childContextTypes = {
+Row.defaultProps = {
+  gapless: false,
 }

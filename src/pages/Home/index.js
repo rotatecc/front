@@ -14,7 +14,7 @@ import LoginForm from '@/containers/LoginForm'
 function Home({ isLoading, isLoggedIn, login, logout, me, roleSlug }) {
   return (
     <Container>
-      <Row>
+      <Row gapless>
         <Column md={6}>
           <H2>Hello</H2>
           <p>{isLoading ? 'loading' : 'stagnant'}</p>

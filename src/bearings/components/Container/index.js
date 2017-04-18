@@ -3,17 +3,10 @@ import PropTypes from 'prop-types'
 
 import { styled } from 'styletron-react'
 
-import { validBreakpoints, expandStyles } from '../../utils'
+import { expandStyles, mapAndMergeBreakpointFn } from '../../utils'
 
 import { breakpointOnly } from '../../mixins'
 
-
-// map fn to breakpoint names, then merge results
-const mapAndMergeBreakpointFn = (fn, exceptSmallest = false) =>
-  Object.assign(
-    {},
-    ...(exceptSmallest ? validBreakpoints.slice(1) : validBreakpoints).map(fn),
-  )
 
 const makeGutterStylesForBreakpoint = (breakpoint) =>
   breakpointOnly(breakpoint, expandStyles(

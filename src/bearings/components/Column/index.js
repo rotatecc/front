@@ -15,10 +15,15 @@ const StyledDiv = styled('div', expandStyles(
 ))
 
 
-export default function Column({ children, ...restProps }) {
+export default function Column({ gapless, children, ...restProps }) {
   return React.createElement(StyledDiv, restProps, children)
 }
 
 Column.propTypes = {
+  gapless: PropTypes.bool,
   children: PropTypes.node,
+}
+
+Column.defaultProps = {
+  gapless: false,
 }
