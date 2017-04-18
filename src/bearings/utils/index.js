@@ -123,7 +123,7 @@ export function expandThemeValue(s) {
   const expanded = mixins.themeValue(shortValue)
 
   if (expanded === null || expanded === undefined) {
-    console.warn(`shorthand theme value '${s}' was not expanded`) // eslint-disable-line no-console
+    console.warn(`theme value '${s}' does not exist`) // eslint-disable-line no-console
     return s
   }
 

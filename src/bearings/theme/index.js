@@ -16,6 +16,43 @@ theme.enableShadows = false
 theme.enableTransitions = true
 
 
+// Grid + Breakpoints
+
+
+theme.gridColumns = 12
+
+
+theme.gridBaseGutterWidth = '30px'
+
+
+theme.gridGutters = {
+  tiny: theme.baseGutterWidth,
+  mobile: theme.baseGutterWidth,
+  tablet: theme.baseGutterWidth,
+  desktop: theme.baseGutterWidth,
+  widescreen: theme.baseGutterWidth,
+}
+
+
+theme.gridBreakpoints = {
+  tiny: '0px',
+  mobile: '576px',
+  tablet: '768px',
+  desktop: '992px',
+  widescreen: '1200px',
+}
+
+
+// The max widths of Container
+// for different screen sizes
+theme.gridContainerMaxWidths = {
+  mobile: '540px',
+  tablet: '720px',
+  desktop: '960px',
+  widescreen: '1140px',
+}
+
+
 // Color palette
 
 // Basic

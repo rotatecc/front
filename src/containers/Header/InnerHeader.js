@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
-import { expandStyles, mediaWidthRange } from '@/bearings'
+import { expandStyles, breakpointMax } from '@/bearings'
 
 import Logo from '@/components/Logo'
 import Navbar from '@/components/Navbar'
@@ -12,20 +12,18 @@ import SearchIcon from './SearchIcon'
 import MobileAuthBar from './MobileAuthBar'
 
 
-const PrimaryWrapper = styled('div', {
-  ...expandStyles(
-    'd/flex',
-    'relative',
-    'bgc/~white',
-    'c/~black',
-    'fullWidth',
-    'h/60px',
-    'fJustify/space-between',
-    'fAlign/center',
-  ),
+const PrimaryWrapper = styled('div', expandStyles(
+  'd/flex',
+  'relative',
+  'bgc/~white',
+  'c/~black',
+  'fullWidth',
+  'h/60px',
+  'fJustify/space-between',
+  'fAlign/center',
 
-  ...mediaWidthRange(null, '1200px', expandStyles('mBottom/50px')),
-})
+  breakpointMax('widescreen', expandStyles('mBottom/50px')),
+))
 
 
 const SlimWrapper = styled('div', ({ show }) => expandStyles(

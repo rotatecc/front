@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { styled } from 'styletron-react'
 
-import { expandStyles, mediaWidthRange, H3 } from '@/bearings'
+import { expandStyles, breakpointMax, H3 } from '@/bearings'
 
 import * as authDuck from '@/ducks/auth'
 
@@ -20,17 +20,15 @@ const Container = styled('div', expandStyles(
 ))
 
 
-const Box = styled('div', {
-  ...expandStyles(
-    'hMax/90vh',
-    'w/400px',
-    'bgc/rgba(255, 255, 255, 0.95)',
-    'tAlign/center',
-    'overY/auto',
-  ),
+const Box = styled('div', expandStyles(
+  'hMax/90vh',
+  'w/400px',
+  'bgc/rgba(255, 255, 255, 0.95)',
+  'tAlign/center',
+  'overY/auto',
 
-  ...mediaWidthRange(null, '450px', expandStyles('w/95%')),
-})
+  breakpointMax('tiny', expandStyles('w/95%')),
+))
 
 
 function Login({ close, login }) {

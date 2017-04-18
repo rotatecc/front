@@ -53,7 +53,12 @@ export { default as TextField } from './components/TextField'
 //
 
 export { default as mixins } from './mixins'
-export { mediaWidthRange } from './mixins'
+export {
+  mediaWidthRange,
+  breakpoint,
+  breakpointMax,
+  breakpointOnly,
+} from './mixins'
 
 
 //

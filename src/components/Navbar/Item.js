@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 import { styled } from 'styletron-react'
 
-import { expandStyles, mediaWidthRange } from '@/bearings'
+import { expandStyles, breakpointMax } from '@/bearings'
 
 
 const StyledLi = styled('li', expandStyles('d/inline-block'))
@@ -26,18 +26,18 @@ const linkStyles = {
 }
 
 
-const primaryLinkStyles = {
-  ...mediaWidthRange(null, '1400px', expandStyles('p/19px/8px')),
-}
+const primaryLinkStyles = expandStyles(
+  breakpointMax('desktop', expandStyles('p/19px/8px')),
+)
 
 
-const slimLinkStyles = {
-  ...expandStyles('h/40px', 'p/8px/12px', 'c/~white'),
+const slimLinkStyles = expandStyles(
+  expandStyles('h/40px', 'p/8px/12px', 'c/~white'),
 
-  ':hover': expandStyles('c/~white', 'bgc/~brandPrimary~dark'),
+  { ':hover': expandStyles('c/~white', 'bgc/~brandPrimary~dark') },
 
-  ...mediaWidthRange(null, '1400px', expandStyles('p/8px/6px')),
-}
+  breakpointMax('desktop', expandStyles('p/8px/6px')),
+)
 
 
 const StyledRouterLink = styled(NavLink, linkStyles)

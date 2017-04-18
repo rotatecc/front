@@ -2,6 +2,8 @@
  * bearings Mixins
  */
 
+import memoize from 'lodash.memoize'
+
 import theme from '../theme'
 
 import { capitalize } from '../utils'
@@ -42,8 +44,31 @@ function wrapEnabler(pred, propFn) {
 // Convert values or attribute maps to CSS attribute value strings
 
 
+/**
+ * Look up a theme value
+ * @param  {string} id id, optionally using '.' to
+ *                     look up object-nested values
+ *                     (ex. 'gridBreakpoints.mobile')
+ * @return {mixed}     theme value
+ */
 export function themeValue(id) {
-  return theme[id]
+  const parts = id.split('.')
+  return parts.reduce(
+    (o, part) => {
+      if (typeof o !== 'object') {
+        return undefined
+      }
+
+      const result = o[part]
+
+      if (typeof result === 'undefined') {
+        return undefined
+      }
+
+      return result
+    },
+    theme,
+  )
 }
 
 
@@ -572,6 +597,55 @@ export const boxShadowIfEnabled = wrapEnabler(theme.enableShadows, boxShadow)
 
 export function transform(x) {
   return { transform: x }
+}
+
+
+// Breakpoints
+
+
+export const breakpointToMediaRange = memoize((device) =>
+  [theme.gridBreakpoints[device], null])
+
+
+// mini-util
+const decrementPixelValue = memoize((x) =>
+  `${parseFloat(x) - 1}px`)
+
+
+export const nextBreakpointLookup = {
+  tiny: 'mobile',
+  mobile: 'tablet',
+  tablet: 'desktop',
+  desktop: 'widescreen',
+  widescreen: null,
+}
+
+
+export const breakpointToMediaRangeMax = memoize((device) =>
+  [
+    null,
+    device === 'widescreen'
+      ? null
+      : decrementPixelValue(theme.gridBreakpoints[nextBreakpointLookup[device]]),
+  ])
+
+
+export const breakpointToMediaRangeOnly = memoize((device) =>
+  [breakpointToMediaRange(device)[0], breakpointToMediaRangeMax(device)[1]])
+
+
+export function breakpoint(device, styles) {
+  return mediaWidthRange(...breakpointToMediaRange(device), styles)
+}
+
+
+export function breakpointMax(device, styles) {
+  return mediaWidthRange(...breakpointToMediaRangeMax(device), styles)
+}
+
+
+export function breakpointOnly(device, styles) {
+  return mediaWidthRange(...breakpointToMediaRangeOnly(device), styles)
 }
 
 

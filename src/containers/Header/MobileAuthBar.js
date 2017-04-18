@@ -2,23 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
-import { expandStyles, mediaWidthRange } from '@/bearings'
+import { expandStyles, breakpointMax } from '@/bearings'
 
 
-const Container = styled('div', {
-  ...expandStyles(
-    'flexCenter',
-    'd/none',
-    'absolute',
-    't/100%',
-    'fullWidth',
-    'h/30px',
-    'fs/0.9rem',
-    'ls/1px',
-  ),
+const Container = styled('div', expandStyles(
+  'flexCenter',
+  'd/none',
+  'absolute',
+  't/100%',
+  'fullWidth',
+  'h/30px',
+  'fs/0.9rem',
+  'ls/1px',
 
-  ...mediaWidthRange(null, '1200px', expandStyles('d/flex')),
-})
+  breakpointMax('desktop', expandStyles('d/flex')),
+))
 
 
 const Link = styled('a', {

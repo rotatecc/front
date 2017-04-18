@@ -2,16 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
-import { expandStyles, mediaWidthRange } from '@/bearings'
+import { expandStyles, breakpointMax } from '@/bearings'
 
 import { propRequiredIf } from '@/utils'
 
 import Item from './Item'
 
 
-const Container = styled('div', {
-  ...mediaWidthRange(null, '1200px', expandStyles('d/none')),
-})
+const Container = styled('div', expandStyles(
+  breakpointMax('desktop', expandStyles('d/none')),
+))
 
 
 const StyledUl = styled('ul', expandStyles('m/0', 'p/0', 'noListStyle'))
