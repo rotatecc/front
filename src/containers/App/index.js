@@ -41,15 +41,15 @@ class App extends React.PureComponent {
     return (
       <div>
         <WindowWatcher />
+        <Helmet
+          titleTemplate="%s - rotate.cc"
+          defaultTitle="rotate.cc"
+          meta={[
+            { name: 'description', content: 'rotate.cc : TODO' },
+          ]}
+        />
         <Container>
           <Overlay />
-          <Helmet
-            titleTemplate="%s - rotate.cc"
-            defaultTitle="rotate.cc"
-            meta={[
-              { name: 'description', content: 'rotate.cc : TODO' },
-            ]}
-          />
           <Header />
           <Content>
             {children}

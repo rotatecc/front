@@ -72,6 +72,11 @@ export function themeValue(id) {
 }
 
 
+export function gridPercentageValue(n) {
+  return `${(n / theme.gridColumns) * 100}%`
+}
+
+
 export function brandValue(brand) {
   return themeValue(`brand${capitalize(brand)}`)
 }
@@ -482,6 +487,11 @@ export function alignItems(x) {
 }
 
 
+export function alignSelf(x) {
+  return { alignSelf: x }
+}
+
+
 export function flexDirection(x) {
   return { flexDirection: x }
 }
@@ -499,6 +509,11 @@ export function flexShrink(x) {
 
 export function flexBasis(x) {
   return { flexBasis: x }
+}
+
+
+export function flexWrap(x) {
+  return { flexWrap: x }
 }
 
 

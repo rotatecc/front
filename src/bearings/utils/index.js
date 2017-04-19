@@ -50,6 +50,18 @@ export const validInputFieldTypes = [
 export const validCheckableTypes = ['checkbox', 'radio']
 
 
+export const validAlignSelf = [
+  'auto',
+  'stretch',
+  'center',
+  'flex-start',
+  'flex-end',
+  'baseline',
+  'initial',
+  'inherit',
+]
+
+
 /**
  * React PropType for valid breakpoint/device
  * (no isRequired)
@@ -248,10 +260,12 @@ export const shorthandPropertiesValued = {
   // flex
   fJustify: mixins.justifyContent,
   fAlign: mixins.alignItems,
+  fAlignSelf: mixins.alignSelf,
   fDirection: mixins.flexDirection,
   fGrow: mixins.flexGrow,
   fShrink: mixins.flexShrink,
   fBasis: mixins.flexBasis,
+  fWrap: mixins.flexWrap,
 
   // overflow
   over: mixins.overflow,

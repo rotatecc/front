@@ -52,6 +52,7 @@
     "json-loader": "^0.5.4",
     "lodash.isplainobject": "^4.0.6",
     "lodash.memoize": "^4.1.2",
+    "lodash.range": "^3.2.0",
     "prop-types": "^15.5.8",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",

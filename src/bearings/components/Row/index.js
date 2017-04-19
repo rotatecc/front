@@ -20,6 +20,7 @@ const makeGutterStylesForBreakpoint = (breakpoint) =>
 
 const StyledDivGapless = styled('div', expandStyles(
   'd/flex',
+  'fWrap/wrap',
   'mLeft/0',
   'mRight/0',
 ))
