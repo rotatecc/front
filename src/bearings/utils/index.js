@@ -111,6 +111,25 @@ export const propIsInputFieldType = PropTypes.oneOf(validInputFieldTypes)
 export const propIsCheckableType = PropTypes.oneOf(validCheckableTypes)
 
 
+/**
+ * React PropType for valid Column breakpoint
+ * (no isRequired)
+ */
+export const propIsColumnBreakpoint = PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.oneOf([true]), // allow bool true
+])
+
+
+/**
+ * Helper: map of breakpoints to propIsColumnBreakpoint
+ */
+export const propTypesForColumnBreakpoints = Object.assign(
+  {},
+  ...validBreakpoints.map((bkpt) => ({ [bkpt]: propIsColumnBreakpoint })),
+)
+
+
 export const themeValueModifiers = {
   // Color
   dark: (color) => darken(color, 15),

@@ -11,6 +11,7 @@ import {
   mapAndMergeBreakpointFn,
   validBreakpoints,
   validAlignSelf,
+  propTypesForColumnBreakpoints,
 } from '../../utils'
 
 import {
@@ -125,19 +126,13 @@ export default function Column({ gapless, children, ...restProps }) {
   return React.createElement(component, realProps, children)
 }
 
-const columnBreakpointPropType = PropTypes.oneOfType([
-  PropTypes.string,
-  PropTypes.oneOf([true]), // allow bool true
-])
-
 Column.propTypes = {
   children: PropTypes.node,
 
   gapless: PropTypes.bool,
 
-  // create breakpoint prop types for each breakpoint
-  // ex. tablet: columnBreakpointPropType, desktop: columnBreakpointPropType, etc
-  ...Object.assign({}, ...validBreakpoints.map((bkpt) => ({ [bkpt]: columnBreakpointPropType }))),
+  // ex. tiny: '...' or tablet: true
+  ...propTypesForColumnBreakpoints,
 }
 
 Column.defaultProps = {

@@ -14,8 +14,8 @@ import LoginForm from '@/containers/LoginForm'
 function Home({ isLoading, isLoggedIn, login, logout, me, roleSlug }) {
   return (
     <Container>
-      <Row>
-        <Column tiny="9/align:flex-start">
+      <Row tablet="6">
+        <Column>
           <H2>Hello</H2>
           <p>{isLoading ? 'loading' : 'stagnant'}</p>
           <p>{isLoggedIn ? `logged in as ${me.get('email')}` : 'not logged in'}</p>
@@ -26,7 +26,7 @@ function Home({ isLoading, isLoggedIn, login, logout, me, roleSlug }) {
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </Column>
-        <Column tiny="3/align:center">
+        <Column>
           <LoginForm
             onSubmit={login}
           />
