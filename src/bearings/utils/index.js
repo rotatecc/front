@@ -62,6 +62,15 @@ export const validAlignSelf = [
 ]
 
 
+export const aliasWidthMap = {
+  'three-quarters': mixins.percentValue(100 * (3 / 4)),
+  'two-thirds': mixins.percentValue(100 * (2 / 3)),
+  'one-half': mixins.percentValue(100 * (1 / 2)),
+  'one-third': mixins.percentValue(100 * (1 / 3)),
+  'one-quarter': mixins.percentValue(100 * (1 / 4)),
+}
+
+
 /**
  * React PropType for valid breakpoint/device
  * (no isRequired)

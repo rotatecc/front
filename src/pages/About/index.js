@@ -11,10 +11,10 @@ function About() {
       <Hero title="About" />
       <Container>
         <Row>
-          <Column tablet>
+          <Column tablet="one-half">
             <H2>About</H2>
           </Column>
-          <Column tablet>
+          <Column tablet="one-half">
             ok
           </Column>
         </Row>

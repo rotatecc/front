@@ -12,6 +12,7 @@ import {
   validBreakpoints,
   validAlignSelf,
   propTypesForColumnBreakpoints,
+  aliasWidthMap,
 } from '../../utils'
 
 import {
@@ -19,6 +20,8 @@ import {
   breakpointOnly,
   gridPercentageValue,
 } from '../../mixins'
+
+import theme from '../../theme'
 
 
 const makeGutterStylesForBreakpoint = memoize((breakpoint) =>
@@ -36,17 +39,24 @@ const createSpecsOnValues = (values, pre, actualFn) =>
 
 const specLookup = {
   // width
+  // auto
   auto: expandStyles(
     'fBasis/0',
     'wMax/auto',
   ),
-  ...createSpecsOnValues(range(1, 13), '', (v) => expandStyles(
+  // number
+  ...createSpecsOnValues(range(1, theme.gridColumns + 1), '', (v) => expandStyles(
     `fBasis/${gridPercentageValue(v)}`,
     `wMax/${gridPercentageValue(v)}`,
   )),
+  // alias
+  ...createSpecsOnValues(Object.keys(aliasWidthMap), '', (v) => expandStyles(
+    `fBasis/${aliasWidthMap[v]}`,
+    `wMax/${aliasWidthMap[v]}`,
+  )),
 
   // offset
-  ...createSpecsOnValues(range(0, 12), 'offset:', (v) => expandStyles(`mLeft/${gridPercentageValue(v)}`)),
+  ...createSpecsOnValues(range(0, theme.gridColumns), 'offset:', (v) => expandStyles(`mLeft/${gridPercentageValue(v)}`)),
 
   // align[-self]
   ...createSpecsOnValues(validAlignSelf, 'align:', (v) => expandStyles(`fAlignSelf/${v}`)),
