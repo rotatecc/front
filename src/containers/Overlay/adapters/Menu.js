@@ -77,9 +77,9 @@ function Menu({ close }) {
         <Logo version={'primary'} />
       </LogoWrapper>
       <Row>
-        <Column lg={8} lgShift={2}>
+        <Column>
           <Row>
-            <Column sm={6} md={3}>
+            <Column>
               <ListSection
                 title="Build"
                 items={[
@@ -91,7 +91,7 @@ function Menu({ close }) {
                 ]}
               />
             </Column>
-            <Column sm={6} md={3}>
+            <Column>
               <ListSection
                 title="Knowledge"
                 items={[
@@ -103,7 +103,7 @@ function Menu({ close }) {
                 ]}
               />
             </Column>
-            <Column sm={6} md={3}>
+            <Column>
               <ListSection
                 title="Community"
                 items={[
@@ -112,7 +112,7 @@ function Menu({ close }) {
                 ]}
               />
             </Column>
-            <Column sm={6} md={3}>
+            <Column>
               <ListSection
                 title="About"
                 items={[

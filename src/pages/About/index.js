@@ -2,21 +2,23 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import { Hero, Row, Column, H2 } from '@/bearings'
+import { Hero, Container, Row, Column, H2 } from '@/bearings'
 
 
 function About() {
   return (
     <div>
       <Hero title="About" />
-      <Row>
-        <Column md={6}>
-          <H2>About</H2>
-        </Column>
-        <Column md={6}>
-          ok
-        </Column>
-      </Row>
+      <Container>
+        <Row>
+          <Column tablet>
+            <H2>About</H2>
+          </Column>
+          <Column tablet>
+            ok
+          </Column>
+        </Row>
+      </Container>
     </div>
   )
 }
