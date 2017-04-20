@@ -34,6 +34,8 @@ const makeGutterStylesForBreakpoint = memoize((breakpoint) =>
 
 const specDict = {
   // Width
+  // NOTE it's important these three types of width values
+  // override each other (i.e. each have fBasis and wMax)
   // auto
   auto: expandStyles(
     'fBasis/0',
@@ -58,7 +60,21 @@ const specDict = {
 }
 
 
+const propGuardFn = (prop) => (prop === true ? 'auto' : prop)
+
+
 const specStringParser = breakpointsCreateSpecStringParser(specDict)
+
+
+const parsedGuardFn = (parsed) => {
+  // check if a flexBasis was set (i.e. if a width value (auto|#) was set)
+  const isBasisSet = Object.keys(parsed).includes('flexBasis')
+
+  // correct with 'auto' if not set
+  return isBasisSet
+    ? parsed
+    : { ...parsed, ...specDict.auto }
+}
 
 
 const StyledDivGapless = styled('div', (props) => expandStyles(
@@ -68,19 +84,11 @@ const StyledDivGapless = styled('div', (props) => expandStyles(
   breakpointsCreateBreakpointsForPropSpecStrings(
     props,
     // if a prop is bool true, then default to 'auto'
-    (prop) => (prop === true ? 'auto' : prop),
+    propGuardFn,
     // our column string parser
     specStringParser,
     // guard parsed results by...
-    (parsed) => {
-      // check if a flexBasis was set (a.k.a. if a width value (auto|#) was set)
-      const isBasisSet = Object.keys(parsed).includes('flexBasis')
-
-      // correct with 'auto' if not set
-      return isBasisSet
-        ? parsed
-        : { ...parsed, ...specDict.auto }
-    },
+    parsedGuardFn,
   ),
 ))
 

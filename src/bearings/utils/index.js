@@ -122,25 +122,6 @@ export const propIsInputFieldType = PropTypes.oneOf(validInputFieldTypes)
 export const propIsCheckableType = PropTypes.oneOf(validCheckableTypes)
 
 
-/**
- * React PropType for valid Column breakpoint
- * (no isRequired)
- */
-export const propIsColumnBreakpoint = PropTypes.oneOfType([
-  PropTypes.string,
-  PropTypes.oneOf([true]), // allow bool true
-])
-
-
-/**
- * Helper: map of breakpoints to propIsColumnBreakpoint
- */
-export const propTypesForColumnBreakpoints = Object.assign(
-  {},
-  ...validBreakpoints.map((bkpt) => ({ [bkpt]: propIsColumnBreakpoint })),
-)
-
-
 export const themeValueModifiers = {
   // Color
   dark: (color) => darken(color, 15),
@@ -513,3 +494,42 @@ export function breakpointsCreateBreakpointsForPropSpecStrings(
     return {}
   })
 }
+
+
+/**
+ * Convert breakpoint name to row columns pass breakpoint name (memoized)
+ * e.g. 'tablet' => 'columnsTablet'
+ */
+export const breakpointNameToColumnsPassBreakpointName = memoize((bkpt) =>
+  `columns${capitalize(bkpt)}`)
+
+
+/**
+ * React PropType for valid Column breakpoint
+ * (no isRequired)
+ */
+export const propIsColumnBreakpoint = PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.oneOf([true]), // allow bool true
+])
+
+
+/**
+ * Helper: map of breakpoints to propIsColumnBreakpoint
+ */
+export const propTypesForColumnBreakpoints = breakpointsMapAndMerge((bkpt) =>
+  ({ [bkpt]: propIsColumnBreakpoint }))
+
+
+/**
+ * Helper: map of breakpoints to PropTypes.string
+ */
+export const propTypesForRowBreakpoints = breakpointsMapAndMerge((bkpt) =>
+  ({ [bkpt]: PropTypes.string }))
+
+
+/**
+ * Helper: map of `columns${bkpt}`s to propIsColumnBreakpoint
+ */
+export const propTypesForColumnsPassBreakpoints = breakpointsMapAndMerge((bkpt) =>
+  ({ [breakpointNameToColumnsPassBreakpointName(bkpt)]: propIsColumnBreakpoint }))

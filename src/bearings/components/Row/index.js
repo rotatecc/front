@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import pick from 'lodash.pick'
 import omit from 'lodash.omit'
 import invariant from 'invariant'
 
@@ -10,7 +9,9 @@ import {
   expandStyles,
   breakpointsMapAndMerge,
   validBreakpoints,
-  propTypesForColumnBreakpoints,
+  propTypesForRowBreakpoints,
+  propTypesForColumnsPassBreakpoints,
+  breakpointNameToColumnsPassBreakpointName,
 } from '../../utils'
 
 import { breakpointOnly } from '../../mixins'
@@ -38,6 +39,10 @@ const StyledDivGaps = styled(StyledDivGapless, expandStyles(
 ))
 
 
+const columnPassBreakpoints = validBreakpoints.map((bkpt) =>
+  breakpointNameToColumnsPassBreakpointName(bkpt))
+
+
 export default function Row({ gapless, children, ...restProps }) {
   const component = gapless ? StyledDivGapless : StyledDivGaps
 
@@ -49,20 +54,23 @@ export default function Row({ gapless, children, ...restProps }) {
     )
   })
 
-  const breakpointProps = pick(restProps, validBreakpoints)
+  const columnPassBreakpointProps = breakpointsMapAndMerge((bkpt) => {
+    const result = restProps[breakpointNameToColumnsPassBreakpointName(bkpt)]
+    return result ? { [bkpt]: result } : {}
+  })
 
-  const maybeGaplessProp = gapless ? { gapless: true } : {}
+  const maybeGaplessProp = (typeof gapless === 'boolean') ? { gapless } : {}
 
   const moddedChildren = React.Children.map(
     children,
     (child) => React.cloneElement(child, {
-      ...breakpointProps,
+      ...columnPassBreakpointProps,
       ...maybeGaplessProp,
       ...child.props, // favor the child's existing breakpoint props
     }),
   )
 
-  const finalRowProps = omit(restProps, validBreakpoints)
+  const finalRowProps = omit(restProps, { ...columnPassBreakpoints, ...validBreakpoints })
 
   return React.createElement(component, finalRowProps, moddedChildren)
 }
@@ -72,10 +80,6 @@ Row.propTypes = {
 
   gapless: PropTypes.bool,
 
-  // ex. tiny: '...' or tablet: true
-  ...propTypesForColumnBreakpoints,
-}
-
-Row.defaultProps = {
-  gapless: false,
+  ...propTypesForRowBreakpoints,
+  ...propTypesForColumnsPassBreakpoints,
 }
