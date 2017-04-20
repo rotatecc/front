@@ -12,6 +12,8 @@ import {
   propTypesForRowBreakpoints,
   propTypesForColumnsPassBreakpoints,
   breakpointNameToColumnsPassBreakpointName,
+  breakpointsCreateSpecStringParser,
+  breakpointsCreateBreakpointsForPropSpecStrings,
 } from '../../utils'
 
 import { breakpointOnly } from '../../mixins'
@@ -26,21 +28,41 @@ const makeGutterStylesForBreakpoint = (breakpoint) =>
   ))
 
 
-const StyledDivGapless = styled('div', expandStyles(
+const columnPassBreakpoints = validBreakpoints.map((bkpt) =>
+  breakpointNameToColumnsPassBreakpointName(bkpt))
+
+
+const specDict = {
+}
+
+
+const propGuardFn = (prop) => prop // pass
+
+
+const specStringParser = breakpointsCreateSpecStringParser(specDict)
+
+
+const parsedGuardFn = (parsed) => parsed // pass
+
+
+const StyledDivGapless = styled('div', (props) => expandStyles(
   'd/flex',
   'fWrap/wrap',
   'mLeft/0',
   'mRight/0',
+
+  breakpointsCreateBreakpointsForPropSpecStrings(
+    props,
+    propGuardFn, // pass
+    specStringParser, // our row breakpoint spec string parser
+    parsedGuardFn, // pass
+  ),
 ))
 
 
 const StyledDivGaps = styled(StyledDivGapless, expandStyles(
   breakpointsMapAndMerge(makeGutterStylesForBreakpoint),
 ))
-
-
-const columnPassBreakpoints = validBreakpoints.map((bkpt) =>
-  breakpointNameToColumnsPassBreakpointName(bkpt))
 
 
 export default function Row({ gapless, children, ...restProps }) {
@@ -70,7 +92,7 @@ export default function Row({ gapless, children, ...restProps }) {
     }),
   )
 
-  const finalRowProps = omit(restProps, { ...columnPassBreakpoints, ...validBreakpoints })
+  const finalRowProps = omit(restProps, columnPassBreakpoints)
 
   return React.createElement(component, finalRowProps, moddedChildren)
 }
