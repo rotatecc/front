@@ -18,9 +18,9 @@ export * from './color'
 
 
 // environment-safe console warn
-export const warn = (console && console.warn) // eslint-disable-line no-console
+export const warn = (typeof console === 'object' && console.warn) // eslint-disable-line no-console
   ? console.warn // eslint-disable-line no-console
-  : () => null
+  : () => undefined
 
 
 export const validBreakpoints = ['tiny', 'mobile', 'tablet', 'desktop', 'widescreen']

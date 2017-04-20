@@ -8,7 +8,9 @@ import { Hero, Container, Row, Column, H2 } from '@/bearings'
 function About() {
   return (
     <div>
-      <Hero title="About" />
+      <Hero>
+        <H2>About</H2>
+      </Hero>
       <Container>
         <Row>
           <Column tablet="one-half">

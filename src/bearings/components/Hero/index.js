@@ -7,54 +7,50 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
-import { expandStyles } from '../../utils'
+import { expandStyles, propIsSize } from '../../utils'
 
-import { breakpointMax } from '../../mixins'
-
-import H2 from '../H2'
-
-
-const height = '350px'
+import Container from '../Container'
 
 
 const Wrapper = styled('div', expandStyles(
-  'fullWidth',
-  `h/${height}`,
-  'bgc/~black',
-  'c/~white',
-))
-
-const PageWidth = styled('div', expandStyles(
   'd/flex',
-  'w/1250px',
-  `h/${height}`,
-  'm/0/auto',
   'fAlignItems/center',
-
-  breakpointMax('desktop', expandStyles('w/95%')),
-
-  breakpointMax('mobile', expandStyles('w/100%')),
 ))
 
-const Inner = styled('div', {})
 
-const Title = styled(H2, expandStyles('fs/3.5rem'))
+const Padding = styled('div', ({ amount }) => expandStyles(
+  `pTop/${amount}`,
+  `pBottom/${amount}`,
+))
 
 
-function Hero({ title }) {
+const sizePaddingMap = {
+  normal: '8rem',
+  small: '3rem',
+  large: '12rem',
+}
+
+
+export default function Hero({ size, children }) {
+  const padding = sizePaddingMap[size] || 0
+
   return (
     <Wrapper>
-      <PageWidth>
-        <Inner>
-          <Title>{title}</Title>
-        </Inner>
-      </PageWidth>
+      <Padding amount={padding}>
+        <Container>
+          {children}
+        </Container>
+      </Padding>
     </Wrapper>
   )
 }
 
 Hero.propTypes = {
-  title: PropTypes.string,
+  size: propIsSize,
+
+  children: PropTypes.node,
 }
 
-export default Hero
+Hero.defaultProps = {
+  size: 'normal',
+}
