@@ -7,6 +7,6 @@ export default styled('div', expandStyles(
   'd/flex',
   'fullWidth',
   'fullHeight',
-  'fJustify/space-between',
-  'fAlign/center',
+  'fJustifyContent/space-between',
+  'fAlignItems/center',
 ))

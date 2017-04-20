@@ -19,8 +19,8 @@ const PrimaryWrapper = styled('div', expandStyles(
   'c/~black',
   'fullWidth',
   'h/60px',
-  'fJustify/space-between',
-  'fAlign/center',
+  'fJustifyContent/space-between',
+  'fAlignItems/center',
 
   breakpointMax('widescreen', expandStyles('mBottom/50px')),
 ))
@@ -36,13 +36,13 @@ const SlimWrapper = styled('div', ({ show }) => expandStyles(
   'c/~white',
   `t/${show ? '0' : '-40px'}`,
   `o/${show ? '1' : '0.5'}`,
-  'fJustify/space-between',
-  'fAlign/center',
+  'fJustifyContent/space-between',
+  'fAlignItems/center',
   'trans/all 200ms ease',
 ))
 
 
-const Side = styled('div', expandStyles('d/flex', 'fAlign/stretch'))
+const Side = styled('div', expandStyles('d/flex', 'fAlignItems/stretch'))
 
 
 function shouldShowSlimHeader({ scrollTop, showMenuOverlay, showSearchOverlay }) {

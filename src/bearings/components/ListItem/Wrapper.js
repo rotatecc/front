@@ -9,7 +9,7 @@ export default styled('li', {
     'd/flex',
     'fullWidth',
     'h/3em',
-    'fAlign/center',
+    'fAlignItems/center',
   ),
 
   borderTop: '1px solid #eee',

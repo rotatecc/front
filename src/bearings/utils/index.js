@@ -52,15 +52,41 @@ export const validInputFieldTypes = [
 export const validCheckableTypes = ['checkbox', 'radio']
 
 
-export const validAlignSelf = [
-  'auto',
-  'stretch',
-  'center',
+export const validJustifyContent = [
   'flex-start',
   'flex-end',
+  'center',
+  'space-between',
+  'space-around',
+]
+
+
+export const validAlignItems = [
+  'flex-start',
+  'flex-end',
+  'center',
   'baseline',
-  'initial',
-  'inherit',
+  'stretch',
+]
+
+
+export const validAlignSelf = [
+  'auto',
+  'flex-start',
+  'flex-end',
+  'center',
+  'baseline',
+  'stretch',
+]
+
+
+export const validAlignContent = [
+  'stretch',
+  'flex-start',
+  'flex-end',
+  'center',
+  'space-between',
+  'space-around',
 ]
 
 
@@ -269,9 +295,10 @@ export const shorthandPropertiesValued = {
   '!radius': mixins.borderRadiusIfEnabled,
 
   // flex
-  fJustify: mixins.justifyContent,
-  fAlign: mixins.alignItems,
+  fJustifyContent: mixins.justifyContent,
+  fAlignItems: mixins.alignItems,
   fAlignSelf: mixins.alignSelf,
+  fAlignContent: mixins.alignContent,
   fDirection: mixins.flexDirection,
   fGrow: mixins.flexGrow,
   fShrink: mixins.flexShrink,
@@ -374,7 +401,7 @@ shorthandPropertiesStatic.absoluteVerticalCenter = {
   transform: mixins.translateXValue(mixins.percentValue(-50)),
 }
 
-shorthandPropertiesStatic.flexCenter = expandStyles('fJustify/center', 'fAlign/center')
+shorthandPropertiesStatic.flexCenter = expandStyles('fJustifyContent/center', 'fAlignItems/center')
 
 
 /**

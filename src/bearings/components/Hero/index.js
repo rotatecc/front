@@ -29,7 +29,7 @@ const PageWidth = styled('div', expandStyles(
   'w/1250px',
   `h/${height}`,
   'm/0/auto',
-  'fAlign/center',
+  'fAlignItems/center',
 
   breakpointMax('desktop', expandStyles('w/95%')),
 

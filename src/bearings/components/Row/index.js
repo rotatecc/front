@@ -9,11 +9,15 @@ import {
   expandStyles,
   breakpointsMapAndMerge,
   validBreakpoints,
+  validJustifyContent,
+  validAlignItems,
+  validAlignContent,
   propTypesForRowBreakpoints,
   propTypesForColumnsPassBreakpoints,
   breakpointNameToColumnsPassBreakpointName,
   breakpointsCreateSpecStringParser,
   breakpointsCreateBreakpointsForPropSpecStrings,
+  breakpointsCreateSpecsOnValues,
 } from '../../utils'
 
 import { breakpointOnly } from '../../mixins'
@@ -33,6 +37,33 @@ const columnPassBreakpoints = validBreakpoints.map((bkpt) =>
 
 
 const specDict = {
+  // justify-content
+  ...breakpointsCreateSpecsOnValues(
+    validJustifyContent,
+    'justify-content:',
+    (v) => expandStyles(`fJustifyContent/${v}`),
+  ),
+
+  // align-items
+  ...breakpointsCreateSpecsOnValues(
+    validAlignItems,
+    'align-items:',
+    (v) => expandStyles(`fAlignItems/${v}`),
+  ),
+
+  // align-content
+  ...breakpointsCreateSpecsOnValues(
+    validAlignContent,
+    'align-content:',
+    (v) => expandStyles(`fAlignContent/${v}`),
+  ),
+
+  // direction (flex-direction) (with normal=>row, reverse=>row-reverse)
+  ...breakpointsCreateSpecsOnValues(
+    [['normal', 'row'], ['reverse', 'row-reverse']],
+    'direction:',
+    (v) => expandStyles(`fDirection/${v}`),
+  ),
 }
 
 

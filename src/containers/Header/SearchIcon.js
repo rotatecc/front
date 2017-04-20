@@ -10,7 +10,7 @@ const Container = styled('a', {
     'd/flex',
     'c/~black',
     'pointer',
-    'fAlign/center',
+    'fAlignItems/center',
   ),
 
   ':hover': expandStyles('c/~black'),

@@ -492,6 +492,11 @@ export function alignSelf(x) {
 }
 
 
+export function alignContent(x) {
+  return { alignContent: x }
+}
+
+
 export function flexDirection(x) {
   return { flexDirection: x }
 }
