@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { styled } from 'styletron-react'
 
-import { expandStyles, mapAndMergeBreakpointFn } from '../../utils'
+import { expandStyles, breakpointsMapAndMerge } from '../../utils'
 
 import { breakpointOnly } from '../../mixins'
 
@@ -28,7 +28,7 @@ const StyledDivFluid = styled('div', expandStyles(
   'mLeft/auto',
 
   // Gutters for each breakpoint
-  mapAndMergeBreakpointFn(makeGutterStylesForBreakpoint),
+  breakpointsMapAndMerge(makeGutterStylesForBreakpoint),
 ))
 
 
@@ -36,7 +36,7 @@ const StyledDivStandard = styled(StyledDivFluid, expandStyles(
   'w/auto',
 
   // Max widths for each breakpoint (except smallest)
-  mapAndMergeBreakpointFn(makeMaxWidthStylesForBreakpoint, true),
+  breakpointsMapAndMerge(makeMaxWidthStylesForBreakpoint, true),
 ))
 
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import invariant from 'invariant'
 import range from 'lodash.range'
 import memoize from 'lodash.memoize'
 
@@ -8,15 +7,17 @@ import { styled } from 'styletron-react'
 
 import {
   expandStyles,
-  mapAndMergeBreakpointFn,
   validBreakpoints,
   validAlignSelf,
   propTypesForColumnBreakpoints,
   aliasWidthMap,
+  breakpointsMapAndMerge,
+  breakpointsCreateSpecsOnValues,
+  breakpointsCreateSpecStringParser,
+  breakpointsCreateBreakpointsForPropSpecStrings,
 } from '../../utils'
 
 import {
-  breakpoint,
   breakpointOnly,
   gridPercentageValue,
 } from '../../mixins'
@@ -30,95 +31,64 @@ const makeGutterStylesForBreakpoint = memoize((breakpoint) =>
     `pRight/~gridGutters.${breakpoint}~halvePixels`,
   )))
 
-const createSpecsOnValues = (values, pre, actualFn) =>
-  (Object.assign({}, ...values.map((v) => {
-    const [name, value] = Array.isArray(v) ? v : [v, v]
 
-    return { [`${pre}${name}`]: actualFn(value) }
-  })))
-
-const specLookup = {
-  // width
+const specDict = {
+  // Width
   // auto
   auto: expandStyles(
     'fBasis/0',
     'wMax/auto',
   ),
   // number
-  ...createSpecsOnValues(range(1, theme.gridColumns + 1), '', (v) => expandStyles(
+  ...breakpointsCreateSpecsOnValues(range(1, theme.gridColumns + 1), '', (v) => expandStyles(
     `fBasis/${gridPercentageValue(v)}`,
     `wMax/${gridPercentageValue(v)}`,
   )),
   // alias
-  ...createSpecsOnValues(Object.keys(aliasWidthMap), '', (v) => expandStyles(
+  ...breakpointsCreateSpecsOnValues(Object.keys(aliasWidthMap), '', (v) => expandStyles(
     `fBasis/${aliasWidthMap[v]}`,
     `wMax/${aliasWidthMap[v]}`,
   )),
 
-  // offset
-  ...createSpecsOnValues(range(0, theme.gridColumns), 'offset:', (v) => expandStyles(`mLeft/${gridPercentageValue(v)}`)),
+  // Offset
+  ...breakpointsCreateSpecsOnValues(range(0, theme.gridColumns), 'offset:', (v) => expandStyles(`mLeft/${gridPercentageValue(v)}`)),
 
-  // align[-self]
-  ...createSpecsOnValues(validAlignSelf, 'align:', (v) => expandStyles(`fAlignSelf/${v}`)),
+  // Align-self
+  ...breakpointsCreateSpecsOnValues(validAlignSelf, 'align-self:', (v) => expandStyles(`fAlignSelf/${v}`)),
 }
 
-const parseColumnSpecString = memoize((s) => {
-  const specs = s.split('/')
 
-  const resolvedSpecs = specs.map((m) => specLookup[m] || m)
-
-  // verify
-  resolvedSpecs.forEach((rs) => {
-    invariant(
-      typeof rs === 'object',
-      `Column spec '${rs}' does not exist`,
-    )
-  })
-
-  const resolvedSpecMap = Object.assign({}, ...resolvedSpecs)
-
-  // check if a flexBasis was set (if a width value (auto|#) was set)
-  const isBasisSet = Object.keys(resolvedSpecMap).includes('flexBasis')
-
-  // correct with 'auto' if not set
-  const correctedSpecMap = isBasisSet
-    ? resolvedSpecMap
-    : { ...resolvedSpecMap, ...specLookup.auto }
-
-  return correctedSpecMap
-})
+const specStringParser = breakpointsCreateSpecStringParser(specDict)
 
 
 const StyledDivGapless = styled('div', (props) => expandStyles(
   'fGrow/1',
   'fShrink/1',
 
-  Object.assign({}, ...validBreakpoints.map((breakpointName) => {
-    const propMaybe = props[breakpointName]
+  breakpointsCreateBreakpointsForPropSpecStrings(
+    props,
+    // if a prop is bool true, then default to 'auto'
+    (prop) => (prop === true ? 'auto' : prop),
+    // our column string parser
+    specStringParser,
+    // guard parsed results by...
+    (parsed) => {
+      // check if a flexBasis was set (a.k.a. if a width value (auto|#) was set)
+      const isBasisSet = Object.keys(parsed).includes('flexBasis')
 
-    // If the prop is bool true, then default to 'auto'
-    const propMaybeTrueGuarded = propMaybe === true ? 'auto' : propMaybe
-
-    if (typeof propMaybeTrueGuarded === 'string' && propMaybeTrueGuarded.length) {
-      const parsed = parseColumnSpecString(propMaybeTrueGuarded)
-
-      return breakpoint(breakpointName, parsed)
-    }
-
-    return {}
-  })),
+      // correct with 'auto' if not set
+      return isBasisSet
+        ? parsed
+        : { ...parsed, ...specDict.auto }
+    },
+  ),
 ))
+
 
 const StyledDivGaps = styled(StyledDivGapless, expandStyles(
   // Gutters
-  mapAndMergeBreakpointFn(makeGutterStylesForBreakpoint),
+  breakpointsMapAndMerge(makeGutterStylesForBreakpoint),
 ))
-
-
-/**
- * Column needs to determine if any of the five breakpoints
- * have been set (bool true or string), if not, default to { tablet: true }
- */
 
 
 export default function Column({ gapless, children, ...restProps }) {
@@ -143,8 +113,4 @@ Column.propTypes = {
 
   // ex. tiny: '...' or tablet: true
   ...propTypesForColumnBreakpoints,
-}
-
-Column.defaultProps = {
-  gapless: false,
 }

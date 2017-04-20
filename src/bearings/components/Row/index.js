@@ -8,7 +8,7 @@ import { styled } from 'styletron-react'
 
 import {
   expandStyles,
-  mapAndMergeBreakpointFn,
+  breakpointsMapAndMerge,
   validBreakpoints,
   propTypesForColumnBreakpoints,
 } from '../../utils'
@@ -34,7 +34,7 @@ const StyledDivGapless = styled('div', expandStyles(
 
 
 const StyledDivGaps = styled(StyledDivGapless, expandStyles(
-  mapAndMergeBreakpointFn(makeGutterStylesForBreakpoint),
+  breakpointsMapAndMerge(makeGutterStylesForBreakpoint),
 ))
 
 
@@ -57,8 +57,8 @@ export default function Row({ gapless, children, ...restProps }) {
     children,
     (child) => React.cloneElement(child, {
       ...breakpointProps,
+      ...maybeGaplessProp,
       ...child.props, // favor the child's existing breakpoint props
-      ...maybeGaplessProp, // ...not for gapless, since it's a default Column prop
     }),
   )
 
