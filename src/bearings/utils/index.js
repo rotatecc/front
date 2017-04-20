@@ -17,6 +17,12 @@ import { darken, lighten } from './color'
 export * from './color'
 
 
+// environment-safe console warn
+export const warn = (console && console.warn) // eslint-disable-line no-console
+  ? console.warn // eslint-disable-line no-console
+  : () => null
+
+
 export const validBreakpoints = ['tiny', 'mobile', 'tablet', 'desktop', 'widescreen']
 
 
@@ -183,7 +189,7 @@ export function expandThemeValue(s) {
   const expanded = mixins.themeValue(shortValue)
 
   if (expanded === null || expanded === undefined) {
-    console.warn(`theme value '${shortValue}' (in '${s}') does not exist`) // eslint-disable-line no-console
+    warn(`theme value '${shortValue}' (in '${s}') does not exist`)
     return s
   }
 
@@ -191,14 +197,14 @@ export function expandThemeValue(s) {
     (acc, modifierId) => {
       const modifier = themeValueModifiers[modifierId]
       if (!modifier) {
-        console.warn(`shorthand theme value modifier '${modifierId}' (in '${s}') does not exist, was not applied'`) // eslint-disable-line no-console
+        warn(`shorthand theme value modifier '${modifierId}' (in '${s}') does not exist, was not applied'`)
         return acc
       }
 
       const result = modifier(acc)
 
       if (result === null || result === undefined) {
-        console.warn(`shorthand theme value modifier '${modifierId} (in '${s}') could not be applied`) // eslint-disable-line no-console
+        warn(`shorthand theme value modifier '${modifierId} (in '${s}') could not be applied`)
         return acc
       }
 
@@ -347,7 +353,7 @@ export function expandStyles(...args) {
     }
 
     if (typeof arg !== 'string') {
-      console.warn('shorthand attribute must be string') // eslint-disable-line no-console
+      warn('shorthand attribute must be string')
       return {}
     }
 
@@ -362,7 +368,7 @@ export function expandStyles(...args) {
       const propFn = shorthandPropertiesValued[shortAttr]
 
       if (!propFn) {
-        console.warn(`[valued] shorthand attribute '${shortAttr}' does not exist (was not applied)`) // eslint-disable-line no-console
+        warn(`[valued] shorthand attribute '${shortAttr}' does not exist (was not applied)`)
         return {}
       }
 
@@ -379,7 +385,7 @@ export function expandStyles(...args) {
     const prop = shorthandPropertiesStatic[arg]
 
     if (!prop) {
-      console.warn(`[static] shorthand attribute '${arg}' does not exist (was not applied)`) // eslint-disable-line no-console
+      warn(`[static] shorthand attribute '${arg}' does not exist (was not applied)`)
       return {}
     }
 

@@ -119,7 +119,7 @@ export default function Row({ gapless, children, ...restProps }) {
     (child) => React.cloneElement(child, {
       ...columnPassBreakpointProps,
       ...maybeGaplessProp,
-      ...child.props, // favor the child's existing breakpoint props
+      ...child.props, // favor the child's existing breakpoint and gapless props
     }),
   )
 
