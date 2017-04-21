@@ -12,7 +12,7 @@ const theme = {}
 
 
 theme.enableRounded = true
-theme.enableShadows = false
+theme.enableShadows = true
 theme.enableTransitions = true
 
 
@@ -296,6 +296,15 @@ theme.alertPaddingX = '1.25rem'
 theme.alertPaddingY = '0.75rem'
 theme.alertMarginBottom = '1rem'
 theme.alertLineHeight = theme.baseLineHeight
+
+
+// Component: Tile
+
+theme.tileBorderRadius = theme.borderRadius // switch-able
+theme.tileBoxShadow = '0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1)' // switch-able
+theme.tilePaddingX = '1.25rem'
+theme.tilePaddingY = '0.75rem'
+theme.tileMarginBottom = '1rem'
 
 
 export default theme

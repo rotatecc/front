@@ -457,6 +457,7 @@ export function condSpread(pred, obj) {
  * @param  {Object} [afterProps={}] Spread after the actual props
  *                                  (will override any collisions)
  * @param  {Object} [preProps={}]   Spread before the actual props
+ *                                  (e.g. defaultProps)
  *                                  (can be overriden by collisions)
  * @return {React.Component}
  */

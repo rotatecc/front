@@ -16,10 +16,12 @@ import BrandBackground from '../BrandBackground'
 
 
 const WrapperWithBackground = styled(BrandBackground, ({ hasRadius, hasShadow }) => expandStyles(
-  'p/1rem/1.25rem',
-  'mBottom/~gridBaseGutterWidth',
-  hasRadius && 'radius/~borderRadius',
-  hasShadow && 'bShadow/0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1)',
+  'p/~tilePaddingY/~tilePaddingX',
+  'mBottom/~tileMarginBottom',
+
+  hasRadius && '!radius/~tileBorderRadius',
+
+  hasShadow && '!bShadow/~tileBoxShadow',
 ))
 
 
