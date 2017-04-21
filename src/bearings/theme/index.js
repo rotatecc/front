@@ -228,10 +228,10 @@ theme.buttonFontSizeSm = theme.fontSizeSm
 theme.buttonBorderRadiusLg = theme.borderRadiusLg
 theme.buttonFontSizeLg = theme.fontSizeLg
 
-theme.buttonSecondaryColor = theme.grayDark
-theme.buttonSecondaryBg = theme.white
-theme.buttonSecondaryBorder = theme.grayLighter
-theme.buttonSecondaryFocusBoxShadow = `0 0 0 2px ${fade(theme.buttonSecondaryBorder, 50)}`
+theme.buttonDefaultColor = theme.grayDark
+theme.buttonDefaultBg = theme.white
+theme.buttonDefaultBorder = theme.grayLighter
+theme.buttonDefaultFocusBoxShadow = `0 0 0 2px ${fade(theme.buttonDefaultBorder, 50)}`
 
 theme.buttonPrimaryColor = theme.white
 theme.buttonPrimaryBg = theme.brandPrimary

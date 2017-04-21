@@ -7,7 +7,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
-import { expandStyles, propIsSize } from '../../utils'
+import {
+  expandStyles,
+  propIsSize,
+  propIsBrand,
+} from '../../utils'
 
 import Container from '../Container'
 
@@ -15,10 +19,12 @@ import Container from '../Container'
 const Wrapper = styled('div', expandStyles(
   'd/flex',
   'fAlignItems/center',
+  'bgi/linear-gradient(141deg, #009e6c 0%, #00d1b2 71%, #00e7eb 100%)',
 ))
 
 
 const Padding = styled('div', ({ amount }) => expandStyles(
+  'fullWidth',
   `pTop/${amount}`,
   `pBottom/${amount}`,
 ))
@@ -47,10 +53,14 @@ export default function Hero({ size, children }) {
 
 Hero.propTypes = {
   size: propIsSize,
+  brand: propIsBrand,
+  bold: PropTypes.bool,
 
   children: PropTypes.node,
 }
 
 Hero.defaultProps = {
   size: 'normal',
+  brand: 'primary',
+  bold: false,
 }

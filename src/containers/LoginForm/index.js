@@ -37,7 +37,7 @@ const LoginForm = ({ handleSubmit, submitting, error }) =>
     <Field name="email" label="Email" component={LoginFormField} type="text" />
     <Field name="password" label="Password" component={LoginFormField} type="password" />
     <div>
-      <Button type="submit" brand="primary" size="normal" disabled={submitting}>Log in</Button>
+      <Button type="submit" brand="default" size="normal" disabled={submitting}>Log in</Button>
       {error}
     </div>
   </form>

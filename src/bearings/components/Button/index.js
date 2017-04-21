@@ -5,7 +5,7 @@ import { styled } from 'styletron-react'
 import {
   expandStyles,
   propIsSize,
-  propIsButtonBrand,
+  propIsBrandOrDefault,
   capitalize,
 } from '../../utils'
 
@@ -263,7 +263,7 @@ function Button({ isInButtonGroup, ...restProps }) {
 
 Button.propTypes = {
   size: propIsSize,
-  brand: propIsButtonBrand,
+  brand: propIsBrandOrDefault,
   link: PropTypes.bool,
   outline: PropTypes.bool,
 

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Button from '../Button'
 
-import { propIsSize, propIsButtonBrand } from '../../utils'
+import { propIsSize, propIsBrandOrDefault } from '../../utils'
 
 
 function ButtonOutlined(props) {
@@ -12,7 +12,7 @@ function ButtonOutlined(props) {
 
 Button.propTypes = {
   size: propIsSize,
-  brand: propIsButtonBrand,
+  brand: propIsBrandOrDefault,
   focus: PropTypes.bool,
   active: PropTypes.bool,
   disabled: PropTypes.bool,

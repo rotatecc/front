@@ -2,21 +2,29 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import { Hero, Container, Row, Column, H2 } from '@/bearings'
+import { styled } from 'styletron-react'
+
+import { expandStyles, Hero, Container, Row, Column, H2 } from '@/bearings'
+
+
+const HeroTitle = styled(H2, expandStyles(
+  'c/~white',
+  'fs/3.5rem',
+))
 
 
 function About() {
   return (
     <div>
       <Hero>
-        <H2>About</H2>
+        <HeroTitle>About</HeroTitle>
       </Hero>
       <Container>
-        <Row>
-          <Column tablet="one-half">
+        <Row columnsTablet="one-half">
+          <Column>
             <H2>About</H2>
           </Column>
-          <Column tablet="one-half">
+          <Column>
             ok
           </Column>
         </Row>

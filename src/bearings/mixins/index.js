@@ -231,6 +231,11 @@ export function backgroundColor(x) {
 }
 
 
+export function backgroundImage(x) {
+  return { backgroundImage: x }
+}
+
+
 // Position
 
 

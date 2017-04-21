@@ -22,7 +22,7 @@ const PrimaryWrapper = styled('div', expandStyles(
   'fJustifyContent/space-between',
   'fAlignItems/center',
 
-  breakpointMax('widescreen', expandStyles('mBottom/50px')),
+  // breakpointMax('widescreen', expandStyles('mBottom/50px')),
 ))
 
 

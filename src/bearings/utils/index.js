@@ -32,7 +32,7 @@ export const validSizes = ['normal', 'small', 'large']
 export const validBrands = ['primary', 'success', 'info', 'warning', 'danger']
 
 
-export const validButtonBrands = ['secondary', ...validBrands]
+export const validBrandsOrDefault = ['default', ...validBrands]
 
 
 export const validFeedbacks = ['success', 'info', 'warning', 'danger']
@@ -127,10 +127,10 @@ export const propIsBrand = PropTypes.oneOf(validBrands)
 
 
 /**
- * React PropType for valid button brand
+ * React PropType for valid brand or 'default'
  * (no isRequired)
  */
-export const propIsButtonBrand = PropTypes.oneOf(validButtonBrands)
+export const propIsBrandOrDefault = PropTypes.oneOf(validBrandsOrDefault)
 
 
 /**
@@ -262,9 +262,9 @@ export const shorthandPropertiesValued = {
   fs: mixins.fontSize,
   fw: mixins.fontWeight,
 
-  // coloring
+  // background
   bgc: mixins.backgroundColor,
-  c: mixins.color,
+  bgi: mixins.backgroundImage,
 
   // display
   d: mixins.display,
@@ -317,6 +317,7 @@ export const shorthandPropertiesValued = {
   overY: mixins.overflowY,
 
   // text (non-font)
+  c: mixins.color,
   tDecor: mixins.textDecoration,
   tAlign: mixins.textAlign,
   tShadow: mixins.textShadow,
