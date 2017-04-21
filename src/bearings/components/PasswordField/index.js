@@ -1,7 +1,6 @@
-import React from 'react'
+import { componentWithProps } from '../../utils'
+
 import InputField from '../InputField'
 
 
-export default function PasswordField(props) {
-  return React.createElement(InputField, { ...props, type: 'password' })
-}
+export default componentWithProps('PasswordField', InputField, { type: 'password' })

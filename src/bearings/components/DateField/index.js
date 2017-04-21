@@ -1,7 +1,6 @@
-import React from 'react'
+import { componentWithProps } from '../../utils'
+
 import InputField from '../InputField'
 
 
-export default function DateField(props) {
-  return React.createElement(InputField, { ...props, type: 'date' })
-}
+export default componentWithProps('DateField', InputField, { type: 'date' })

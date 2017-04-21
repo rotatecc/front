@@ -1,7 +1,6 @@
-import React from 'react'
+import { componentWithProps } from '../../utils'
+
 import CheckableSet from '../CheckableSet'
 
 
-export default function RadioSet(props) {
-  return React.createElement(CheckableSet, { ...props, type: 'radio' })
-}
+export default componentWithProps('RadioSet', CheckableSet, { type: 'radio' })

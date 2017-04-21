@@ -1,7 +1,6 @@
-import React from 'react'
+import { componentWithProps } from '../../utils'
+
 import InputField from '../InputField'
 
 
-export default function TelField(props) {
-  return React.createElement(InputField, { ...props, type: 'tel' })
-}
+export default componentWithProps('TelField', InputField, { type: 'tel' })

@@ -1,7 +1,6 @@
-import React from 'react'
+import { componentWithProps } from '../../utils'
+
 import InputField from '../InputField'
 
 
-export default function EmailField(props) {
-  return React.createElement(InputField, { ...props, type: 'email' })
-}
+export default componentWithProps('EmailField', InputField, { type: 'email' })

@@ -1,7 +1,6 @@
-import React from 'react'
+import { componentWithProps } from '../../utils'
+
 import InputField from '../InputField'
 
 
-export default function NumberField(props) {
-  return React.createElement(InputField, { ...props, type: 'number' })
-}
+export default componentWithProps('NumberField', InputField, { type: 'number' })
