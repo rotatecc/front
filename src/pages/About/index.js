@@ -15,7 +15,7 @@ const HeroTitle = styled(H2, expandStyles(
 function About() {
   return (
     <div>
-      <Hero brand="dark">
+      <Hero brand="primary" bold>
         <HeroTitle>About</HeroTitle>
       </Hero>
       <Container>

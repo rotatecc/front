@@ -67,8 +67,8 @@ const boldGradientStyle = (baseThemeColor) => {
   const gradientTopLeft = generateGradientColor(baseColor, -10, 0.1, 0.1)
   const gradientBottomRight = generateGradientColor(baseColor, 10, 0.05, 0.05)
 
-  return `bgi/linear-gradient(141deg, ${gradientTopLeft} 0%, ` +
-    `${baseColor} 71%, ${gradientBottomRight} 100%)`
+  return `bgi/linear-gradient(141deg, ${gradientTopLeft} 0%, \
+${baseColor} 71%, ${gradientBottomRight} 100%)`
 }
 
 
@@ -84,7 +84,7 @@ const boldBrandMap = {
 }
 
 
-export default function Hero({ size, bold, brand, children }) {
+export default function Hero({ fluid, size, bold, brand, children }) {
   const padding = sizePaddingMap[size] || 0
 
   const brandStyles = bold
@@ -94,7 +94,7 @@ export default function Hero({ size, bold, brand, children }) {
   return (
     <Wrapper brandStyles={brandStyles}>
       <VerticalPadding amount={padding}>
-        <Container>
+        <Container fluid={fluid}>
           {children}
         </Container>
       </VerticalPadding>
@@ -103,6 +103,7 @@ export default function Hero({ size, bold, brand, children }) {
 }
 
 Hero.propTypes = {
+  fluid: PropTypes.bool,
   size: propIsSize,
   brand: propIsBrandOrDefaultOrLightOrDark,
   bold: PropTypes.bool,
@@ -111,6 +112,7 @@ Hero.propTypes = {
 }
 
 Hero.defaultProps = {
+  fluid: false,
   size: 'normal',
   brand: 'default',
   bold: false,
