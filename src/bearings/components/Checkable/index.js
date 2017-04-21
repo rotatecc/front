@@ -14,11 +14,13 @@ const StyledCheckGroup = styled('div', expandStyles(
 ))
 
 const StyledBaseLabel = styled('label', expandStyles(
+  'pointer',
   'd/inline-block',
   'pLeft/~checkableInputGutter',
 ))
 
 const StyledBaseInput = styled('input', expandStyles(
+  'pointer',
   'absolute',
   'mTop/~checkableInputMarginY',
   'mLeft/~checkableInputGutter~negate',

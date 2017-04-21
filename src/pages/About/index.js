@@ -12,6 +12,7 @@ import {
   HeroTitle,
   HeroSubtitle,
   Tile,
+  Checkbox,
 } from '@/bearings'
 
 
@@ -31,8 +32,9 @@ function About() {
             <Column>
               <Row columnsTiny="6">
                 <Column>
-                  <Tile brand="primary" hasRadius hasShadow>
+                  <Tile hasRadius hasShadow>
                     This is a tile!
+                    <Checkbox label="hey" />
                   </Tile>
                 </Column>
                 <Column>

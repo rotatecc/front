@@ -1,8 +1,6 @@
-import React from 'react'
+import { componentWithProps } from '../../utils'
 
 import Checkable from '../Checkable'
 
 
-export default function Checkbox(props) {
-  return React.createElement(Checkable, { ...props, type: 'checkbox' })
-}
+export default componentWithProps('Checkbox', Checkable, { type: 'checkbox' })
