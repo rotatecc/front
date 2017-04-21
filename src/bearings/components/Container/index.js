@@ -23,7 +23,7 @@ const makeMaxWidthStylesForBreakpoint = (breakpoint) =>
 
 
 const StyledDivFluid = styled('div', expandStyles(
-  'w/100%',
+  'fullWidth',
   'mRight/auto',
   'mLeft/auto',
 
