@@ -5,7 +5,7 @@ import { styled } from 'styletron-react'
 import { expandStyles } from '../../utils'
 
 
-const Section = styled('div', expandStyles(
+const Section = styled('section', expandStyles(
   'fullWidth',
 
   'pTop/3rem',

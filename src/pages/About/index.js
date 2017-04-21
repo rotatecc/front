@@ -31,32 +31,32 @@ function About() {
             <Column>
               <Row columnsTiny="6">
                 <Column>
+                  <Tile brand="primary" hasRadius hasShadow>
+                    This is a tile!
+                  </Tile>
+                </Column>
+                <Column>
                   <Tile brand="warning" bold>
                     This is a tile!
                   </Tile>
                 </Column>
                 <Column>
-                  <Tile brand="success" bold>
+                  <Tile brand="light" bold>
                     This is a tile!
                   </Tile>
                 </Column>
                 <Column>
-                  <Tile brand="primary">
+                  <Tile brand="light" bold>
                     This is a tile!
                   </Tile>
                 </Column>
                 <Column>
-                  <Tile brand="success" bold>
+                  <Tile brand="light" bold>
                     This is a tile!
                   </Tile>
                 </Column>
                 <Column>
-                  <Tile brand="primary">
-                    This is a tile!
-                  </Tile>
-                </Column>
-                <Column>
-                  <Tile brand="success" bold>
+                  <Tile brand="light" bold>
                     This is a tile!
                   </Tile>
                 </Column>
