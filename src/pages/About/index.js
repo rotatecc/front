@@ -4,12 +4,17 @@ import { createStructuredSelector } from 'reselect'
 
 import { styled } from 'styletron-react'
 
-import { expandStyles, Hero, Section, Container, Row, Column, H2 } from '@/bearings'
-
-
-const HeroTitle = styled(H2, expandStyles(
-  'fs/3.5rem',
-))
+import {
+  expandStyles,
+  Hero,
+  Section,
+  Container,
+  Row,
+  Column,
+  H2,
+  HeroTitle,
+  HeroSubtitle,
+} from '@/bearings'
 
 
 function About() {
@@ -17,6 +22,7 @@ function About() {
     <div>
       <Hero brand="primary" bold>
         <HeroTitle>About</HeroTitle>
+        <HeroSubtitle>This is the about page</HeroSubtitle>
       </Hero>
       <Section>
         <Container>
