@@ -504,7 +504,7 @@ export function breakpointsCreateSpecStringParser(dict) {
     resolvedSpecs.forEach((rs) => {
       invariant(
         typeof rs === 'object',
-        `Column spec '${rs}' does not exist`,
+        `Spec '${rs}' does not exist`,
       )
     })
 

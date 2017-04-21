@@ -2,10 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import { styled } from 'styletron-react'
-
 import {
-  expandStyles,
   Hero,
   Section,
   Container,
@@ -14,6 +11,7 @@ import {
   H2,
   HeroTitle,
   HeroSubtitle,
+  Tile,
 } from '@/bearings'
 
 
@@ -31,7 +29,38 @@ function About() {
               <H2>About</H2>
             </Column>
             <Column>
-              ok
+              <Row columnsTiny="6">
+                <Column>
+                  <Tile brand="warning" bold>
+                    This is a tile!
+                  </Tile>
+                </Column>
+                <Column>
+                  <Tile brand="success" bold>
+                    This is a tile!
+                  </Tile>
+                </Column>
+                <Column>
+                  <Tile brand="primary">
+                    This is a tile!
+                  </Tile>
+                </Column>
+                <Column>
+                  <Tile brand="success" bold>
+                    This is a tile!
+                  </Tile>
+                </Column>
+                <Column>
+                  <Tile brand="primary">
+                    This is a tile!
+                  </Tile>
+                </Column>
+                <Column>
+                  <Tile brand="success" bold>
+                    This is a tile!
+                  </Tile>
+                </Column>
+              </Row>
             </Column>
           </Row>
         </Container>

@@ -99,7 +99,7 @@ const StyledDivGaps = styled(StyledDivGapless, expandStyles(
 export default function Row({ gapless, children, ...restProps }) {
   const component = gapless ? StyledDivGapless : StyledDivGaps
 
-  React.Children.forEach((child) => {
+  React.Children.forEach(children, (child) => {
     // Verify child is a Column
     invariant(
       child.type === Column,

@@ -52,6 +52,7 @@ export { default as SpanBlock } from './components/SpanBlock'
 export { default as TelField } from './components/TelField'
 export { default as TextareaField } from './components/TextareaField'
 export { default as TextField } from './components/TextField'
+export { default as Tile } from './components/Tile'
 
 
 //
