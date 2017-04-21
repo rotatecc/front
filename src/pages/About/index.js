@@ -8,7 +8,6 @@ import { expandStyles, Hero, Container, Row, Column, H2 } from '@/bearings'
 
 
 const HeroTitle = styled(H2, expandStyles(
-  'c/~white',
   'fs/3.5rem',
 ))
 
@@ -16,7 +15,7 @@ const HeroTitle = styled(H2, expandStyles(
 function About() {
   return (
     <div>
-      <Hero>
+      <Hero brand="dark">
         <HeroTitle>About</HeroTitle>
       </Hero>
       <Container>

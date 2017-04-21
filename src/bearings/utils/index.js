@@ -10,7 +10,7 @@ import invariant from 'invariant'
 
 import * as mixins from '../mixins'
 
-import { darken, lighten } from './color'
+import { darken, lighten, saturate, rotate } from './color'
 
 
 // Re-export color utils
@@ -33,6 +33,13 @@ export const validBrands = ['primary', 'success', 'info', 'warning', 'danger']
 
 
 export const validBrandsOrDefault = ['default', ...validBrands]
+
+
+export const validBrandsOrDefaultOrLightOrDark = [
+  'light',
+  'dark',
+  ...validBrandsOrDefault,
+]
 
 
 export const validFeedbacks = ['success', 'info', 'warning', 'danger']
@@ -134,6 +141,13 @@ export const propIsBrandOrDefault = PropTypes.oneOf(validBrandsOrDefault)
 
 
 /**
+ * React PropType for valid brand or 'default' or 'light' or 'dark'
+ * (no isRequired)
+ */
+export const propIsBrandOrDefaultOrLightOrDark = PropTypes.oneOf(validBrandsOrDefaultOrLightOrDark)
+
+
+/**
  * React PropType for valid feedback
  * (no isRequired)
  */
@@ -165,9 +179,15 @@ export const themeValueModifiers = {
   dark25: (color) => darken(color, 25),
   light: (color) => lighten(color, 15),
   light5: (color) => lighten(color, 5),
+  light10: (color) => lighten(color, 10),
+  light12: (color) => lighten(color, 12),
   light15: (color) => lighten(color, 15),
   light20: (color) => lighten(color, 20),
   light25: (color) => lighten(color, 25),
+  saturate5: (color) => saturate(color, 5),
+  saturate10: (color) => saturate(color, 10),
+  rotate10: (color) => rotate(color, 10),
+  rotateNeg10: (color) => rotate(color, -10),
 
   // Length
   negate: (value) => `-${value}`,
