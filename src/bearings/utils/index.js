@@ -169,6 +169,13 @@ export const propIsInputFieldType = PropTypes.oneOf(validInputFieldTypes)
 export const propIsCheckableType = PropTypes.oneOf(validCheckableTypes)
 
 
+/**
+ * React PropType for valid align-items value
+ * (no isRequired)
+ */
+export const propIsAlignItems = PropTypes.oneOf(validAlignItems)
+
+
 export const themeValueModifiers = {
   // Color
   dark: (color) => darken(color, 15),
