@@ -48,29 +48,30 @@ LevelSpacer.propTypes = {
 }
 
 
-const LevelCenter = styled('div', expandStyles(
-
-))
-
-const LevelLeft = styled('div', ({ breakpoint: bkpt }) => expandStyles(
-  'fBasis/auto',
-  'fGrow/0',
-  'fShrink/0',
+const LevelCenter = styled('div', ({ breakpoint: bkpt }) => expandStyles(
+  // 'fBasis/auto',
+  // 'fGrow/0',
+  // 'fShrink/0',
 
   breakpoint(bkpt, expandStyles('d/flex')),
 
   'fAlignItems/center',
 
-  'fJustifyContent/flex-start', // overriden for LevelRight
+  // overriden by extending components
+  'fJustifyContent/center',
 ))
 
-
-LevelLeft.propTypes = {
+LevelCenter.propTypes = {
   breakpoint: propIsBreakpoint.isRequired,
 }
 
 
-const LevelRight = styled(LevelLeft, expandStyles(
+const LevelLeft = styled(LevelCenter, expandStyles(
+  'fJustifyContent/flex-start',
+))
+
+
+const LevelRight = styled(LevelCenter, expandStyles(
   'fJustifyContent/flex-end',
 ))
 

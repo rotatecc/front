@@ -34,7 +34,7 @@ function About() {
               <H2>About</H2>
               <Level alignItems="center">
                 <AtLeft>Hi!</AtLeft>
-                <AtCenter>This div is very, very, very, very, very centered</AtCenter>
+                <AtCenter>This div is very, very, very, very, very centered This div is very, very, very, very, very centered</AtCenter>
                 <AtRight>Hi!<br />this is a test<br />kool</AtRight>
               </Level>
             </Column>
