@@ -3,7 +3,6 @@
  */
 
 
-import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
@@ -15,7 +14,7 @@ import {
 import BrandBackground from '../BrandBackground'
 
 
-const WrapperWithBackground = styled(BrandBackground, ({ hasRadius, hasShadow }) => expandStyles(
+const Tile = styled(BrandBackground, ({ hasRadius, hasShadow }) => expandStyles(
   'p/~tilePaddingY/~tilePaddingX',
   'mBottom/~tileMarginBottom',
 
@@ -24,14 +23,6 @@ const WrapperWithBackground = styled(BrandBackground, ({ hasRadius, hasShadow })
   hasShadow && '!bShadow/~tileBoxShadow',
 ))
 
-
-export default function Tile({ hasRadius, hasShadow, bold, brand, children }) {
-  return (
-    <WrapperWithBackground bold={bold} brand={brand} hasRadius={hasRadius} hasShadow={hasShadow}>
-      {children}
-    </WrapperWithBackground>
-  )
-}
 
 Tile.propTypes = {
   hasRadius: PropTypes.bool,
@@ -50,3 +41,6 @@ Tile.defaultProps = {
   brand: 'default',
   bold: false,
 }
+
+
+export default Tile
