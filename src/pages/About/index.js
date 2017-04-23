@@ -17,6 +17,7 @@ import {
   AtCenter,
   AtLeft,
   AtRight,
+  Close,
 } from '@/bearings'
 
 
@@ -32,6 +33,7 @@ function About() {
           <Row columnsTablet="one-half">
             <Column>
               <H2>About</H2>
+              <Close size="large" />
               <Level alignItems="center">
                 <AtLeft>Hi!</AtLeft>
                 <AtCenter>This div is very, very, very, very, very centered</AtCenter>
