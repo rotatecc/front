@@ -13,7 +13,7 @@ import { styled } from 'styletron-react'
 
 import { expandStyles, propIsBreakpoint, propIsAlignItems } from '../../utils'
 
-import { breakpoint } from '../../mixins'
+import * as mixins from '../../mixins'
 
 import AtCenter from '../AtCenter'
 import AtLeft from '../AtLeft'
@@ -21,7 +21,7 @@ import AtRight from '../AtRight'
 
 
 const LevelWrapper = styled('div', ({ breakpoint: bkpt, alignItems }) =>
-  breakpoint(bkpt, expandStyles(
+  mixins.breakpoint(bkpt, expandStyles(
     'd/flex',
     'fJustifyContent/space-between',
     `fAlignItems/${alignItems}`,
@@ -33,11 +33,14 @@ LevelWrapper.propTypes = {
 }
 
 
+// Vertical spacer under breakpoint, horizontal spacer at/above breakpoint
 const LevelSpacer = styled('div', ({ breakpoint: bkpt }) => expandStyles(
+  'fGrow/0',
+  'fShrink/0',
   'h/1.5rem',
   'w/1px',
 
-  breakpoint(bkpt, expandStyles(
+  mixins.breakpoint(bkpt, expandStyles(
     'h/1px',
     'w/1.5rem',
   )),
@@ -53,7 +56,7 @@ const LevelCenter = styled('div', ({ breakpoint: bkpt }) => expandStyles(
   // 'fGrow/0',
   // 'fShrink/0',
 
-  breakpoint(bkpt, expandStyles('d/flex')),
+  mixins.breakpoint(bkpt, expandStyles('d/flex')),
 
   'fAlignItems/center',
 
