@@ -26,6 +26,8 @@ const positionReplacements = [ControlLeft, ControlRight]
 
 
 export default function Control({ children, ...restProps }) {
+  let theInput = null
+
   // Replace AtLeft/AtRight with Control-specific "implementations"
   const childrenReplaced = React.Children.map(children, (child) => {
     const positionIndex = validChildPositions.indexOf(child.type)
@@ -39,7 +41,7 @@ export default function Control({ children, ...restProps }) {
       // First, verify that there is a single Icon child of this position
       invariant(
         positionChildrenArray.length === 1 && positionChildrenArray[0].type === Icon,
-        `Control>${child.name} must have a single child that is an Icon`,
+        `Control>${validChildPositions[positionIndex].name} must have a single Icon child`,
       )
 
       return React.createElement(
@@ -48,13 +50,26 @@ export default function Control({ children, ...restProps }) {
       )
     }
 
-    return child
+    // Verify we don't already have a non-position
+    invariant(
+      theInput === null,
+      'Control must have exactly one child (e.g. Input) other than a position',
+    )
+
+    theInput = child
+
+    return null
   })
+
+  invariant(
+    theInput !== null,
+    'Control must have one child (e.g. Input) other than a position',
+  )
 
   return React.createElement(
     ControlWrapper,
     restProps,
-    childrenReplaced,
+    [...childrenReplaced, theInput],
   )
 }
 

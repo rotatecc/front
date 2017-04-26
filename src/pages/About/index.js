@@ -18,6 +18,8 @@ import {
   AtLeft,
   AtRight,
   Icon,
+  Control,
+  TextInput,
 } from '@/bearings'
 
 
@@ -34,10 +36,13 @@ function About() {
             <Column>
               <H2>About</H2>
               <Level alignItems="center">
-                <AtLeft>Hi!</AtLeft>
                 <AtCenter>This div is very, <Icon name="cc-discover" /> very, very, very, very centered</AtCenter>
                 <AtRight>Hi!<br />this is a test<br />kool</AtRight>
               </Level>
+              <Control>
+                <AtLeft><Icon name="cogs" /></AtLeft>
+                <TextInput />
+              </Control>
             </Column>
             <Column>
               <Row columnsTiny="6">
