@@ -1,0 +1,107 @@
+/**
+ * Icon
+ *
+ * This is an attempt to duplicate the font-awesome sass stylesheets
+ * in css-in-js form, to escape having to include a css/sass loader.
+ * The font-awesome font still needs to be included.
+ */
+
+import PropTypes from 'prop-types'
+import { styled } from 'styletron-react'
+import memoize from 'lodash.memoize'
+
+import { expandStyles, propIsIconSize } from '../../utils'
+
+import { pseudoBefore } from '../../mixins'
+
+import nameCharMap from './nameCharMap'
+
+
+const iconSizeToFontSize = memoize((size, relative) => {
+  const num = (!size || size === 'normal') ? 1 : size
+  return `${num}${relative ? 'em' : 'rem'}`
+})
+
+
+// Memoize the char lookup, just since the entire map is huge
+// NOTE This might not actually help at all
+const iconNameToChar = memoize((name) => nameCharMap[name])
+
+
+const Icon = styled('span', (props) => {
+  const {
+    name,
+    size,
+    relative,
+    fixedWidth,
+    spin,
+    pulse,
+    rotate,
+    flipHorizontal,
+    flipVertical,
+  } = props
+
+  return expandStyles(
+    // The character
+    pseudoBefore({ content: `"${iconNameToChar(name)}"` }),
+
+    // Due to android bug, need 'text-rendering: "auto"' on fa font icons. see:
+    // https://github.com/FortAwesome/Font-Awesome/issues/1094
+    { textRendering: 'auto' },
+
+    // Display
+    'd/inline-block',
+
+    // Font
+    'ff/FontAwesome',
+    'fw/normal',
+    `fs/${iconSizeToFontSize(size, relative)}`,
+    { fontStyle: 'normal', fontVariant: 'normal' },
+
+    // Fixed Width (width of largest icons, e.g. cc-discover)
+    fixedWidth && expandStyles('w/1.29em', 'tAlign/center'), // 18em/14 = 1.29em
+
+    // Spin
+    // TODO when styletron introduces keyframes, move out from template css!
+    spin && { animation: 'icon-spin 2s infinite linear' },
+
+    // Pulse
+    // TODO when styletron introduces keyframes, move out from template css!
+    pulse && { animation: 'icon-spin 1s infinite steps(8)' },
+
+    // Rotate
+    rotate && expandStyles(`transform/rotate(${rotate}deg)`),
+
+    // Flip
+    flipHorizontal && expandStyles('transform/scale(-1, 1)'),
+    flipVertical && expandStyles('transform/scale(1, -1)'),
+  )
+})
+
+
+Icon.propTypes = {
+  name: PropTypes.string.isRequired,
+
+  size: propIsIconSize,
+  relative: PropTypes.bool,
+  fixedWidth: PropTypes.bool,
+  spin: PropTypes.bool,
+  pulse: PropTypes.bool,
+  rotate: PropTypes.number,
+  flipHorizontal: PropTypes.bool,
+  flipVertical: PropTypes.bool,
+}
+
+Icon.defaultProps = {
+  size: 'normal',
+  relative: false,
+  fixedWidth: false,
+  spin: false,
+  pulse: false,
+  rotate: null,
+  flipHorizontal: false,
+  flipVertical: false,
+}
+
+
+export default Icon

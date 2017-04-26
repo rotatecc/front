@@ -113,6 +113,9 @@ export const aliasWidthMap = {
 }
 
 
+export const validIconSizes = ['normal', 1, 2, 3, 4, 5]
+
+
 /**
  * React PropType for valid breakpoint/device
  * (no isRequired)
@@ -174,6 +177,13 @@ export const propIsCheckableType = PropTypes.oneOf(validCheckableTypes)
  * (no isRequired)
  */
 export const propIsAlignItems = PropTypes.oneOf(validAlignItems)
+
+
+/**
+ * React PropType for valid Icon size
+ * (no isRequired)
+ */
+export const propIsIconSize = PropTypes.oneOf(validIconSizes)
 
 
 export const themeValueModifiers = {

@@ -18,6 +18,7 @@ import {
   AtLeft,
   AtRight,
   Badge,
+  Icon,
 } from '@/bearings'
 
 
@@ -36,7 +37,7 @@ function About() {
               <Badge onClose={() => console.log('eyy')}>Hello!</Badge>
               <Level alignItems="center">
                 <AtLeft>Hi!</AtLeft>
-                <AtCenter>This div is very, very, very, very, very centered</AtCenter>
+                <AtCenter>This div is very, <Icon name="cc-discover" /> very, very, very, very centered</AtCenter>
                 <AtRight>Hi!<br />this is a test<br />kool</AtRight>
               </Level>
             </Column>
