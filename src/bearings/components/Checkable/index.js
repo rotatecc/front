@@ -4,8 +4,6 @@ import { styled } from 'styletron-react'
 
 import { expandStyles, propIsCheckableType } from '../../utils'
 
-import makeFieldGroupable from '../FieldGroup/makeFieldGroupable'
-
 
 const StyledCheckGroup = styled('div', expandStyles(
   'relative',
@@ -28,20 +26,19 @@ const StyledBaseInput = styled('input', expandStyles(
   { ':only-child': expandStyles('static') },
 ))
 
-const GroupedInput = makeFieldGroupable(StyledBaseInput, 'name')
 
-
-export default function Checkable({ type, value, label }) {
+export default function Checkable({ name, type, value, label }) {
   return (
     <StyledCheckGroup>
       <StyledBaseLabel>
-        <GroupedInput type={type} value={value} /> {label}
+        <StyledBaseInput name={name} type={type} value={value} /> {label}
       </StyledBaseLabel>
     </StyledCheckGroup>
   )
 }
 
 Checkable.propTypes = {
+  name: PropTypes.string,
   type: propIsCheckableType.isRequired,
   value: PropTypes.string,
   label: PropTypes.string.isRequired,

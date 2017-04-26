@@ -1,16 +1,16 @@
 /**
- * FieldGroup
+ * Field
  *
- * The idea of FieldGroup is grouping field units
- *      ex. Label + Textfield + hint
+ * The idea of Field is grouping field units
+ *      ex. Label + TextInput + hint
  * and
  * 1. applying a bit of margin on the bottom (unless noMargin=true)
  * 2. making its descendents aware that they are in a group, via:
- * 3. passing down a common unique group id ('fieldGroupId') via context
+ * 3. passing down a common unique group id ('fieldId') via context
  *    that can be used to link a Label to a field and thus focus on the field
  *    when the user clicks on a Label (via default browser functionality)
  *
- * The ./makeFieldGroupable util can be used to make a component
+ * The ./canConnectFieldId util can be used to make a component
  * intercept this groupId and turn it into an id/htmlFor
  * to link them into the group
  */
@@ -23,33 +23,33 @@ import { expandStyles } from '../../utils'
 
 
 /**
- * We want a unique id for each FieldGroup instance.
+ * We want a unique id for each Field instance.
  * Let's keep it here as a mutable variable. Each time a
- * FieldGroup is instantiated, it will be stored then
+ * Field is instantiated, it will be stored then
  * incremented for the next instance.
  * @type {Number}
  */
-let nextFieldGroupIdNumber = 0
+let nextFieldIdNumber = 0
 
 
 export const DivWithMargin = styled('div', expandStyles(
-  'mBottom/~fieldGroupMarginBottom',
+  'mBottom/~fieldMarginBottom',
 ))
 
 
-export default class FieldGroup extends React.PureComponent {
+export default class Field extends React.PureComponent {
   constructor() {
     super()
 
-    this.fieldGroupIdNumber = nextFieldGroupIdNumber
+    this.fieldIdNumber = nextFieldIdNumber
 
     // NOTE Mutation !!!
-    nextFieldGroupIdNumber += 1
+    nextFieldIdNumber += 1
   }
 
   getChildContext() {
     return {
-      fieldGroupId: `fieldGroup${this.fieldGroupIdNumber}`,
+      fieldId: `field${this.fieldIdNumber}`,
     }
   }
 
@@ -62,15 +62,15 @@ export default class FieldGroup extends React.PureComponent {
   }
 }
 
-FieldGroup.propTypes = {
+Field.propTypes = {
   noMargin: PropTypes.bool,
   children: PropTypes.node.isRequired,
 }
 
-FieldGroup.defaultProps = {
+Field.defaultProps = {
   noMargin: false,
 }
 
-FieldGroup.childContextTypes = {
-  fieldGroupId: PropTypes.string,
+Field.childContextTypes = {
+  fieldId: PropTypes.string,
 }

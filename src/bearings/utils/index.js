@@ -46,7 +46,7 @@ export const validBrandsOrDefaultOrLightOrDark = [
 export const validFeedbacks = ['success', 'info', 'warning', 'danger']
 
 
-export const validInputFieldTypes = [
+export const validInputTypes = [
   'text',
   'password',
   'datetime-local',
@@ -159,10 +159,10 @@ export const propIsFeedback = PropTypes.oneOf(validFeedbacks)
 
 
 /**
- * React PropType for valid InputField type
+ * React PropType for valid Input type
  * (no isRequired)
  */
-export const propIsInputFieldType = PropTypes.oneOf(validInputFieldTypes)
+export const propIsInputType = PropTypes.oneOf(validInputTypes)
 
 
 /**

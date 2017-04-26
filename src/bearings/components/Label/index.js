@@ -1,6 +1,6 @@
 import { styled } from 'styletron-react'
 
-import makeFieldGroupable from '../FieldGroup/makeFieldGroupable'
+import canConnectFieldId from '../Field/canConnectFieldId'
 
 import { expandStyles } from '../../utils'
 
@@ -11,4 +11,6 @@ const StyledBaseLabel = styled('label', expandStyles(
 ))
 
 
-export default makeFieldGroupable(StyledBaseLabel, 'htmlFor')
+// Since there is only one Label per Field, we can safely
+// set always=true (always attach htmlFor if descendent of Field)
+export default canConnectFieldId(StyledBaseLabel, 'htmlFor', true)

@@ -212,9 +212,10 @@ theme.labelMarginBottom = '0.5rem'
 theme.selectHeight = `calc(${theme.inputHeight} + ${theme.inputBorderWidth})`
 
 
-// Component: FieldGroup
+// Component: Field
 
-theme.fieldGroupMarginBottom = '1rem'
+
+theme.fieldMarginBottom = '1rem'
 
 
 // Component: Button

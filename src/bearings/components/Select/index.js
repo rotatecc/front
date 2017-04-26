@@ -1,6 +1,6 @@
 import { styled } from 'styletron-react'
 
-import makeFieldGroupable from '../FieldGroup/makeFieldGroupable'
+import canConnectFieldId from '../Field/canConnectFieldId'
 
 import { expandStyles } from '../../utils'
 import { field } from '../../mixins'
@@ -12,4 +12,4 @@ const StyledBaseSelect = styled('select', expandStyles(
 ))
 
 
-export default makeFieldGroupable(StyledBaseSelect, 'id')
+export default canConnectFieldId(StyledBaseSelect, 'id', false)

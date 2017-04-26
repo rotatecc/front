@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Field, reduxForm } from 'redux-form'
+import { Field as ReduxFormField, reduxForm } from 'redux-form'
 
-import { propIsInputFieldType, Button, Label, FieldGroup, InputField } from '@/bearings'
+import { propIsInputType, Button, Label, Field, Input } from '@/bearings'
 
 import validate from './validate'
 
@@ -14,11 +14,11 @@ const LoginFormField = ({ input, label, type, meta }) => {
   const { touched, error } = meta
 
   return (
-    <FieldGroup>
+    <Field>
       <Label>{label}</Label>
-      <InputField {...input} type={type} />
+      <Input {...input} type={type} connectFieldId />
       {touched && error && <span>{error}</span>}
-    </FieldGroup>
+    </Field>
   )
 }
 
@@ -26,7 +26,7 @@ LoginFormField.propTypes = {
   input: PropTypes.object.isRequired,
   meta: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
-  type: propIsInputFieldType.isRequired,
+  type: propIsInputType.isRequired,
 }
 
 
@@ -34,8 +34,8 @@ LoginFormField.propTypes = {
 
 const LoginForm = ({ handleSubmit, submitting, error }) =>
   <form onSubmit={handleSubmit}>
-    <Field name="email" label="Email" component={LoginFormField} type="text" />
-    <Field name="password" label="Password" component={LoginFormField} type="password" />
+    <ReduxFormField name="email" label="Email" component={LoginFormField} type="text" />
+    <ReduxFormField name="password" label="Password" component={LoginFormField} type="password" />
     <div>
       <Button type="submit" brand="default" size="normal" disabled={submitting}>Log in</Button>
       {error}
