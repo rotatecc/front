@@ -17,7 +17,6 @@ import {
   AtCenter,
   AtLeft,
   AtRight,
-  Badge,
   Icon,
 } from '@/bearings'
 
@@ -34,7 +33,6 @@ function About() {
           <Row columnsTablet="one-half">
             <Column>
               <H2>About</H2>
-              <Badge onClose={() => console.log('eyy')}>Hello!</Badge>
               <Level alignItems="center">
                 <AtLeft>Hi!</AtLeft>
                 <AtCenter>This div is very, <Icon name="cc-discover" /> very, very, very, very centered</AtCenter>

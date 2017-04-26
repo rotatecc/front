@@ -118,11 +118,17 @@ theme.textFieldFontFamily = theme.baseFontFamily
 
 // Border
 
+
 theme.borderWidth = '1px'
+
+
+// Border radius
+
 
 theme.borderRadius = '0.25rem'
 theme.borderRadiusLg = '0.3rem'
 theme.borderRadiusSm = '0.15rem'
+theme.borderRadiusInfinite = '290486px'
 
 
 // Cursor
@@ -208,12 +214,10 @@ theme.selectHeight = `calc(${theme.inputHeight} + ${theme.inputBorderWidth})`
 
 // Component: FieldGroup
 
-
 theme.fieldGroupMarginBottom = '1rem'
 
 
 // Component: Button
-
 
 theme.buttonFontWeight = theme.fontWeightNormal
 theme.buttonBoxShadow = 'inset 0 1px 0 rgba(255,255,255,0.15), 0 1px 1px rgba(0,0,0,.075)'
@@ -267,7 +271,6 @@ theme.buttonDangerFocusBoxShadow = `0 0 0 2px ${fade(theme.buttonDangerBorder, 5
 
 // Component: Close
 
-
 theme.closeColor = theme.black
 theme.closeFontSize = '1.5rem'
 theme.closeFontWeight = theme.fontWeightBold
@@ -276,16 +279,16 @@ theme.closeTextShadow = `0 1px 0 ${theme.white}`
 
 // Component: Badge
 
-theme.badgeColor = theme.white
-theme.badgePaddingX = '0.4em'
-theme.badgePaddingY = '0.25em'
-theme.badgeBorderRadius = theme.borderRadiusSm
-// ensure completely rounded edges regardless of font-size
-theme.badgePilledBorderRadius = '10rem'
-theme.badgePilledPaddingX = '0.6em'
+theme.badgeHeight = '2em' // relative
+theme.badgePaddingX = '0.875em' // relative
+theme.badgeLineHeight = '1.5'
+theme.badgeBorderRadius = theme.borderRadiusInfinite
 theme.badgeFontFamily = theme.baseFontFamily
-theme.badgeFontWeight = theme.fontWeightBold
-theme.badgeFontSize = '75%'
+theme.badgeFontWeight = theme.fontWeightNormal
+
+theme.badgeFontSizeSmall = '0.75rem'
+theme.badgeFontSizeNormal = '1rem'
+theme.badgeFontSizeLarge = '1.25rem'
 
 
 // Component: Alert

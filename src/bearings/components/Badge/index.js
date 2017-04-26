@@ -1,68 +1,89 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
+import get from 'lodash.get'
 
-import { expandStyles, condSpread, propIsBrand } from '../../utils'
+import {
+  expandStyles,
+  propIsBrandOrDefaultOrLightOrDark,
+  propIsSize,
+} from '../../utils'
 
-import { brandValue } from '../../mixins'
+import BrandBackground from '../BrandBackground'
 
 import Close from '../Close'
 
 
-const makeBaseStyles = ({ pilled, brand }) => expandStyles(
-  'd/inline-block',
-  'lh/1',
-  'tAlign/center',
+const baseStyles = expandStyles(
+  'd/inline-flex',
+  'fAlignItems/center',
+  'fJustifyContent/center',
+
+  'h/~badgeHeight',
+  'pLeft/~badgePaddingX',
+  'pRight/~badgePaddingX',
+  'lh/~badgeLineHeight',
+
   'nowrap',
-  'vAlign/baseline',
-  'c/~badgeColor',
-  `bgc/${brandValue(brand)}`,
-  'p/~badgePaddingY/~badgePaddingX',
+
+  '!radius/~badgeBorderRadius',
+
   'ff/~badgeFontFamily',
-  'fs/~badgeFontSize',
   'fw/~badgeFontWeight',
-  '!radius/~badgeBorderRadius', // non-pilled (actually just a subtle pilling)
 
   // hide empty badges
   { ':empty': expandStyles('d/none') },
-
-  // if pilled, use a greater border radius and paddingX
-  condSpread(pilled, expandStyles(
-    '!radius/~badgePilledBorderRadius',
-    'p/~badgePaddingY/~badgePilledPaddingX',
-  )),
 )
 
-const baseSpan = styled('span', makeBaseStyles)
+const BaseElement = styled(BrandBackground, baseStyles)
 
+const sizeMap = {
+  // size: [font-size, Close-size]
+  small: ['~badgeFontSizeSmall', 'small'],
+  normal: ['~badgeFontSizeNormal', 'small'],
+  large: ['~badgeFontSizeLarge', 'normal'],
+}
 
-const BadgeClose = styled(Close, expandStyles(
-  'mLeft/0.25rem',
+const SizedElement = styled(BaseElement, ({ size }) => expandStyles(
+  `fs/${get(sizeMap, [size, 0], 0)}`,
 ))
 
 
-export default function Badge({ pilled, brand, onClose, children }) {
+const BadgeClose = styled(Close, expandStyles(
+  'mLeft/0.25em',
+  'mRight/-0.375em',
+))
+
+
+export default function Badge({ brand, size, onClose, children }) {
   const childrenArray = React.Children.toArray(children)
 
   const closeMaybe = !onClose
-    ? []
-    : [<BadgeClose key="close" size="small" onClick={onClose} />]
+    ? null
+    : (
+      <BadgeClose
+        key="close"
+        size={get(sizeMap, [size, 1], 'small')}
+        onClick={onClose}
+      />
+    )
 
   return React.createElement(
-    baseSpan,
-    { pilled, brand },
-    [...childrenArray, ...closeMaybe],
+    SizedElement,
+    { brand, size, bold: false },
+    [...childrenArray, closeMaybe],
   )
 }
 
 Badge.propTypes = {
-  pilled: PropTypes.bool,
-  brand: propIsBrand,
+  brand: propIsBrandOrDefaultOrLightOrDark,
+  size: propIsSize,
   onClose: PropTypes.func,
+
   children: PropTypes.node.isRequired,
 }
 
 Badge.defaultProps = {
-  pilled: false,
-  brand: 'primary',
+  brand: 'light',
+  size: 'small',
 }
