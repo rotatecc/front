@@ -11,12 +11,28 @@ import AtRight from '../AtRight'
 import Icon from '../Icon'
 
 
-const ControlWrapper = styled('div', expandStyles()) // TODO
+const ControlWrapper = styled('div', expandStyles(
+  'relative',
+))
 
 
-const ControlLeft = styled('div', expandStyles()) // TODO
+const ControlLeft = styled('div', expandStyles(
+  'absolute',
+  'l/0',
+  't/0',
 
-const ControlRight = styled(ControlLeft, expandStyles()) // TODO
+  'h/100%',
+  'w/2.25em',
+
+  'd/flex',
+  'fAlignItems/center',
+  'fJustifyContent/center',
+))
+
+const ControlRight = styled(ControlLeft, expandStyles(
+  'l/auto',
+  'r/0',
+))
 
 
 const validChildPositions = [AtLeft, AtRight]
@@ -26,10 +42,13 @@ const positionReplacements = [ControlLeft, ControlRight]
 
 
 export default function Control({ children, ...restProps }) {
+  // TODO redo all of this with reduce
+
+  let theLeft = null
+  let theRight = null
   let theInput = null
 
-  // Replace AtLeft/AtRight with Control-specific "implementations"
-  const childrenReplaced = React.Children.map(children, (child) => {
+  React.Children.forEach(children, (child) => {
     const positionIndex = validChildPositions.indexOf(child.type)
 
     if (positionIndex > -1) {
@@ -44,10 +63,24 @@ export default function Control({ children, ...restProps }) {
         `Control>${validChildPositions[positionIndex].name} must have a single Icon child`,
       )
 
-      return React.createElement(
-        positionReplacements[positionIndex],
-        child.props,
+      const newIcon = React.cloneElement(
+        positionChildrenArray[0],
+        { inControl: true },
       )
+
+      const newPositioned = React.createElement(
+        positionReplacements[positionIndex],
+        { key: validChildPositions[positionIndex].name },
+        newIcon,
+      )
+
+      if (child.type === AtLeft) {
+        theLeft = newPositioned
+      } else {
+        theRight = newPositioned
+      }
+
+      return
     }
 
     // Verify we don't already have a non-position
@@ -57,8 +90,6 @@ export default function Control({ children, ...restProps }) {
     )
 
     theInput = child
-
-    return null
   })
 
   invariant(
@@ -66,10 +97,16 @@ export default function Control({ children, ...restProps }) {
     'Control must have one child (e.g. Input) other than a position',
   )
 
+  const inputFinal = React.cloneElement(theInput, {
+    key: 'the-input',
+    hasIconLeft: theLeft !== null,
+    hasIconRight: theRight !== null,
+  })
+
   return React.createElement(
     ControlWrapper,
     restProps,
-    [...childrenReplaced, theInput],
+    [inputFinal, theLeft, theRight],
   )
 }
 

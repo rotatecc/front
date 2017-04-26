@@ -5,11 +5,16 @@
 import { expandStyles } from '../utils'
 
 
-export function field() {
+export function field({ hasIconLeft = false, hasIconRight = false } = {}) {
   return expandStyles(
     'd/block',
     'fullWidth',
-    'p/~inputPaddingY/~inputPaddingX',
+
+    'pTop/~inputPaddingY',
+    'pBottom/~inputPaddingY',
+    'pLeft/~inputPaddingX',
+    'pRight/~inputPaddingX',
+
     'fs/~baseFontSize',
     'lh/~inputLineHeight',
     'c/~inputColor',
@@ -27,6 +32,11 @@ export function field() {
     '!trans/~inputTransition',
 
     '!bShadow/~inputBoxShadow',
+
+    // Icon padding
+    // TODO variable-ize; more padding for bigger sizes
+    hasIconLeft && 'pLeft/2.25em',
+    hasIconRight && 'pRight/2.25em',
 
     // TODO ms fix: waiting for styletron to enable :: pseudo selectors
     // // Unstyle the caret on `<select>`s in IE10+.
