@@ -42,7 +42,7 @@ const validChildPositions = [AtLeft, AtRight]
 const positionReplacements = [ControlLeft, ControlRight]
 
 
-export default function Control({ children, ...restProps }) {
+export default function Control({ loading, children, ...restProps }) {
   const parts = React.Children.toArray(children).reduce((acc, child) => {
     const positionIndex = validChildPositions.indexOf(child.type)
 
@@ -71,7 +71,7 @@ export default function Control({ children, ...restProps }) {
 
       const newPositioned = React.createElement(
         positionReplacements[positionIndex],
-        { key: validChildPositions[positionIndex].name },
+        null,
         newIcon,
       )
 
@@ -99,19 +99,28 @@ export default function Control({ children, ...restProps }) {
     'Control must have one child (e.g. Input) (other than positions)',
   )
 
+  // if loading, set right position to spinner
+  const rightFinal = !loading ? parts.right : <ControlRight><ControlSpinner /></ControlRight>
+
   const inputFinal = React.cloneElement(parts.input, {
-    key: 'the-input',
     hasIconLeft: parts.left !== null,
-    hasIconRight: parts.right !== null,
+    hasIconRight: rightFinal !== null,
   })
 
-  return React.createElement(
-    ControlWrapper,
-    restProps,
-    [inputFinal, parts.left, parts.right],
+  return (
+    <ControlWrapper {...restProps}>
+      {inputFinal}
+      {parts.left}
+      {rightFinal}
+    </ControlWrapper>
   )
 }
 
 Control.propTypes = {
+  loading: PropTypes.bool,
   children: PropTypes.node.isRequired,
+}
+
+Control.defaultProps = {
+  loading: false,
 }

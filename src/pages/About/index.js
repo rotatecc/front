@@ -41,9 +41,8 @@ function About() {
                 <AtCenter>This div is very, <Icon name="cc-discover" /> very, very, very, very centered</AtCenter>
                 <AtRight>Hi!<br />this is a test<br />kool</AtRight>
               </Level>
-              <Control>
+              <Control loading>
                 <AtLeft><Icon name="cogs" /></AtLeft>
-                <AtRight><ControlSpinner /></AtRight>
                 <Select>
                   <option>Hello</option>
                 </Select>
