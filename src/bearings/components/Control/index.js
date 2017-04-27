@@ -43,13 +43,7 @@ const positionReplacements = [ControlLeft, ControlRight]
 
 
 export default function Control({ children, ...restProps }) {
-  // TODO redo all of this with reduce
-
-  let theLeft = null
-  let theRight = null
-  let theInput = null
-
-  React.Children.forEach(children, (child) => {
+  const parts = React.Children.toArray(children).reduce((acc, child) => {
     const positionIndex = validChildPositions.indexOf(child.type)
 
     if (positionIndex > -1) {
@@ -81,39 +75,40 @@ export default function Control({ children, ...restProps }) {
         newIcon,
       )
 
-      if (child.type === AtLeft) {
-        theLeft = newPositioned
-      } else {
-        theRight = newPositioned
+      return {
+        ...acc,
+        [child.type === AtLeft ? 'left' : 'right']: newPositioned,
       }
-
-      return
     }
 
     // Verify we don't already have a non-position
     invariant(
-      theInput === null,
-      'Control must have exactly one child (e.g. Input) other than a position',
+      acc.input === null,
+      'Control must have exactly one child (e.g. Input) (other than positions)',
     )
 
-    theInput = child
+    return { ...acc, input: child }
+  }, {
+    left: null,
+    right: null,
+    input: null,
   })
 
   invariant(
-    theInput !== null,
-    'Control must have one child (e.g. Input) other than a position',
+    parts.input !== null,
+    'Control must have one child (e.g. Input) (other than positions)',
   )
 
-  const inputFinal = React.cloneElement(theInput, {
+  const inputFinal = React.cloneElement(parts.input, {
     key: 'the-input',
-    hasIconLeft: theLeft !== null,
-    hasIconRight: theRight !== null,
+    hasIconLeft: parts.left !== null,
+    hasIconRight: parts.right !== null,
   })
 
   return React.createElement(
     ControlWrapper,
     restProps,
-    [inputFinal, theLeft, theRight],
+    [inputFinal, parts.left, parts.right],
   )
 }
 
