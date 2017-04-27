@@ -34,8 +34,6 @@ const Icon = styled('span', (props) => {
     size,
     relative,
     fixedWidth,
-    spin,
-    pulse,
     rotate,
     flipHorizontal,
     flipVertical,
@@ -61,14 +59,6 @@ const Icon = styled('span', (props) => {
     // Fixed Width (width of largest icons, e.g. cc-discover)
     fixedWidth && expandStyles('w/1.29em', 'tAlign/center'), // 18em/14 = 1.29em
 
-    // Spin
-    // TODO when styletron introduces keyframes, move out from template css!
-    spin && { animation: 'icon-spin 2s infinite linear' },
-
-    // Pulse
-    // TODO when styletron introduces keyframes, move out from template css!
-    pulse && { animation: 'icon-spin 1s infinite steps(8)' },
-
     // Rotate
     rotate && expandStyles(`transform/rotate(${rotate}deg)`),
 
@@ -85,8 +75,6 @@ Icon.propTypes = {
   size: propIsIconSize,
   relative: PropTypes.bool,
   fixedWidth: PropTypes.bool,
-  spin: PropTypes.bool,
-  pulse: PropTypes.bool,
   rotate: PropTypes.number,
   flipHorizontal: PropTypes.bool,
   flipVertical: PropTypes.bool,
@@ -96,8 +84,6 @@ Icon.defaultProps = {
   size: 'normal',
   relative: false,
   fixedWidth: false,
-  spin: false,
-  pulse: false,
   rotate: null,
   flipHorizontal: false,
   flipVertical: false,

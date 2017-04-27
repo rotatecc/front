@@ -3,11 +3,11 @@ import { styled } from 'styletron-react'
 import canConnectFieldId from '../Field/canConnectFieldId'
 
 import { expandStyles } from '../../utils'
-import { field } from '../../mixins'
+import { makeField } from '../../mixins'
 
 
 const StyledBaseSelect = styled('select', expandStyles(
-  field(),
+  makeField(),
   'h/~selectHeight',
 ))
 

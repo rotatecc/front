@@ -41,7 +41,7 @@ function About() {
               </Level>
               <Control>
                 <AtLeft><Icon name="cogs" /></AtLeft>
-                <AtRight><Icon name="instagram" /></AtRight>
+                <AtRight><Icon name="circle-o-notch" /></AtRight>
                 <TextInput />
               </Control>
             </Column>
