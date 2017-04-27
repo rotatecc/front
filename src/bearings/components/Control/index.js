@@ -9,6 +9,7 @@ import AtLeft from '../AtLeft'
 import AtRight from '../AtRight'
 
 import Icon from '../Icon'
+import ControlSpinner from '../ControlSpinner'
 
 
 const ControlWrapper = styled('div', expandStyles(
@@ -18,8 +19,8 @@ const ControlWrapper = styled('div', expandStyles(
 
 const ControlLeft = styled('div', expandStyles(
   'absolute',
-  'l/0',
-  't/0',
+  'atTop',
+  'atLeft',
 
   'h/100%',
   'w/2.25em',
@@ -59,8 +60,14 @@ export default function Control({ children, ...restProps }) {
 
       // First, verify that there is a single Icon child of this position
       invariant(
-        positionChildrenArray.length === 1 && positionChildrenArray[0].type === Icon,
-        `Control>${validChildPositions[positionIndex].name} must have a single Icon child`,
+        (
+          positionChildrenArray.length === 1 &&
+          (
+            positionChildrenArray[0].type === Icon ||
+            positionChildrenArray[0].type === ControlSpinner
+          )
+        ),
+        `Control>${validChildPositions[positionIndex].name} must have a single Icon or ControlSpinner child`,
       )
 
       const newIcon = React.cloneElement(

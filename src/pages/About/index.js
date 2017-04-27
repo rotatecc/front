@@ -18,6 +18,7 @@ import {
   AtLeft,
   AtRight,
   Icon,
+  ControlSpinner,
   Control,
   TextInput,
 } from '@/bearings'
@@ -41,7 +42,7 @@ function About() {
               </Level>
               <Control>
                 <AtLeft><Icon name="cogs" /></AtLeft>
-                <AtRight><Icon name="circle-o-notch" /></AtRight>
+                <AtRight><ControlSpinner /></AtRight>
                 <TextInput />
               </Control>
             </Column>
