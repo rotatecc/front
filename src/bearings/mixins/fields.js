@@ -37,8 +37,9 @@ const makeBaseFieldStyles = memoize(() => expandStyles(
 
   '!bShadow/~inputBoxShadow',
 
+  // Unstyle the caret on `<select>`s
+  { appearance: 'none' },
   // TODO ms fix: waiting for styletron to enable :: pseudo selectors
-  // // Unstyle the caret on `<select>`s in IE10+.
   // &::-ms-expand {
   //   background-color: transparent;
   //   border: 0;

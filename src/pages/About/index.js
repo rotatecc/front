@@ -21,6 +21,7 @@ import {
   ControlSpinner,
   Control,
   TextInput,
+  Select,
 } from '@/bearings'
 
 
@@ -43,7 +44,9 @@ function About() {
               <Control>
                 <AtLeft><Icon name="cogs" /></AtLeft>
                 <AtRight><ControlSpinner /></AtRight>
-                <TextInput />
+                <Select>
+                  <option>Hello</option>
+                </Select>
               </Control>
             </Column>
             <Column>

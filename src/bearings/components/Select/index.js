@@ -1,3 +1,4 @@
+import React from 'react'
 import { styled } from 'styletron-react'
 
 import canConnectFieldId from '../Field/canConnectFieldId'
@@ -6,10 +7,46 @@ import { expandStyles } from '../../utils'
 import { makeField } from '../../mixins'
 
 
-const StyledBaseSelect = styled('select', expandStyles(
-  makeField(),
+const Wrapper = styled('div', ({ hasIconRight }) => expandStyles(
+  'relative',
+
+  !hasIconRight && {
+    // caret
+    ':after': expandStyles(
+      'absolute',
+      'z/4',
+      'mTop/-0.375em',
+      't/50%',
+      'r/1.125em',
+      'd/block',
+      'square/0.5em',
+      'bordW/1px',
+      'bordS/solid',
+      'bordC/~brandPrimary',
+      {
+        borderRight: 0,
+        borderTop: 0,
+        content: '" "',
+        pointerEvents: 'none',
+        transform: 'rotate(-45deg)',
+      },
+    ),
+  },
+))
+
+
+const StyledBaseSelect = styled('select', (props) => expandStyles(
+  makeField(props),
   'h/~selectHeight',
 ))
 
 
-export default canConnectFieldId(StyledBaseSelect, 'id', false)
+const ActualSelect = canConnectFieldId(StyledBaseSelect, 'id', false)
+
+
+export default function Select(props) {
+  // Wrap actual select so that we can position a custom caret
+  // Force hasIconRight on field since it will always
+  // have something there (caret or Icon)
+  return <Wrapper {...props}><ActualSelect {...props} hasIconRight /></Wrapper>
+}
