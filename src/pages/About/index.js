@@ -37,7 +37,7 @@ function About() {
           <Row columnsTablet="one-half">
             <Column>
               <H2>About</H2>
-              <Field feedback="success">
+              <Field feedback="success" horizontal>
                 <Label>Facebook profile</Label>
                 <Field>
                   <Control>

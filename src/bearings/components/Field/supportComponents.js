@@ -1,6 +1,5 @@
-import React from 'react'
-import { styled } from 'styletron-react'
 import PropTypes from 'prop-types'
+import { styled } from 'styletron-react'
 
 import { expandStyles, propIsBreakpoint } from '../../utils'
 
@@ -68,34 +67,4 @@ export const GroupedColumn = styled('div', ({ expanded }) => expandStyles(
 
 GroupedWrapper.propTypes = {
   expanded: PropTypes.bool,
-}
-
-
-// StructuredField (logic happens here)
-
-
-export const StructuredField = (props) => {
-  const {
-    isRootField,
-
-    // Already validated by Field:
-    /* eslint-disable react/prop-types */
-    children,
-    noMargin,
-    horizontal,
-    addons,
-    grouped,
-    /* eslint-enable react/prop-types */
-  } = props
-
-  return (
-    <Marginal hasMarginBottom={!noMargin && isRootField}>
-      {children}
-    </Marginal>
-  )
-}
-
-StructuredField.propTypes = {
-  isRootField: PropTypes.bool.isRequired,
-  // ...many more, already validated by Field!
 }

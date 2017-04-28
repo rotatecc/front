@@ -23,7 +23,7 @@ import {
   propIsBreakpoint,
 } from '../../utils'
 
-import { StructuredField } from './supportComponents'
+import Structure from './Structure'
 
 
 /**
@@ -92,8 +92,8 @@ export default class Field extends React.PureComponent {
   }
 
   render() {
-    // All of the presentational logic lives in StructuredField
-    return React.createElement(StructuredField, {
+    // All of the presentational logic lives in Structure
+    return React.createElement(Structure, {
       ...this.props,
       isRootField: this.isRootField,
     })
