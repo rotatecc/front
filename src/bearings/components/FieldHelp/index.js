@@ -4,9 +4,10 @@ import { expandStyles } from '../../utils'
 
 
 const FieldHelp = styled('div', expandStyles(
-  'mTop/0.25rem',
+  'mTop/~fieldHelpMarginTop',
 
-  'fs/~fontSizeSm',
+  'fs/~fieldHelpFontSize',
+  'c/~fieldHelpColor',
 ))
 
 FieldHelp.propTypes = {

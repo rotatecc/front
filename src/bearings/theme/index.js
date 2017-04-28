@@ -218,7 +218,19 @@ theme.selectHeight = `calc(${theme.inputHeight} + ${theme.inputBorderWidth})`
 theme.fieldMarginBottom = '1rem'
 
 
+// Components: FieldFeedback + FieldHelp
+
+
+theme.fieldFeedbackMarginTop = '0.25rem'
+theme.fieldFeedbackFontWeight = theme.fontWeightBold
+
+theme.fieldHelpMarginTop = '0.25rem'
+theme.fieldHelpFontSize = theme.fontSizeSm
+theme.fieldHelpColor = theme.grayLight
+
+
 // Component: Button
+
 
 theme.buttonFontWeight = theme.fontWeightNormal
 theme.buttonBoxShadow = 'inset 0 1px 0 rgba(255,255,255,0.15), 0 1px 1px rgba(0,0,0,.075)'
@@ -272,6 +284,7 @@ theme.buttonDangerFocusBoxShadow = `0 0 0 2px ${fade(theme.buttonDangerBorder, 5
 
 // Component: Close
 
+
 theme.closeColor = theme.black
 theme.closeFontSize = '1.5rem'
 theme.closeFontWeight = theme.fontWeightBold
@@ -279,6 +292,7 @@ theme.closeTextShadow = `0 1px 0 ${theme.white}`
 
 
 // Component: Badge
+
 
 theme.badgeHeight = '2em' // relative
 theme.badgePaddingX = '0.875em' // relative

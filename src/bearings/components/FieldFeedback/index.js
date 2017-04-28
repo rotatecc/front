@@ -8,9 +8,9 @@ const feedbackToThemeColor = memoize((feedback) => `feedback${capitalize(feedbac
 
 
 const FieldFeedback = styled('div', ({ feedback }) => expandStyles(
-  'mTop/0.25rem',
+  'mTop/~fieldFeedbackMarginTop',
 
-  'fw/~fontWeightBold',
+  'fw/~fieldFeedbackFontWeight',
   `c/~${feedbackToThemeColor(feedback)}`,
 ))
 
