@@ -6,6 +6,11 @@ import { expandStyles, propIsBreakpoint } from '../../utils'
 import * as mixins from '../../mixins'
 
 
+export const FlexGrow = styled('div', expandStyles(
+  'fGrow/1',
+))
+
+
 export const Marginal = styled('div', ({ hasMarginBottom }) => expandStyles(
   hasMarginBottom && 'mBottom/~fieldMarginBottom',
 ))

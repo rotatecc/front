@@ -1,5 +1,5 @@
 /**
- * Structured
+ * Structure
  *
  * Presentational logic for Field happens here
  */
@@ -8,7 +8,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import invariant from 'invariant'
 
-import { Marginal } from './supportComponents'
+import Label from '../Label'
+
+import {
+  FlexGrow,
+  Marginal,
+  HorizontalWrapper,
+  HorizontalLeft,
+  HorizontalRight,
+} from './supportComponents'
+
+
+//
+// Transformations on Field children
+//
 
 
 export const handleAddons = (children, { addons }) => {
@@ -38,9 +51,29 @@ export const handleHorizontal = (children, { horizontal }) => {
     return children
   }
 
-  // TODO
+  const { label, restChildren } = children.reduce((acc, child) => {
+    if (child.type === Label) {
+      invariant(
+        acc.label === null,
+        'Horizontal Fields cannot have more than one Label as a direct child',
+      )
 
-  return children
+      return { ...acc, label: child }
+    }
+
+    return { ...acc, restChildren: [...acc.restChildren, child] }
+  }, { label: null, restChildren: [] })
+
+  const left = !label ? null : <HorizontalLeft>{label}</HorizontalLeft>
+
+  const right = restChildren.length === 0 ? null : <HorizontalRight>{restChildren}</HorizontalRight>
+
+  return (
+    <HorizontalWrapper>
+      {left}
+      {right}
+    </HorizontalWrapper>
+  )
 }
 
 
@@ -48,7 +81,12 @@ export const handleMarginBottom = (children, { isRootField, noMargin }) =>
   <Marginal hasMarginBottom={isRootField && !noMargin}>{children}</Marginal>
 
 
-export const Structured = (props) => {
+//
+// Structure component
+//
+
+
+export const Structure = (props) => {
   const {
     // Already validated by Field:
     /* eslint-disable react/prop-types */
@@ -70,22 +108,23 @@ export const Structured = (props) => {
     handleMarginBottom,
   ].filter((x) => x)
 
+  // Run series of transformations on children
   const finalChildren = transformations.reduce(
     (acc, t) => t(React.Children.toArray(acc), props),
     children,
   )
 
   return (
-    <div>
+    <FlexGrow>
       {finalChildren}
-    </div>
+    </FlexGrow>
   )
 }
 
-Structured.propTypes = {
+Structure.propTypes = {
   isRootField: PropTypes.bool.isRequired,
   // ...many more, already validated by Field!
 }
 
 
-export default Structured
+export default Structure

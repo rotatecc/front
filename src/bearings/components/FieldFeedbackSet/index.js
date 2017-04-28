@@ -44,7 +44,7 @@ const FieldFeedbackSet = ({ fieldMeta, feedback, feedbacks, ...texts }) => {
     return React.createElement(FieldFeedback, { key: s, feedback: s }, text)
   })
 
-  return feedbackElements.length <= 0 ? null : React.createElement('div', null, feedbackElements)
+  return feedbackElements.length === 0 ? null : React.createElement('div', null, feedbackElements)
 }
 
 FieldFeedbackSet.propTypes = {

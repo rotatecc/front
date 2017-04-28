@@ -14,6 +14,7 @@
  */
 
 import React from 'react'
+import invariant from 'invariant'
 import PropTypes from 'prop-types'
 
 import {
@@ -37,8 +38,8 @@ let nextFieldIdNumber = 0
 
 
 export default class Field extends React.PureComponent {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.fieldIdNumber = nextFieldIdNumber
 
@@ -52,12 +53,37 @@ export default class Field extends React.PureComponent {
     }
   }
 
+  componentWillMount() {
+    this.checkProps(this.props)
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.checkProps(newProps)
+  }
+
   get isRootField() {
     return !this.context.field
   }
 
   get id() {
     return `fieldId${this.fieldIdNumber}`
+  }
+
+  /**
+   * Verify props object when this Field is nested
+   */
+  checkProps = (props) => {
+    // Only check nested Fields
+    if (this.isRootField) {
+      return
+    }
+
+    invariant(
+      !props.horizontal,
+      'Nested Fields cannot be horizontal',
+    )
+
+    // more?
   }
 
   makeFieldContext = () => {
