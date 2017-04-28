@@ -116,13 +116,23 @@ export const aliasWidthMap = {
 export const validIconSizes = ['normal', 1, 2, 3, 4, 5]
 
 
+export const propTypeFieldId = PropTypes.string
+
+
+export const propTypeFieldMeta = PropTypes.shape({
+  id: propTypeFieldId.isRequired,
+  // TODO size, branding, etc
+})
+
+
 /**
  * React PropType for field context object
  * (no isRequired)
  */
 export const propTypeFieldContext = PropTypes.shape({
-  id: PropTypes.string.isRequired,
-  idHierarchy: PropTypes.arrayOf(PropTypes.string).isRequired,
+  meta: propTypeFieldMeta.isRequired,
+  rootMeta: propTypeFieldMeta.isRequired,
+  idHierarchy: PropTypes.arrayOf(propTypeFieldId).isRequired,
 })
 
 

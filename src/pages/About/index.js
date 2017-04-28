@@ -18,6 +18,8 @@ import {
   Control,
   TextInput,
   Select,
+  Field,
+  Label,
 } from '@/bearings'
 
 
@@ -33,10 +35,15 @@ function About() {
           <Row columnsTablet="one-half">
             <Column>
               <H2>About</H2>
-              <Control>
-                <AtLeft><Icon name="facebook" /></AtLeft>
-                <TextInput />
-              </Control>
+              <Field>
+                <Label>Facebook profile</Label>
+                <Field>
+                  <Control>
+                    <AtLeft><Icon name="facebook" /></AtLeft>
+                    <TextInput connectRootFieldId />
+                  </Control>
+                </Field>
+              </Field>
               <Control loading>
                 <AtLeft><Icon name="instagram" /></AtLeft>
                 <Select>

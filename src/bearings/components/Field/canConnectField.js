@@ -13,25 +13,27 @@ import { propTypeFieldContext } from '../../utils'
  * @param  {String} [keyAttr='id'] The prop name the component will be given
  *                                 with the field id
  *                                 ex. for 'label', use 'htmlFor'
- * @param  {Bool}        always    force connecting field id (if available)
+ * @param  {Bool}        alwaysId    force connecting field id (if available)
  * @return {React.node}
  */
-export default function canConnectField(component, keyAttr = 'id', always = false) {
-  const FieldConnectable = ({ connectField, connectRootField, ...restProps }, context) => {
+export default function canConnectField(component, keyAttr = 'id', alwaysId = false) {
+  const FieldConnectable = (props, context) => {
+    const {
+      connectField,
+      connectRootField,
+      connectFieldId,
+      connectRootFieldId,
+      ...restProps
+    } = props
+
     const { field } = context
 
-    const fieldProps = (() => {
-      if ((always || connectField || connectRootField) && typeof field === 'object') {
-        const accessor = connectRootField ? 'root' : 'info'
-
-        return {
-          field: field[accessor],
-          [keyAttr]: field[accessor].id,
-        }
-      }
-
-      return {}
-    })()
+    const fieldProps = typeof field === 'object' && ({
+      ...((connectField || connectRootField) &&
+        { fieldMeta: field[connectRootField ? 'rootMeta' : 'meta'] }),
+      ...((alwaysId || connectFieldId || connectRootFieldId) &&
+        { [keyAttr]: field[connectRootFieldId ? 'rootMeta' : 'meta'].id }),
+    })
 
     return React.createElement(component, { ...restProps, ...fieldProps })
   }
@@ -39,11 +41,15 @@ export default function canConnectField(component, keyAttr = 'id', always = fals
   FieldConnectable.propTypes = {
     connectField: PropTypes.bool,
     connectRootField: PropTypes.bool,
+    connectFieldId: PropTypes.bool,
+    connectRootFieldId: PropTypes.bool,
   }
 
   FieldConnectable.defaultProps = {
     connectField: false,
     connectRootField: false,
+    connectFieldId: false,
+    connectRootFieldId: false,
   }
 
   FieldConnectable.contextTypes = {

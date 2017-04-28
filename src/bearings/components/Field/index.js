@@ -54,7 +54,7 @@ export default class Field extends React.PureComponent {
   }
 
   get isRootField() {
-    return Boolean(this.context.field)
+    return !this.context.field
   }
 
   makeId = () => `fieldId${this.fieldIdNumber}`
@@ -62,19 +62,20 @@ export default class Field extends React.PureComponent {
   makeFieldContext = () => {
     const id = this.makeId()
 
-    const info = {
+    const meta = {
       id,
+      // TODO more (size, brand, etc)
     }
 
     if (this.isRootField) {
-      return { info, root: info, idHierarchy: [id] }
+      return { meta, rootMeta: meta, idHierarchy: [id] }
     }
 
     const parentField = this.context.field
 
     return {
-      info,
-      root: parentField.root,
+      meta,
+      rootMeta: parentField.rootMeta,
       idHierarchy: [...parentField.idHierarchy, id],
     }
   }
