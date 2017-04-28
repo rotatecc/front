@@ -8,6 +8,8 @@ import { expandStyles } from '../../utils'
 const StyledBaseLabel = styled('label', expandStyles(
   'd/inline-block',
   'mBottom/~labelMarginBottom',
+
+  'fw/~fontWeightBold',
 ))
 
 

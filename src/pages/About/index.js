@@ -19,6 +19,8 @@ import {
   TextInput,
   Select,
   Field,
+  FieldFeedbackSet,
+  FieldHelp,
   Label,
 } from '@/bearings'
 
@@ -42,6 +44,14 @@ function About() {
                     <AtLeft><Icon name="facebook" /></AtLeft>
                     <TextInput connectRootFieldId />
                   </Control>
+                  <FieldFeedbackSet
+                    state="info"
+                    states={['success', 'info']}
+                    success="It worked!"
+                    info="You might try this."
+                    danger="Bad!"
+                  />
+                  <FieldHelp>Enter your Facebook profile id</FieldHelp>
                 </Field>
               </Field>
               <Control loading>
