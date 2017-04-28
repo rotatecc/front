@@ -39,7 +39,7 @@ function About() {
               <H2>About</H2>
               <Field feedback="success" horizontal grouped>
                 <Label>Facebook profile</Label>
-                <Field>
+                <Field expanded>
                   <Control>
                     <AtLeft><Icon name="facebook" /></AtLeft>
                     <TextInput connectRootFieldId />
@@ -51,25 +51,17 @@ function About() {
                   />
                   <FieldHelp>Enter your Facebook profile id</FieldHelp>
                 </Field>
-                <Field>
-                  <Control>
-                    <AtLeft><Icon name="facebook" /></AtLeft>
-                    <TextInput connectRootFieldId />
-                  </Control>
-                  <FieldFeedbackSet
-                    success="It worked!"
-                    info="You might try this."
-                    danger="Bad!"
-                  />
-                  <FieldHelp>Enter your Facebook profile id</FieldHelp>
-                </Field>
+                hello
               </Field>
-              <Control loading>
-                <AtLeft><Icon name="instagram" /></AtLeft>
-                <Select>
-                  <option>Hello</option>
-                </Select>
-              </Control>
+              <Field horizontal="tiny">
+                <Label>Instagram</Label>
+                <Control loading>
+                  <AtLeft><Icon name="instagram" /></AtLeft>
+                  <Select>
+                    <option>Hello</option>
+                  </Select>
+                </Control>
+              </Field>
             </Column>
             <Column>
               <Row columnsTiny="6">

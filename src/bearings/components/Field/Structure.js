@@ -7,13 +7,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import invariant from 'invariant'
+import get from 'lodash.get'
 
 import Label from '../Label'
 
 import {
   FlexGrow,
   Marginal,
-  GroupedWrapper,
   GroupedRow,
   GroupedColumn,
   HorizontalWrapper,
@@ -71,11 +71,11 @@ export const handleGrouped = (children, { grouped }) => {
 
   const { label, restChildren } = separateChildLabel(children)
 
-  const columns = restChildren.map((child) => (
+  const columns = restChildren.map((child, i) => (
     <GroupedColumn
-      key={child.key}
+      key={get(child, 'key', i)}
       breakpoint={breakpoint}
-      expanded={child.props.expanded}
+      expanded={get(child, 'props.expanded', false)}
     >
       {child}
     </GroupedColumn>

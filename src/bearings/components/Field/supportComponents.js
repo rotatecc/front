@@ -69,9 +69,6 @@ HorizontalRight.propTypes = {
 // Grouped
 
 
-export const GroupedWrapper = styled('div')
-
-
 export const GroupedRow = styled('div', ({ breakpoint }) =>
   mixins.breakpoint(breakpoint, expandStyles(
     'd/flex',
@@ -95,6 +92,6 @@ export const GroupedColumn = styled('div', ({ breakpoint, expanded }) =>
   )),
 )
 
-GroupedWrapper.propTypes = {
+GroupedColumn.propTypes = {
   expanded: PropTypes.bool,
 }
