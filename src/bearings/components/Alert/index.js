@@ -40,8 +40,9 @@ export default function Alert({ feedback, onClose, children }) {
 }
 
 Alert.propTypes = {
-  feedback: propIsFeedback,
+  feedback: propIsFeedback.isRequired, // has default
   onClose: PropTypes.func,
+
   children: PropTypes.node.isRequired,
 }
 

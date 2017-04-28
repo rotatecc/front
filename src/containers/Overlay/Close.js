@@ -27,12 +27,13 @@ function Close({ color, onClick }) {
 }
 
 Close.propTypes = {
-  color: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+
+  color: PropTypes.string.isRequired, // has default
 }
 
 Close.defaultProps = {
-  color: 'white',
+  color: '~white',
 }
 
 export default Close

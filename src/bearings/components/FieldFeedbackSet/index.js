@@ -29,7 +29,7 @@ import FieldFeedback from '../FieldFeedback'
 const FieldFeedbackSet = ({ fieldMeta, feedback, feedbacks, ...texts }) => {
   const finalStates = uniq([
     feedback, // first priority to single direct feedback
-    ...feedbacks, // second priority to multiple direct feedback
+    ...(feedbacks || []), // second priority to multiple direct feedback
     get(fieldMeta, 'feedback'), // third priority to field feedback
   ])
 
@@ -55,10 +55,6 @@ FieldFeedbackSet.propTypes = {
   info: PropTypes.string,
   warning: PropTypes.string,
   danger: PropTypes.string,
-}
-
-FieldFeedbackSet.defaultProps = {
-  feedbacks: [],
 }
 
 export default canConnectField(FieldFeedbackSet)

@@ -1,18 +1,16 @@
 /**
  * Field
  *
- * The idea of Field is grouping field units
- *      ex. Label + TextInput + hint
- * and
- * 1. applying a bit of margin on the bottom (unless noMargin=true)
- * 2. making its descendents aware that they are in a group, via:
- * 3. passing down a common unique group id ('fieldId') via context
- *    that can be used to link a Label to a field and thus focus on the field
- *    when the user clicks on a Label (via default browser functionality)
+ * Group together connectable form elements and make them aware
  *
- * The ./canConnectField util can be used to make a component
- * intercept this groupId and turn it into an id/htmlFor
- * to link them into the group
+ * Many purposes:
+ * - Creating for/id link between Label and Input
+ * - Creating addons (one-piece smushed Controls)
+ * - Creating groups (children in columns)
+ * - Applying common props to form elements (feedback, size, disabled, etc)
+ * - Positioning Label and other children in horizontal fashion
+ *
+ * Can be nested (ex. addons field within horizontal field)
  */
 
 import React from 'react'
@@ -105,16 +103,14 @@ export default class Field extends React.PureComponent {
 }
 
 Field.propTypes = {
-  noMargin: PropTypes.bool,
   children: PropTypes.node.isRequired,
+
+  noMargin: PropTypes.bool,
 
   // passed down via field context meta:
   size: propIsSize,
   feedback: propIsFeedback,
   disabled: PropTypes.bool,
-}
-
-Field.defaultProps = {
 }
 
 Field.childContextTypes = {

@@ -262,8 +262,8 @@ function Button({ isInButtonGroup, ...restProps }) {
 }
 
 Button.propTypes = {
-  size: propIsSize,
-  brand: propIsBrandOrDefault,
+  size: propIsSize.isRequired, // has default
+  brand: propIsBrandOrDefault.isRequired, // has default
   link: PropTypes.bool,
   outline: PropTypes.bool,
 
@@ -280,16 +280,6 @@ Button.propTypes = {
 Button.defaultProps = {
   size: 'normal',
   brand: 'primary',
-  link: false,
-  outline: false,
-
-  focus: false,
-  active: false,
-  disabled: false,
-
-  isInButtonGroup: false,
-  isFirstInGroup: false,
-  isLastInGroup: false,
 }
 
 

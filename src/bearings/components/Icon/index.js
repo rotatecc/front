@@ -72,21 +72,17 @@ const Icon = styled('span', (props) => {
 Icon.propTypes = {
   name: PropTypes.string.isRequired,
 
-  size: propIsIconSize,
+  size: propIsIconSize.isRequired, // has default
+
   relative: PropTypes.bool,
   fixedWidth: PropTypes.bool,
-  rotate: PropTypes.number,
   flipHorizontal: PropTypes.bool,
   flipVertical: PropTypes.bool,
+  rotate: PropTypes.number,
 }
 
 Icon.defaultProps = {
   size: 'normal',
-  relative: false,
-  fixedWidth: false,
-  rotate: null,
-  flipHorizontal: false,
-  flipVertical: false,
 }
 
 

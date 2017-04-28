@@ -20,13 +20,11 @@ export default function Input(props) {
 }
 
 Input.propTypes = {
-  type: propIsInputType,
+  type: propIsInputType.isRequired, // has default
   hasIconLeft: PropTypes.bool,
   hasIconRight: PropTypes.bool,
 }
 
 Input.defaultProps = {
   type: 'text',
-  hasIconLeft: false,
-  hasIconRight: false,
 }

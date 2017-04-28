@@ -72,8 +72,8 @@ export default function BrandBackground({ bold, brand, children, ...restProps })
 }
 
 BrandBackground.propTypes = {
-  brand: propIsBrandOrDefaultOrLightOrDark,
-  bold: PropTypes.bool,
+  brand: propIsBrandOrDefaultOrLightOrDark.isRequired, // has default
+  bold: PropTypes.bool.isRequired, // has default
   children: PropTypes.node,
 }
 

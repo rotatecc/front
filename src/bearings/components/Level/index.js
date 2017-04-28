@@ -119,8 +119,9 @@ export default function Level({ breakpoint, alignItems, children, ...restProps }
 }
 
 Level.propTypes = {
-  breakpoint: propIsBreakpoint.isRequired,
-  alignItems: propIsAlignItems.isRequired,
+  breakpoint: propIsBreakpoint.isRequired, // has default
+  alignItems: propIsAlignItems.isRequired, // has default
+
   children: PropTypes.node,
 }
 

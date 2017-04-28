@@ -39,10 +39,10 @@ export default function canConnectField(component, keyAttr = 'id', alwaysId = fa
   }
 
   FieldConnectable.propTypes = {
-    connectField: PropTypes.bool,
-    connectRootField: PropTypes.bool,
-    connectFieldId: PropTypes.bool,
-    connectRootFieldId: PropTypes.bool,
+    connectField: PropTypes.bool, // has default
+    connectRootField: PropTypes.bool, // has default
+    connectFieldId: PropTypes.bool, // has default
+    connectRootFieldId: PropTypes.bool, // has default
   }
 
   FieldConnectable.defaultProps = {

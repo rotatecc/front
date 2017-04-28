@@ -25,22 +25,17 @@ const Tile = styled(BrandBackground, ({ hasRadius, hasShadow }) => expandStyles(
 
 
 Tile.propTypes = {
+  brand: propIsBrandOrDefaultOrLightOrDark.isRequired, // has default
+
   hasRadius: PropTypes.bool,
   hasShadow: PropTypes.bool,
-
-  brand: propIsBrandOrDefaultOrLightOrDark,
   bold: PropTypes.bool,
 
   children: PropTypes.node,
 }
 
 Tile.defaultProps = {
-  hasRadius: false,
-  hasShadow: false,
-
   brand: 'default',
-  bold: false,
 }
-
 
 export default Tile

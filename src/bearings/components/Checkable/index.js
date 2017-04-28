@@ -40,8 +40,8 @@ export default function Checkable({ name, type, value, label }) {
 Checkable.propTypes = {
   name: PropTypes.string,
   type: propIsCheckableType.isRequired,
-  value: PropTypes.string,
   label: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired, // has default (blank)
 }
 
 Checkable.defaultProps = {

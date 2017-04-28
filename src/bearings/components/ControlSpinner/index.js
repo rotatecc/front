@@ -31,7 +31,7 @@ export default function ControlSpinner({ size }) {
 }
 
 ControlSpinner.propTypes = {
-  size: propIsIconSize,
+  size: propIsIconSize.isRequired, // has default
 }
 
 ControlSpinner.defaultProps = {

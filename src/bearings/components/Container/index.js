@@ -46,9 +46,6 @@ export default function Container({ fluid, children, ...restProps }) {
 
 Container.propTypes = {
   fluid: PropTypes.bool,
-  children: PropTypes.node,
-}
 
-Container.defaultProps = {
-  fluid: false,
+  children: PropTypes.node,
 }

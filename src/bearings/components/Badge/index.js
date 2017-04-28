@@ -76,8 +76,8 @@ export default function Badge({ brand, size, onClose, children }) {
 }
 
 Badge.propTypes = {
-  brand: propIsBrandOrDefaultOrLightOrDark,
-  size: propIsSize,
+  brand: propIsBrandOrDefaultOrLightOrDark.isRequired,
+  size: propIsSize.isRequired,
   onClose: PropTypes.func,
 
   children: PropTypes.node.isRequired,

@@ -64,7 +64,7 @@ const Close = styled('button', ({ size }) => {
 })
 
 Close.propTypes = {
-  size: propIsSize.isRequired,
+  size: propIsSize.isRequired, // has default
 }
 
 Close.defaultProps = {
