@@ -19,7 +19,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
-import { expandStyles, propTypeFieldContext } from '../../utils'
+import {
+  expandStyles,
+  propTypeFieldContext,
+  propIsSize,
+  propIsFeedback,
+} from '../../utils'
 
 
 /**
@@ -60,18 +65,28 @@ export default class Field extends React.PureComponent {
   makeId = () => `fieldId${this.fieldIdNumber}`
 
   makeFieldContext = () => {
+    const isRoot = this.isRootField
+
+    const parentField = this.context.field
+
     const id = this.makeId()
+
+    // look up meta for this context. try 1. this.props 2. parent 3. undefined
+    const metaLookup = (name) =>
+      this.props[name] || (!isRoot && parentField.meta[name]) || undefined
 
     const meta = {
       id,
-      // TODO more (size, brand, etc)
+      size: metaLookup('size'),
+      feedback: metaLookup('feedback'),
+      disabled: metaLookup('disabled'),
+      // NOTE if more are added, make sure to update
+      // Field.propTypes and propTypeFieldMeta
     }
 
-    if (this.isRootField) {
+    if (isRoot) {
       return { meta, rootMeta: meta, idHierarchy: [id] }
     }
-
-    const parentField = this.context.field
 
     return {
       meta,
@@ -92,6 +107,11 @@ export default class Field extends React.PureComponent {
 Field.propTypes = {
   noMargin: PropTypes.bool,
   children: PropTypes.node.isRequired,
+
+  // passed down via field context meta:
+  size: propIsSize,
+  feedback: propIsFeedback,
+  disabled: PropTypes.bool,
 }
 
 Field.defaultProps = {

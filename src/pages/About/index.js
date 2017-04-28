@@ -37,7 +37,7 @@ function About() {
           <Row columnsTablet="one-half">
             <Column>
               <H2>About</H2>
-              <Field>
+              <Field feedback="success">
                 <Label>Facebook profile</Label>
                 <Field>
                   <Control>
@@ -45,8 +45,6 @@ function About() {
                     <TextInput connectRootFieldId />
                   </Control>
                   <FieldFeedbackSet
-                    state="info"
-                    states={['success', 'info']}
                     success="It worked!"
                     info="You might try this."
                     danger="Bad!"

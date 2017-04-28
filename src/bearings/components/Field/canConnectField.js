@@ -46,7 +46,7 @@ export default function canConnectField(component, keyAttr = 'id', alwaysId = fa
   }
 
   FieldConnectable.defaultProps = {
-    connectField: false,
+    connectField: true, // connect first-parent Field by default
     connectRootField: false,
     connectFieldId: false,
     connectRootFieldId: false,

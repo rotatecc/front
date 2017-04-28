@@ -5,44 +5,52 @@
  * based on state
  * ex.
  * <FieldFeedbackSet
- *   state="info"
+ *   feedback="info"
  *   success="It worked!"
  *   info="You might try this."
  *   danger="Bad!"
  * />
  * would result in one FieldFeedback-info.
- * You can also supply multiple states in an array (states={["success", "info"]})
+ * You can also supply multiple feedbacks in an array (feedbacks={["success", "info"]})
  */
 
 import React from 'react'
 import PropTypes from 'prop-types'
+import get from 'lodash.get'
 import uniq from 'lodash.uniq'
 
-import { warn, propIsFeedback } from '../../utils'
+import { warn, propTypeFieldMeta, propIsFeedback } from '../../utils'
+
+import canConnectField from '../Field/canConnectField'
 
 import FieldFeedback from '../FieldFeedback'
 
 
-export default function FieldFeedbackSet({ state, states, ...texts }) {
-  const finalStates = uniq([state, ...states])
+const FieldFeedbackSet = ({ fieldMeta, feedback, feedbacks, ...texts }) => {
+  const finalStates = uniq([
+    feedback, // first priority to single direct feedback
+    ...feedbacks, // second priority to multiple direct feedback
+    get(fieldMeta, 'feedback'), // third priority to field feedback
+  ])
 
-  const feedbackElements = finalStates.map((s) => {
+  const feedbackElements = finalStates.filter((s) => s).map((s) => {
     const text = texts[s]
 
     if (!text) {
-      warn(`FieldFeedbackSet was given state ${s}, but no text was supplied`)
+      warn(`FieldFeedbackSet was given feedback '${s}', but no matching text was supplied`)
       return null
     }
 
     return React.createElement(FieldFeedback, { key: s, feedback: s }, text)
   })
 
-  return React.createElement('div', null, feedbackElements)
+  return feedbackElements.length <= 0 ? null : React.createElement('div', null, feedbackElements)
 }
 
 FieldFeedbackSet.propTypes = {
-  state: propIsFeedback,
-  states: PropTypes.arrayOf(propIsFeedback),
+  fieldMeta: propTypeFieldMeta,
+  feedback: propIsFeedback,
+  feedbacks: PropTypes.arrayOf(propIsFeedback),
   success: PropTypes.string,
   info: PropTypes.string,
   warning: PropTypes.string,
@@ -50,5 +58,7 @@ FieldFeedbackSet.propTypes = {
 }
 
 FieldFeedbackSet.defaultProps = {
-  states: [],
+  feedbacks: [],
 }
+
+export default canConnectField(FieldFeedbackSet)

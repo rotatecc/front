@@ -116,26 +116,6 @@ export const aliasWidthMap = {
 export const validIconSizes = ['normal', 1, 2, 3, 4, 5]
 
 
-export const propTypeFieldId = PropTypes.string
-
-
-export const propTypeFieldMeta = PropTypes.shape({
-  id: propTypeFieldId.isRequired,
-  // TODO size, branding, etc
-})
-
-
-/**
- * React PropType for field context object
- * (no isRequired)
- */
-export const propTypeFieldContext = PropTypes.shape({
-  meta: propTypeFieldMeta.isRequired,
-  rootMeta: propTypeFieldMeta.isRequired,
-  idHierarchy: PropTypes.arrayOf(propTypeFieldId).isRequired,
-})
-
-
 /**
  * React PropType for valid breakpoint/device
  * (no isRequired)
@@ -204,6 +184,28 @@ export const propIsAlignItems = PropTypes.oneOf(validAlignItems)
  * (no isRequired)
  */
 export const propIsIconSize = PropTypes.oneOf(validIconSizes)
+
+
+export const propTypeFieldId = PropTypes.string
+
+
+export const propTypeFieldMeta = PropTypes.shape({
+  id: propTypeFieldId.isRequired,
+  size: propIsSize,
+  feedback: propIsFeedback,
+  disabled: PropTypes.bool,
+})
+
+
+/**
+ * React PropType for field context object
+ * (no isRequired)
+ */
+export const propTypeFieldContext = PropTypes.shape({
+  meta: propTypeFieldMeta.isRequired,
+  rootMeta: propTypeFieldMeta.isRequired,
+  idHierarchy: PropTypes.arrayOf(propTypeFieldId).isRequired,
+})
 
 
 export const themeValueModifiers = {
