@@ -20,9 +20,10 @@ import {
   propTypeFieldContext,
   propIsSize,
   propIsFeedback,
+  propIsBreakpoint,
 } from '../../utils'
 
-import { Marginal } from './supportComponents'
+import { StructuredField } from './supportComponents'
 
 
 /**
@@ -91,11 +92,11 @@ export default class Field extends React.PureComponent {
   }
 
   render() {
-    const { noMargin, ...restProps } = this.props
-
-    const hasMarginBottom = (!noMargin && this.isRootField)
-
-    return React.createElement(Marginal, { hasMarginBottom, ...restProps })
+    // All of the presentational logic lives in StructuredField
+    return React.createElement(StructuredField, {
+      ...this.props,
+      isRootField: this.isRootField,
+    })
   }
 }
 
@@ -103,6 +104,10 @@ Field.propTypes = {
   children: PropTypes.node.isRequired,
 
   noMargin: PropTypes.bool,
+
+  horizontal: PropTypes.bool,
+  addons: PropTypes.bool,
+  grouped: propIsBreakpoint,
 
   // passed down via field context meta:
   size: propIsSize,
