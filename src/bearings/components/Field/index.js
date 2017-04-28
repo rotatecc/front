@@ -15,14 +15,14 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { styled } from 'styletron-react'
 
 import {
-  expandStyles,
   propTypeFieldContext,
   propIsSize,
   propIsFeedback,
 } from '../../utils'
+
+import { Marginal } from './supportComponents'
 
 
 /**
@@ -33,11 +33,6 @@ import {
  * @type {Number}
  */
 let nextFieldIdNumber = 0
-
-
-export const Marginal = styled('div', ({ hasMarginBottom }) => expandStyles(
-  hasMarginBottom && 'mBottom/~fieldMarginBottom',
-))
 
 
 export default class Field extends React.PureComponent {
@@ -60,14 +55,16 @@ export default class Field extends React.PureComponent {
     return !this.context.field
   }
 
-  makeId = () => `fieldId${this.fieldIdNumber}`
+  get id() {
+    return `fieldId${this.fieldIdNumber}`
+  }
 
   makeFieldContext = () => {
     const isRoot = this.isRootField
 
     const parentField = this.context.field
 
-    const id = this.makeId()
+    const id = this.id
 
     // look up meta for this context. try 1. this.props 2. parent 3. undefined
     const metaLookup = (name) =>
