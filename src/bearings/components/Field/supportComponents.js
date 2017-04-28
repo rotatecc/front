@@ -31,6 +31,10 @@ export const HorizontalWrapper = styled('div', ({ breakpoint }) =>
   )),
 )
 
+HorizontalWrapper.propTypes = {
+  breakpoint: propIsBreakpoint.isRequired,
+}
+
 
 export const HorizontalLeft = styled('div', ({ breakpoint }) =>
   mixins.breakpoint(breakpoint, expandStyles(
@@ -44,6 +48,10 @@ export const HorizontalLeft = styled('div', ({ breakpoint }) =>
   )),
 )
 
+HorizontalLeft.propTypes = {
+  breakpoint: propIsBreakpoint.isRequired,
+}
+
 
 export const HorizontalRight = styled('div', ({ breakpoint }) =>
   mixins.breakpoint(breakpoint, expandStyles(
@@ -53,11 +61,18 @@ export const HorizontalRight = styled('div', ({ breakpoint }) =>
   )),
 )
 
+HorizontalRight.propTypes = {
+  breakpoint: propIsBreakpoint.isRequired,
+}
+
 
 // Grouped
 
 
-export const GroupedWrapper = styled('div', ({ breakpoint }) =>
+export const GroupedWrapper = styled('div')
+
+
+export const GroupedRow = styled('div', ({ breakpoint }) =>
   mixins.breakpoint(breakpoint, expandStyles(
     'd/flex',
 
@@ -66,7 +81,7 @@ export const GroupedWrapper = styled('div', ({ breakpoint }) =>
   )),
 )
 
-GroupedWrapper.propTypes = {
+GroupedRow.propTypes = {
   breakpoint: propIsBreakpoint.isRequired,
 }
 

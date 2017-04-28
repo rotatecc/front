@@ -115,6 +115,9 @@ export default class Field extends React.PureComponent {
       size: metaLookup('size'),
       feedback: metaLookup('feedback'),
       disabled: metaLookup('disabled'),
+      addons: metaLookup('addons'),
+      grouped: metaLookup('grouped'),
+      horizontal: metaLookup('horizontal'),
       // NOTE if more are added, make sure to update
       // Field.propTypes and propTypeFieldMeta
     }
@@ -144,11 +147,12 @@ Field.propTypes = {
 
   noMargin: PropTypes.bool,
 
+  // passed down via field context meta:
+
   horizontal: propIsColumnBreakpoint,
   grouped: propIsColumnBreakpoint,
   addons: PropTypes.bool,
 
-  // passed down via field context meta:
   size: propIsSize,
   feedback: propIsFeedback,
   disabled: PropTypes.bool,

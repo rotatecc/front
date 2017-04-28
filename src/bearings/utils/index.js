@@ -186,26 +186,7 @@ export const propIsAlignItems = PropTypes.oneOf(validAlignItems)
 export const propIsIconSize = PropTypes.oneOf(validIconSizes)
 
 
-export const propTypeFieldId = PropTypes.string
-
-
-export const propTypeFieldMeta = PropTypes.shape({
-  id: propTypeFieldId.isRequired,
-  size: propIsSize,
-  feedback: propIsFeedback,
-  disabled: PropTypes.bool,
-})
-
-
-/**
- * React PropType for field context object
- * (no isRequired)
- */
-export const propTypeFieldContext = PropTypes.shape({
-  meta: propTypeFieldMeta.isRequired,
-  rootMeta: propTypeFieldMeta.isRequired,
-  idHierarchy: PropTypes.arrayOf(propTypeFieldId).isRequired,
-})
+// NOTE additional prop types near bottom
 
 
 export const themeValueModifiers = {
@@ -650,3 +631,33 @@ export const propTypesForRowBreakpoints = breakpointsMapAndMerge((bkpt) =>
  */
 export const propTypesForColumnsPassBreakpoints = breakpointsMapAndMerge((bkpt) =>
   ({ [breakpointNameToColumnsPassBreakpointName(bkpt)]: propIsColumnBreakpoint }))
+
+
+// Field prop types
+
+
+export const propTypeFieldId = PropTypes.string
+
+
+export const propTypeFieldMeta = PropTypes.shape({
+  id: propTypeFieldId.isRequired,
+
+  size: propIsSize,
+  feedback: propIsFeedback,
+  disabled: PropTypes.bool,
+
+  horizontal: propIsColumnBreakpoint,
+  grouped: propIsColumnBreakpoint,
+  addons: PropTypes.bool,
+})
+
+
+/**
+ * React PropType for field context object
+ * (no isRequired)
+ */
+export const propTypeFieldContext = PropTypes.shape({
+  meta: propTypeFieldMeta.isRequired,
+  rootMeta: propTypeFieldMeta.isRequired,
+  idHierarchy: PropTypes.arrayOf(propTypeFieldId).isRequired,
+})

@@ -218,7 +218,7 @@ theme.selectHeight = `calc(${theme.inputHeight} + ${theme.inputBorderWidth})`
 theme.fieldMarginBottom = '1rem'
 
 theme.fieldHorizontalGap = '1.75rem'
-theme.fieldGroupedGutter = '12px'
+theme.fieldGroupedGutter = '12px' // must be in pixels
 
 
 // Components: FieldFeedback + FieldHelp

@@ -37,33 +37,31 @@ function About() {
           <Row columnsTablet="one-half">
             <Column>
               <H2>About</H2>
-              <Field feedback="success" horizontal>
+              <Field feedback="success" horizontal grouped>
                 <Label>Facebook profile</Label>
-                <Field grouped>
-                  <Field>
-                    <Control>
-                      <AtLeft><Icon name="facebook" /></AtLeft>
-                      <TextInput connectRootFieldId />
-                    </Control>
-                    <FieldFeedbackSet
-                      success="It worked!"
-                      info="You might try this."
-                      danger="Bad!"
-                    />
-                    <FieldHelp>Enter your Facebook profile id</FieldHelp>
-                  </Field>
-                  <Field>
-                    <Control>
-                      <AtLeft><Icon name="facebook" /></AtLeft>
-                      <TextInput connectRootFieldId />
-                    </Control>
-                    <FieldFeedbackSet
-                      success="It worked!"
-                      info="You might try this."
-                      danger="Bad!"
-                    />
-                    <FieldHelp>Enter your Facebook profile id</FieldHelp>
-                  </Field>
+                <Field>
+                  <Control>
+                    <AtLeft><Icon name="facebook" /></AtLeft>
+                    <TextInput connectRootFieldId />
+                  </Control>
+                  <FieldFeedbackSet
+                    success="It worked!"
+                    info="You might try this."
+                    danger="Bad!"
+                  />
+                  <FieldHelp>Enter your Facebook profile id</FieldHelp>
+                </Field>
+                <Field>
+                  <Control>
+                    <AtLeft><Icon name="facebook" /></AtLeft>
+                    <TextInput connectRootFieldId />
+                  </Control>
+                  <FieldFeedbackSet
+                    success="It worked!"
+                    info="You might try this."
+                    danger="Bad!"
+                  />
+                  <FieldHelp>Enter your Facebook profile id</FieldHelp>
                 </Field>
               </Field>
               <Control loading>

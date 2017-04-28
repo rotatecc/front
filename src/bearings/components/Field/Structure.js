@@ -14,6 +14,7 @@ import {
   FlexGrow,
   Marginal,
   GroupedWrapper,
+  GroupedRow,
   GroupedColumn,
   HorizontalWrapper,
   HorizontalLeft,
@@ -80,14 +81,12 @@ export const handleGrouped = (children, { grouped }) => {
     </GroupedColumn>
   ))
 
-  return (
-    <div>
-      {label}
-      <GroupedWrapper breakpoint={breakpoint}>
-        {columns}
-      </GroupedWrapper>
-    </div>
-  )
+  return [
+    label,
+    <GroupedRow breakpoint={breakpoint}>
+      {columns}
+    </GroupedRow>,
+  ]
 }
 
 
@@ -135,7 +134,7 @@ const Structure = (props) => {
     handleGrouped,
     handleHorizontal,
     handleMarginBottom,
-  ].filter((x) => x)
+  ]
 
   // Run series of transformations on children
   const finalChildren = transformations.reduce(
