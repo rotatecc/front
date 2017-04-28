@@ -1,6 +1,6 @@
 import { styled } from 'styletron-react'
 
-import canConnectFieldId from '../Field/canConnectFieldId'
+import canConnectField from '../Field/canConnectField'
 
 import { makeField } from '../../mixins'
 
@@ -8,4 +8,4 @@ import { makeField } from '../../mixins'
 const StyledBaseInput = styled('textarea', makeField())
 
 
-export default canConnectFieldId(StyledBaseInput, 'id', false)
+export default canConnectField(StyledBaseInput, 'id', false)

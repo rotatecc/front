@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from 'styletron-react'
 
-import canConnectFieldId from '../Field/canConnectFieldId'
+import canConnectField from '../Field/canConnectField'
 
 import { expandStyles } from '../../utils'
 import { makeField } from '../../mixins'
@@ -41,7 +41,7 @@ const StyledBaseSelect = styled('select', (props) => expandStyles(
 ))
 
 
-const ActualSelect = canConnectFieldId(StyledBaseSelect, 'id', false)
+const ActualSelect = canConnectField(StyledBaseSelect, 'id', false)
 
 
 export default function Select(props) {

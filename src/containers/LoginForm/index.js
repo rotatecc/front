@@ -16,7 +16,7 @@ const LoginFormField = ({ input, label, type, meta }) => {
   return (
     <Field>
       <Label>{label}</Label>
-      <Input {...input} type={type} connectFieldId />
+      <Input {...input} type={type} connectField />
       {touched && error && <span>{error}</span>}
     </Field>
   )

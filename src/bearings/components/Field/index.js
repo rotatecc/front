@@ -10,7 +10,7 @@
  *    that can be used to link a Label to a field and thus focus on the field
  *    when the user clicks on a Label (via default browser functionality)
  *
- * The ./canConnectFieldId util can be used to make a component
+ * The ./canConnectField util can be used to make a component
  * intercept this groupId and turn it into an id/htmlFor
  * to link them into the group
  */
@@ -19,12 +19,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
-import { expandStyles } from '../../utils'
+import { expandStyles, propTypeFieldContext } from '../../utils'
 
 
 /**
  * We want a unique id for each Field instance.
- * Let's keep it here as a mutable variable. Each time a
+ * Let's keep it here as a mutable integer. Each time a
  * Field is instantiated, it will be stored then
  * incremented for the next instance.
  * @type {Number}
@@ -43,13 +43,31 @@ export default class Field extends React.PureComponent {
 
     this.fieldIdNumber = nextFieldIdNumber
 
-    // NOTE Mutation !!!
+    // !!! Mutation !!!
     nextFieldIdNumber += 1
   }
 
   getChildContext() {
     return {
-      fieldId: `field${this.fieldIdNumber}`,
+      field: this.makeFieldContext(),
+    }
+  }
+
+  makeId = () => `fieldId${this.fieldIdNumber}`
+
+  makeFieldContext = () => {
+    const id = this.makeId()
+
+    const rootFieldContext = {
+      id,
+      idHierarchy: [],
+    }
+
+    const parentFieldContext = this.context.field || rootFieldContext
+
+    return {
+      id,
+      idHierarchy: [...parentFieldContext.idHierarchy, id],
     }
   }
 
@@ -72,5 +90,9 @@ Field.defaultProps = {
 }
 
 Field.childContextTypes = {
-  fieldId: PropTypes.string,
+  field: propTypeFieldContext,
+}
+
+Field.contextTypes = {
+  field: propTypeFieldContext,
 }

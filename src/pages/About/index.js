@@ -13,12 +13,8 @@ import {
   HeroSubtitle,
   Tile,
   Box,
-  Level,
-  AtCenter,
   AtLeft,
-  AtRight,
   Icon,
-  ControlSpinner,
   Control,
   TextInput,
   Select,
@@ -37,12 +33,12 @@ function About() {
           <Row columnsTablet="one-half">
             <Column>
               <H2>About</H2>
-              <Level alignItems="center">
-                <AtCenter>This div is very, <Icon name="cc-discover" /> very, very, very, very centered</AtCenter>
-                <AtRight>Hi!<br />this is a test<br />kool</AtRight>
-              </Level>
+              <Control>
+                <AtLeft><Icon name="facebook" /></AtLeft>
+                <TextInput />
+              </Control>
               <Control loading>
-                <AtLeft><Icon name="cogs" /></AtLeft>
+                <AtLeft><Icon name="instagram" /></AtLeft>
                 <Select>
                   <option>Hello</option>
                 </Select>

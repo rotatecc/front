@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { propIsCheckableType } from '../../utils'
 
-import canConnectFieldId from '../Field/canConnectFieldId'
+import canConnectField from '../Field/canConnectField'
 
 import Checkable from '../Checkable'
 
@@ -24,4 +24,4 @@ CheckableSet.propTypes = {
 }
 
 
-export default canConnectFieldId(CheckableSet, 'name', false)
+export default canConnectField(CheckableSet, 'name', false)

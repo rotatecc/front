@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
-import canConnectFieldId from '../Field/canConnectFieldId'
+import canConnectField from '../Field/canConnectField'
 
 import { propIsInputType } from '../../utils'
 
@@ -12,7 +12,7 @@ import { makeField } from '../../mixins'
 const StyledBaseInput = styled('input', makeField)
 
 
-const GroupableInput = canConnectFieldId(StyledBaseInput, 'id', false)
+const GroupableInput = canConnectField(StyledBaseInput, 'id', false)
 
 
 export default function Input(props) {

@@ -1,40 +1,42 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { propTypeFieldContext } from '../../utils'
+
 
 /**
  * Connect component to the field id, that is...
  * When it is a descendent of a Field, it will have a
  * keyAttr (usually 'id', or 'htmlFor' (Label), or 'name' (checkable)) prop set to the
- * fieldId context that was passed down
+ * field context that was passed down
  * @param  {React.node} component
  * @param  {String} [keyAttr='id'] The prop name the component will be given
- *                                 with the fieldId
+ *                                 with the field id
  *                                 ex. for 'label', use 'htmlFor'
  * @param {Bool}        always     force connecting field id (if available)
  * @return {React.node}
  */
-export default function canConnectFieldId(component, keyAttr = 'id', always = false) {
-  const FieldConnectable = ({ connectFieldId, ...restProps }, context) => {
-    const { fieldId } = context
+export default function canConnectField(component, keyAttr = 'id', always = false) {
+  const FieldConnectable = ({ connectField, ...restProps }, context) => {
+    const { field } = context
 
-    const groupProps = ((always || connectFieldId) && typeof fieldId === 'string')
-      ? { [keyAttr]: fieldId }
+    const fieldProps = ((always || connectField) && typeof field === 'object')
+      ? { field, [keyAttr]: field.id }
       : {}
 
-    return React.createElement(component, { ...restProps, ...groupProps })
+    return React.createElement(component, { ...restProps, ...fieldProps })
   }
 
   FieldConnectable.propTypes = {
-    connectFieldId: PropTypes.bool,
+    connectField: PropTypes.bool,
   }
 
   FieldConnectable.defaultProps = {
-    connectFieldId: false,
+    connectField: false,
   }
 
   FieldConnectable.contextTypes = {
-    fieldId: PropTypes.string,
+    field: propTypeFieldContext,
   }
 
   return FieldConnectable

@@ -117,6 +117,16 @@ export const validIconSizes = ['normal', 1, 2, 3, 4, 5]
 
 
 /**
+ * React PropType for field context object
+ * (no isRequired)
+ */
+export const propTypeFieldContext = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  idHierarchy: PropTypes.arrayOf(PropTypes.string).isRequired,
+})
+
+
+/**
  * React PropType for valid breakpoint/device
  * (no isRequired)
  */
