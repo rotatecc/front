@@ -39,16 +39,32 @@ function About() {
               <H2>About</H2>
               <Field feedback="success" horizontal>
                 <Label>Facebook profile</Label>
-                <Control>
-                  <AtLeft><Icon name="facebook" /></AtLeft>
-                  <TextInput connectRootFieldId />
-                </Control>
-                <FieldFeedbackSet
-                  success="It worked!"
-                  info="You might try this."
-                  danger="Bad!"
-                />
-                <FieldHelp>Enter your Facebook profile id</FieldHelp>
+                <Field grouped>
+                  <Field>
+                    <Control>
+                      <AtLeft><Icon name="facebook" /></AtLeft>
+                      <TextInput connectRootFieldId />
+                    </Control>
+                    <FieldFeedbackSet
+                      success="It worked!"
+                      info="You might try this."
+                      danger="Bad!"
+                    />
+                    <FieldHelp>Enter your Facebook profile id</FieldHelp>
+                  </Field>
+                  <Field>
+                    <Control>
+                      <AtLeft><Icon name="facebook" /></AtLeft>
+                      <TextInput connectRootFieldId />
+                    </Control>
+                    <FieldFeedbackSet
+                      success="It worked!"
+                      info="You might try this."
+                      danger="Bad!"
+                    />
+                    <FieldHelp>Enter your Facebook profile id</FieldHelp>
+                  </Field>
+                </Field>
               </Field>
               <Control loading>
                 <AtLeft><Icon name="instagram" /></AtLeft>

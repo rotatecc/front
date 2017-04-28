@@ -83,9 +83,16 @@ export default class Field extends React.PureComponent {
     // For nested Fields...
 
     if (!this.isRootField) {
+      const parentFieldMeta = this.context.field.meta
+
       invariant(
         !props.horizontal,
         'Nested Fields cannot be horizontal',
+      )
+
+      invariant(
+        !(props.grouped && parentFieldMeta.addons),
+        'Fields within a Field-addons cannot be grouped',
       )
     }
 

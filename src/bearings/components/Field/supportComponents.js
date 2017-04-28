@@ -38,7 +38,7 @@ export const HorizontalLeft = styled('div', ({ breakpoint }) =>
     'fGrow/1',
     'fShrink/0',
 
-    'mRight/1.5rem',
+    'mRight/~fieldHorizontalGap',
 
     'tAlign/right',
   )),
@@ -57,22 +57,28 @@ export const HorizontalRight = styled('div', ({ breakpoint }) =>
 // Grouped
 
 
-// TODO column spacing
-
-export const GroupedWrapper = styled('div', ({ breakpoint }) => expandStyles(
+export const GroupedWrapper = styled('div', ({ breakpoint }) =>
   mixins.breakpoint(breakpoint, expandStyles(
     'd/flex',
+
+    'mLeft/~fieldGroupedGutter~halvePixels~negate',
+    'mRight/~fieldGroupedGutter~halvePixels~negate',
   )),
-))
+)
 
 GroupedWrapper.propTypes = {
   breakpoint: propIsBreakpoint.isRequired,
 }
 
 
-export const GroupedColumn = styled('div', ({ expanded }) => expandStyles(
-  expanded && expandStyles('fGrow/1', 'fShrink/0'),
-))
+export const GroupedColumn = styled('div', ({ breakpoint, expanded }) =>
+  mixins.breakpoint(breakpoint, expandStyles(
+    expanded && expandStyles('fGrow/1', 'fShrink/0'),
+
+    'mLeft/~fieldGroupedGutter~halvePixels',
+    'mRight/~fieldGroupedGutter~halvePixels',
+  )),
+)
 
 GroupedWrapper.propTypes = {
   expanded: PropTypes.bool,

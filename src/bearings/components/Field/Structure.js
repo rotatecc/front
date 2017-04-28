@@ -13,10 +13,35 @@ import Label from '../Label'
 import {
   FlexGrow,
   Marginal,
+  GroupedWrapper,
+  GroupedColumn,
   HorizontalWrapper,
   HorizontalLeft,
   HorizontalRight,
 } from './supportComponents'
+
+
+// Helpers
+
+
+/**
+ * Separate single child Label from other children
+ * @param  {array} children array of children
+ * @return {object}         shape: { label: ..., restChildren: [...] }
+ */
+export const separateChildLabel = (children) =>
+  children.reduce((acc, child) => {
+    if (child.type === Label) {
+      invariant(
+        acc.label === null,
+        'Fields cannot have more than one Label as a direct child',
+      )
+
+      return { ...acc, label: child }
+    }
+
+    return { ...acc, restChildren: [...acc.restChildren, child] }
+  }, { label: null, restChildren: [] })
 
 
 //
@@ -40,9 +65,29 @@ export const handleGrouped = (children, { grouped }) => {
     return children
   }
 
-  // TODO
+  // bool true defaults to tablet
+  const breakpoint = grouped === true ? 'tablet' : grouped
 
-  return children
+  const { label, restChildren } = separateChildLabel(children)
+
+  const columns = restChildren.map((child) => (
+    <GroupedColumn
+      key={child.key}
+      breakpoint={breakpoint}
+      expanded={child.props.expanded}
+    >
+      {child}
+    </GroupedColumn>
+  ))
+
+  return (
+    <div>
+      {label}
+      <GroupedWrapper breakpoint={breakpoint}>
+        {columns}
+      </GroupedWrapper>
+    </div>
+  )
 }
 
 
@@ -51,18 +96,7 @@ export const handleHorizontal = (children, { horizontal }) => {
     return children
   }
 
-  const { label, restChildren } = children.reduce((acc, child) => {
-    if (child.type === Label) {
-      invariant(
-        acc.label === null,
-        'Horizontal Fields cannot have more than one Label as a direct child',
-      )
-
-      return { ...acc, label: child }
-    }
-
-    return { ...acc, restChildren: [...acc.restChildren, child] }
-  }, { label: null, restChildren: [] })
+  const { label, restChildren } = separateChildLabel(children)
 
   // bool true defaults to tablet
   const breakpoint = horizontal === true ? 'tablet' : horizontal
