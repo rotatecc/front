@@ -64,12 +64,21 @@ export const handleHorizontal = (children, { horizontal }) => {
     return { ...acc, restChildren: [...acc.restChildren, child] }
   }, { label: null, restChildren: [] })
 
-  const left = !label ? null : <HorizontalLeft>{label}</HorizontalLeft>
+  // bool true defaults to tablet
+  const breakpoint = horizontal === true ? 'tablet' : horizontal
 
-  const right = restChildren.length === 0 ? null : <HorizontalRight>{restChildren}</HorizontalRight>
+  const bkptProp = { breakpoint }
+
+  const left = !label
+    ? null
+    : <HorizontalLeft {...bkptProp}>{label}</HorizontalLeft>
+
+  const right = restChildren.length === 0
+    ? null
+    : <HorizontalRight {...bkptProp}>{restChildren}</HorizontalRight>
 
   return (
-    <HorizontalWrapper>
+    <HorizontalWrapper {...bkptProp}>
       {left}
       {right}
     </HorizontalWrapper>
@@ -86,21 +95,7 @@ export const handleMarginBottom = (children, { isRootField, noMargin }) =>
 //
 
 
-export const Structure = (props) => {
-  const {
-    // Already validated by Field:
-    /* eslint-disable react/prop-types */
-    children,
-    addons,
-    grouped,
-    /* eslint-enable react/prop-types */
-  } = props
-
-  invariant(
-    !(addons && grouped),
-    'Field cannot be grouped and have addons, try using a nested Field',
-  )
-
+const Structure = (props) => {
   const transformations = [
     handleAddons,
     handleGrouped,
@@ -111,7 +106,7 @@ export const Structure = (props) => {
   // Run series of transformations on children
   const finalChildren = transformations.reduce(
     (acc, t) => t(React.Children.toArray(acc), props),
-    children,
+    props.children,
   )
 
   return (
@@ -122,6 +117,7 @@ export const Structure = (props) => {
 }
 
 Structure.propTypes = {
+  children: PropTypes.node.isRequired,
   isRootField: PropTypes.bool.isRequired,
   // ...many more, already validated by Field!
 }

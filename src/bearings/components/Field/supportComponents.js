@@ -23,31 +23,35 @@ Marginal.propTypes = {
 // Horizontal
 
 
-export const HorizontalWrapper = styled('div', expandStyles(
-  'd/flex',
-  'fJustifyContent/flex-start',
-  'fAlignItems/flex-start',
-))
+export const HorizontalWrapper = styled('div', ({ breakpoint }) =>
+  mixins.breakpoint(breakpoint, expandStyles(
+    'd/flex',
+    'fJustifyContent/flex-start',
+    'fAlignItems/flex-start',
+  )),
+)
 
 
-export const HorizontalLeft = styled('div', expandStyles(
-  'fBasis/0',
-  'fGrow/1',
-  'fShrink/0',
+export const HorizontalLeft = styled('div', ({ breakpoint }) =>
+  mixins.breakpoint(breakpoint, expandStyles(
+    'fBasis/0',
+    'fGrow/1',
+    'fShrink/0',
 
-  'mRight/1.5rem',
+    'mRight/1.5rem',
 
-  'tAlign/right',
-))
+    'tAlign/right',
+  )),
+)
 
 
-export const HorizontalRight = styled('div', expandStyles(
-  'fBasis/0',
-  'fGrow/5',
-  'fShrink/1',
-
-  'd/flex',
-))
+export const HorizontalRight = styled('div', ({ breakpoint }) =>
+  mixins.breakpoint(breakpoint, expandStyles(
+    'fBasis/0',
+    'fGrow/5',
+    'fShrink/1',
+  )),
+)
 
 
 // Grouped

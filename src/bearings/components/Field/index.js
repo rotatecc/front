@@ -21,7 +21,7 @@ import {
   propTypeFieldContext,
   propIsSize,
   propIsFeedback,
-  propIsBreakpoint,
+  propIsColumnBreakpoint,
 } from '../../utils'
 
 import Structure from './Structure'
@@ -73,15 +73,21 @@ export default class Field extends React.PureComponent {
    * Verify props object when this Field is nested
    */
   checkProps = (props) => {
-    // Only check nested Fields
-    if (this.isRootField) {
-      return
-    }
+    // For all fields...
 
     invariant(
-      !props.horizontal,
-      'Nested Fields cannot be horizontal',
+      !(props.addons && props.grouped),
+      'Field cannot be grouped and have addons, try using a nested Field',
     )
+
+    // For nested Fields...
+
+    if (!this.isRootField) {
+      invariant(
+        !props.horizontal,
+        'Nested Fields cannot be horizontal',
+      )
+    }
 
     // more?
   }
@@ -131,9 +137,9 @@ Field.propTypes = {
 
   noMargin: PropTypes.bool,
 
-  horizontal: PropTypes.bool,
+  horizontal: propIsColumnBreakpoint,
+  grouped: propIsColumnBreakpoint,
   addons: PropTypes.bool,
-  grouped: propIsBreakpoint,
 
   // passed down via field context meta:
   size: propIsSize,

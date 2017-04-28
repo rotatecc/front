@@ -2,15 +2,14 @@
  * Field-specific mixins
  */
 
-import memoize from 'lodash.memoize'
+import once from 'lodash.once'
 import merge from 'lodash.merge'
 
 import { expandStyles } from '../utils'
 
 
-// A bit silly, but we need to memoize this thunk
-// due to circular deps with expandStyles
-const makeBaseFieldStyles = memoize(() => expandStyles(
+// A bit silly, but we need to once this due to circular deps with expandStyles
+const makeBaseFieldStyles = once(() => expandStyles(
   'd/block',
   'fullWidth',
 
