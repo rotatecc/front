@@ -13,26 +13,37 @@ import { propTypeFieldContext } from '../../utils'
  * @param  {String} [keyAttr='id'] The prop name the component will be given
  *                                 with the field id
  *                                 ex. for 'label', use 'htmlFor'
- * @param {Bool}        always     force connecting field id (if available)
+ * @param  {Bool}        always    force connecting field id (if available)
  * @return {React.node}
  */
 export default function canConnectField(component, keyAttr = 'id', always = false) {
-  const FieldConnectable = ({ connectField, ...restProps }, context) => {
+  const FieldConnectable = ({ connectField, connectRootField, ...restProps }, context) => {
     const { field } = context
 
-    const fieldProps = ((always || connectField) && typeof field === 'object')
-      ? { field, [keyAttr]: field.id }
-      : {}
+    const fieldProps = (() => {
+      if ((always || connectField || connectRootField) && typeof field === 'object') {
+        const accessor = connectRootField ? 'root' : 'info'
+
+        return {
+          field: field[accessor],
+          [keyAttr]: field[accessor].id,
+        }
+      }
+
+      return {}
+    })()
 
     return React.createElement(component, { ...restProps, ...fieldProps })
   }
 
   FieldConnectable.propTypes = {
     connectField: PropTypes.bool,
+    connectRootField: PropTypes.bool,
   }
 
   FieldConnectable.defaultProps = {
     connectField: false,
+    connectRootField: false,
   }
 
   FieldConnectable.contextTypes = {

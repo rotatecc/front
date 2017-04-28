@@ -32,8 +32,8 @@ import { expandStyles, propTypeFieldContext } from '../../utils'
 let nextFieldIdNumber = 0
 
 
-export const DivWithMargin = styled('div', expandStyles(
-  'mBottom/~fieldMarginBottom',
+export const Marginal = styled('div', ({ hasMarginBottom }) => expandStyles(
+  hasMarginBottom && 'mBottom/~fieldMarginBottom',
 ))
 
 
@@ -53,30 +53,38 @@ export default class Field extends React.PureComponent {
     }
   }
 
+  get isRootField() {
+    return Boolean(this.context.field)
+  }
+
   makeId = () => `fieldId${this.fieldIdNumber}`
 
   makeFieldContext = () => {
     const id = this.makeId()
 
-    const rootFieldContext = {
+    const info = {
       id,
-      idHierarchy: [],
     }
 
-    const parentFieldContext = this.context.field || rootFieldContext
+    if (this.isRootField) {
+      return { info, root: info, idHierarchy: [id] }
+    }
+
+    const parentField = this.context.field
 
     return {
-      id,
-      idHierarchy: [...parentFieldContext.idHierarchy, id],
+      info,
+      root: parentField.root,
+      idHierarchy: [...parentField.idHierarchy, id],
     }
   }
 
   render() {
     const { noMargin, ...restProps } = this.props
 
-    const component = noMargin ? 'div' : DivWithMargin
+    const hasMarginBottom = (!noMargin && this.isRootField)
 
-    return React.createElement(component, restProps)
+    return React.createElement(Marginal, { hasMarginBottom, ...restProps })
   }
 }
 
@@ -86,7 +94,6 @@ Field.propTypes = {
 }
 
 Field.defaultProps = {
-  noMargin: false,
 }
 
 Field.childContextTypes = {
