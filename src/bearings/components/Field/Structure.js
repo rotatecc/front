@@ -16,6 +16,8 @@ import {
   Marginal,
   GroupedRow,
   GroupedColumn,
+  AddonsRow,
+  AddonsColumn,
   HorizontalWrapper,
   HorizontalLeft,
   HorizontalRight,
@@ -55,9 +57,23 @@ export const handleAddons = (children, { addons }) => {
     return children
   }
 
-  // TODO
+  const { label, restChildren } = separateChildLabel(children)
 
-  return children
+  const columns = restChildren.map((child, i) => (
+    <AddonsColumn
+      key={get(child, 'key', i)}
+      expanded={get(child, 'props.expanded', false)}
+    >
+      {child}
+    </AddonsColumn>
+  ))
+
+  return [
+    label,
+    <AddonsRow>
+      {columns}
+    </AddonsRow>,
+  ]
 }
 
 

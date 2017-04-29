@@ -95,3 +95,23 @@ export const GroupedColumn = styled('div', ({ breakpoint, expanded }) =>
 GroupedColumn.propTypes = {
   expanded: PropTypes.bool,
 }
+
+
+// Addons
+
+
+export const AddonsRow = styled('div', () => expandStyles(
+  'd/flex',
+))
+
+AddonsRow.propTypes = {
+}
+
+
+export const AddonsColumn = styled('div', ({ expanded }) => expandStyles(
+  expanded && expandStyles('fGrow/1', 'fShrink/0'),
+))
+
+AddonsColumn.propTypes = {
+  expanded: PropTypes.bool,
+}

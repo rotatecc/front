@@ -22,6 +22,7 @@ import {
   FieldFeedbackSet,
   FieldHelp,
   Label,
+  Button,
 } from '@/bearings'
 
 
@@ -53,14 +54,21 @@ function About() {
                 </Field>
                 hello
               </Field>
-              <Field horizontal="tiny">
+              <Field addons>
                 <Label>Instagram</Label>
-                <Control loading>
+                <Control expanded>
                   <AtLeft><Icon name="instagram" /></AtLeft>
                   <Select>
                     <option>Hello</option>
                   </Select>
                 </Control>
+                <Control>
+                  <AtLeft><Icon name="folder-open-o" /></AtLeft>
+                  <Select>
+                    <option>You</option>
+                  </Select>
+                </Control>
+                <Button>Submit</Button>
               </Field>
             </Column>
             <Column>

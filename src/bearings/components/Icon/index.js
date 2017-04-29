@@ -25,7 +25,7 @@ const iconSizeToFontSize = memoize((size, relative) => {
 
 // Memoize the char lookup, just since the entire map is huge
 // NOTE This might not actually help at all
-const iconNameToChar = memoize((name) => nameCharMap[name])
+const iconNameToChar = memoize((name) => (nameCharMap[name] || ' '))
 
 
 const Icon = styled('span', (props) => {
