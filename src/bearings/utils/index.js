@@ -11,7 +11,7 @@ import invariant from 'invariant'
 
 import * as mixins from '../mixins'
 
-import { darken, lighten, saturate, rotate } from './color'
+import { darken, lighten, saturate, rotate, fade } from './color'
 
 
 // Re-export color utils
@@ -41,9 +41,6 @@ export const validBrandsOrDefaultOrLightOrDark = [
   'dark',
   ...validBrandsOrDefault,
 ]
-
-
-export const validFeedbacks = ['success', 'info', 'warning', 'danger']
 
 
 export const validInputTypes = [
@@ -152,13 +149,6 @@ export const propIsBrandOrDefaultOrLightOrDark = PropTypes.oneOf(validBrandsOrDe
 
 
 /**
- * React PropType for valid feedback
- * (no isRequired)
- */
-export const propIsFeedback = PropTypes.oneOf(validFeedbacks)
-
-
-/**
  * React PropType for valid Input type
  * (no isRequired)
  */
@@ -209,6 +199,7 @@ export const themeValueModifiers = {
   saturate10: (color) => saturate(color, 10),
   rotate10: (color) => rotate(color, 10),
   rotateNeg10: (color) => rotate(color, -10),
+  fade25: (color) => fade(color, 25),
 
   // Length
   negate: (value) => `-${value}`,
@@ -643,7 +634,7 @@ export const propTypeFieldMeta = PropTypes.shape({
   id: propTypeFieldId.isRequired,
 
   size: propIsSize,
-  feedback: propIsFeedback,
+  brand: propIsBrand,
   disabled: PropTypes.bool,
 
   horizontal: propIsColumnBreakpoint,

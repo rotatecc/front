@@ -82,11 +82,6 @@ export function brandValue(brand) {
 }
 
 
-export function feedbackValue(feedback, type) {
-  return themeValue(`feedback${capitalize(feedback)}${capitalize(type)}`)
-}
-
-
 export function integerValue(x) {
   return `${x}`
 }

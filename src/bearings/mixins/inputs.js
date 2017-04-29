@@ -4,14 +4,16 @@
 
 import once from 'lodash.once'
 import merge from 'lodash.merge'
+import get from 'lodash.get'
 
-import { expandStyles } from '../utils'
+import { expandStyles, capitalize } from '../utils'
 
 
 // A bit silly, but we need to once this due to circular deps with expandStyles
 const makeBaseInputStyles = once(() => expandStyles(
   'd/block',
   'fullWidth',
+  'wMax/100%', // prevent Select from overflowing if options are long
 
   'pTop/~inputPaddingY',
   'pBottom/~inputPaddingY',
@@ -71,11 +73,33 @@ const makeBaseInputStyles = once(() => expandStyles(
 ))
 
 
-export function makeInputStyles({ hasIconLeft = false, hasIconRight = false } = {}) {
+export function makeInputStyles({
+  fieldMeta,
+  brand: directBrand,
+  size: directSize,
+  hasIconLeft = false,
+  hasIconRight = false,
+} = {}) {
+  const brand = directBrand || get(fieldMeta, 'brand')
+  const size = directSize || get(fieldMeta, 'size')
+
   return merge({}, makeBaseInputStyles(), expandStyles(
     // Icon padding
     // TODO variable-ize; more padding for bigger sizes
     hasIconLeft && 'pLeft/2.25em',
     hasIconRight && 'pRight/2.25em',
+
+    // Brand
+    brand && expandStyles(
+      `bordC/~brand${capitalize(brand)}`,
+      {
+        ':focus': expandStyles(
+          `bordC/~brand${capitalize(brand)}`,
+        ),
+      },
+    ),
+
+    // Size
+    // TODO
   ))
 }

@@ -4,8 +4,8 @@ import { styled } from 'styletron-react'
 
 import Close from '../Close'
 
-import { expandStyles, propIsFeedback } from '../../utils'
-import { feedbackValue } from '../../mixins'
+import { expandStyles, propIsBrand } from '../../utils'
+import { brandValue } from '../../mixins'
 
 
 const DismissableClose = styled(Close, expandStyles(
@@ -17,12 +17,13 @@ const DismissableClose = styled(Close, expandStyles(
 ))
 
 
-const BaseDiv = styled('div', ({ feedback }) => expandStyles(
+// TODO restyle using BrandBackground
+const BaseDiv = styled('div', ({ brand }) => expandStyles(
   'p/~alertPaddingY/~alertPaddingX',
   'mBottom/~alertMarginBottom',
-  `c/${feedbackValue(feedback, 'text')}`,
-  `bgc/${feedbackValue(feedback, 'bg')}`,
-  `bordC/${feedbackValue(feedback, 'border')}`,
+  'c/~white',
+  `bgc/${brandValue(brand)}`,
+  `bordC/${brandValue(brand)}`,
   'bordS/solid',
   'bordW/~alertBorderWidth',
   '!radius/~alertBorderRadius',
@@ -30,9 +31,9 @@ const BaseDiv = styled('div', ({ feedback }) => expandStyles(
 ))
 
 
-export default function Alert({ feedback, onClose, children }) {
+export default function Alert({ brand, onClose, children }) {
   return (
-    <BaseDiv feedback={feedback}>
+    <BaseDiv brand={brand}>
       {children}
       {onClose && <DismissableClose onClick={onClose} />}
     </BaseDiv>
@@ -40,7 +41,7 @@ export default function Alert({ feedback, onClose, children }) {
 }
 
 Alert.propTypes = {
-  feedback: propIsFeedback.isRequired, // has default
+  brand: propIsBrand.isRequired, // has default
   onClose: PropTypes.func,
 
   children: PropTypes.node.isRequired,

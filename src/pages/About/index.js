@@ -38,7 +38,7 @@ function About() {
           <Row columnsTablet="one-half">
             <Column>
               <H2>About</H2>
-              <Field feedback="success" horizontal grouped>
+              <Field brand="success" horizontal grouped>
                 <Label>Facebook profile</Label>
                 <Field expanded>
                   <Control>
@@ -54,13 +54,11 @@ function About() {
                 </Field>
                 hello
               </Field>
-              <Field addons>
+              <Field brand="warning" addons>
                 <Label>Instagram</Label>
                 <Control expanded>
                   <AtLeft><Icon name="instagram" /></AtLeft>
-                  <Select>
-                    <option>Hello</option>
-                  </Select>
+                  <TextInput />
                 </Control>
                 <Control>
                   <AtLeft><Icon name="folder-open-o" /></AtLeft>

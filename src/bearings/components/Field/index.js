@@ -7,7 +7,7 @@
  * - Creating for/id link between Label and Input
  * - Creating addons (one-piece smushed Controls)
  * - Creating groups (children in columns)
- * - Applying common props to form elements (feedback, size, disabled, etc)
+ * - Applying common props to form elements (brand, size, disabled, etc)
  * - Positioning Label and other children in horizontal fashion
  *
  * Can be nested (ex. addons field within horizontal field)
@@ -20,7 +20,7 @@ import PropTypes from 'prop-types'
 import {
   propTypeFieldContext,
   propIsSize,
-  propIsFeedback,
+  propIsBrand,
   propIsColumnBreakpoint,
 } from '../../utils'
 
@@ -113,7 +113,7 @@ export default class Field extends React.PureComponent {
     const meta = {
       id,
       size: metaLookup('size'),
-      feedback: metaLookup('feedback'),
+      brand: metaLookup('brand'),
       disabled: metaLookup('disabled'),
       addons: metaLookup('addons'),
       grouped: metaLookup('grouped'),
@@ -154,7 +154,7 @@ Field.propTypes = {
   addons: PropTypes.bool,
 
   size: propIsSize,
-  feedback: propIsFeedback,
+  brand: propIsBrand,
   disabled: PropTypes.bool,
 }
 

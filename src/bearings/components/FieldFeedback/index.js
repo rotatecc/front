@@ -1,21 +1,21 @@
 import { styled } from 'styletron-react'
 import memoize from 'lodash.memoize'
 
-import { expandStyles, capitalize, propIsFeedback } from '../../utils'
+import { expandStyles, capitalize, propIsBrand } from '../../utils'
 
 
-const feedbackToThemeColor = memoize((feedback) => `feedback${capitalize(feedback)}Text`)
+const brandToThemeColor = memoize((brand) => `brand${capitalize(brand)}`)
 
 
-const FieldFeedback = styled('div', ({ feedback }) => expandStyles(
+const FieldFeedback = styled('div', ({ brand }) => expandStyles(
   'mTop/~fieldFeedbackMarginTop',
 
   'fw/~fieldFeedbackFontWeight',
-  `c/~${feedbackToThemeColor(feedback)}`,
+  `c/~${brandToThemeColor(brand)}`,
 ))
 
 FieldFeedback.propTypes = {
-  feedback: propIsFeedback.isRequired,
+  brand: propIsBrand.isRequired,
 }
 
 export default FieldFeedback

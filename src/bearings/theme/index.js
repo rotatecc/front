@@ -76,23 +76,6 @@ theme.brandInfo = '#AFA2FF'
 theme.brandWarning = '#DB9D47'
 theme.brandDanger = '#A24936'
 
-theme.feedbackSuccessText = '#3C763D'
-theme.feedbackSuccessBg = '#DFF0D8'
-theme.feedbackSuccessBorder = darken(theme.feedbackSuccessBg, 5)
-
-theme.feedbackInfoText = '#31708f'
-theme.feedbackInfoBg = '#d9edf7'
-theme.feedbackInfoBorder = darken(theme.feedbackInfoBg, 7)
-
-theme.feedbackWarningText = '#8a6d3b'
-theme.feedbackWarningBg = '#fcf8e3'
-theme.feedbackWarningBorder = darken(theme.feedbackWarningBg, 5)
-
-theme.feedbackDangerText = '#a94442'
-theme.feedbackDangerBg = '#f2dede'
-theme.feedbackDangerBorder = darken(theme.feedbackDangerBg, 5)
-
-
 theme.backgroundColor = '#F6F6F3'
 theme.textColor = '#232C33'
 
@@ -175,7 +158,8 @@ theme.inputColorFocus = theme.inputColor
 
 theme.inputBorderWidth = theme.borderWidth
 theme.inputBorderColor = fade(theme.black, 85)
-theme.inputBorderColorFocus = lighten(theme.brandPrimary, 25)
+// theme.inputBorderColorFocus = lighten(theme.brandPrimary, 25)
+theme.inputBorderColorFocus = fade(theme.black, 60)
 
 theme.inputBorderRadius = theme.borderRadius
 theme.inputSmBorderRadius = theme.borderRadiusSm

@@ -95,7 +95,6 @@ export { default as utils } from './utils'
 export {
   expandStyles,
   propIsBrand,
-  propIsFeedback,
   propIsInputType,
   condSpread,
 } from './utils'
