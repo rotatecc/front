@@ -75,19 +75,22 @@ function buttonBrand(brand, { focus, active, disabled }) {
     `bgc/~button${brandCapitalized}Bg`,
   )
 
-  return {
-    ...expandStyles(
-      `c/~button${brandCapitalized}Color`,
-      `bgc/~button${brandCapitalized}Bg`,
-      `bordC/~button${brandCapitalized}Border`,
-    ),
+  return expandStyles(
+    `c/~button${brandCapitalized}Color`,
+    `bgc/~button${brandCapitalized}Bg`,
+    `bordC/~button${brandCapitalized}Border`,
 
-    ':hover': hoverStyles,
+    focus && focusStyles,
+    active && activeStyles,
+    disabled && disabledStyles,
 
-    ...(focus ? focusStyles : { ':focus': focusStyles }),
-    ...(active ? activeStyles : { ':active': activeStyles }),
-    ...(disabled ? disabledStyles : { ':disabled': disabledStyles }),
-  }
+    {
+      ':hover': hoverStyles,
+      ':focus': focusStyles,
+      ':active': activeStyles,
+      ':disabled': disabledStyles,
+    },
+  )
 }
 
 
@@ -122,19 +125,22 @@ function buttonBrandOutlined(brand, { focus, active, disabled }) {
     `c/~button${brandCapitalized}Bg`,
   )
 
-  return {
-    ...expandStyles(
-      'bgc/transparent',
-      `c/~button${brandCapitalized}Bg`,
-      `bordC/~button${brandCapitalized}Bg`,
-    ),
+  return expandStyles(
+    'bgc/transparent',
+    `c/~button${brandCapitalized}Bg`,
+    `bordC/~button${brandCapitalized}Bg`,
 
-    ':hover': hoverStyles,
+    focus && focusStyles,
+    active && activeStyles,
+    disabled && disabledStyles,
 
-    ...(focus ? focusStyles : { ':focus': focusStyles }),
-    ...(active ? activeStyles : { ':active': activeStyles }),
-    ...(disabled ? disabledStyles : { ':disabled': disabledStyles }),
-  }
+    {
+      ':hover': hoverStyles,
+      ':focus': focusStyles,
+      ':active': activeStyles,
+      ':disabled': disabledStyles,
+    },
+  )
 }
 
 
@@ -144,48 +150,38 @@ function makeButtonLinkStyles({ focus, active, disabled }) {
     'bgc/transparent',
   )
 
-  const baseStyles = {
-    ...borderAndBg,
-    ...expandStyles(
-      'c/~linkColor',
-      'tDecor/~linkDecoration',
-      '!bShadow/none',
-    ),
-  }
+  const baseStyles = expandStyles(
+    borderAndBg,
+    'c/~linkColor',
+    'tDecor/~linkDecoration',
+    '!bShadow/none',
+  )
 
-  const activeStyles = {
-    ...borderAndBg,
-    ...expandStyles(
-      '!bShadow/none',
-    ),
-  }
+  const activeStyles = expandStyles(
+    borderAndBg,
+    '!bShadow/none',
+  )
 
-  const focusStyles = {
-    ...borderAndBg,
-    ...expandStyles(
-      'noOutline',
-      'c/~linkHoverColor',
-      'tDecor/~linkHoverDecoration',
-      '!bShadow/~buttonFocusBoxShadow',
-    ),
-  }
+  const focusStyles = expandStyles(
+    borderAndBg,
+    'noOutline',
+    'c/~linkHoverColor',
+    'tDecor/~linkHoverDecoration',
+    '!bShadow/~buttonFocusBoxShadow',
+  )
 
-  const hoverStyles = {
-    ...borderAndBg,
-    ...expandStyles(
-      'c/~linkHoverColor',
-      'tDecor/~linkHoverDecoration',
-    ),
-  }
+  const hoverStyles = expandStyles(
+    borderAndBg,
+    'c/~linkHoverColor',
+    'tDecor/~linkHoverDecoration',
+  )
 
-  const disabledStyles = {
-    ...expandStyles(
-      'cursor/~cursorDisabled',
-      'tDecor/~linkDecoration',
-      'o/0.65',
-      '!bShadow/none',
-      'c/~buttonLinkDisabledColor',
-    ),
+  const disabledStyles = expandStyles(
+    'cursor/~cursorDisabled',
+    'tDecor/~linkDecoration',
+    'o/0.65',
+    '!bShadow/none',
+    'c/~buttonLinkDisabledColor',
 
     // TODO FIXME currently these can't be combined
     // (they are merged into normal :hover and :focus)
@@ -199,15 +195,22 @@ function makeButtonLinkStyles({ focus, active, disabled }) {
     //   'c/~buttonLinkDisabledColor',
     //   '!bShadow/none',
     // ),
-  }
+  )
 
-  return {
-    ...baseStyles,
-    ':hover': hoverStyles,
-    ...(focus ? focusStyles : { ':focus': focusStyles }),
-    ...(active ? activeStyles : { ':active': activeStyles }),
-    ...(disabled ? disabledStyles : { ':disabled': disabledStyles }),
-  }
+  return expandStyles(
+    baseStyles,
+
+    focus && focusStyles,
+    active && activeStyles,
+    disabled && disabledStyles,
+
+    {
+      ':hover': hoverStyles,
+      ':focus': focusStyles,
+      ':active': activeStyles,
+      ':disabled': disabledStyles,
+    },
+  )
 }
 
 const StyledButton = styled('button', ({ size, brand, link, outline, focus, active, disabled }) => {
@@ -215,26 +218,24 @@ const StyledButton = styled('button', ({ size, brand, link, outline, focus, acti
     ? makeButtonLinkStyles({ focus, active, disabled })
     : (outline ? buttonBrandOutlined : buttonBrand)(brand, { focus, active, disabled })
 
-  return {
-    ...expandStyles(
-      'pointer',
-      'd/inline-block',
-      'fw/~buttonFontWeight',
-      'tAlign/center',
-      'nowrap',
-      'vAlign/middle',
-      'bordW/~buttonBorderWidth',
-      'bordS/solid',
-      'bordC/transparent',
-      '!trans/~buttonTransition',
-    ),
+  return expandStyles(
+    'pointer',
+    'd/inline-block',
+    'fw/~buttonFontWeight',
+    'tAlign/center',
+    'nowrap',
+    'vAlign/middle',
+    'bordW/~buttonBorderWidth',
+    'bordS/solid',
+    'bordC/transparent',
+    '!trans/~buttonTransition',
 
-    ...sizes[size],
+    sizes[size],
 
-    ...branding,
+    branding,
 
-    userSelect: 'none',
-  }
+    { userSelect: 'none' },
+  )
 })
 
 
@@ -249,10 +250,10 @@ const ButtonInGroup = styled(StyledButton, ({ isFirstInGroup, isLastInGroup }) =
     'mBottom/0',
 
     // Prevent double borders and radius when buttons are next to each other
-    (!isFirstInGroup) ? expandStyles('mLeft/~buttonBorderWidth~negate') : null,
-    (!isFirstInGroup && !isLastInGroup) ? 'radius/0' : null,
-    (isFirstInGroup) ? { borderTopRightRadius: 0, borderBottomRightRadius: 0 } : null,
-    (isLastInGroup) ? { borderTopLeftRadius: 0, borderBottomLeftRadius: 0 } : null,
+    !isFirstInGroup && 'mLeft/~buttonBorderWidth~negate',
+    !isFirstInGroup && !isLastInGroup && 'radius/0',
+    isFirstInGroup && { borderTopRightRadius: 0, borderBottomRightRadius: 0 },
+    isLastInGroup && { borderTopLeftRadius: 0, borderBottomLeftRadius: 0 },
   ))
 
 
@@ -264,6 +265,7 @@ function Button({ isInButtonGroup, ...restProps }) {
 Button.propTypes = {
   size: propIsSize.isRequired, // has default
   brand: propIsBrandOrDefault.isRequired, // has default
+
   link: PropTypes.bool,
   outline: PropTypes.bool,
 

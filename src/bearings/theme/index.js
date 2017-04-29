@@ -151,9 +151,11 @@ theme.linkHoverDecoration = 'underline'
 theme.inputPaddingX = '1rem'
 theme.inputPaddingY = '0.5rem'
 theme.inputLineHeight = 1.25
+
 theme.inputSmPaddingX = '0.5rem'
 theme.inputSmPaddingY = '0.25rem'
 theme.inputSmLineHeight = 1.5
+
 theme.inputLgPaddingX = '1rem'
 theme.inputLgPaddingY = '0.5rem'
 theme.inputLgLineHeight = 1.5
@@ -209,7 +211,7 @@ theme.labelMarginBottom = '0.5rem'
 // Select
 
 
-theme.selectHeight = `calc(${theme.inputHeight} + ${theme.inputBorderWidth})`
+theme.selectHeight = `calc(${theme.inputHeight} + ${parseFloat(theme.inputBorderWidth)}px`
 
 theme.selectCaretColor = theme.inputColor
 theme.selectCaretSize = '0.5em'
