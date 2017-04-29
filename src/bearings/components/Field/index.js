@@ -77,7 +77,7 @@ export default class Field extends React.PureComponent {
 
     invariant(
       !(props.addons && props.grouped),
-      'Field cannot be grouped and have addons, try using a nested Field',
+      'Field cannot be grouped and have addons. Try using Field-grouped with a nested Field-addons',
     )
 
     // For nested Fields...
@@ -87,12 +87,12 @@ export default class Field extends React.PureComponent {
 
       invariant(
         !props.horizontal,
-        'Nested Fields cannot be horizontal',
+        'Field-horizontal must be the root Field (cannot be nested)',
       )
 
       invariant(
-        !(props.grouped && parentFieldMeta.addons),
-        'Fields within a Field-addons cannot be grouped',
+        !parentFieldMeta.addons,
+        'Field-addons cannot have descendent Fields',
       )
     }
 

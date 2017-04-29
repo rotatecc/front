@@ -6,10 +6,10 @@ import canConnectField from '../Field/canConnectField'
 
 import { propIsInputType } from '../../utils'
 
-import { makeField } from '../../mixins'
+import { makeInputStyles } from '../../mixins'
 
 
-const StyledBaseInput = styled('input', makeField)
+const StyledBaseInput = styled('input', makeInputStyles)
 
 
 const GroupableInput = canConnectField(StyledBaseInput, 'id', false)

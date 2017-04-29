@@ -4,7 +4,7 @@ import { styled } from 'styletron-react'
 import canConnectField from '../Field/canConnectField'
 
 import { expandStyles } from '../../utils'
-import { makeField } from '../../mixins'
+import { makeInputStyles } from '../../mixins'
 
 
 const Wrapper = styled('div', ({ hasIconRight }) => expandStyles(
@@ -36,7 +36,7 @@ const Wrapper = styled('div', ({ hasIconRight }) => expandStyles(
 
 
 const StyledBaseSelect = styled('select', (props) => expandStyles(
-  makeField(props),
+  makeInputStyles(props),
   'h/~selectHeight',
 ))
 

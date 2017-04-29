@@ -9,7 +9,7 @@ import { expandStyles } from '../utils'
 
 
 // A bit silly, but we need to once this due to circular deps with expandStyles
-const makeBaseFieldStyles = once(() => expandStyles(
+const makeBaseInputStyles = once(() => expandStyles(
   'd/block',
   'fullWidth',
 
@@ -71,8 +71,8 @@ const makeBaseFieldStyles = once(() => expandStyles(
 ))
 
 
-export function makeField({ hasIconLeft = false, hasIconRight = false } = {}) {
-  return merge({}, makeBaseFieldStyles(), expandStyles(
+export function makeInputStyles({ hasIconLeft = false, hasIconRight = false } = {}) {
+  return merge({}, makeBaseInputStyles(), expandStyles(
     // Icon padding
     // TODO variable-ize; more padding for bigger sizes
     hasIconLeft && 'pLeft/2.25em',

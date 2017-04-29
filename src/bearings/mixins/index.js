@@ -12,7 +12,7 @@ import { capitalize } from '../utils'
 // Re-exports
 
 
-export { makeField } from './fields'
+export { makeInputStyles } from './fields'
 
 
 // Mini-utils
