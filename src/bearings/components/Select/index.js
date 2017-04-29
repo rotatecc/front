@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
 import canConnectField from '../Field/canConnectField'
@@ -19,10 +20,10 @@ const Wrapper = styled('div', ({ hasIconRight }) => expandStyles(
       't/50%',
       'r/1.125em',
       'd/block',
-      'square/0.5em',
+      'square/~selectCaretSize',
       'bordW/1px',
       'bordS/solid',
-      'bordC/~brandPrimary',
+      'bordC/~selectCaretColor',
       {
         borderRight: 0,
         borderTop: 0,
@@ -37,6 +38,7 @@ const Wrapper = styled('div', ({ hasIconRight }) => expandStyles(
 
 const StyledBaseSelect = styled('select', (props) => expandStyles(
   makeInputStyles(props),
+  `w/${props.expanded ? '100%' : 'auto'}`, // override input style maybe (100%)
   'h/~selectHeight',
 ))
 
@@ -49,4 +51,8 @@ export default function Select(props) {
   // Force hasIconRight on field since it will always
   // have something there (caret or Icon)
   return <Wrapper {...props}><ActualSelect {...props} hasIconRight /></Wrapper>
+}
+
+Select.propTypes = {
+  expanded: PropTypes.bool,
 }

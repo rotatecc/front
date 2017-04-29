@@ -42,7 +42,7 @@ const validChildPositions = [AtLeft, AtRight]
 const positionReplacements = [ControlLeft, ControlRight]
 
 
-export default function Control({ loading, children, ...restProps }) {
+export default function Control({ loading, expanded, children, ...restProps }) {
   const parts = React.Children.toArray(children).reduce((acc, child) => {
     const positionIndex = validChildPositions.indexOf(child.type)
 
@@ -103,6 +103,7 @@ export default function Control({ loading, children, ...restProps }) {
   const rightFinal = !loading ? parts.right : <ControlRight><ControlSpinner /></ControlRight>
 
   const inputFinal = React.cloneElement(parts.input, {
+    expanded, // forward expanded to input (i.e. used by Select to become full-width)
     hasIconLeft: parts.left !== null,
     hasIconRight: rightFinal !== null,
   })
@@ -118,9 +119,6 @@ export default function Control({ loading, children, ...restProps }) {
 
 Control.propTypes = {
   loading: PropTypes.bool,
+  expanded: PropTypes.bool,
   children: PropTypes.node.isRequired,
-}
-
-Control.defaultProps = {
-  loading: false,
 }

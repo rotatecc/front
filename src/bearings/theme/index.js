@@ -12,7 +12,7 @@ const theme = {}
 
 
 theme.enableRounded = true
-theme.enableShadows = true
+theme.enableShadows = false
 theme.enableTransitions = true
 
 
@@ -210,6 +210,9 @@ theme.labelMarginBottom = '0.5rem'
 
 
 theme.selectHeight = `calc(${theme.inputHeight} + ${theme.inputBorderWidth})`
+
+theme.selectCaretColor = theme.inputColor
+theme.selectCaretSize = '0.5em'
 
 
 // Component: Field
