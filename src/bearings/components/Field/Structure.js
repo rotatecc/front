@@ -139,19 +139,19 @@ export const handleMarginBottom = (children, { isRootField, noMargin }) =>
   <Marginal hasMarginBottom={isRootField && !noMargin}>{children}</Marginal>
 
 
+const transformations = [
+  handleAddons,
+  handleGrouped,
+  handleHorizontal,
+  handleMarginBottom,
+
+
 //
 // Structure component
 //
-
+]
 
 const Structure = (props) => {
-  const transformations = [
-    handleAddons,
-    handleGrouped,
-    handleHorizontal,
-    handleMarginBottom,
-  ]
-
   // Run series of transformations on children
   const finalChildren = transformations.reduce(
     (acc, t) => t(React.Children.toArray(acc), props),

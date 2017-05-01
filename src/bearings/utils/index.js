@@ -444,11 +444,10 @@ shorthandPropertiesStatic.flexCenter = expandStyles('fJustifyContent/center', 'f
 
 
 /**
- * Capitalize first letter of string
+ * Capitalize first letter of string (memoized)
  */
-export function capitalize(string) {
-  return `${string.charAt(0).toUpperCase()}${string.slice(1)}`
-}
+export const capitalize = memoize((str) =>
+  `${str.charAt(0).toUpperCase()}${str.slice(1)}`)
 
 
 /**

@@ -110,14 +110,21 @@ export default class Field extends React.PureComponent {
     const metaLookup = (name) =>
       this.props[name] || (!isRoot && parentField.meta[name]) || undefined
 
+    // map list of keys to metaLookup
+    const makeLookups = (...ks) =>
+      ks.reduce((acc, k) =>
+        ({ ...acc, [k]: metaLookup(k) }), {})
+
     const meta = {
       id,
-      size: metaLookup('size'),
-      brand: metaLookup('brand'),
-      disabled: metaLookup('disabled'),
-      addons: metaLookup('addons'),
-      grouped: metaLookup('grouped'),
-      horizontal: metaLookup('horizontal'),
+      ...makeLookups(
+        'size',
+        'brand',
+        'disabled',
+        'addons',
+        'grouped',
+        'horizontal',
+      ),
       // NOTE if more are added, make sure to update
       // Field.propTypes and propTypeFieldMeta
     }

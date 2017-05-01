@@ -91,9 +91,9 @@ theme.baseFontWeight = theme.fontWeightNormal
 theme.baseLineHeight = 1.5
 
 theme.fontSize = '1rem'
-theme.fontSizeLg = '1.25rem'
-theme.fontSizeSm = '0.875rem'
-theme.fontSizeXs = '0.75rem'
+theme.fontSizeExtraSmall = '0.75rem'
+theme.fontSizeSmall = '0.875rem'
+theme.fontSizeLarge = '1.25rem'
 
 theme.headingFontFamily = theme.baseFontFamily
 theme.textFieldFontFamily = theme.baseFontFamily
@@ -131,8 +131,8 @@ theme.linkHoverDecoration = 'underline'
 
 // Base form field styles
 
-theme.inputPaddingX = '1rem'
-theme.inputPaddingY = '0.5rem'
+theme.inputPaddingX = '1em'
+theme.inputPaddingY = '0.5em'
 theme.inputLineHeight = 1.25
 
 theme.inputSmPaddingX = '0.5rem'
@@ -217,7 +217,7 @@ theme.fieldFeedbackMarginTop = '0.25rem'
 theme.fieldFeedbackFontWeight = theme.fontWeightBold
 
 theme.fieldHelpMarginTop = '0.25rem'
-theme.fieldHelpFontSize = theme.fontSizeSm
+theme.fieldHelpFontSize = theme.fontSizeSmall
 theme.fieldHelpColor = theme.grayLight
 
 
@@ -238,10 +238,10 @@ theme.buttonBorderRadius = theme.borderRadius
 theme.buttonFontSize = theme.baseFontSize
 
 theme.buttonBorderRadiusSm = theme.borderRadiusSm
-theme.buttonFontSizeSm = theme.fontSizeSm
+theme.buttonfontSizeSmall = theme.fontSizeSmall
 
 theme.buttonBorderRadiusLg = theme.borderRadiusLg
-theme.buttonFontSizeLg = theme.fontSizeLg
+theme.buttonfontSizeLarge = theme.fontSizeLarge
 
 theme.buttonDefaultColor = theme.grayDark
 theme.buttonDefaultBg = theme.white
@@ -293,7 +293,7 @@ theme.badgeBorderRadius = theme.borderRadiusInfinite
 theme.badgeFontFamily = theme.baseFontFamily
 theme.badgeFontWeight = theme.fontWeightNormal
 
-theme.badgeFontSizeSmall = '0.75rem'
+theme.badgefontSizeSmallall = '0.75rem'
 theme.badgeFontSizeNormal = '1rem'
 theme.badgeFontSizeLarge = '1.25rem'
 

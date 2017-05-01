@@ -31,14 +31,14 @@ const sizes = {
   small: buttonSizeWithThemeValues(
     'inputSmPaddingY',
     'inputSmPaddingX',
-    'buttonFontSizeSm',
+    'buttonfontSizeSmall',
     'inputSmLineHeight',
     'buttonBorderRadiusSm',
   ),
   large: buttonSizeWithThemeValues(
     'inputLgPaddingY',
     'inputLgPaddingX',
-    'buttonFontSizeLg',
+    'buttonfontSizeLarge',
     'inputLgLineHeight',
     'buttonBorderRadiusLg',
   ),

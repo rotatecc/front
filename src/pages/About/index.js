@@ -38,7 +38,7 @@ function About() {
           <Row columnsTablet="one-half">
             <Column>
               <H2>About</H2>
-              <Field brand="success" horizontal grouped>
+              <Field brand="success" horizontal grouped size="small">
                 <Label>Facebook profile</Label>
                 <Field expanded>
                   <Control>

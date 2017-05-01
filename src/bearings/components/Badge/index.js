@@ -39,7 +39,7 @@ const BaseElement = styled(BrandBackground, baseStyles)
 
 const sizeMap = {
   // size: [font-size, Close-size]
-  small: ['~badgeFontSizeSmall', 'small'],
+  small: ['~badgefontSizeSmallall', 'small'],
   normal: ['~badgeFontSizeNormal', 'small'],
   large: ['~badgeFontSizeLarge', 'normal'],
 }

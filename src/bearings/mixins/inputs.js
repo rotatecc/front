@@ -56,19 +56,14 @@ const makeBaseInputStyles = once(() => expandStyles(
 
 
 export function makeInputStyles({
-  fieldMeta,
-  disabled: directDisabled,
   focus,
-  brand: directBrand,
-  size: directSize,
+  disabled,
+  brand,
+  size,
 
   hasIconLeft = false,
   hasIconRight = false,
 } = {}) {
-  const brand = directBrand || get(fieldMeta, 'brand')
-  const size = directSize || get(fieldMeta, 'size')
-  const disabled = directDisabled || get(fieldMeta, 'disabled')
-
   const disabledStyles = expandStyles(
     'bgc/~inputBgcDisabled',
     // iOS fix for unreadable disabled content;
@@ -85,6 +80,8 @@ export function makeInputStyles({
     '!bShadow/~inputBoxShadowFocus',
   )
 
+  console.log(size)
+
   return merge({}, makeBaseInputStyles(), expandStyles(
     // Disabled and Focus
     disabled && disabledStyles,
@@ -92,7 +89,7 @@ export function makeInputStyles({
     { ':disabled': disabledStyles, ':focus': focusStyles },
 
     // Icon padding
-    // TODO variable-ize; more padding for bigger sizes
+    // TODO variable-ize
     hasIconLeft && 'pLeft/2.25em',
     hasIconRight && 'pRight/2.25em',
 
@@ -107,6 +104,8 @@ export function makeInputStyles({
     ),
 
     // Size
-    // TODO
+    size && expandStyles(
+      `fs/~fontSize${capitalize(size)}`,
+    ),
   ))
 }
