@@ -14,6 +14,8 @@ import { expandStyles, propIsIconSize } from '../../utils'
 
 import { pseudoBefore } from '../../mixins'
 
+import canConnectField from '../Field/canConnectField'
+
 import nameCharMap from './nameCharMap'
 
 
@@ -37,7 +39,10 @@ const Icon = styled('span', (props) => {
     rotate,
     flipHorizontal,
     flipVertical,
+    disabled,
   } = props
+
+  const fontSize = iconSizeToFontSize(size, relative)
 
   return expandStyles(
     // The character
@@ -53,18 +58,21 @@ const Icon = styled('span', (props) => {
     // Font
     'ff/FontAwesome',
     'fw/normal',
-    `fs/${iconSizeToFontSize(size, relative)}`,
+    `fs/${fontSize}`,
     { fontStyle: 'normal', fontVariant: 'normal' },
 
     // Fixed Width (width of largest icons, e.g. cc-discover)
     fixedWidth && expandStyles('w/1.29em', 'tAlign/center'), // 18em/14 = 1.29em
 
     // Rotate
-    rotate && expandStyles(`transform/rotate(${rotate}deg)`),
+    rotate && `transform/rotate(${rotate}deg)`,
 
     // Flip
-    flipHorizontal && expandStyles('transform/scale(-1, 1)'),
-    flipVertical && expandStyles('transform/scale(1, -1)'),
+    flipHorizontal && 'transform/scale(-1, 1)',
+    flipVertical && 'transform/scale(1, -1)',
+
+    // Disabled
+    disabled && 'o/0.65',
   )
 })
 
@@ -86,4 +94,9 @@ Icon.defaultProps = {
 }
 
 
-export default Icon
+export default canConnectField(
+  Icon,
+  undefined,
+  undefined,
+  ['disabled'],
+)

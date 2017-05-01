@@ -23,7 +23,7 @@ const ControlLeft = styled('div', expandStyles(
   'atLeft',
 
   'h/100%',
-  'w/2.25em',
+  'w/~inputPaddingXHasIcon',
 
   'd/flex',
   'fAlignItems/center',

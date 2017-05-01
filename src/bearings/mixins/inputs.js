@@ -83,31 +83,35 @@ export function makeInputStyles({
     '!bShadow/~inputBoxShadowFocus',
   )
 
-  return merge({}, makeBaseInputStyles(), expandStyles(
-    // Disabled and Focus
-    disabled && disabledStyles,
-    focus && focusStyles,
-    { ':disabled': disabledStyles, ':focus': focusStyles },
+  return merge(
+    {},
+    makeBaseInputStyles(),
+    expandStyles(
+      // Disabled and Focus
+      disabled && disabledStyles,
+      focus && focusStyles,
+      { ':disabled': disabledStyles, ':focus': focusStyles },
 
-    // Icon padding
-    // TODO variable-ize
-    hasIconLeft && 'pLeft/2.25em',
-    hasIconRight && 'pRight/2.25em',
-
-    // Brand
-    brand && expandStyles(
-      `bordC/~brand${capitalize(brand)}`,
-      {
-        ':focus': expandStyles(
-          `bordC/~brand${capitalize(brand)}`,
-        ),
-      },
+      // Icon padding
+      hasIconLeft && 'pLeft/~inputPaddingXHasIcon',
+      hasIconRight && 'pRight/~inputPaddingXHasIcon',
     ),
+    expandStyles(
+      // Brand
+      brand && expandStyles(
+        `bordC/~brand${capitalize(brand)}`,
+        {
+          ':focus': expandStyles(
+            `bordC/~brand${capitalize(brand)}`,
+          ),
+        },
+      ),
 
-    // Size
-    size && expandStyles(
-      `fs/~inputFontSize${capitalize(size)}`,
-      `!radius/~inputBorderRadius${capitalize(size)}`,
+      // Size
+      size && expandStyles(
+        `fs/~inputFontSize${capitalize(size)}`,
+        `!radius/~inputBorderRadius${capitalize(size)}`,
+      ),
     ),
-  ))
+  )
 }

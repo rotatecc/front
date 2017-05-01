@@ -137,6 +137,8 @@ theme.inputPaddingY = 'calc(0.375em - 1px)'
 theme.inputPaddingX = 'calc(0.625em - 1px)'
 theme.inputLineHeight = 1.5
 
+theme.inputPaddingXHasIcon = '2.25em'
+
 theme.inputFontSizeNormal = theme.fontSizeNormal
 theme.inputFontSizeSmall = theme.fontSizeSmall
 theme.inputFontSizeLarge = theme.fontSizeLarge
@@ -147,7 +149,7 @@ theme.inputBorderRadiusLarge = theme.borderRadiusLarge
 
 theme.inputBgc = theme.white
 theme.inputBgcFocus = theme.inputBgc
-theme.inputBgcDisabled = theme.grayLighter
+theme.inputBgcDisabled = theme.grayLightest
 
 theme.inputColor = theme.gray
 theme.inputColorFocus = theme.inputColor
