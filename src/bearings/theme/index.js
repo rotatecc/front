@@ -214,6 +214,8 @@ theme.fieldHelpColor = theme.grayLight
 
 // Component: Button
 
+theme.buttonPaddingY = theme.inputPaddingY
+theme.buttonPaddingX = theme.inputPaddingX
 
 theme.buttonFontWeight = theme.fontWeightNormal
 theme.buttonBoxShadow = 'inset 0 1px 0 rgba(255,255,255,0.15), 0 1px 1px rgba(0,0,0,.075)'
@@ -225,14 +227,13 @@ theme.buttonLinkDisabledColor = theme.grayLight
 
 theme.buttonBorderWidth = theme.inputBorderWidth
 
-theme.buttonBorderRadius = theme.borderRadius
-theme.buttonFontSize = theme.baseFontSize
+theme.buttonBorderRadiusNormal = theme.inputBorderRadiusNormal
+theme.buttonBorderRadiusSmall = theme.inputBorderRadiusSmall
+theme.buttonBorderRadiusLarge = theme.inputBorderRadiusLarge
 
-theme.buttonBorderRadiusSm = theme.borderRadiusSmall
-theme.buttonfontSizeSmall = theme.fontSizeSmall
-
-theme.buttonBorderRadiusLg = theme.borderRadiusLarge
-theme.buttonfontSizeLarge = theme.fontSizeLarge
+theme.buttonFontSizeNormal = theme.fontSize
+theme.buttonFontSizeSmall = theme.fontSizeSmall
+theme.buttonFontSizeLarge = theme.fontSizeLarge
 
 theme.buttonDefaultColor = theme.grayDark
 theme.buttonDefaultBg = theme.white

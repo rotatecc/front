@@ -54,7 +54,7 @@ function About() {
                 </Field>
                 hello
               </Field>
-              <Field brand="warning" addons size="small">
+              <Field brand="warning" addons size="large">
                 <Label>Instagram</Label>
                 <Control expanded>
                   <AtLeft><Icon name="instagram" /></AtLeft>

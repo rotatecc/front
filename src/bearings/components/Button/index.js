@@ -12,11 +12,9 @@ import {
 import canConnectField from '../Field/canConnectField'
 
 
-function buttonSizeWithThemeValues(paddingY, paddingX, fontSize, lineHeight, borderRadius) {
+function buttonSizeWithThemeValues(fontSize, borderRadius) {
   return expandStyles(
-    `p/~${paddingY}/~${paddingX}`,
     `fs/~${fontSize}`,
-    `lh/~${lineHeight}`,
     `!radius/~${borderRadius}`,
   )
 }
@@ -24,25 +22,16 @@ function buttonSizeWithThemeValues(paddingY, paddingX, fontSize, lineHeight, bor
 
 const sizes = {
   normal: buttonSizeWithThemeValues(
-    'inputPaddingY',
-    'inputPaddingX',
-    'buttonFontSize',
-    'inputLineHeight',
-    'buttonBorderRadius',
+    'buttonFontSizeNormal',
+    'buttonBorderRadiusNormal',
   ),
   small: buttonSizeWithThemeValues(
-    'inputPaddingY',
-    'inputPaddingX',
-    'buttonfontSizeSmall',
-    'inputLineHeight',
-    'buttonBorderRadiusSm',
+    'buttonFontSizeSmall',
+    'buttonBorderRadiusSmall',
   ),
   large: buttonSizeWithThemeValues(
-    'inputPaddingY',
-    'inputPaddingX',
-    'buttonfontSizeLarge',
-    'inputLineHeight',
-    'buttonBorderRadiusLg',
+    'buttonFontSizeLarge',
+    'buttonBorderRadiusLarge',
   ),
 }
 
@@ -232,11 +221,16 @@ const StyledButton = styled('button', ({ size, brand, link, outline, focus, acti
     'bordC/transparent',
     '!trans/~buttonTransition',
 
+    'pTop/~buttonPaddingY',
+    'pBottom/~buttonPaddingY',
+    'pLeft/~buttonPaddingX',
+    'pRight/~buttonPaddingX',
+
+    { userSelect: 'none' },
+
     sizes[size],
 
     branding,
-
-    { userSelect: 'none' },
   )
 })
 
