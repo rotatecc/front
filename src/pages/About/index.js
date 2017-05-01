@@ -38,7 +38,7 @@ function About() {
           <Row columnsTablet="one-half">
             <Column>
               <H2>About</H2>
-              <Field brand="success" horizontal grouped size="small">
+              <Field brand="success" horizontal grouped size="large">
                 <Label>Facebook profile</Label>
                 <Field expanded>
                   <Control>
@@ -54,7 +54,7 @@ function About() {
                 </Field>
                 hello
               </Field>
-              <Field brand="warning" addons size="large">
+              <Field brand="warning" addons size="small">
                 <Label>Instagram</Label>
                 <Control expanded>
                   <AtLeft><Icon name="instagram" /></AtLeft>

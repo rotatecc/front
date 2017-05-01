@@ -90,7 +90,7 @@ theme.baseFontSize = '16px'
 theme.baseFontWeight = theme.fontWeightNormal
 theme.baseLineHeight = 1.5
 
-theme.fontSize = '1rem'
+theme.fontSizeNormal = '1rem'
 theme.fontSizeExtraSmall = '0.75rem'
 theme.fontSizeSmall = '0.875rem'
 theme.fontSizeLarge = '1.25rem'
@@ -108,7 +108,7 @@ theme.borderWidth = '1px'
 // Border radius
 
 
-theme.borderRadius = '0.25rem'
+theme.borderRadiusNormal = '0.25rem'
 theme.borderRadiusLarge = '0.3rem'
 theme.borderRadiusSmall = '0.15rem'
 theme.borderRadiusInfinite = '290486px'
@@ -137,11 +137,11 @@ theme.inputPaddingY = 'calc(0.375em - 1px)'
 theme.inputPaddingX = 'calc(0.625em - 1px)'
 theme.inputLineHeight = 1.5
 
-theme.inputFontSizeNormal = theme.fontSize
+theme.inputFontSizeNormal = theme.fontSizeNormal
 theme.inputFontSizeSmall = theme.fontSizeSmall
 theme.inputFontSizeLarge = theme.fontSizeLarge
 
-theme.inputBorderRadiusNormal = theme.borderRadius
+theme.inputBorderRadiusNormal = theme.borderRadiusNormal
 theme.inputBorderRadiusSmall = theme.borderRadiusSmall
 theme.inputBorderRadiusLarge = theme.borderRadiusLarge
 
@@ -230,7 +230,7 @@ theme.buttonBorderRadiusNormal = theme.inputBorderRadiusNormal
 theme.buttonBorderRadiusSmall = theme.inputBorderRadiusSmall
 theme.buttonBorderRadiusLarge = theme.inputBorderRadiusLarge
 
-theme.buttonFontSizeNormal = theme.fontSize
+theme.buttonFontSizeNormal = theme.fontSizeNormal
 theme.buttonFontSizeSmall = theme.fontSizeSmall
 theme.buttonFontSizeLarge = theme.fontSizeLarge
 
@@ -284,7 +284,7 @@ theme.badgeBorderRadius = theme.borderRadiusInfinite
 theme.badgeFontFamily = theme.baseFontFamily
 theme.badgeFontWeight = theme.fontWeightNormal
 
-theme.badgefontSizeSmallall = '0.75rem'
+theme.badgefontSizeSmall = '0.75rem'
 theme.badgeFontSizeNormal = '1rem'
 theme.badgeFontSizeLarge = '1.25rem'
 
@@ -292,7 +292,7 @@ theme.badgeFontSizeLarge = '1.25rem'
 // Component: Alert
 
 theme.alertBorderWidth = theme.borderWidth
-theme.alertBorderRadius = theme.borderRadius
+theme.alertBorderRadius = theme.borderRadiusNormal
 theme.alertPaddingX = '1.25rem'
 theme.alertPaddingY = '0.75rem'
 theme.alertMarginBottom = '1rem'
@@ -301,7 +301,7 @@ theme.alertLineHeight = theme.baseLineHeight
 
 // Component: Tile
 
-theme.tileBorderRadius = theme.borderRadius // switch-able
+theme.tileBorderRadius = theme.borderRadiusNormal // switch-able
 theme.tileBoxShadow = '0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1)' // switch-able
 theme.tilePaddingX = '1.25rem'
 theme.tilePaddingY = '0.75rem'

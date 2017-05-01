@@ -4,6 +4,7 @@ import { styled } from 'styletron-react'
 import canConnectField from '../Field/canConnectField'
 
 import {
+  expandStyles,
   propIsBrand,
   propIsSize,
   propTypeFieldMeta,
@@ -11,7 +12,10 @@ import {
 import { makeInputStyles } from '../../mixins'
 
 
-const Textarea = styled('textarea', makeInputStyles)
+const Textarea = styled('textarea', (props) => expandStyles(
+  makeInputStyles(props),
+  'h/auto',
+))
 
 Textarea.propTypes = {
   brand: propIsBrand,
