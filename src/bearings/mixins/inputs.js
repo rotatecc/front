@@ -4,7 +4,6 @@
 
 import once from 'lodash.once'
 import merge from 'lodash.merge'
-import get from 'lodash.get'
 
 import { expandStyles, capitalize } from '../utils'
 
@@ -14,6 +13,8 @@ const makeBaseInputStyles = once(() => expandStyles(
   'd/block',
   'fullWidth',
   'wMax/100%', // prevent Select from overflowing if options are long
+
+  'h/~inputHeight',
 
   'pTop/~inputPaddingY',
   'pBottom/~inputPaddingY',

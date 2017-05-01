@@ -131,6 +131,8 @@ theme.linkHoverDecoration = 'underline'
 
 // Base form field styles
 
+theme.inputHeight = '2.25em'
+
 theme.inputPaddingY = 'calc(0.375em - 1px)'
 theme.inputPaddingX = 'calc(0.625em - 1px)'
 theme.inputLineHeight = 1.5
@@ -184,9 +186,6 @@ theme.labelMarginBottom = '0.5rem'
 
 // Select
 
-
-// TODO remove
-// theme.selectHeight = `calc(${theme.inputHeight} + ${parseFloat(theme.inputBorderWidth)}px`
 
 theme.selectCaretColor = theme.inputColor
 theme.selectCaretSize = '0.5em'
