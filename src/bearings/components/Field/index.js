@@ -106,25 +106,22 @@ export default class Field extends React.PureComponent {
 
     const id = this.id
 
-    // look up meta for this context. try 1. this.props 2. parent 3. undefined
-    const metaLookup = (name) =>
+    // Look up inherited meta for this context. try 1. this.props 2. parent 3. undefined
+    const inheritLookup = (name) =>
       this.props[name] || (!isRoot && parentField.meta[name]) || undefined
 
-    // map list of keys to metaLookup
-    const makeLookups = (...ks) =>
-      ks.reduce((acc, k) =>
-        ({ ...acc, [k]: metaLookup(k) }), {})
-
     const meta = {
+      // Unique to this Field
       id,
-      ...makeLookups(
-        'size',
-        'brand',
-        'disabled',
-        'addons',
-        'grouped',
-        'horizontal',
-      ),
+      addons: this.props.addons,
+      grouped: this.props.grouped,
+      horizontal: this.props.horizontal,
+
+      // This field, or inherit from parent
+      size: inheritLookup('size'),
+      brand: inheritLookup('brand'),
+      disabled: inheritLookup('disabled'),
+
       // NOTE if more are added, make sure to update
       // Field.propTypes and propTypeFieldMeta
     }

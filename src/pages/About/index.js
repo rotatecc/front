@@ -35,10 +35,10 @@ function About() {
       </Hero>
       <Section>
         <Container>
-          <Row columnsTablet="one-half">
-            <Column>
+          <Row>
+            <Column tablet="two-thirds">
               <H2>About</H2>
-              <Field brand="success" horizontal grouped size="large">
+              <Field brand="success" horizontal grouped size="normal">
                 <Label>Facebook profile</Label>
                 <Field expanded>
                   <Control>
@@ -53,6 +53,21 @@ function About() {
                   <FieldHelp>Enter your Facebook profile id</FieldHelp>
                 </Field>
                 hello
+              </Field>
+              <Field brand="success" horizontal grouped size="normal">
+                <Label>Choochoo</Label>
+                <Field expanded>
+                  <Control>
+                    <AtLeft><Icon name="facebook" /></AtLeft>
+                    <TextInput connectRootId />
+                  </Control>
+                  <FieldFeedbackSet
+                    success="It worked!"
+                    info="You might try this."
+                    danger="Bad!"
+                  />
+                  <FieldHelp>Enter your Facebook profile id</FieldHelp>
+                </Field>
               </Field>
               <Field brand="warning" addons size="small">
                 <Label>Instagram</Label>
@@ -69,7 +84,7 @@ function About() {
                 <Button>Submit</Button>
               </Field>
             </Column>
-            <Column>
+            <Column tablet="one-third">
               <Row columnsTiny="6">
                 <Column>
                   <Box>

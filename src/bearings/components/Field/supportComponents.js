@@ -38,7 +38,9 @@ HorizontalWrapper.propTypes = {
 
 export const HorizontalLeft = styled('div', ({ breakpoint }) =>
   mixins.breakpoint(breakpoint, expandStyles(
-    'fBasis/0',
+    'w/16%',
+
+    // 'fBasis/0',
     'fGrow/1',
     'fShrink/0',
 

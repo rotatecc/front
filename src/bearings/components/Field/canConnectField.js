@@ -54,7 +54,7 @@ export default function canConnectField(
   component,
   keyAttrMaybe = null, // ex. 'id', 'htmlFor', 'name', 'etc'
   alwaysId = false,
-  whichMeta = ['brand', 'size', 'disabled'],
+  whichMeta = ['brand', 'size', 'disabled', 'horizontal', 'grouped', 'addons'],
 ) {
   const metaMerger = makeFieldMetaToPropsFn(whichMeta)
 
@@ -73,7 +73,7 @@ export default function canConnectField(
       ...restProps
     } = props
 
-    if (typeof field !== 'object' && bypass) {
+    if (typeof field !== 'object' || bypass) {
       // Bypass everything
       return React.createElement(component, restProps)
     }
