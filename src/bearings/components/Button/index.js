@@ -9,6 +9,8 @@ import {
   capitalize,
 } from '../../utils'
 
+import canConnectField from '../Field/canConnectField'
+
 
 function buttonSizeWithThemeValues(paddingY, paddingX, fontSize, lineHeight, borderRadius) {
   return expandStyles(
@@ -29,17 +31,17 @@ const sizes = {
     'buttonBorderRadius',
   ),
   small: buttonSizeWithThemeValues(
-    'inputSmPaddingY',
-    'inputSmPaddingX',
+    'inputPaddingY',
+    'inputPaddingX',
     'buttonfontSizeSmall',
-    'inputSmLineHeight',
+    'inputLineHeight',
     'buttonBorderRadiusSm',
   ),
   large: buttonSizeWithThemeValues(
-    'inputLgPaddingY',
-    'inputLgPaddingX',
+    'inputPaddingY',
+    'inputPaddingX',
     'buttonfontSizeLarge',
-    'inputLgLineHeight',
+    'inputLineHeight',
     'buttonBorderRadiusLg',
   ),
 }
@@ -285,4 +287,4 @@ Button.defaultProps = {
 }
 
 
-export default Button
+export default canConnectField(Button)

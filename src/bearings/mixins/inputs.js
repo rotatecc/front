@@ -20,7 +20,7 @@ const makeBaseInputStyles = once(() => expandStyles(
   'pLeft/~inputPaddingX',
   'pRight/~inputPaddingX',
 
-  'fs/~baseFontSize',
+  'fs/~inputFontSizeNormal', // overridden by size
   'lh/~inputLineHeight',
   'c/~inputColor',
   'bgc/~inputBgc',
@@ -32,7 +32,9 @@ const makeBaseInputStyles = once(() => expandStyles(
   'bordS/solid',
   'bordW/~inputBorderWidth',
   'bordC/~inputBorderColor',
-  '!radius/~inputBorderRadius', // NOTE if not applied, iOS defaults to border radius
+
+  // NOTE if not applied, iOS defaults to border radius
+  '!radius/~inputBorderRadiusNormal', // overridden by size
 
   '!trans/~inputTransition',
 
@@ -80,8 +82,6 @@ export function makeInputStyles({
     '!bShadow/~inputBoxShadowFocus',
   )
 
-  console.log(size)
-
   return merge({}, makeBaseInputStyles(), expandStyles(
     // Disabled and Focus
     disabled && disabledStyles,
@@ -105,7 +105,8 @@ export function makeInputStyles({
 
     // Size
     size && expandStyles(
-      `fs/~fontSize${capitalize(size)}`,
+      `fs/~inputFontSize${capitalize(size)}`,
+      `!radius/~inputBorderRadius${capitalize(size)}`,
     ),
   ))
 }

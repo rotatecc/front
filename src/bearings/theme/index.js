@@ -109,8 +109,8 @@ theme.borderWidth = '1px'
 
 
 theme.borderRadius = '0.25rem'
-theme.borderRadiusLg = '0.3rem'
-theme.borderRadiusSm = '0.15rem'
+theme.borderRadiusLarge = '0.3rem'
+theme.borderRadiusSmall = '0.15rem'
 theme.borderRadiusInfinite = '290486px'
 
 
@@ -131,23 +131,17 @@ theme.linkHoverDecoration = 'underline'
 
 // Base form field styles
 
-theme.inputPaddingX = '1em'
-theme.inputPaddingY = '0.5em'
-theme.inputLineHeight = 1.25
+theme.inputPaddingY = 'calc(0.375em - 1px)'
+theme.inputPaddingX = 'calc(0.625em - 1px)'
+theme.inputLineHeight = 1.5
 
-theme.inputSmPaddingX = '0.5rem'
-theme.inputSmPaddingY = '0.25rem'
-theme.inputSmLineHeight = 1.5
+theme.inputFontSizeNormal = theme.fontSize
+theme.inputFontSizeSmall = theme.fontSizeSmall
+theme.inputFontSizeLarge = theme.fontSizeLarge
 
-theme.inputLgPaddingX = '1rem'
-theme.inputLgPaddingY = '0.5rem'
-theme.inputLgLineHeight = 1.5
-
-// NOTE heights are only used for SelectField currently?
-// fontSize * lineHeight + inputPaddingY * 2
-theme.inputHeight = `${(1 * theme.inputLineHeight) + (0.5 * 2)}rem`
-theme.inputSmHeight = `${(0.875 * theme.inputSmLineHeight) + (0.25 * 2)}rem`
-theme.inputLgHeight = `${(1.25 * theme.inputLgLineHeight) + (0.5 * 2)}rem`
+theme.inputBorderRadiusNormal = theme.borderRadius
+theme.inputBorderRadiusSmall = theme.borderRadiusSmall
+theme.inputBorderRadiusLarge = theme.borderRadiusLarge
 
 theme.inputBgc = theme.white
 theme.inputBgcFocus = theme.inputBgc
@@ -160,10 +154,6 @@ theme.inputBorderWidth = theme.borderWidth
 theme.inputBorderColor = fade(theme.black, 85)
 // theme.inputBorderColorFocus = lighten(theme.brandPrimary, 25)
 theme.inputBorderColorFocus = fade(theme.black, 60)
-
-theme.inputBorderRadius = theme.borderRadius
-theme.inputSmBorderRadius = theme.borderRadiusSm
-theme.inputLgBorderRadius = theme.borderRadiusLg
 
 theme.inputBoxShadow = `inset 0 1px 1px ${fade(theme.black, 92.5)}`
 theme.inputBoxShadowFocus = `inset 0 1px 1px ${fade(theme.inputBorderColorFocus, 40)}`
@@ -195,7 +185,8 @@ theme.labelMarginBottom = '0.5rem'
 // Select
 
 
-theme.selectHeight = `calc(${theme.inputHeight} + ${parseFloat(theme.inputBorderWidth)}px`
+// TODO remove
+// theme.selectHeight = `calc(${theme.inputHeight} + ${parseFloat(theme.inputBorderWidth)}px`
 
 theme.selectCaretColor = theme.inputColor
 theme.selectCaretSize = '0.5em'
@@ -237,10 +228,10 @@ theme.buttonBorderWidth = theme.inputBorderWidth
 theme.buttonBorderRadius = theme.borderRadius
 theme.buttonFontSize = theme.baseFontSize
 
-theme.buttonBorderRadiusSm = theme.borderRadiusSm
+theme.buttonBorderRadiusSm = theme.borderRadiusSmall
 theme.buttonfontSizeSmall = theme.fontSizeSmall
 
-theme.buttonBorderRadiusLg = theme.borderRadiusLg
+theme.buttonBorderRadiusLg = theme.borderRadiusLarge
 theme.buttonfontSizeLarge = theme.fontSizeLarge
 
 theme.buttonDefaultColor = theme.grayDark
