@@ -2,7 +2,7 @@
  * Theme
  */
 
-import { lighten, darken, fade } from '../utils/color'
+import { darken, fade } from '../utils/color'
 
 
 const theme = {}

@@ -43,7 +43,7 @@ function About() {
                 <Field expanded>
                   <Control>
                     <AtLeft><Icon name="facebook" /></AtLeft>
-                    <TextInput connectRootFieldId />
+                    <TextInput connectRootId />
                   </Control>
                   <FieldFeedbackSet
                     success="It worked!"
@@ -62,7 +62,7 @@ function About() {
                 </Control>
                 <Control>
                   <AtLeft><Icon name="folder-open-o" /></AtLeft>
-                  <Select>
+                  <Select connectRootId>
                     <option>You</option>
                   </Select>
                 </Control>

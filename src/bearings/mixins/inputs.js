@@ -52,38 +52,45 @@ const makeBaseInputStyles = once(() => expandStyles(
   //   // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
   //   opacity: 1;
   // }
-
-  {
-    ':disabled': expandStyles(
-      'bgc/~inputBgcDisabled',
-      // iOS fix for unreadable disabled content;
-      // see https://github.com/twbs/bootstrap/issues/11655
-      'o/1',
-    ),
-
-    // Customize the focus state to imitate native WebKit styles
-    ':focus': expandStyles(
-      'noOutline',
-      'c/~inputColorFocus',
-      'bgc/~inputBgcFocus',
-      'bordC/~inputBorderColorFocus',
-      '!bShadow/~inputBoxShadowFocus',
-    ),
-  },
 ))
 
 
 export function makeInputStyles({
   fieldMeta,
+  disabled: directDisabled,
+  focus,
   brand: directBrand,
   size: directSize,
+
   hasIconLeft = false,
   hasIconRight = false,
 } = {}) {
   const brand = directBrand || get(fieldMeta, 'brand')
   const size = directSize || get(fieldMeta, 'size')
+  const disabled = directDisabled || get(fieldMeta, 'disabled')
+
+  const disabledStyles = expandStyles(
+    'bgc/~inputBgcDisabled',
+    // iOS fix for unreadable disabled content;
+    // see https://github.com/twbs/bootstrap/issues/11655
+    'o/1',
+  )
+
+  // Customize the focus state to imitate native WebKit styles
+  const focusStyles = expandStyles(
+    'noOutline',
+    'c/~inputColorFocus',
+    'bgc/~inputBgcFocus',
+    'bordC/~inputBorderColorFocus',
+    '!bShadow/~inputBoxShadowFocus',
+  )
 
   return merge({}, makeBaseInputStyles(), expandStyles(
+    // Disabled and Focus
+    disabled && disabledStyles,
+    focus && focusStyles,
+    { ':disabled': disabledStyles, ':focus': focusStyles },
+
     // Icon padding
     // TODO variable-ize; more padding for bigger sizes
     hasIconLeft && 'pLeft/2.25em',

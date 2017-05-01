@@ -4,52 +4,113 @@ import PropTypes from 'prop-types'
 import { propTypeFieldContext } from '../../utils'
 
 
+export const makeFieldMetaToPropsFn = (which) =>
+  (meta, props, switches = {}) =>
+    which.filter((x) => x).reduce(
+      (acc, field) => {
+        const { from, to, always } = typeof field === 'object' ? field : {
+          from: field,
+          to: field,
+          always: true,
+        }
+
+        const sw = switches[from]
+        if (sw === false || (typeof sw === 'undefined' && !always)) {
+          return acc
+        }
+
+        const result = props[to] || (meta && meta[from])
+
+        if (typeof result !== 'undefined') {
+          return { ...acc, [to]: result }
+        }
+
+        return acc
+      },
+      {},
+    )
+
+
 /**
- * Connect component to the field id, that is...
- * When it is a descendent of a Field, it will have a
- * keyAttr (usually 'id', or 'htmlFor' (Label), or 'name' (checkable)) prop set to the
- * field context that was passed down
- * @param  {React.node} component
- * @param  {String} [keyAttr='id'] The prop name the component will be given
- *                                 with the field id
- *                                 ex. for 'label', use 'htmlFor'
- * @param  {Bool}        alwaysId    force connecting field id (if available)
- * @return {React.node}
+ * Make HOC for component intended as a descendent of a Field
+ *
+ * Applies meta-props from field context as actual props,
+ * and allows field id (optionally under a different prop name)
+ * to be set automatically
+ *
+ * The resulting HOC can be supplied four helper props:
+ * - bypass: completely bypass FieldConnectable mechanics
+ * - useRoot: use field context root meta instead of parent meta
+ * - connectId: connect parent field id when available
+ * - connectRootId: connect root field id when available
+ *
+ * @param  {React.component}  component
+ * @param  {String|null}  [keyAttr=null] Set unique field id under this prop name (ex. htmlFor)
+ * @param  {Boolean} [alwaysId=false] Always apply id if available (unless connectId
+ *                                    is explicity set to bool false)
+ * @return {React.component}          Higher-order component ("FieldConnectable")
  */
-export default function canConnectField(component, keyAttr = 'id', alwaysId = false) {
+export default function canConnectField(
+  component,
+  keyAttrMaybe = null, // ex. 'id', 'htmlFor', 'name', 'etc'
+  alwaysId = false,
+  whichMeta = ['brand', 'size', 'disabled'],
+) {
+  const metaMerger = makeFieldMetaToPropsFn(whichMeta)
+
+  const idMerger = makeFieldMetaToPropsFn([
+    keyAttrMaybe && { from: 'id', to: keyAttrMaybe, always: alwaysId },
+  ])
+
   const FieldConnectable = (props, context) => {
+    const { field } = context
+
     const {
-      connectField,
-      connectRootField,
-      connectFieldId,
-      connectRootFieldId,
+      bypass, // completely bypass field connection (id and meta)
+      useRoot, // use root Field for meta
+      connectId, // connect parent Field id
+      connectRootId, // connect root Field id
       ...restProps
     } = props
 
-    const { field } = context
+    if (typeof field !== 'object' && bypass) {
+      // Bypass everything
+      return React.createElement(component, restProps)
+    }
 
-    const fieldProps = typeof field === 'object' && ({
-      ...((connectField || connectRootField) &&
-        { fieldMeta: field[connectRootField ? 'rootMeta' : 'meta'] }),
-      ...((alwaysId || connectFieldId || connectRootFieldId) &&
-        { [keyAttr]: field[connectRootFieldId ? 'rootMeta' : 'meta'].id }),
+    const desiredMeta = field[useRoot ? 'rootMeta' : 'meta']
+
+    const finalMetaProps = metaMerger(
+      desiredMeta,
+      restProps,
+    )
+
+    const finalIdProps = idMerger(
+      field[connectRootId ? 'rootMeta' : 'meta'],
+      restProps,
+      { id: typeof connectRootId !== 'undefined' ? connectRootId : connectId },
+    )
+
+    return React.createElement(component, {
+      fieldMeta: desiredMeta,
+      ...restProps,
+      ...finalMetaProps,
+      ...finalIdProps,
     })
-
-    return React.createElement(component, { ...restProps, ...fieldProps })
   }
 
   FieldConnectable.propTypes = {
-    connectField: PropTypes.bool, // has default
-    connectRootField: PropTypes.bool, // has default
-    connectFieldId: PropTypes.bool, // has default
-    connectRootFieldId: PropTypes.bool, // has default
+    connectId: PropTypes.bool,
+    connectRootId: PropTypes.bool,
+    bypass: PropTypes.bool, // has default
+    useRoot: PropTypes.bool, // has default
   }
 
   FieldConnectable.defaultProps = {
-    connectField: true, // connect first-parent Field by default
-    connectRootField: false,
-    connectFieldId: false,
-    connectRootFieldId: false,
+    // connectId/connectRootId should be undefined
+    // since mergeFieldMeta differentiates bool false
+    bypass: false,
+    useRoot: false,
   }
 
   FieldConnectable.contextTypes = {

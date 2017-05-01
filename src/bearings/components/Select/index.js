@@ -4,7 +4,12 @@ import { styled } from 'styletron-react'
 
 import canConnectField from '../Field/canConnectField'
 
-import { expandStyles } from '../../utils'
+import {
+  expandStyles,
+  propIsBrand,
+  propIsSize,
+  propTypeFieldMeta,
+} from '../../utils'
 import { makeInputStyles } from '../../mixins'
 
 
@@ -55,4 +60,14 @@ export default function Select(props) {
 
 Select.propTypes = {
   expanded: PropTypes.bool,
+
+  brand: propIsBrand,
+  size: propIsSize,
+  disabled: PropTypes.bool,
+  focus: PropTypes.bool,
+
+  hasIconLeft: PropTypes.bool,
+  hasIconRight: PropTypes.bool,
+
+  fieldMeta: propTypeFieldMeta,
 }
