@@ -71,28 +71,31 @@ HorizontalRight.propTypes = {
 // Grouped
 
 
-export const GroupedRow = styled('div', ({ breakpoint }) =>
+export const GroupedRow = styled('div', ({ breakpoint }) => expandStyles(
   mixins.breakpoint(breakpoint, expandStyles(
     'd/flex',
 
     'mLeft/~fieldGroupedGutter~halvePixels~negate',
     'mRight/~fieldGroupedGutter~halvePixels~negate',
   )),
-)
+))
 
 GroupedRow.propTypes = {
   breakpoint: propIsBreakpoint.isRequired,
 }
 
 
-export const GroupedColumn = styled('div', ({ breakpoint, expanded }) =>
+export const GroupedColumn = styled('div', ({ breakpoint, expanded }) => expandStyles(
   mixins.breakpoint(breakpoint, expandStyles(
     expanded && expandStyles('fGrow/1', 'fShrink/0'),
 
     'mLeft/~fieldGroupedGutter~halvePixels',
     'mRight/~fieldGroupedGutter~halvePixels',
   )),
-)
+  mixins.breakpointTo(breakpoint, expandStyles(
+    'mBottom/~fieldMarginBottom',
+  )),
+))
 
 GroupedColumn.propTypes = {
   expanded: PropTypes.bool,

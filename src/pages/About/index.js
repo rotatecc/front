@@ -82,7 +82,7 @@ function About() {
                   <FieldHelp>Enter your Facebook profile id</FieldHelp>
                 </Field>
               </Field>
-              <Field addons size="small">
+              <Field grouped horizontal size="small">
                 <Label>Instagram</Label>
                 <Control expanded>
                   <AtLeft><Icon name="instagram" /></AtLeft>

@@ -650,6 +650,10 @@ export const breakpointToMediaRangeMax = memoize((device) =>
   ])
 
 
+export const breakpointToMediaRangeTo = memoize((device) =>
+  [null, decrementPixelValue(theme.gridBreakpoints[device])])
+
+
 export const breakpointToMediaRangeOnly = memoize((device) =>
   [breakpointToMediaRange(device)[0], breakpointToMediaRangeMax(device)[1]])
 
@@ -661,6 +665,11 @@ export function breakpoint(device, styles) {
 
 export function breakpointMax(device, styles) {
   return mediaWidthRange(...breakpointToMediaRangeMax(device), styles)
+}
+
+
+export function breakpointTo(device, styles) {
+  return mediaWidthRange(...breakpointToMediaRangeTo(device), styles)
 }
 
 
