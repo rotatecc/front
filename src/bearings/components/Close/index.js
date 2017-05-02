@@ -43,10 +43,9 @@ const Close = styled('button', ({ size }) => {
     'fs/1rem',
     'vAlign/top',
 
-    `w/${sideLength}`,
-    `h/${sideLength}`,
+    `square/${sideLength}`,
 
-    'radius/290486px',
+    'radius/~borderRadiusInfinite',
     'bgc/rgba(10, 10, 10, 0.2)',
 
     {

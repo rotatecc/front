@@ -295,8 +295,9 @@ theme.badgeFontSizeLarge = '1.25rem'
 
 theme.alertBorderWidth = theme.borderWidth
 theme.alertBorderRadius = theme.borderRadiusNormal
-theme.alertPaddingX = '1.25rem'
-theme.alertPaddingY = '0.75rem'
+theme.alertPaddingY = '1.25rem'
+theme.alertPaddingX = '1.5rem'
+theme.alertPaddingXClose = '2.5rem'
 theme.alertMarginBottom = '1rem'
 theme.alertLineHeight = theme.baseLineHeight
 
