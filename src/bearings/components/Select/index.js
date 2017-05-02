@@ -20,7 +20,6 @@ const Wrapper = styled('div', ({ hasIconRight }) => expandStyles(
     // caret
     ':after': expandStyles(
       'absolute',
-      'z/4',
       'mTop/-0.375em',
       't/50%',
       'r/1.125em',
@@ -29,6 +28,7 @@ const Wrapper = styled('div', ({ hasIconRight }) => expandStyles(
       'bordW/1px',
       'bordS/solid',
       'bordC/~selectCaretColor',
+      'z/~zIndices.selectCaret',
       {
         borderRight: 0,
         borderTop: 0,

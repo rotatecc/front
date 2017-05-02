@@ -1,30 +1,17 @@
-import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
-import { expandStyles } from '@/bearings'
+import { expandStyles, Close as VanillaClose } from '@/bearings'
 
 
-const Container = styled('a', ({ color }) => ({
-  ...expandStyles(
-    'fixed',
-    't/1px',
-    'r/20px',
-    'fs/40px',
-    'z/105',
-    `c/${color}`,
-    'pointer',
-  ),
-
-  fontFamily: 'sans-serif',
-}))
-
-
-function Close({ color, onClick }) {
-  return (
-    <Container color={color} onClick={onClick}>&times;</Container>
-  )
-}
+const Close = styled(VanillaClose, expandStyles(
+  'fixed',
+  'square/40px',
+  'bgc/transparent',
+  't/20px',
+  'r/20px',
+  'pointer',
+))
 
 Close.propTypes = {
   onClick: PropTypes.func.isRequired,

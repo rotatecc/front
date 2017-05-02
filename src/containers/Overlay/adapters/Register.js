@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
+import config from '@/config'
+
 import { expandStyles, H3 } from '@/bearings'
 
 import Close from '../Close'
@@ -24,7 +26,7 @@ const BarWrapper = styled('div', expandStyles(
 
 function Register({ close }) {
   return (
-    <Container className="should-close-overlay">
+    <Container className={config.overlayCloseClassname}>
       <Close onClick={close} />
       <BarWrapper>
         <H3>Register</H3>

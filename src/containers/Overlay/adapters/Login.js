@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { styled } from 'styletron-react'
 
+import config from '@/config'
+
 import { expandStyles, breakpointMax, H3 } from '@/bearings'
 
 import * as authDuck from '@/ducks/auth'
@@ -33,7 +35,7 @@ const Box = styled('div', expandStyles(
 
 function Login({ close, login }) {
   return (
-    <Container className="should-close-overlay">
+    <Container className={config.overlayCloseClassname}>
       <Close onClick={close} />
       <Box>
         <H3>Log in</H3>

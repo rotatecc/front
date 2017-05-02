@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
+import config from '@/config'
+
 import { Input, expandStyles } from '@/bearings'
 
 import Close from '../Close'
@@ -31,7 +33,7 @@ const Bar = styled(Input, expandStyles(
 
 function Search({ close }) {
   return (
-    <Container className="should-close-overlay">
+    <Container className={config.overlayCloseClassname}>
       <Close onClick={close} />
       <BarWrapper>
         <Bar type="search" placeholder="Search" />

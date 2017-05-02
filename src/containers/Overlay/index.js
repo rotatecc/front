@@ -1,8 +1,11 @@
 import React from 'react'
+import invariant from 'invariant'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
+
+import config from '@/config'
 
 import { expandStyles } from '@/bearings'
 
@@ -11,14 +14,14 @@ import * as overlayDuck from '@/ducks/overlay'
 import * as adapters from './adapters'
 
 
-const Container = styled('div', ({ show }) => expandStyles(
-  `d/${show ? 'block' : 'none'}`,
+const Container = styled('div', expandStyles(
   'bgc/rgba(0, 0, 0, 0.8)',
   'fixed',
   'w/100vw',
   'h/100vh',
-  'z/100',
-  'overY/auto',
+  'overX/hidden',
+  'overY/hidden',
+  'z/~zIndices.overlay',
 ))
 
 function getMatchingAdapterMaybe(overlay) {
@@ -30,8 +33,6 @@ function changeOverflowOnBody(hidden = true) {
 }
 
 class Overlay extends React.PureComponent {
-  // Sync body { overflow: hidden } with overlay being shown
-
   componentDidMount() {
     changeOverflowOnBody(this.props.show)
   }
@@ -49,7 +50,7 @@ class Overlay extends React.PureComponent {
   onContainerClick = (e) => {
     e.persist()
 
-    if (e.target.className.includes('should-close-overlay')) {
+    if (e.target.className.includes(config.overlayCloseClassname)) {
       this.props.closeOverlay()
     }
   }
@@ -59,28 +60,26 @@ class Overlay extends React.PureComponent {
   render() {
     const { show, overlay } = this.props
 
+    if (!show) {
+      return null
+    }
+
+    const Adapted = getMatchingAdapterMaybe(overlay)
+
+    invariant(
+      Adapted,
+      'Matching Overlay adapter was not found',
+    )
+
     return (
       <Container
-        className="should-close-overlay"
+        className={config.overlayCloseClassname}
         onClick={this.onContainerClick}
-        show={show}
       >
-        {(() => {
-          if (show) {
-            const Adapted = getMatchingAdapterMaybe(overlay)
-
-            if (Adapted) {
-              return (
-                <Adapted
-                  close={this.props.closeOverlay}
-                  {...overlay.props}
-                />
-              )
-            }
-          }
-
-          return null
-        })()}
+        <Adapted
+          close={this.props.closeOverlay}
+          {...overlay.props}
+        />
       </Container>
     )
   }

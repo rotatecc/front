@@ -17,7 +17,10 @@ const Container = styled('div', expandStyles(
 ))
 
 
-const LogoWrapper = styled('div', expandStyles('p/25px/0/5px'))
+const LogoWrapper = styled('div', expandStyles(
+  'pTop/25px',
+  'pBottom/5px',
+))
 
 
 const ListItemLi = styled('li', expandStyles('d/block', 'mBottom/1px'))

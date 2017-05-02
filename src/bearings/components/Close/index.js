@@ -26,7 +26,8 @@ const sizeLookup = {
 }
 
 
-const activeStyles = expandStyles('bgc/rgba(10, 10, 10, 0.3)')
+const hoverStyles = expandStyles('bgc/rgba(10, 10, 10, 0.3)')
+const activeStyles = expandStyles('bgc/rgba(10, 10, 10, 0.4)')
 
 
 const Close = styled('button', ({ size }) => {
@@ -55,9 +56,9 @@ const Close = styled('button', ({ size }) => {
       ':before': expandStyles(...beforeAndAfterCommonStyles, 'w/50%', 'h/2px'),
       ':after': expandStyles(...beforeAndAfterCommonStyles, 'w/2px', 'h/50%'),
 
-      ':hover': activeStyles,
+      ':hover': hoverStyles,
+      ':focus': hoverStyles,
       ':active': activeStyles,
-      ':focus': activeStyles,
     },
   )
 })

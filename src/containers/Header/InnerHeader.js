@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
-import { expandStyles, breakpointMax } from '@/bearings'
+import { expandStyles } from '@/bearings'
 
 import Logo from '@/components/Logo'
 import Navbar from '@/components/Navbar'

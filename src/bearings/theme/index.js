@@ -43,6 +43,15 @@ theme.gridBreakpoints = {
 }
 
 
+// Z-index
+
+
+theme.zIndices = {
+  selectCaret: 4,
+  overlay: 100,
+}
+
+
 // The max widths of Container
 // for different screen sizes
 theme.gridContainerMaxWidths = {
