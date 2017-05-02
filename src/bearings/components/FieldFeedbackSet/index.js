@@ -36,6 +36,10 @@ const FieldFeedbackSet = ({ fieldMeta, brand, brands, ...texts }) => {
   const feedbackElements = finalStates.filter((s) => s).map((s) => {
     const text = texts[s]
 
+    if (text === false) {
+      return null
+    }
+
     if (!text) {
       warn(`FieldFeedbackSet was given brand '${s}', but no matching text was supplied`)
       return null
@@ -51,10 +55,10 @@ FieldFeedbackSet.propTypes = {
   fieldMeta: propTypeFieldMeta,
   brand: propIsBrand,
   brands: PropTypes.arrayOf(propIsBrand),
-  success: PropTypes.string,
-  info: PropTypes.string,
-  warning: PropTypes.string,
-  danger: PropTypes.string,
+  success: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([false])]),
+  info: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([false])]),
+  warning: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([false])]),
+  danger: PropTypes.oneOfType([PropTypes.string, PropTypes.oneOf([false])]),
 }
 
 export default canConnectField(FieldFeedbackSet)

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Field as ReduxFormField, reduxForm } from 'redux-form'
 
-import { propIsInputType, Button, Label, Field, Input } from '@/bearings'
+import { propIsInputType, Button, Label, Field, Input, FieldFeedbackSet } from '@/bearings'
 
 import validate from './validate'
 
@@ -14,10 +14,12 @@ const LoginFormField = ({ input, label, type, meta }) => {
   const { touched, error } = meta
 
   return (
-    <Field>
+    <Field brand={(touched && error) ? 'danger' : undefined}>
       <Label>{label}</Label>
       <Input {...input} type={type} connectRootId />
-      {touched && error && <span>{error}</span>}
+      <FieldFeedbackSet
+        danger={error}
+      />
     </Field>
   )
 }

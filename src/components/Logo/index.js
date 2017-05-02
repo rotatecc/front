@@ -53,7 +53,7 @@ function Logo(props) {
   return (
     <VersionedContainer>
       <StyledLink to="/" title="rotate.cc">
-        rotate
+        lente
       </StyledLink>
     </VersionedContainer>
   )
