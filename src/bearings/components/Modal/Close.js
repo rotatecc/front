@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
-import { expandStyles, Close as VanillaClose } from '@/bearings'
+import { expandStyles } from '../../utils'
+
+import VanillaClose from '../Close'
 
 
 const Close = styled(VanillaClose, expandStyles(
@@ -15,12 +17,6 @@ const Close = styled(VanillaClose, expandStyles(
 
 Close.propTypes = {
   onClick: PropTypes.func.isRequired,
-
-  color: PropTypes.string.isRequired, // has default
-}
-
-Close.defaultProps = {
-  color: '~white',
 }
 
 export default Close

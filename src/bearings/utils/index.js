@@ -24,6 +24,9 @@ export const warn = (typeof console === 'object' && console.warn) // eslint-disa
   : () => undefined
 
 
+export const modalCloseClassname = 'should-close-modal'
+
+
 export const validBreakpoints = ['tiny', 'mobile', 'tablet', 'desktop', 'widescreen']
 
 

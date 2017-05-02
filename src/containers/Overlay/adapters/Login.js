@@ -1,53 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { styled } from 'styletron-react'
 
-import config from '@/config'
-
-import { expandStyles, breakpointMax, H3 } from '@/bearings'
+import { H3, ModalContent, Box } from '@/bearings'
 
 import * as authDuck from '@/ducks/auth'
 
 import LoginForm from '@/containers/LoginForm'
 
-import Close from '../Close'
 
-
-const Container = styled('div', expandStyles(
-  'flexCenter',
-  'd/flex',
-  'h/100vh',
-  'fullWidth',
-))
-
-
-const Box = styled('div', expandStyles(
-  'hMax/90vh',
-  'w/400px',
-  'bgc/rgba(255, 255, 255, 0.95)',
-  'tAlign/center',
-  'overY/auto',
-
-  breakpointMax('tiny', expandStyles('w/95%')),
-))
-
-
-function Login({ close, login }) {
+function Login({ login }) {
   return (
-    <Container className={config.overlayCloseClassname}>
-      <Close onClick={close} />
+    <ModalContent>
       <Box>
         <H3>Log in</H3>
         <LoginForm onSubmit={login} />
       </Box>
-    </Container>
+    </ModalContent>
   )
 }
 
 Login.propTypes = {
   // Actions
-  close: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
 }
 

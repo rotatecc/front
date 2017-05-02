@@ -46,7 +46,7 @@ function mapDispatchToProps(dispatch) {
       return dispatch(windowDuck.resize(size))
     },
     onWindowScroll: () => {
-      // get size object from event target
+      // get size object from window or document
       const scroll = {
         left: window.pageXOffset || document.documentElement.scrollLeft,
         top: window.pageYOffset || document.documentElement.scrollTop,

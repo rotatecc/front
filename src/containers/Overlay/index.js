@@ -1,28 +1,15 @@
 import React from 'react'
 import invariant from 'invariant'
 import PropTypes from 'prop-types'
-import { styled } from 'styletron-react'
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import config from '@/config'
-
-import { expandStyles } from '@/bearings'
+import { Modal } from '@/bearings'
 
 import * as overlayDuck from '@/ducks/overlay'
 
 import * as adapters from './adapters'
 
-
-const Container = styled('div', expandStyles(
-  'bgc/rgba(0, 0, 0, 0.8)',
-  'fixed',
-  'w/100vw',
-  'h/100vh',
-  'overX/hidden',
-  'overY/hidden',
-  'z/~zIndices.overlay',
-))
 
 function getMatchingAdapterMaybe(overlay) {
   return adapters[overlay.get('type')] || null
@@ -45,20 +32,10 @@ class Overlay extends React.PureComponent {
     changeOverflowOnBody(false)
   }
 
-  // Actions
-
-  onContainerClick = (e) => {
-    e.persist()
-
-    if (e.target.className.includes(config.overlayCloseClassname)) {
-      this.props.closeOverlay()
-    }
-  }
-
   // Render
 
   render() {
-    const { show, overlay } = this.props
+    const { show, overlay, closeOverlay } = this.props
 
     if (!show) {
       return null
@@ -72,15 +49,9 @@ class Overlay extends React.PureComponent {
     )
 
     return (
-      <Container
-        className={config.overlayCloseClassname}
-        onClick={this.onContainerClick}
-      >
-        <Adapted
-          close={this.props.closeOverlay}
-          {...overlay.props}
-        />
-      </Container>
+      <Modal onClose={closeOverlay}>
+        <Adapted {...overlay.get('props').toJS()} />
+      </Modal>
     )
   }
 }

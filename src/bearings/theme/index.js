@@ -48,7 +48,7 @@ theme.gridBreakpoints = {
 
 theme.zIndices = {
   selectCaret: 4,
-  overlay: 100,
+  modal: 20,
 }
 
 
@@ -63,6 +63,7 @@ theme.gridContainerMaxWidths = {
 
 
 // Color palette
+
 
 // Basic
 theme.black = '#000000'
@@ -139,6 +140,7 @@ theme.linkHoverDecoration = 'underline'
 
 
 // Base form field styles
+
 
 theme.inputHeight = '2.25em'
 
@@ -224,6 +226,7 @@ theme.fieldHelpColor = theme.grayLight
 
 // Component: Button
 
+
 theme.buttonPaddingY = theme.inputPaddingY
 theme.buttonPaddingX = theme.inputPaddingX
 
@@ -302,6 +305,7 @@ theme.badgeFontSizeLarge = '1.25rem'
 
 // Component: Alert
 
+
 theme.alertBorderWidth = theme.borderWidth
 theme.alertBorderRadius = theme.borderRadiusNormal
 theme.alertPaddingY = '1.25rem'
@@ -313,11 +317,18 @@ theme.alertLineHeight = theme.baseLineHeight
 
 // Component: Tile
 
+
 theme.tileBorderRadius = theme.borderRadiusNormal // switch-able
 theme.tileBoxShadow = '0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1)' // switch-able
 theme.tilePaddingX = '1.25rem'
 theme.tilePaddingY = '0.75rem'
 theme.tileMarginBottom = '1rem'
+
+
+// Modal
+
+
+theme.modalBackgroundColor = 'rgba(0, 0, 0, 0.86)'
 
 
 export default theme

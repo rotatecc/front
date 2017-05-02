@@ -5,17 +5,6 @@ import { styled } from 'styletron-react'
 import { Row, Column, H6, expandStyles } from '@/bearings'
 import Logo from '@/components/Logo'
 
-import Close from '../Close'
-
-
-const Container = styled('div', expandStyles(
-  'relative',
-  'h/100vh',
-  'fullWidth',
-  'bgc/rgba(255, 255, 255, 0.95)',
-  'overY/auto',
-))
-
 
 const LogoWrapper = styled('div', expandStyles(
   'pTop/25px',
@@ -72,10 +61,9 @@ ListSection.propTypes = {
   items: PropTypes.array.isRequired,
 }
 
-function Menu({ close }) {
+function Menu() {
   return (
-    <Container>
-      <Close color="black" onClick={close} />
+    <div>
       <LogoWrapper>
         <Logo version={'primary'} />
       </LogoWrapper>
@@ -127,12 +115,8 @@ function Menu({ close }) {
           </Row>
         </Column>
       </Row>
-    </Container>
+    </div>
   )
-}
-
-Menu.propTypes = {
-  close: PropTypes.func.isRequired,
 }
 
 export default Menu

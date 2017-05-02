@@ -1,20 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
-
-import config from '@/config'
 
 import { expandStyles, H3 } from '@/bearings'
 
-import Close from '../Close'
-
-
-const Container = styled('div', expandStyles(
-  'flexCenter',
-  'd/flex',
-  'h/100vh',
-  'fullWidth',
-))
 
 const BarWrapper = styled('div', expandStyles(
   'flexCenter',
@@ -24,19 +12,15 @@ const BarWrapper = styled('div', expandStyles(
   'bgc/rgba(255, 255, 255, 0.95)',
 ))
 
-function Register({ close }) {
+function Register() {
   return (
-    <Container className={config.overlayCloseClassname}>
-      <Close onClick={close} />
-      <BarWrapper>
-        <H3>Register</H3>
-      </BarWrapper>
-    </Container>
+    <BarWrapper>
+      <H3>Register</H3>
+    </BarWrapper>
   )
 }
 
 Register.propTypes = {
-  close: PropTypes.func.isRequired,
 }
 
 export default Register
