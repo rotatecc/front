@@ -58,7 +58,7 @@ function About() {
                 <Label>Choochoo</Label>
                 <Field expanded>
                   <Control>
-                    <AtLeft><Icon name="facebook" /></AtLeft>
+                    <AtLeft><Icon name="train" /></AtLeft>
                     <TextInput connectRootId />
                   </Control>
                   <FieldFeedbackSet
@@ -69,15 +69,15 @@ function About() {
                   <FieldHelp>Enter your Facebook profile id</FieldHelp>
                 </Field>
               </Field>
-              <Field addons size="small" disabled>
+              <Field addons size="small">
                 <Label>Instagram</Label>
                 <Control expanded>
                   <AtLeft><Icon name="instagram" /></AtLeft>
-                  <TextInput />
+                  <TextInput connectRootId />
                 </Control>
                 <Control>
                   <AtLeft><Icon name="folder-open-o" /></AtLeft>
-                  <Select connectRootId>
+                  <Select>
                     <option>You</option>
                   </Select>
                 </Control>

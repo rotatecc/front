@@ -137,7 +137,7 @@ theme.inputPaddingY = 'calc(0.375em - 1px)'
 theme.inputPaddingX = 'calc(0.625em - 1px)'
 theme.inputLineHeight = 1.5
 
-theme.inputPaddingXHasIcon = '2.25em'
+theme.inputPaddingXHasIcon = '2.25rem'
 
 theme.inputFontSizeNormal = theme.fontSizeNormal
 theme.inputFontSizeSmall = theme.fontSizeSmall
