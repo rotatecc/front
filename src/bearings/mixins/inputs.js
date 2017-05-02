@@ -68,6 +68,7 @@ export function makeInputStyles({
   hasIconRight = false,
 } = {}) {
   const disabledStyles = expandStyles(
+    'cursor/not-allowed',
     'bgc/~inputBgcDisabled',
     // iOS fix for unreadable disabled content;
     // see https://github.com/twbs/bootstrap/issues/11655

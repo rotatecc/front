@@ -23,6 +23,7 @@ import {
   FieldHelp,
   Label,
   Button,
+  RadioSet,
 } from '@/bearings'
 
 
@@ -38,6 +39,18 @@ function About() {
           <Row>
             <Column tablet="two-thirds">
               <H2>About</H2>
+              <Field horizontal size="normal">
+                <Label>Checking out</Label>
+                <Control>
+                  <RadioSet
+                    items={[
+                      { label: 'Banana', value: '' },
+                      { label: 'Apple', value: '' },
+                      { label: 'Orange', value: '' },
+                    ]}
+                  />
+                </Control>
+              </Field>
               <Field horizontal grouped size="normal">
                 <Label>Facebook profile</Label>
                 <Field expanded>

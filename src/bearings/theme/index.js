@@ -174,10 +174,10 @@ theme.sectionBackgroundColor = theme.white
 // Checkable (Checkbox / Radio)
 
 
-theme.checkableMarginBottom = '0.5rem'
-theme.checkableInputGutter = '1.25rem'
-theme.checkableInputMarginY = '0.25rem'
-theme.checkableInputMarginX = '0.25rem'
+theme.checkableMargin = theme.inputPaddingY
+theme.checkableInputGutter = '1.25em'
+theme.checkableInputMarginY = '0.25em'
+theme.checkableInputMarginX = '0.25em'
 
 
 // Label

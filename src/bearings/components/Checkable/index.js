@@ -2,36 +2,48 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { styled } from 'styletron-react'
 
-import { expandStyles, propIsCheckableType } from '../../utils'
+import {
+  expandStyles,
+  capitalize,
+  propIsCheckableType,
+  propIsBrand,
+} from '../../utils'
 
 
 const StyledCheckGroup = styled('div', expandStyles(
   'relative',
   'd/block',
-  'mBottom/~checkableMarginBottom',
+  'mTop/~checkableMargin',
 ))
 
-const StyledBaseLabel = styled('label', expandStyles(
+const StyledBaseLabel = styled('label', ({ brand, disabled }) => expandStyles(
   'pointer',
   'd/inline-block',
   'pLeft/~checkableInputGutter',
+
+  // Brand
+  brand && `c/~brand${capitalize(brand)}`,
+
+  // Disabled
+  disabled && expandStyles('c/~grayLight', 'cursor/not-allowed'),
 ))
 
-const StyledBaseInput = styled('input', expandStyles(
+const StyledBaseInput = styled('input', ({ disabled }) => expandStyles(
   'pointer',
   'absolute',
   'mTop/~checkableInputMarginY',
   'mLeft/~checkableInputGutter~negate',
 
-  { ':only-child': expandStyles('static') },
+  // Disabled
+  disabled && 'cursor/not-allowed',
 ))
 
 
-export default function Checkable({ name, type, value, label }) {
+export default function Checkable({ name, type, value, label, brand, disabled }) {
   return (
     <StyledCheckGroup>
-      <StyledBaseLabel>
-        <StyledBaseInput name={name} type={type} value={value} /> {label}
+      <StyledBaseLabel disabled={disabled} brand={brand}>
+        <StyledBaseInput name={name} type={type} value={value} disabled={disabled} /> {label}
       </StyledBaseLabel>
     </StyledCheckGroup>
   )
@@ -42,6 +54,9 @@ Checkable.propTypes = {
   type: propIsCheckableType.isRequired,
   label: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired, // has default (blank)
+
+  brand: propIsBrand,
+  disabled: PropTypes.bool,
 }
 
 Checkable.defaultProps = {
