@@ -49,6 +49,7 @@ theme.gridBreakpoints = {
 theme.zIndices = {
   selectCaret: 4,
   modal: 20,
+  modalClose: 22,
 }
 
 

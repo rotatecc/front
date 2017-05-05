@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { H3, ModalContent, Box } from '@/bearings'
+import { H3, ModalContent } from '@/bearings'
 
 import * as authDuck from '@/ducks/auth'
 
@@ -11,11 +11,9 @@ import LoginForm from '@/containers/LoginForm'
 
 function Login({ login }) {
   return (
-    <ModalContent>
-      <Box>
-        <H3>Log in</H3>
-        <LoginForm onSubmit={login} />
-      </Box>
+    <ModalContent column="4" boxed>
+      <H3>Log in</H3>
+      <LoginForm onSubmit={login} />
     </ModalContent>
   )
 }

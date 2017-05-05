@@ -8,11 +8,12 @@ import VanillaClose from '../Close'
 
 const Close = styled(VanillaClose, expandStyles(
   'fixed',
-  'square/40px',
+  'square/30px',
   'bgc/transparent',
-  't/20px',
-  'r/20px',
+  't/17px',
+  'r/17px',
   'pointer',
+  'z/~zIndices.modalClose',
 ))
 
 Close.propTypes = {
