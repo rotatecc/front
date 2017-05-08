@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Field as ReduxFormField, reduxForm } from 'redux-form'
 
-import { propIsInputType, Button, Label, Field, Input, FieldFeedbackSet } from '@/bearings'
+import { propIsInputType, Alert, Button, Label, Field, Input, FieldFeedbackSet } from '@/bearings'
 
 import validate from './validate'
 
@@ -36,12 +36,10 @@ LoginFormField.propTypes = {
 
 const LoginForm = ({ handleSubmit, submitting, error }) =>
   <form onSubmit={handleSubmit}>
+    <Alert brand="danger">{error}</Alert>
     <ReduxFormField name="email" label="Email" component={LoginFormField} type="text" />
     <ReduxFormField name="password" label="Password" component={LoginFormField} type="password" />
-    <div>
-      <Button type="submit" brand="default" size="normal" disabled={submitting}>Log in</Button>
-      {error}
-    </div>
+    <Button type="submit" brand="primary" size="normal" disabled={submitting}>Log in</Button>
   </form>
 
 LoginForm.propTypes = {

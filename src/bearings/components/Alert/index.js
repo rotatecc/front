@@ -34,6 +34,10 @@ BaseDiv.propTypes = {
 
 
 export default function Alert({ brand, bold, onClose, children }) {
+  if (!children) {
+    return null
+  }
+
   return (
     <BaseDiv brand={brand} bold={bold} hasClose={Boolean(onClose)}>
       {children}
@@ -47,7 +51,7 @@ Alert.propTypes = {
   bold: PropTypes.bool,
   onClose: PropTypes.func,
 
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 }
 
 Alert.defaultProps = {
